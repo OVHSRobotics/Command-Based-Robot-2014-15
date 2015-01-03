@@ -4,6 +4,7 @@ import info.ovhs.robotics.OI;
 import info.ovhs.robotics.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -11,6 +12,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class DriveWithController extends Command {
 
 	boolean TANK_DRIVE_MODE = false;
+	String tankDrive = "Tank Drive";
+	String arcadeDrive = "Arcade Drive";
 	long lastPressStartButton = 0;
 
 	    public DriveWithController() {
@@ -31,6 +34,7 @@ public class DriveWithController extends Command {
 	            {
 	                TANK_DRIVE_MODE = !TANK_DRIVE_MODE;
 	                
+	                
 	                // Update last button press time
 	                lastPressStartButton = System.currentTimeMillis();
 	            }
@@ -39,6 +43,13 @@ public class DriveWithController extends Command {
 	    	} else {
 	    		DriveTrain.instance.arcadeDrive();
 	    	}
+	    	if (TANK_DRIVE_MODE) {
+	    		SmartDashboard.putString("Mode:", tankDrive);
+	    	}
+	    	if (!TANK_DRIVE_MODE) {
+	    		SmartDashboard.putString("Mode:", arcadeDrive);
+	    	}
+	    	
 	    }
 
 	    // Make this return true when this Command no longer needs to run execute()
