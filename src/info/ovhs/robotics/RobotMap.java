@@ -18,7 +18,9 @@ import edu.wpi.first.wpilibj.*;
 public class RobotMap {
 	public static SpeedController speedController1;
     public static SpeedController speedController2;
-    public static RobotDrive unnamedDrive;
+    //public static SpeedController speedController3;
+    //public static SpeedController speedController4;
+    public static RobotDrive drive;
 
     public static void init() {
         speedController1 = new Victor(0);
@@ -27,13 +29,13 @@ public class RobotMap {
         speedController2 = new Victor(1);
         LiveWindow.addActuator("DriveTrain", "Speed Controller 2", (Victor) speedController2);
         
-        unnamedDrive = new RobotDrive(speedController1, speedController2);
+        drive = new RobotDrive(speedController1, speedController2);
         
-        unnamedDrive.setSafetyEnabled(true);
-        unnamedDrive.setExpiration(0.1);
-        unnamedDrive.setSensitivity(0.5);
-        unnamedDrive.setMaxOutput(1.0);
-        unnamedDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);        
+        drive.setSafetyEnabled(true);
+        drive.setExpiration(0.1);
+        drive.setSensitivity(0.5);
+        drive.setMaxOutput(1.0);
+        drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);        
     }
 	
 }

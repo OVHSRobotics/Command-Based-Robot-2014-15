@@ -2,13 +2,17 @@
 
 package info.ovhs.robotics.commands;
 
+import info.ovhs.robotics.OI;
 import info.ovhs.robotics.Robot;
+import info.ovhs.robotics.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class  ArcadeDrive extends Command {
+	
+	DriveTrain drivetrain = new DriveTrain();
 
     public ArcadeDrive() {
         // Use requires() here to declare subsystem dependencies
@@ -20,6 +24,7 @@ public class  ArcadeDrive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	drivetrain.arcadeDriveController();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -28,7 +33,7 @@ public class  ArcadeDrive extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return (OI.xboxController.getRawButton(7));
     }
 
     // Called once after isFinished returns true

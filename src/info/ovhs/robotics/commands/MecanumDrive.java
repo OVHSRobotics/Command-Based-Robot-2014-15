@@ -2,14 +2,18 @@
 
 package info.ovhs.robotics.commands;
 
+import info.ovhs.robotics.OI;
 import info.ovhs.robotics.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import info.ovhs.robotics.subsystems.DriveTrain;
 
 /**
  *
  */
 public class  MecanumDrive extends Command {
 
+	DriveTrain drivetrain = new DriveTrain();
+	
     public MecanumDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -19,6 +23,7 @@ public class  MecanumDrive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	drivetrain.mecanumDriveController();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -27,7 +32,7 @@ public class  MecanumDrive extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return (OI.xboxController.getRawButton(7));
     }
 
     // Called once after isFinished returns true

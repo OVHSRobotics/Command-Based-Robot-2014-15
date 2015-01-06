@@ -47,7 +47,7 @@ public class OI {
     public JoystickButton yButton;
     public JoystickButton backButton;
     public JoystickButton startButton;
-    public Joystick xboxController;
+    public static Joystick xboxController;
 
     public OI() {
 
@@ -60,11 +60,11 @@ public class OI {
         yButton = new JoystickButton(xboxController, 4);
         //yButton.whenPressed(new MecanumDrive());
         xButton = new JoystickButton(xboxController, 3);
-        //xButton.whileHeld(new ArcadeDrive());
+        xButton.whileHeld(new ArcadeDrive());
         bButton = new JoystickButton(xboxController, 2);
-        //bButton.whenPressed(new TankDrive());
+        bButton.whenPressed(new TankDrive());
         aButton = new JoystickButton(xboxController, 1);
-        //aButton.whenPressed(new MecanumDrive());
+        aButton.whenPressed(new MecanumDrive());
 
 	    
         /*// SmartDashboard Buttons
@@ -80,6 +80,24 @@ public class OI {
     
     public Joystick getxboxController() {
         return xboxController;
+    }
+    public static double getLeftStickXAxis() {
+    	return xboxController.getRawAxis(1);
+    }
+    public static double getLeftStickYAxis() {
+    	return xboxController.getRawAxis(2);
+    }
+    public static double getRightStickXAxis() {
+    	return xboxController.getRawAxis(4);
+    }
+    public static double getRightStickYAxis() {
+    	return xboxController.getRawAxis(5);
+    }
+    public static boolean leftTriggerAllWayDown() {
+    	return (Math.abs(xboxController.getRawAxis(3))>= .98);
+    }
+    public static boolean rightTriggerAllWayDown() {
+    	return ((-1 * Math.abs(xboxController.getRawAxis(3)) <= -.98));
     }
 
 }
