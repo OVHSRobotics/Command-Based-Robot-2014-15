@@ -1,18 +1,21 @@
-/*
+
+
 package info.ovhs.robotics.commands;
 
+import info.ovhs.robotics.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
-import info.ovhs.robotics.Robot;
-
-*//**
+/**
  *
- *//*
-public class ExampleCommand extends Command {
+ */
+@SuppressWarnings("unused")
+public class  AutonomousCommand extends Command {
 
-    public ExampleCommand() {
+    public AutonomousCommand() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.exampleSubsystem);
+        // eg. requires(chassis);
+
+        
     }
 
     // Called just before this Command runs the first time
@@ -37,4 +40,3 @@ public class ExampleCommand extends Command {
     protected void interrupted() {
     }
 }
-*/

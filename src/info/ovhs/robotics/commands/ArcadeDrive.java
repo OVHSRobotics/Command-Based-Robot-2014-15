@@ -1,18 +1,21 @@
-/*
+
+
 package info.ovhs.robotics.commands;
 
+import info.ovhs.robotics.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
-import info.ovhs.robotics.Robot;
-
-*//**
+/**
  *
- *//*
-public class ExampleCommand extends Command {
+ */
+public class  ArcadeDrive extends Command {
 
-    public ExampleCommand() {
+    public ArcadeDrive() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.exampleSubsystem);
+        // eg. requires(chassis);
+
+        
+        requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
@@ -37,4 +40,3 @@ public class ExampleCommand extends Command {
     protected void interrupted() {
     }
 }
-*/

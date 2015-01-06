@@ -1,4 +1,4 @@
-package info.ovhs.robotics.commands;
+/*package info.ovhs.robotics.commands;
 
 import info.ovhs.robotics.OI;
 import info.ovhs.robotics.subsystems.DriveTrain;
@@ -6,9 +6,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
+*//**
  *
- */
+ *//*
 public class DriveWithController extends Command {
 
 	boolean TANK_DRIVE_MODE = false;
@@ -66,3 +66,4 @@ public class DriveWithController extends Command {
 	    protected void interrupted() {
 	    }
 }
+*/

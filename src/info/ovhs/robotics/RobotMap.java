@@ -1,33 +1,39 @@
 package info.ovhs.robotics;
+
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.*;
+
+
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
+@SuppressWarnings("unused")
 public class RobotMap {
-	// Creating the speed controller PWM Mappings
-	public static int frontLeftSpeedController; //index 0; PWM Channel 1
-    public static int frontRightSpeedController; //index 1; PWM Channel 2
-    public static int backLeftSpeedController; //index 2; PWM Channel 3
-    public static int backRightSpeedController; //index 3; PWM Channel 4
-    public final int[] speedControllerMap = {1,2,3,4};
-        
-	private static RobotMap instance;
-    
-	public static RobotMap getInstance()
-    {
-        if (instance != null)
-         return instance;
-        instance = new RobotMap();
-     return instance;
-    }
+	public static SpeedController speedController1;
+    public static SpeedController speedController2;
+    public static RobotDrive unnamedDrive;
 
-public RobotMap() {
-	frontLeftSpeedController = speedControllerMap[0];
-    frontRightSpeedController = speedControllerMap[1];
-    backLeftSpeedController = speedControllerMap[2];
-    backRightSpeedController = speedControllerMap[3];
-}
+    public static void init() {
+        speedController1 = new Victor(0);
+        LiveWindow.addActuator("DriveTrain", "Speed Controller 1", (Victor) speedController1);
+        
+        speedController2 = new Victor(1);
+        LiveWindow.addActuator("DriveTrain", "Speed Controller 2", (Victor) speedController2);
+        
+        unnamedDrive = new RobotDrive(speedController1, speedController2);
+        
+        unnamedDrive.setSafetyEnabled(true);
+        unnamedDrive.setExpiration(0.1);
+        unnamedDrive.setSensitivity(0.5);
+        unnamedDrive.setMaxOutput(1.0);
+        unnamedDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);        
+    }
 	
 }
