@@ -6,6 +6,7 @@ import info.ovhs.robotics.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.buttons.*;
+import edu.wpi.first.wpilibj.Joystick;
 
 
 /**
@@ -13,6 +14,8 @@ import edu.wpi.first.wpilibj.buttons.*;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+	
+	private static final double [] axisErrors = new double[7];
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
@@ -47,10 +50,14 @@ public class OI {
     public JoystickButton yButton;
     public JoystickButton backButton;
     public JoystickButton startButton;
+    public JoystickButton mecanumButton;
+    public JoystickButton arcadeButton;
+    public JoystickButton tankButton;
+    //public static Joystick xboxController;
     public static Joystick xboxController;
-
-    public OI() {
-
+    //public static Joystick stick2;
+    OI() {
+/*
         xboxController = new Joystick(1);
         
         startButton = new JoystickButton(xboxController, 8);
@@ -65,40 +72,73 @@ public class OI {
         bButton.whenPressed(new TankDrive());
         aButton = new JoystickButton(xboxController, 1);
         aButton.whenPressed(new MecanumDrive());
+*/
+    	xboxController = new Joystick(1);
+    	//stick2 = new Joystick(2);
+    	aButton = new JoystickButton(xboxController, 1);
+	    aButton.whenPressed(new ToggleDriveStyle());
+	    bButton = new JoystickButton(xboxController, 2);
+	    bButton.whenPressed(new ZeroControllerInputs());
+	    /*xButton = new JoystickButton(xboxController, 3);
+	    xButton.whenPressed(new MecanumDrive());
+	    yButton = new JoystickButton(xboxController, 4);
+	    yButton.whenPressed(new ArcadeDrive());*/
 
 	    
-        /*// SmartDashboard Buttons
+    	
+    	
+        // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
 
         SmartDashboard.putData("MecanumDrive", new MecanumDrive());
 
         SmartDashboard.putData("TankDrive", new TankDrive());
 
-        SmartDashboard.putData("ArcadeDrive", new ArcadeDrive());*/
+        SmartDashboard.putData("ArcadeDrive", new ArcadeDrive());
+        
+        SmartDashboard.putData("Zero Controller", new ZeroControllerInputs());
+        
+        SmartDashboard.putData("Toggle Drive Style", new ToggleDriveStyle());
 
     }
-    
-    public Joystick getxboxController() {
-        return xboxController;
+    public static double getRawAxis( int axis ) {
+        return xboxController.getRawAxis(axis) + axisErrors[axis - 1];
     }
     public static double getLeftStickXAxis() {
-    	return xboxController.getRawAxis(1);
+    	return getRawAxis(0);
     }
     public static double getLeftStickYAxis() {
-    	return xboxController.getRawAxis(2);
+    	return getRawAxis(1);
     }
     public static double getRightStickXAxis() {
-    	return xboxController.getRawAxis(4);
+    	return getRawAxis(4);
     }
     public static double getRightStickYAxis() {
-    	return xboxController.getRawAxis(5);
+    	return getRawAxis(5);
     }
-    public static boolean leftTriggerAllWayDown() {
+    /*public static boolean leftTriggerAllWayDown() {
     	return (Math.abs(xboxController.getRawAxis(3))>= .98);
     }
     public static boolean rightTriggerAllWayDown() {
     	return ((-1 * Math.abs(xboxController.getRawAxis(3)) <= -.98));
     }
+*/
 
+	public Joystick getController() {
+		return xboxController;
+	}
+	
+
+	
+    /**
+     * Read all of the axis values to determine the error values, and then record the corrections for each of these axes. This
+     * method should be called only when the controller axes are physically in their neutral position.
+     */
+    public void zeroAxisReadings() {
+        for (int i = 1; i <= 6; ++i) {
+            axisErrors[i - 1] = -xboxController.getRawAxis(i);
+        }
+    }
+    
 }
 
