@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -55,6 +56,7 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
+        print("Entering autonomous mode");
     }
 
     /**
@@ -70,6 +72,8 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        print("Entering teleop mode");
+        updateStatus();
     }
 
     /**
@@ -77,6 +81,14 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        updateStatus();
+    }
+    
+    /**
+     * This function is called once when test mode begins.
+     */
+    public void testInit() {
+        print("Entering test mode");
     }
 
     /**
@@ -84,5 +96,13 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+    }
+    
+    public static void print( String message ) {
+        System.out.println(message);
+    } 
+    public static void updateStatus() {
+        // Add data to the "SmartDashboard".
+        SmartDashboard.putData(driveTrain);
     }
 }

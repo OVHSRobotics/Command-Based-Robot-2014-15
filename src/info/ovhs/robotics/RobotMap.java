@@ -16,8 +16,12 @@ import edu.wpi.first.wpilibj.*;
  */
 @SuppressWarnings("unused")
 public class RobotMap {
-	public static SpeedController speedController1;
-    public static SpeedController speedController2;
+	public static final class DriveMotors {
+		public static final boolean LEFT_REVERSED = true;
+		public static final boolean RIGHT_REVERSED = false;
+	}
+	public static Victor speedController1;
+    public static Victor speedController2;
     //public static SpeedController speedController3;
     //public static SpeedController speedController4;
     public static RobotDrive drive;
@@ -32,10 +36,9 @@ public class RobotMap {
         drive = new RobotDrive(speedController1, speedController2);
         
         drive.setSafetyEnabled(true);
-        drive.setExpiration(0.1);
-        drive.setSensitivity(0.5);
         drive.setMaxOutput(1.0);
-        drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);        
+        drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, RobotMap.DriveMotors.LEFT_REVERSED);   
+        drive.setInvertedMotor(RobotDrive.MotorType.kRearRight, RobotMap.DriveMotors.RIGHT_REVERSED);
     }
 	
 }
