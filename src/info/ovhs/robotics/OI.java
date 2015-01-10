@@ -106,25 +106,30 @@ public class OI {
     public static double getRawAxis( int axis ) {
         return xboxController.getRawAxis(axis) + axisErrors[axis - 1];
     }
+    
     public static double getLeftStickXAxis() {
     	return getRawAxis(0);
     }
+    
     public static double getLeftStickYAxis() {
     	return getRawAxis(1);
     }
+    
     public static double getRightStickXAxis() {
     	return getRawAxis(4);
     }
+    
     public static double getRightStickYAxis() {
     	return getRawAxis(5);
     }
-    /*public static boolean leftTriggerAllWayDown() {
-    	return (Math.abs(xboxController.getRawAxis(3))>= .98);
-    }
-    public static boolean rightTriggerAllWayDown() {
-    	return ((-1 * Math.abs(xboxController.getRawAxis(3)) <= -.98));
-    }
-*/
+    
+//    public static boolean leftTriggerAllWayDown() {
+//    	return (Math.abs(xboxController.getRawAxis(3))>= .98);
+//    }
+//    
+//    public static boolean rightTriggerAllWayDown() {
+//    	return ((-1 * Math.abs(xboxController.getRawAxis(3)) <= -.98));
+//    }
 
 	public Joystick getController() {
 		return xboxController;
