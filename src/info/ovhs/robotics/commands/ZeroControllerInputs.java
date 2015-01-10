@@ -25,6 +25,7 @@ public class ZeroControllerInputs extends Command {
     		Robot.print(" " + i + " seconds ...");
     		Timer.delay(1.0d);
     	}
+    	
     	Robot.print("*** Zeroing controller inputs");
     	Robot.oi.zeroAxisReadings();
     	Robot.print("*** Completed zeroing controller inputs");

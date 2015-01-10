@@ -36,6 +36,7 @@ public class ToggleDriveStyle extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+    
     public String toString() {
     	return "Toggling drive style";
     }

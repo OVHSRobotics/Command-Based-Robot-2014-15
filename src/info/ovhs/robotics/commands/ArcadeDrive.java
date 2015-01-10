@@ -44,6 +44,7 @@ public class  ArcadeDrive extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+    
     public String toString() {
     	return "Drive arcade-style with left stick on xbox controller";
     }
