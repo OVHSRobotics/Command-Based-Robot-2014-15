@@ -6,11 +6,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ToggleDriveStyle extends Command {
+public class ToggleDriveStyle extends CommandBase {
 
     public ToggleDriveStyle() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.driveTrain);
+        requires(CommandBase.driveTrain);
     }
 
     // Called just before this Command runs the first time

@@ -16,6 +16,8 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class OI {
 	
+	private static OI instance;
+	
 	private static final double [] axisErrors = new double[7];
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -103,6 +105,15 @@ public class OI {
        
 
     }
+    
+    public static OI getInstance() {
+    	if (OI.instance == null) {
+    		OI.instance = new OI();
+    	}
+    	
+    	return OI.instance;
+    }
+    
     public static double getRawAxis( int axis ) {
         return xboxController.getRawAxis(axis) + axisErrors[axis - 1];
     }

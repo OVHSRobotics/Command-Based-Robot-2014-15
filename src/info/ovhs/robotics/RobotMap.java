@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.*;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
-@SuppressWarnings("unused")
 public class RobotMap {
 	
 	public static final class DriveMotors {

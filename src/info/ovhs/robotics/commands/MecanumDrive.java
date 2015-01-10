@@ -10,15 +10,12 @@ import info.ovhs.robotics.subsystems.DriveTrain;
 /**
  *
  */
-public class  MecanumDrive extends Command {
-
-	DriveTrain driveTrain = new DriveTrain();
+public class  MecanumDrive extends CommandBase {
 	
     public MecanumDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-
-        requires(Robot.driveTrain);
+        requires(CommandBase.driveTrain);
     }
 
     // Called just before this Command runs the first time

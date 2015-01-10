@@ -10,15 +10,13 @@ import info.ovhs.robotics.subsystems.DriveTrain;
 /**
  *
  */
-public class  TankDrive extends Command {
-
-	DriveTrain driveTrain = new DriveTrain();
+public class  TankDrive extends CommandBase {
 	
     public TankDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 
-        requires(Robot.driveTrain);
+        requires(CommandBase.driveTrain);
     }
 
     // Called just before this Command runs the first time
