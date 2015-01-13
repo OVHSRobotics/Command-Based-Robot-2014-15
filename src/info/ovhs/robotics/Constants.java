@@ -9,4 +9,6 @@ public final class Constants {
 	public final int TOTE_WEIGHT = 6;
 	
 	public final int ROBOT_WEIGHT = 120;
+
+	public final int TRASHCAN_HEIGHT = 36;
 }
