@@ -10,15 +10,12 @@ import info.ovhs.robotics.subsystems.DriveTrain;
 /**
  *
  */
-public class  MecanumDrive extends Command {
-
-	DriveTrain drivetrain = new DriveTrain();
+public class  MecanumDrive extends CommandBase {
 	
     public MecanumDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-
-        requires(Robot.driveTrain);
+        requires(CommandBase.driveTrain);
     }
 
     // Called just before this Command runs the first time
@@ -28,7 +25,7 @@ public class  MecanumDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {    
-    	drivetrain.mecanumDriveController();
+    	driveTrain.mecanumDriveController();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -44,6 +41,7 @@ public class  MecanumDrive extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+    
     public String toString() {
     	return "Driving mecanum style with xbox controller";
     }
