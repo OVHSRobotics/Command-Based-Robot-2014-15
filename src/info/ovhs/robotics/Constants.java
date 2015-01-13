@@ -6,7 +6,13 @@ public final class Constants {
 	
 	public final int MIN_JOYSTICK_AXIS = -1;
 	
+<<<<<<< HEAD
 	public final int TOTE_HEIGHT_INCHES = 18;
+=======
+	public final int TOTE_WEIGHT = 6;
+	
+	public final int ROBOT_WEIGHT = 120;
+>>>>>>> dbcf848f39560ce095ed008cea619ee26d6954b2
 
 	public final int TRASHCAN_HEIGHT = 36;
 
