@@ -14,14 +14,15 @@ import edu.wpi.first.wpilibj.*;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
-@SuppressWarnings("unused")
 public class RobotMap {
+	
 	public static final class DriveMotors {
 		public static final boolean LEFT_REVERSED = true;
 		public static final boolean RIGHT_REVERSED = false;
 	}
-	public static Victor speedController1;
-    public static Victor speedController2;
+	
+	public static SpeedController speedController1;
+    public static SpeedController speedController2;
     //public static SpeedController speedController3;
     //public static SpeedController speedController4;
     public static RobotDrive drive;

@@ -12,13 +12,24 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class DriveTrain extends Subsystem {
-    Victor speedController1 = RobotMap.speedController1;
-    Victor speedController2 = RobotMap.speedController2;
+	
+	protected static DriveTrain instance;
+	
+    SpeedController speedController1 = RobotMap.speedController1;
+    SpeedController speedController2 = RobotMap.speedController2;
     //SpeedController speedController3 = RobotMap.speedController3;
     //SpeedController speedController4 = RobotMap.speedController4;
     RobotDrive drive = RobotMap.drive;
+    
+    public static DriveTrain getInstance() {
+    	if (DriveTrain.instance == null) {
+    		DriveTrain.instance = new DriveTrain();
+    	}
+    	
+    	return DriveTrain.instance;
+    }
+    
     public void initDefaultCommand() {
-	
         // Set the default command for a subsystem here.
         setDefaultCommand(new MecanumDrive());
     }

@@ -29,13 +29,14 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-    RobotMap.init();
-        driveTrain = new DriveTrain();
+    	RobotMap.init();
+        CommandBase.init();
+    	
         // OI must be constructed after subsystems. If the OI creates Commands 
         //(which it very likely will), subsystems are not guaranteed to be 
         // constructed yet. Thus, their requires() statements may grab null 
         // pointers. Bad news. Don't move it.
-        oi = new OI();
+        //oi = new OI();
 
         // instantiate the command used for the autonomous period
         //autonomousCommand = new AutonomousCommand();
@@ -76,6 +77,7 @@ public class Robot extends IterativeRobot {
         if (driveTrain.getCurrentCommand() == null) {
         	driveTrain.initDefaultCommand();
         }
+        
         updateStatus();
     }
 
@@ -104,6 +106,7 @@ public class Robot extends IterativeRobot {
     public static void print( String message ) {
         System.out.println(message);
     } 
+    
     public static void updateStatus() {
         // Add data to the "SmartDashboard".
         SmartDashboard.putData(driveTrain);

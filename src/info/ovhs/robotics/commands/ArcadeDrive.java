@@ -10,15 +10,13 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class  ArcadeDrive extends Command {
+public class  ArcadeDrive extends CommandBase {
 	
-	DriveTrain drivetrain = new DriveTrain();
-
     public ArcadeDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 
-        requires(Robot.driveTrain);
+        requires(CommandBase.driveTrain);
     }
 
     // Called just before this Command runs the first time
@@ -44,6 +42,7 @@ public class  ArcadeDrive extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+    
     public String toString() {
     	return "Drive arcade-style with left stick on xbox controller";
     }
