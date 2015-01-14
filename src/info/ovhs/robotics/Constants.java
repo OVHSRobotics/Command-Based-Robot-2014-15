@@ -15,4 +15,8 @@ public final class Constants {
 	public final int TOTE_WEIGHT = 6;
 	
 	public final int ROBOT_WEIGHT = 120;
+	
+	public final static boolean LEFT_REVERSED = true;
+	
+	public final static boolean RIGHT_REVERSED = false;
 }

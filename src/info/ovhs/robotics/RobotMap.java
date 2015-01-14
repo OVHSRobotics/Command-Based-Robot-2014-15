@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.*;
+import info.ovhs.robotics.Constants;
 
 
 
@@ -16,30 +17,33 @@ import edu.wpi.first.wpilibj.*;
  */
 public class RobotMap {
 	
-	public static final class DriveMotors {
-		public static final boolean LEFT_REVERSED = true;
-		public static final boolean RIGHT_REVERSED = false;
-	}
-	
+	public static Constants constant;
 	public static SpeedController speedController1;
     public static SpeedController speedController2;
-    //public static SpeedController speedController3;
-    //public static SpeedController speedController4;
+    public static SpeedController speedController3;
+    public static SpeedController speedController4;
     public static RobotDrive drive;
 
     public static void init() {
+    	constant = new Constants();
+    	  
         speedController1 = new Victor(0);
         LiveWindow.addActuator("DriveTrain", "Speed Controller 1", (Victor) speedController1);
         
         speedController2 = new Victor(1);
         LiveWindow.addActuator("DriveTrain", "Speed Controller 2", (Victor) speedController2);
+        speedController3 = new Victor(2);
+        LiveWindow.addActuator("DriveTrain", "Speed Controller 3", (Victor) speedController3);
         
-        drive = new RobotDrive(speedController1, speedController2);
+        speedController4 = new Victor(3);
+        LiveWindow.addActuator("DriveTrain", "Speed Controller 4", (Victor) speedController4);
         
-        drive.setSafetyEnabled(true);
+        drive = new RobotDrive(speedController1, speedController2, speedController3, speedController4);
+        
+        drive.setSafetyEnabled(false);
         drive.setMaxOutput(1.0);
-        drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, RobotMap.DriveMotors.LEFT_REVERSED);   
-        drive.setInvertedMotor(RobotDrive.MotorType.kRearRight, RobotMap.DriveMotors.RIGHT_REVERSED);
+        drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, Constants.LEFT_REVERSED);   
+        drive.setInvertedMotor(RobotDrive.MotorType.kRearRight, Constants.RIGHT_REVERSED);
     }
 	
 }

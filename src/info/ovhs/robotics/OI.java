@@ -18,7 +18,7 @@ public class OI {
 	
 	private static OI instance;
 	
-	private static final double [] axisErrors = new double[7];
+	private static final double [] axisErrors = new double[6];
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
@@ -115,7 +115,7 @@ public class OI {
     }
     
     public static double getRawAxis( int axis ) {
-        return xboxController.getRawAxis(axis) + axisErrors[axis - 1];
+        return xboxController.getRawAxis(axis) + axisErrors[axis];
     }
     
     public static double getLeftStickXAxis() {
@@ -153,8 +153,8 @@ public class OI {
      * method should be called only when the controller axes are physically in their neutral position.
      */
     public void zeroAxisReadings() {
-        for (int i = 1; i <= 6; ++i) {
-            axisErrors[i - 1] = -xboxController.getRawAxis(i);
+        for (int i = 0; i < 6; i++) {
+            axisErrors[i] = -xboxController.getRawAxis(i);
         }
     }
     

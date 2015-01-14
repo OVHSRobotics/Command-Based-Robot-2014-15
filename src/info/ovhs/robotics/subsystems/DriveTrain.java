@@ -5,6 +5,7 @@ import info.ovhs.robotics.RobotMap;
 import info.ovhs.robotics.commands.*;
 import info.ovhs.robotics.OI;
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
@@ -101,10 +102,5 @@ public class DriveTrain extends Subsystem {
     		setDefaultCommand(new ArcadeDrive());
     	}
     }
-    
-
-    
-
-
 }
 
