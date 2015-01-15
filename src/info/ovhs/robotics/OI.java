@@ -45,7 +45,6 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
-
     
     public JoystickButton aButton;
     public JoystickButton bButton;
@@ -58,37 +57,19 @@ public class OI {
     public JoystickButton tankButton;
     //public static Joystick xboxController;
     public static Joystick xboxController;
-    //public static Joystick stick2;
+    public static Joystick fireButton;
     OI() {
-/*
-        xboxController = new Joystick(1);
-        
-        startButton = new JoystickButton(xboxController, 8);
-        //startButton.whenPressed(new ArcadeDrive());
-        backButton = new JoystickButton(xboxController, 7);
-        //backButton.whileHeld(new TankDrive());
-        yButton = new JoystickButton(xboxController, 4);
-        //yButton.whenPressed(new MecanumDrive());
-        xButton = new JoystickButton(xboxController, 3);
-        xButton.whileHeld(new ArcadeDrive());
-        bButton = new JoystickButton(xboxController, 2);
-        bButton.whenPressed(new TankDrive());
-        aButton = new JoystickButton(xboxController, 1);
-        aButton.whenPressed(new MecanumDrive());
-*/
-    	xboxController = new Joystick(1);
-    	//stick2 = new Joystick(2);
-    	aButton = new JoystickButton(xboxController, 1);
-	    aButton.whenPressed(new ToggleDriveStyle());
-	    bButton = new JoystickButton(xboxController, 2);
-	    bButton.whenPressed(new ZeroControllerInputs());
-	    /*xButton = new JoystickButton(xboxController, 3);
-	    xButton.whenPressed(new MecanumDrive());
-	    yButton = new JoystickButton(xboxController, 4);
-	    yButton.whenPressed(new ArcadeDrive());*/
 
-	    
-    	
+    	xboxController = new Joystick(Constants.OperatorControlsConstants.CONTROLLER_PORT);
+    	fireButton = new Joystick(Constants.OperatorControlsConstants.FIRE_BUTTON_PORT);
+    	aButton = new JoystickButton(xboxController, Constants.OperatorControlsConstants.A_BUTTON);
+	    aButton.whenPressed(new ToggleDriveStyle());
+	    bButton = new JoystickButton(xboxController, Constants.OperatorControlsConstants.B_BUTTON);
+	    bButton.whenPressed(new ZeroControllerInputs());
+	    /*xButton = new JoystickButton(xboxController, Constants.OperatorControlsConstants.X_BUTTON);
+	    xButton.whenPressed(new MecanumDrive());
+	    yButton = new JoystickButton(xboxController, Constants.OperatorControlsConstants.Y_BUTTON);
+	    yButton.whenPressed(new ArcadeDrive());*/
     	
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
@@ -153,7 +134,7 @@ public class OI {
      * method should be called only when the controller axes are physically in their neutral position.
      */
     public void zeroAxisReadings() {
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < axisErrors.length; i++) {
             axisErrors[i] = -xboxController.getRawAxis(i);
         }
     }
