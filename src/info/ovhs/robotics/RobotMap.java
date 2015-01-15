@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.*;
 import info.ovhs.robotics.Constants;
 
 
@@ -26,12 +25,16 @@ public class RobotMap {
 
     public static void init() {
     	constant = new Constants();
+    	
+    	boolean leftMotorReversed = constant.LEFT_MOTOR_REVERSED;
+    	boolean rightMotorReversed = constant.RIGHT_MOTOR_REVERSED;
     	  
         speedController1 = new Victor(0);
         LiveWindow.addActuator("DriveTrain", "Speed Controller 1", (Victor) speedController1);
         
         speedController2 = new Victor(1);
         LiveWindow.addActuator("DriveTrain", "Speed Controller 2", (Victor) speedController2);
+        
         speedController3 = new Victor(2);
         LiveWindow.addActuator("DriveTrain", "Speed Controller 3", (Victor) speedController3);
         
@@ -42,8 +45,8 @@ public class RobotMap {
         
         drive.setSafetyEnabled(false);
         drive.setMaxOutput(1.0);
-        drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, Constants.LEFT_REVERSED);   
-        drive.setInvertedMotor(RobotDrive.MotorType.kRearRight, Constants.RIGHT_REVERSED);
+        drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, leftMotorReversed);   
+        drive.setInvertedMotor(RobotDrive.MotorType.kRearRight, rightMotorReversed);
     }
 	
 }
