@@ -16,6 +16,16 @@ public final class Constants {
 	
 	public static final boolean RIGHT_MOTOR_REVERSED = false;
 	
+	public static final int FRONT_LEFT_DRIVE_MOTOR_PORT = 0;
+	
+	public static final int REAR_LEFT_DRIVE_MOTOR_PORT = 1;
+	
+	public static final int FRONT_RIGHT_DRIVE_MOTOR_PORT = 2;
+	
+	public static final int REAR_RIGHT_DRIVE_MOTOR_PORT = 3;
+	
+	public static final double MOTOR_MAX_OUTPUT = 1.0;
+	
 	public static final class OperatorControlsConstants {
 		
 		public static final int LEFT_STICK_X_AXIS = 0;
