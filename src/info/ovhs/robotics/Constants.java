@@ -28,10 +28,6 @@ public final class Constants {
 	
 	public static final class OperatorControlsConstants {
 		
-		public static final int CONTROLLER_PORT = 0;
-		
-		public static final int FIRE_BUTTON_PORT = 1;
-		
 		public static final int LEFT_STICK_X_AXIS = 0;
 		
 		public static final int LEFT_STICK_Y_AXIS = 1;
@@ -81,6 +77,10 @@ public final class Constants {
 		public static final int MIN_TRIGGER_AXIS = 0;
 		
 		public static final int MAX_TRIGGER_AXIS = 1;
+
+		public static final int CONTROLLER_PORT = 0;
+
+		public static final int FIRE_BUTTON_PORT = 1;
 		
 	}
 	
