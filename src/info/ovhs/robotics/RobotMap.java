@@ -16,18 +16,15 @@ import info.ovhs.robotics.Constants;
  */
 public class RobotMap {
 	
-	public static Constants constant;
 	public static SpeedController speedController1;
     public static SpeedController speedController2;
     public static SpeedController speedController3;
     public static SpeedController speedController4;
     public static RobotDrive drive;
 
-    public static void init() {
-    	constant = new Constants();
-    	
-    	boolean leftMotorReversed = constant.LEFT_MOTOR_REVERSED;
-    	boolean rightMotorReversed = constant.RIGHT_MOTOR_REVERSED;
+    public static void init() {    	
+    	boolean leftMotorReversed = Constants.LEFT_MOTOR_REVERSED;
+    	boolean rightMotorReversed = Constants.RIGHT_MOTOR_REVERSED;
     	  
         speedController1 = new Victor(0);
         LiveWindow.addActuator("DriveTrain", "Speed Controller 1", (Victor) speedController1);
