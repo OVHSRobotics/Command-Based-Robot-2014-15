@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.Gyro;
 import info.ovhs.robotics.Constants;
 
 
@@ -21,6 +22,10 @@ public class RobotMap {
     public static SpeedController speedController3;
     public static SpeedController speedController4;
     public static RobotDrive drive;
+    
+    public static Gyro gyro;
+    
+    
 
     public static void init() {    	
     	  
@@ -43,6 +48,8 @@ public class RobotMap {
         drive.setMaxOutput(Constants.MOTOR_MAX_OUTPUT);
         drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, Constants.LEFT_MOTOR_REVERSED);   
         drive.setInvertedMotor(RobotDrive.MotorType.kRearRight, Constants.RIGHT_MOTOR_REVERSED);
+        
+        gyro = new Gyro(0);
     }
 	
 }

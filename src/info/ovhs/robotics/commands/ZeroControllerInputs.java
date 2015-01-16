@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.Timer;
 /**
  *
  */
-public class ZeroControllerInputs extends Command {
+public class ZeroControllerInputs extends CommandBase {
 
 	private long startTime;
 	private boolean isFinished;

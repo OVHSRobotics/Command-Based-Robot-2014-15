@@ -89,6 +89,18 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
+     * Drive using an xbox controller in Cartesian Mecanum Style using a gyro if present
+     * <p>
+     * This can be called within commands.
+     * </p>
+     * 
+     * @param gyroAngle The angle that the gyro is currently at
+     */
+    public void mecanumDriveController(double gyroAngle) {
+    	drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), OI.getRightStickXAxis(), gyroAngle);
+    }
+    
+    /**
      * Change the drive style for the default command
      */
     public void changeDefaultDriveStyle() {
