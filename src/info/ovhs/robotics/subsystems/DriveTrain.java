@@ -101,6 +101,7 @@ public class DriveTrain extends Subsystem {
     	if (getDefaultCommand() instanceof MecanumDrive) {
     		setDefaultCommand(new ArcadeDrive());
     	}
+    	getDefaultCommand().start();
     }
 }
 
