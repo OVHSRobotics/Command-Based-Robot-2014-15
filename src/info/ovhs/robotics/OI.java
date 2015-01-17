@@ -1,5 +1,3 @@
-
-
 package info.ovhs.robotics;
 
 import info.ovhs.robotics.commands.*;
@@ -8,7 +6,6 @@ import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.buttons.*;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.Joystick;
-
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -58,7 +55,8 @@ public class OI {
     //public static Joystick xboxController;
     public static Joystick xboxController;
     public static Joystick fireButton;
-    OI() {
+    
+    private OI() {
 
     	xboxController = new Joystick(Constants.OperatorControlsConstants.CONTROLLER_PORT);
     	fireButton = new Joystick(Constants.OperatorControlsConstants.FIRE_BUTTON_PORT);

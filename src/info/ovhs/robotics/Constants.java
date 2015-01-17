@@ -24,6 +24,10 @@ public final class Constants {
 	
 	public static final int REAR_RIGHT_DRIVE_MOTOR_PORT = 3;
 	
+	public static final int DRIVE_BASE_GYRO_PORT = 0;
+	
+	public static final int CONVEYER_BELT_GYRO_PORT = 1;
+	
 	public static final double MOTOR_MAX_OUTPUT = 1.0;
 	
 	public static final class OperatorControlsConstants {

@@ -27,8 +27,7 @@ public class ZeroControllerInputs extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if ((System.nanoTime() - startTime) / Math.pow(10, 9) < this.zeroingTimeSeconds)
-    	{
+    	if ((System.nanoTime() - startTime) / Math.pow(10, 9) < this.zeroingTimeSeconds) {
     		return;
     	}
     	

@@ -79,6 +79,7 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null) {
         	autonomousCommand.cancel();
         }
+        
         print("Entering teleop mode");
         if (driveTrain.getCurrentCommand() == null) {
         	driveTrain.initDefaultCommand();
