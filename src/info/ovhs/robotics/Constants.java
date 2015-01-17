@@ -16,6 +16,8 @@ public final class Constants {
 	
 	public static final boolean RIGHT_MOTOR_REVERSED = false;
 	
+	public static final int CONVEYER_BELT_MOTOR_PORT = 4;
+	
 	public static final class OperatorControlsConstants {
 		
 		public static final int LEFT_STICK_X_AXIS = 0;
@@ -68,6 +70,7 @@ public final class Constants {
 		
 		public static final int MAX_TRIGGER_AXIS = 1;
 		
+
 	}
 	
 	

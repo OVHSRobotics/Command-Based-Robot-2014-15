@@ -20,8 +20,9 @@ public class RobotMap {
     public static SpeedController speedController2;
     public static SpeedController speedController3;
     public static SpeedController speedController4;
+    public static SpeedController conveyerBeltSpeedController;
     public static RobotDrive drive;
-
+    
     public static void init() {    	
     	boolean leftMotorReversed = Constants.LEFT_MOTOR_REVERSED;
     	boolean rightMotorReversed = Constants.RIGHT_MOTOR_REVERSED;
@@ -37,6 +38,8 @@ public class RobotMap {
         
         speedController4 = new Victor(3);
         LiveWindow.addActuator("DriveTrain", "Speed Controller 4", (Victor) speedController4);
+        
+        conveyerBeltSpeedController = new Victor(Constants.CONVEYER_BELT_MOTOR_PORT);
         
         drive = new RobotDrive(speedController1, speedController2, speedController3, speedController4);
         
