@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.Timer;
 /**
  *
  */
-public class ZeroControllerInputs extends Command {
+public class ZeroControllerInputs extends CommandBase {
 
 	private long startTime;
 	private boolean isFinished;
@@ -27,8 +27,7 @@ public class ZeroControllerInputs extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if ((System.nanoTime() - startTime) / Math.pow(10, 9) < this.zeroingTimeSeconds)
-    	{
+    	if ((System.nanoTime() - startTime) / Math.pow(10, 9) < this.zeroingTimeSeconds) {
     		return;
     	}
     	

@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-
 /**
  *
  */
@@ -89,6 +88,18 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
+     * Drive using an xbox controller in Cartesian Mecanum Style using a gyro if present
+     * <p>
+     * This can be called within commands.
+     * </p>
+     * 
+     * @param gyroAngle The angle that the gyro is currently at
+     */
+    public void mecanumDriveController(double gyroAngle) {
+    	drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), OI.getRightStickXAxis(), gyroAngle);
+    }
+    
+    /**
      * Change the drive style for the default command
      */
     public void changeDefaultDriveStyle() {
@@ -101,6 +112,7 @@ public class DriveTrain extends Subsystem {
     	if (getDefaultCommand() instanceof MecanumDrive) {
     		setDefaultCommand(new ArcadeDrive());
     	}
+    	getDefaultCommand().start();
     }
 
 	// Put methods for controlling this subsystem

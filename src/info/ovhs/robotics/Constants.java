@@ -17,8 +17,26 @@ public final class Constants {
 	public static final boolean RIGHT_MOTOR_REVERSED = false;
 	
 	public static final int CONVEYER_BELT_MOTOR_PORT = 4;
+
+	public static final int FRONT_LEFT_DRIVE_MOTOR_PORT = 0;
+	
+	public static final int REAR_LEFT_DRIVE_MOTOR_PORT = 1;
+	
+	public static final int FRONT_RIGHT_DRIVE_MOTOR_PORT = 2;
+	
+	public static final int REAR_RIGHT_DRIVE_MOTOR_PORT = 3;
+	
+	public static final int DRIVE_BASE_GYRO_PORT = 0;
+	
+	public static final int CONVEYER_BELT_GYRO_PORT = 1;
+	
+	public static final double MOTOR_MAX_OUTPUT = 1.0;
 	
 	public static final class OperatorControlsConstants {
+				
+		public static final int CONTROLLER_PORT = 0;
+
+		public static final int FIRE_BUTTON_PORT = 1;
 		
 		public static final int LEFT_STICK_X_AXIS = 0;
 		
@@ -69,9 +87,5 @@ public final class Constants {
 		public static final int MIN_TRIGGER_AXIS = 0;
 		
 		public static final int MAX_TRIGGER_AXIS = 1;
-		
-
 	}
-	
-	
 }

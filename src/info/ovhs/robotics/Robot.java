@@ -31,6 +31,8 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
     	RobotMap.init();
         CommandBase.init();
+        
+        RobotMap.gyro.initGyro();
     	
         // OI must be constructed after subsystems. If the OI creates Commands 
         //(which it very likely will), subsystems are not guaranteed to be 
@@ -56,7 +58,9 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+        if (autonomousCommand != null) {
+        	autonomousCommand.start();
+        }
         print("Entering autonomous mode");
     }
 
@@ -72,11 +76,15 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (autonomousCommand != null) autonomousCommand.cancel();
+        if (autonomousCommand != null) {
+        	autonomousCommand.cancel();
+        }
+        
         print("Entering teleop mode");
         if (driveTrain.getCurrentCommand() == null) {
         	driveTrain.initDefaultCommand();
         }
+        
         
         updateStatus();
     }
