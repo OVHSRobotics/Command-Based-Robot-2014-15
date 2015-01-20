@@ -22,7 +22,7 @@ public class MecanumDriveGyro extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	driveTrain.mecanumDriveController(RobotMap.gyro.getAngle());
+    	driveTrain.mecanumDriveController(RobotMap.gyro1.getAngle());
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -22,7 +22,7 @@ public class RobotMap {
 	public static SpeedController conveyerBeltSpeedController;
 	public static RobotDrive drive;
 
-	public static Gyro gyro;
+	public static Gyro gyro1;
 
 	public static void init() {
 
@@ -54,7 +54,9 @@ public class RobotMap {
 		drive.setInvertedMotor(RobotDrive.MotorType.kRearRight,
 				Constants.RIGHT_MOTOR_REVERSED);
 
-		gyro = new Gyro(Constants.DRIVE_BASE_GYRO_PORT);
+		gyro1 = new Gyro(Constants.DRIVE_BASE_GYRO_PORT);
+		gyro1.setSensitivity(.007);
+		LiveWindow.addSensor("Drive Train", "Gyro 1", gyro1);
 	}
 
 }
