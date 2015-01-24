@@ -18,10 +18,12 @@ public class ConveyerBelt extends Subsystem {
     // here. Call these from Commands.
 	
 	protected static ConveyerBelt instance;
+		 = RobotMap.encoder
 	
 	public static ConveyerBelt getInstance() {
 		if (ConveyerBelt.instance == null) {
 			ConveyerBelt.instance = new ConveyerBelt();
+			
 		}
 		
 		return ConveyerBelt.instance;

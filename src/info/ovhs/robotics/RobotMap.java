@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.Gyro;
 import info.ovhs.robotics.Constants;
+import edu.wpi.first.wpilibj.Encoder;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -21,6 +22,7 @@ public class RobotMap {
 	public static SpeedController speedController4;
 	public static SpeedController conveyerBeltSpeedController;
 	public static RobotDrive drive;
+	public static Encoder encoder;
 
 	public static Gyro gyro1;
 
@@ -57,6 +59,8 @@ public class RobotMap {
 		gyro1 = new Gyro(Constants.DRIVE_BASE_GYRO_PORT);
 		gyro1.setSensitivity(.007);
 		LiveWindow.addSensor("Drive Train", "Gyro 1", gyro1);
+		
+		encoder = new Encoder(7, 8, false);
 	}
 
 }
