@@ -31,6 +31,12 @@ public final class Constants {
 	public static final int CONVEYER_BELT_GYRO_PORT = 1;
 	
 	public static final int WHEEL_DIAMETER_FEET = 2;
+
+	public static final int WHEEL_RADIUS_FEET = 1;
+	
+	public static final int TICKS_FOR_ENCODER = 1;
+	
+	public static final int DISTANCE_PER_PULSE = 1;
 	
 	public static final double MOTOR_MAX_OUTPUT = 1.0;
 	
@@ -38,6 +44,8 @@ public final class Constants {
 	
 	public static final double DEGREES_PER_REVOLUTION_RATIO = 360 / 1;
 	
+	public static final double WHEEL_CIRCUMFRENCE_FEET = 1;
+
 	public static final class OperatorControlsConstants {
 				
 		public static final int CONTROLLER_PORT = 0;
