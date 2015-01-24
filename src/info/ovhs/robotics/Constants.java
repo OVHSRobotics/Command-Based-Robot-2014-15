@@ -44,7 +44,7 @@ public final class Constants {
 	
 	public static final double DEGREES_PER_REVOLUTION_RATIO = 360 / 1;
 	
-	public static final double WHEEL_CIRCUMFRENCE_FEET = 1;
+	public static final double WHEEL_CIRCUMFRENCE_FEET = Constants.WHEEL_DIAMETER_FEET * Math.PI;
 
 	public static final class OperatorControlsConstants {
 				

@@ -1,6 +1,7 @@
 
 package info.ovhs.robotics.subsystems;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import info.ovhs.robotics.RobotMap;
@@ -18,7 +19,7 @@ public class ConveyerBelt extends Subsystem {
     // here. Call these from Commands.
 	
 	protected static ConveyerBelt instance;
-		encoder = RobotMap.encoder;
+	Encoder encoder = RobotMap.encoder;
 	
 	public static ConveyerBelt getInstance() {
 		if (ConveyerBelt.instance == null) {
