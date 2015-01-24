@@ -1,20 +1,22 @@
 package info.ovhs.robotics.commands;
 
+import info.ovhs.robotics.Constants;
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
+
 public class DropTote extends CommandBase {
 
     public DropTote() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(CommandBase.conveyerBelt);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	// Turn the motor on
+    	double percentSpeed = 100;
+    	CommandBase.conveyerBelt.backward(percentSpeed / 100 * -Constants.MOTOR_MAX_OUTPUT);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -30,11 +32,13 @@ public class DropTote extends CommandBase {
     // Called once after isFinished returns true
     protected void end() {
     	// Turn motor off
+    	CommandBase.conveyerBelt.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
     	// Turn motor off
+    	CommandBase.conveyerBelt.stop();
     }
 }

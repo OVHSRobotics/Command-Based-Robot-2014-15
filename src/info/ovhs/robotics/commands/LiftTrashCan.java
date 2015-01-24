@@ -1,21 +1,22 @@
 package info.ovhs.robotics.commands;
 
+import info.ovhs.robotics.Constants;
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- * 
- */
+
 public class LiftTrashCan extends CommandBase {
 
     public LiftTrashCan() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(CommandBase.conveyerBelt);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	// Turn on motor
-    	
+    	double percentSpeed = 100;
+    	CommandBase.conveyerBelt.forward(percentSpeed / 100 * Constants.MOTOR_MAX_OUTPUT);	
     } 
 
     // Called repeatedly when this Command is scheduled to run
