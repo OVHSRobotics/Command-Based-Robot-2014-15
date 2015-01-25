@@ -41,9 +41,13 @@ public final class Constants {
 		
 			public static final double MOTOR_MAX_OUTPUT = 1.0;
 			
-			public static final boolean LEFT_MOTOR_REVERSED = true;
+			public static final boolean LEFT_REAR_MOTOR_REVERSED = true;
 			
-			public static final boolean RIGHT_MOTOR_REVERSED = false;
+			public static final boolean RIGHT_REAR_MOTOR_REVERSED = false;
+			
+			public static final boolean LEFT_FRONT_MOTOR_REVERSED = true;
+			
+			public static final boolean RIGHT_FRONT_MOTOR_REVERSED = false;
 	}
 	
 	public static final class PortConstants {

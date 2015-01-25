@@ -17,11 +17,11 @@ import edu.wpi.first.wpilibj.Encoder;
  */
 public class RobotMap {
 
-	public static SpeedController speedController1;
-	public static SpeedController speedController2;
-	public static SpeedController speedController3;
-	public static SpeedController speedController4;
-	public static SpeedController conveyerBeltSpeedController;
+	public static SpeedController motorSpeedController1;
+	public static SpeedController motorSpeedController2;
+	public static SpeedController motorSpeedController3;
+	public static SpeedController motorSpeedController4;
+	public static SpeedController conveyerBeltSpeedController1;
 	public static RobotDrive drive;
 	public static Encoder encoder;
 
@@ -29,33 +29,37 @@ public class RobotMap {
 
 	public static void init() {
 
-		speedController1 = new Victor(Constants.PortConstants.FRONT_LEFT_DRIVE_MOTOR_PORT);
+		motorSpeedController1 = new Victor(Constants.PortConstants.FRONT_LEFT_DRIVE_MOTOR_PORT);
 		LiveWindow.addActuator("DriveTrain", "Speed Controller 1",
-				(Victor) speedController1);
+				(Victor) motorSpeedController1);
 
-		speedController2 = new Victor(Constants.PortConstants.REAR_LEFT_DRIVE_MOTOR_PORT);
+		motorSpeedController2 = new Victor(Constants.PortConstants.REAR_LEFT_DRIVE_MOTOR_PORT);
 		LiveWindow.addActuator("DriveTrain", "Speed Controller 2",
-				(Victor) speedController2);
+				(Victor) motorSpeedController2);
 
-		speedController3 = new Victor(Constants.PortConstants.FRONT_RIGHT_DRIVE_MOTOR_PORT);
+		motorSpeedController3 = new Victor(Constants.PortConstants.FRONT_RIGHT_DRIVE_MOTOR_PORT);
 		LiveWindow.addActuator("DriveTrain", "Speed Controller 3",
-				(Victor) speedController3);
+				(Victor) motorSpeedController3);
 
-		speedController4 = new Victor(Constants.PortConstants.REAR_RIGHT_DRIVE_MOTOR_PORT);
+		motorSpeedController4 = new Victor(Constants.PortConstants.REAR_RIGHT_DRIVE_MOTOR_PORT);
 		LiveWindow.addActuator("DriveTrain", "Speed Controller 4",
-				(Victor) speedController4);
+				(Victor) motorSpeedController4);
 		
-		conveyerBeltSpeedController = new Victor(Constants.PortConstants.CONVEYER_BELT_MOTOR_PORT);
+		conveyerBeltSpeedController1 = new Victor(Constants.PortConstants.CONVEYER_BELT_MOTOR_PORT);
 
-		drive = new RobotDrive(speedController1, speedController2,
-				speedController3, speedController4);
+		drive = new RobotDrive(motorSpeedController1, motorSpeedController2,
+				motorSpeedController3, motorSpeedController4);
 
 		drive.setSafetyEnabled(false);
 		drive.setMaxOutput(Constants.MotorConstants.MOTOR_MAX_OUTPUT);
 		drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft,
-				Constants.MotorConstants.LEFT_MOTOR_REVERSED);
+				Constants.MotorConstants.LEFT_REAR_MOTOR_REVERSED);
 		drive.setInvertedMotor(RobotDrive.MotorType.kRearRight,
-				Constants.MotorConstants.RIGHT_MOTOR_REVERSED);
+				Constants.MotorConstants.RIGHT_REAR_MOTOR_REVERSED);
+		drive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, 
+				Constants.MotorConstants.LEFT_FRONT_MOTOR_REVERSED);
+		drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, 
+				Constants.MotorConstants.RIGHT_FRONT_MOTOR_REVERSED);
 
 		gyro1 = new Gyro(Constants.PortConstants.DRIVE_BASE_GYRO_PORT);
 		gyro1.setSensitivity(.007);
