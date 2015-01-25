@@ -11,40 +11,55 @@ public final class Constants {
 	public static final int TOTE_WEIGHT = 6;
 	
 	public static final int ROBOT_WEIGHT = 120;
-	
-	public static final boolean LEFT_MOTOR_REVERSED = true;
-	
-	public static final boolean RIGHT_MOTOR_REVERSED = false;
-	
-	public static final int CONVEYER_BELT_MOTOR_PORT = 4;
 
-	public static final int FRONT_LEFT_DRIVE_MOTOR_PORT = 0;
-	
-	public static final int REAR_LEFT_DRIVE_MOTOR_PORT = 1;
-	
-	public static final int FRONT_RIGHT_DRIVE_MOTOR_PORT = 2;
-	
-	public static final int REAR_RIGHT_DRIVE_MOTOR_PORT = 3;
-	
-	public static final int DRIVE_BASE_GYRO_PORT = 0;
-	
-	public static final int CONVEYER_BELT_GYRO_PORT = 1;
-	
-	public static final int WHEEL_DIAMETER_FEET = 2;
+	public static final class EncoderConstants {
+		
+		public static final int WHEEL_DIAMETER_FEET = 2; //Arbitrary number, change if necessary
 
-	public static final int WHEEL_RADIUS_FEET = 1;
+		public static final int WHEEL_RADIUS_FEET = 1; //Arbitrary number, change if necessary	
 	
-	public static final int TICKS_FOR_ENCODER = 1;
+		public static final double WHEEL_CIRCUMFRENCE_FEET = Constants.EncoderConstants.WHEEL_DIAMETER_FEET * Math.PI;	
 	
-	public static final int DISTANCE_PER_PULSE = 1;
+		public static final double DEGREES_PER_REVOLUTION_RATIO = 360 / 1;
 	
-	public static final double MOTOR_MAX_OUTPUT = 1.0;
+		public static final int DEGREES_PER_FULL_REVOLUTION = 360;
 	
-	public static final double ENCODER_TICKS_TO_FEET_RATIO = 1000 / 1;
+		public static final int TICKS_FOR_ENCODER = 1;
 	
-	public static final double DEGREES_PER_REVOLUTION_RATIO = 360 / 1;
+		public static final double DISTANCE_PER_PULSE = Constants.EncoderConstants.WHEEL_CIRCUMFRENCE_FEET / Constants.EncoderConstants.DEGREES_PER_FULL_REVOLUTION;
 	
-	public static final double WHEEL_CIRCUMFRENCE_FEET = Constants.WHEEL_DIAMETER_FEET * Math.PI;
+		public static final double ENCODER_TICKS_TO_FEET_RATIO = 1000 / 1;
+		
+		public static final int ENCODER_PORT_A = 7;
+		
+		public static final int ENCODER_PORT_B = 8;
+		
+		public static final boolean ENCODER_REVERSED = false;
+	}
+	
+	public static final class MotorConstants {
+		
+			public static final double MOTOR_MAX_OUTPUT = 1.0;
+			
+			public static final boolean LEFT_MOTOR_REVERSED = true;
+			
+			public static final boolean RIGHT_MOTOR_REVERSED = false;
+	}
+	
+	public static final class PortConstants {
+		
+		public static final int CONVEYER_BELT_MOTOR_PORT = 4;
+
+		public static final int FRONT_LEFT_DRIVE_MOTOR_PORT = 0;
+		
+		public static final int REAR_LEFT_DRIVE_MOTOR_PORT = 1;
+		
+		public static final int FRONT_RIGHT_DRIVE_MOTOR_PORT = 2;
+		
+		public static final int REAR_RIGHT_DRIVE_MOTOR_PORT = 3;
+		
+		public static final int DRIVE_BASE_GYRO_PORT = 0;
+	}
 
 	public static final class OperatorControlsConstants {
 				

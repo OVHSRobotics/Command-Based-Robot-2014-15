@@ -18,7 +18,7 @@ public class LiftTote extends Command {
     protected void initialize() {
     	// Turn on motor
     	double percentSpeed = 100;
-    	CommandBase.conveyerBelt.forward(percentSpeed / 100 * Constants.MOTOR_MAX_OUTPUT);
+    	CommandBase.conveyerBelt.forward(percentSpeed / 100 * Constants.MotorConstants.MOTOR_MAX_OUTPUT);
     }
 
     // Called repeatedly when this Command is scheduled to run

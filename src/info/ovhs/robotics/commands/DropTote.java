@@ -16,7 +16,7 @@ public class DropTote extends CommandBase {
     protected void initialize() {
     	// Turn the motor on
     	double percentSpeed = 100;
-    	CommandBase.conveyerBelt.backward(percentSpeed / 100 * -Constants.MOTOR_MAX_OUTPUT);
+    	CommandBase.conveyerBelt.backward(percentSpeed / 100 * -Constants.MotorConstants.MOTOR_MAX_OUTPUT);
     }
 
     // Called repeatedly when this Command is scheduled to run
