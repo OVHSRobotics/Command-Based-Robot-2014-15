@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public abstract class CommandBase extends Command {
 	
-	protected static DriveTrain driveTrain;
-	protected static OI oi;
-	protected static ConveyerBelt conveyerBelt;
+	public static DriveTrain driveTrain;
+	public static OI oi;
+	public static ConveyerBelt conveyerBelt;
 	
 	public static void init() {
 		CommandBase.driveTrain = DriveTrain.getInstance();

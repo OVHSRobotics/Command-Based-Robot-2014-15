@@ -1,18 +1,19 @@
 
 
-package info.ovhs.robotics.commands;
+package info.ovhs.robotics.commands.drive;
 
 import info.ovhs.robotics.OI;
 import info.ovhs.robotics.Robot;
-import info.ovhs.robotics.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.command.Command;
+import info.ovhs.robotics.commands.CommandBase;
+import info.ovhs.robotics.subsystems.DriveTrain;
 
 /**
  *
  */
-public class  ArcadeDrive extends CommandBase {
+public class  TankDrive extends CommandBase {
 	
-    public ArcadeDrive() {
+    public TankDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 
@@ -26,12 +27,12 @@ public class  ArcadeDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.arcadeDriveController();
+    	driveTrain.tankDriveController();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return true;
+        return true;
     }
 
     // Called once after isFinished returns true
@@ -44,6 +45,6 @@ public class  ArcadeDrive extends CommandBase {
     }
     
     public String toString() {
-    	return "Drive arcade-style with left stick on xbox controller";
+    	return "Drive tank-style on the xbox controller";
     }
 }

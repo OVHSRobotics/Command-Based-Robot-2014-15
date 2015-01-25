@@ -1,22 +1,18 @@
+package info.ovhs.robotics.commands.drive;
 
-
-package info.ovhs.robotics.commands;
-
-import info.ovhs.robotics.OI;
 import info.ovhs.robotics.Robot;
-import edu.wpi.first.wpilibj.command.Command;
-import info.ovhs.robotics.subsystems.DriveTrain;
+import info.ovhs.robotics.RobotMap;
+import info.ovhs.robotics.commands.CommandBase;
 
 /**
  *
  */
-public class  TankDrive extends CommandBase {
-	
-    public TankDrive() {
+public class MecanumDriveGyro extends CommandBase {
+
+    public MecanumDriveGyro() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-
-        requires(CommandBase.driveTrain);
+    	requires(CommandBase.driveTrain);
     }
 
     // Called just before this Command runs the first time
@@ -26,7 +22,7 @@ public class  TankDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	driveTrain.tankDriveController();
+    	driveTrain.mecanumDriveController(RobotMap.gyro1.getAngle());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -44,6 +40,6 @@ public class  TankDrive extends CommandBase {
     }
     
     public String toString() {
-    	return "Drive tank-style on the xbox controller";
+    	return "Driving mecanum style with xbox controller";
     }
 }
