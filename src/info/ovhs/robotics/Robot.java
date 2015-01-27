@@ -23,6 +23,7 @@ public class Robot extends IterativeRobot {
 
     public static OI oi;
     public static DriveTrain driveTrain;
+    public static Encoder encoder;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -35,6 +36,8 @@ public class Robot extends IterativeRobot {
         RobotMap.gyro1.initGyro();
         
         RobotMap.EncoderCreate();
+        encoder.EncoderInit();
+        
     	
         // OI must be constructed after subsystems. If the OI creates Commands 
         //(which it very likely will), subsystems are not guaranteed to be 
@@ -86,6 +89,9 @@ public class Robot extends IterativeRobot {
         if (driveTrain.getCurrentCommand() == null) {
         	driveTrain.initDefaultCommand();
         }
+        RobotMap.EncoderCreate();
+        encoder.EncoderInit();
+        
         
         
         updateStatus();
@@ -120,5 +126,7 @@ public class Robot extends IterativeRobot {
     public static void updateStatus() {
         // Add data to the "SmartDashboard".
         SmartDashboard.putData(driveTrain);
+        SmartDashboard.putNumber("Encoder Distance", encoder.Distance());
+        SmartDashboard.putNumber("Encoder Raw Value", encoder.Raw());
     }
 }
