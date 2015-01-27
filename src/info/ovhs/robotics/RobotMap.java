@@ -64,8 +64,16 @@ public class RobotMap {
 		gyro1 = new Gyro(Constants.PortConstants.DRIVE_BASE_GYRO_PORT);
 		gyro1.setSensitivity(.007);
 		LiveWindow.addSensor("Drive Train", "Gyro 1", gyro1);
-		
-		encoder = new Encoder(Constants.EncoderConstants.ENCODER_PORT_A, Constants.EncoderConstants.ENCODER_PORT_B, Constants.EncoderConstants.ENCODER_REVERSED, EncodingType.k4X);
 	}
-
+		
+	public static void EncoderCreate() {
+		try{
+			if(encoder == null) {
+				encoder = new Encoder(Constants.EncoderConstants.ENCODER_PORT_A, Constants.EncoderConstants.ENCODER_PORT_B, Constants.EncoderConstants.ENCODER_REVERSED, EncodingType.k4X);
+			}
+		} 
+		catch (Exception ex) {
+			System.out.println(ex);
+		}
+	}
 }

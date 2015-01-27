@@ -30,11 +30,11 @@ public final class Constants {
 	
 		public static final double ENCODER_TICKS_TO_FEET_RATIO = 1000 / 1;
 		
-		public static final int ENCODER_PORT_A = 7;
+		public static final int ENCODER_PORT_A = 8;
 		
-		public static final int ENCODER_PORT_B = 8;
+		public static final int ENCODER_PORT_B = 7;
 		
-		public static final boolean ENCODER_REVERSED = false;
+		public static final boolean ENCODER_REVERSED = true;
 	}
 	
 	public static final class MotorConstants {

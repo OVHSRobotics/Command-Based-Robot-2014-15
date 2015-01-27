@@ -33,6 +33,8 @@ public class Robot extends IterativeRobot {
         CommandBase.init();
         
         RobotMap.gyro1.initGyro();
+        
+        RobotMap.EncoderCreate();
     	
         // OI must be constructed after subsystems. If the OI creates Commands 
         //(which it very likely will), subsystems are not guaranteed to be 
