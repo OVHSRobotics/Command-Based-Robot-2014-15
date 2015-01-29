@@ -24,11 +24,18 @@ public class RobotMap {
 	public static SpeedController conveyerBeltSpeedController1;
 	public static RobotDrive drive;
 	public static Encoder encoder;
-
 	public static Gyro gyro1;
 
 	public static void init() {
 
+		RobotMap.setupDriveMotors();
+		
+		RobotMap.createGyro();
+		
+		RobotMap.createEncoder();
+	}
+	
+	public static void setupDriveMotors() {
 		motorSpeedController1 = new Victor(Constants.PortConstants.FRONT_LEFT_DRIVE_MOTOR_PORT);
 		LiveWindow.addActuator("DriveTrain", "Speed Controller 1",
 				(Victor) motorSpeedController1);
@@ -60,20 +67,22 @@ public class RobotMap {
 				Constants.MotorConstants.LEFT_FRONT_MOTOR_REVERSED);
 		drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, 
 				Constants.MotorConstants.RIGHT_FRONT_MOTOR_REVERSED);
-
+	}
+	
+	public static void createGyro() {
 		gyro1 = new Gyro(Constants.PortConstants.DRIVE_BASE_GYRO_PORT);
 		gyro1.setSensitivity(.007);
 		LiveWindow.addSensor("Drive Train", "Gyro 1", gyro1);
 	}
-		
-	public static void EncoderCreate() {
-		try{
-			if(encoder == null) {
-				encoder = new Encoder(Constants.EncoderConstants.ENCODER_PORT_A, Constants.EncoderConstants.ENCODER_PORT_B, Constants.EncoderConstants.ENCODER_REVERSED, EncodingType.k4X);
-			}
-		} 
-		catch (Exception ex) {
-			System.out.println(ex);
+	
+	public static void createEncoder() {
+		try {
+			encoder = new Encoder(Constants.EncoderConstants.ENCODER_PORT_A, Constants.EncoderConstants.ENCODER_PORT_B, Constants.EncoderConstants.ENCODER_REVERSED, EncodingType.k4X);
+			encoder.setDistancePerPulse(Constants.EncoderConstants.DISTANCE_PER_PULSE);
+			encoder.reset();
+		}
+		catch (Exception exception) {
+			System.out.println(exception);
 		}
 	}
 }
