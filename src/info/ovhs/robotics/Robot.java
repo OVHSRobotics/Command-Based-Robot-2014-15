@@ -64,7 +64,7 @@ public class Robot extends IterativeRobot {
         
         print("Entering autonomous mode");
         
-        RobotMap.encoder.reset();
+        RobotMap.conveyerBeltEncoder.reset();
     }
 
     /**
@@ -88,7 +88,7 @@ public class Robot extends IterativeRobot {
         	driveTrain.initDefaultCommand();
         }
         
-        RobotMap.encoder.reset();
+        RobotMap.conveyerBeltEncoder.reset();
         
         updateStatus();
     }
@@ -122,7 +122,7 @@ public class Robot extends IterativeRobot {
     public static void updateStatus() {
         // Add data to the "SmartDashboard".
         SmartDashboard.putData(driveTrain);
-        SmartDashboard.putNumber("Encoder Distance", RobotMap.encoder.getDistance());
-        SmartDashboard.putNumber("Encoder Raw Value", RobotMap.encoder.getRaw());
+        SmartDashboard.putNumber("Encoder Distance", RobotMap.conveyerBeltEncoder.getDistance());
+        SmartDashboard.putNumber("Encoder Raw Value", RobotMap.conveyerBeltEncoder.getRaw());
     }
 }

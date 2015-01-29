@@ -23,7 +23,7 @@ public class RobotMap {
 	public static SpeedController motorSpeedController4;
 	public static SpeedController conveyerBeltSpeedController1;
 	public static RobotDrive drive;
-	public static Encoder encoder;
+	public static Encoder conveyerBeltEncoder;
 	public static Gyro gyro1;
 
 	public static void init() {
@@ -32,7 +32,7 @@ public class RobotMap {
 		
 		RobotMap.createGyro();
 		
-		RobotMap.createEncoder();
+		RobotMap.createEncoders();
 	}
 	
 	public static void setupDriveMotors() {
@@ -75,11 +75,11 @@ public class RobotMap {
 		LiveWindow.addSensor("Drive Train", "Gyro 1", gyro1);
 	}
 	
-	public static void createEncoder() {
+	public static void createEncoders() {
 		try {
-			encoder = new Encoder(Constants.EncoderConstants.ENCODER_PORT_A, Constants.EncoderConstants.ENCODER_PORT_B, Constants.EncoderConstants.ENCODER_REVERSED, EncodingType.k4X);
-			encoder.setDistancePerPulse(Constants.EncoderConstants.DISTANCE_PER_PULSE);
-			encoder.reset();
+			conveyerBeltEncoder = new Encoder(Constants.EncoderConstants.ENCODER_PORT_A, Constants.EncoderConstants.ENCODER_PORT_B, Constants.EncoderConstants.ENCODER_REVERSED, EncodingType.k4X);
+			conveyerBeltEncoder.setDistancePerPulse(Constants.EncoderConstants.DISTANCE_PER_PULSE);
+			conveyerBeltEncoder.reset();
 		}
 		catch (Exception exception) {
 			System.out.println(exception);

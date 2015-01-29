@@ -6,20 +6,21 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.RobotMap;
+import info.ovhs.robotics.commands.conveyer.Hold;
 
 /**
  *
  */
 public class ConveyerBelt extends Subsystem {
 
-	SpeedController conveyerBeltMotor = RobotMap.conveyerBeltSpeedController1;		
+	protected static ConveyerBelt instance;
 	
-    
+	protected SpeedController conveyerBeltMotor = RobotMap.conveyerBeltSpeedController1;		
+	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	protected static ConveyerBelt instance;
-	Encoder encoder = RobotMap.encoder;
+	public Encoder encoder = RobotMap.conveyerBeltEncoder;
 	
 	/**
 	 * Gets instance of Conveyer Belt Subsystem or creates one if one is not present
@@ -37,6 +38,8 @@ public class ConveyerBelt extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	
+    	setDefaultCommand(new Hold());
     }
     
     /**
