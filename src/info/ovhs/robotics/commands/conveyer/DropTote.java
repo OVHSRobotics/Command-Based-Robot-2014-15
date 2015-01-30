@@ -6,7 +6,7 @@ import info.ovhs.robotics.commands.CommandBase;
 
 public class DropTote extends CommandBase {
 
-	public double initialDistance;
+	private double initialDistance;
 	
     public DropTote() {
         // Use requires() here to declare subsystem dependencies

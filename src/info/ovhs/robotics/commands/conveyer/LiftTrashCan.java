@@ -5,6 +5,8 @@ import info.ovhs.robotics.commands.CommandBase;
 
 public class LiftTrashCan extends CommandBase {
 
+	private double initialDistance;
+	
     public LiftTrashCan() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -13,6 +15,7 @@ public class LiftTrashCan extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	this.initialDistance = CommandBase.conveyerBelt.encoder.getDistance();
     	// Turn on motor
     	double percentSpeed = 100;
     	CommandBase.conveyerBelt.forward(percentSpeed / 100 * Constants.MotorConstants.MOTOR_MAX_OUTPUT);	
@@ -26,7 +29,7 @@ public class LiftTrashCan extends CommandBase {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	// Command is done when encoder reaches certain amount of ticks 
-        return false;
+        return CommandBase.conveyerBelt.encoder.getDistance() <= this.initialDistance + Constants.TRASHCAN_HEIGHT;
     }
 
     // Called once after isFinished returns true

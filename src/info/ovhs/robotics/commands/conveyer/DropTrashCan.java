@@ -8,7 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DropTrashCan extends Command {
-
+	
+	private double initialDistance;
+	
     public DropTrashCan() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -17,6 +19,8 @@ public class DropTrashCan extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
+    	this.initialDistance = CommandBase.conveyerBelt.encoder.getDistance();
     	double percentSpeed = 100;
     	CommandBase.conveyerBelt.backward(percentSpeed / 100 * -Constants.MotorConstants.MOTOR_MAX_OUTPUT);
     }
@@ -29,7 +33,7 @@ public class DropTrashCan extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	// Command is done when encoder reaches certain amount of ticks
-        return false;
+    	return CommandBase.conveyerBelt.encoder.getDistance() <= this.initialDistance - Constants.TOTE_HEIGHT_INCHES;
     }
 
     // Called once after isFinished returns true
