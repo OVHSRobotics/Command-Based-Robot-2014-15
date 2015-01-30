@@ -18,13 +18,13 @@ public class RearHold extends Command {
     public RearHold() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(CommandBase.rearMotor);
+    	requires(CommandBase.rearMotorSpool);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	CommandBase.rearMotor.stop();
-    	this.desiredDistance = CommandBase.rearMotor.encoder.getDistance();
+    	CommandBase.rearMotorSpool.stop();
+    	this.desiredDistance = CommandBase.rearMotorSpool.encoder.getDistance();
     	this.lastError = 0;
     	this.lastTime = System.nanoTime();
     	this.lastCommand = 0;
@@ -33,7 +33,7 @@ public class RearHold extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double currentCommand = this.lastCommand;
-    	double error = CommandBase.rearMotor.encoder.getDistance() - this.desiredDistance;
+    	double error = CommandBase.rearMotorSpool.encoder.getDistance() - this.desiredDistance;
     	long currentTime = System.nanoTime();
     	double deltaTime = (currentTime - this.lastTime) / Math.pow(10, 9);
     	this.totalError += error * deltaTime;
@@ -49,7 +49,7 @@ public class RearHold extends Command {
     		currentCommand = currentCommand / Math.abs(currentCommand);
     	}
     	
-    	CommandBase.rearMotor.forward(currentCommand);
+    	CommandBase.rearMotorSpool.forward(currentCommand);
     	
     	this.lastError = error;
     	this.lastTime = currentTime;
@@ -63,12 +63,12 @@ public class RearHold extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	CommandBase.rearMotor.stop();
+    	CommandBase.rearMotorSpool.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	CommandBase.rearMotor.stop();    
+    	CommandBase.rearMotorSpool.stop();    
     }
 }
