@@ -22,8 +22,10 @@ public class RobotMap {
 	public static SpeedController motorSpeedController3;
 	public static SpeedController motorSpeedController4;
 	public static SpeedController conveyerBeltSpeedController1;
+	public static SpeedController rearMotorSpoolSpeedController1;
 	public static RobotDrive drive;
 	public static Encoder conveyerBeltEncoder;
+	public static Encoder rearEncoder;
 	public static Gyro gyro1;
 
 	public static void init() {
@@ -54,6 +56,8 @@ public class RobotMap {
 		
 		conveyerBeltSpeedController1 = new Victor(Constants.PortConstants.CONVEYER_BELT_MOTOR_PORT);
 
+		rearMotorSpoolSpeedController1 = new Victor(Constants.PortConstants.REAR_MOTOR_PORT);
+		
 		drive = new RobotDrive(motorSpeedController1, motorSpeedController2,
 				motorSpeedController3, motorSpeedController4);
 
@@ -82,6 +86,14 @@ public class RobotMap {
 			conveyerBeltEncoder.reset();
 		}
 		catch (Exception exception) {
+			System.out.println(exception);
+		}
+		try {
+			rearEncoder = new Encoder(Constants.RearEncoderConstants.ENCODER_PORT_A, Constants.RearEncoderConstants.ENCODER_PORT_B, Constants.RearEncoderConstants.ENCODER_REVERSED, EncodingType.k4X);
+			rearEncoder.setDistancePerPulse(Constants.RearEncoderConstants.DISTANCE_PER_PULSE);
+			rearEncoder.reset();
+		}
+		catch (Exception exception){
 			System.out.println(exception);
 		}
 	}

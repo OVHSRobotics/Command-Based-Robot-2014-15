@@ -15,12 +15,12 @@ public class RearMotorSpool extends Subsystem {
 
 	protected static RearMotorSpool instance;
 	
-	protected SpeedController conveyerBeltMotor = RobotMap.conveyerBeltSpeedController1;		
+	protected SpeedController rearSpoolMotor = RobotMap.rearMotorSpoolSpeedController1;		
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	public Encoder encoder = RobotMap.conveyerBeltEncoder;
+	public Encoder encoder = RobotMap.rearEncoder;
 	
 	/**
 	 * Gets instance of Rear Motor Spool Subsystem or creates one if one is not present
@@ -49,7 +49,7 @@ public class RearMotorSpool extends Subsystem {
      * </p>
      */
     public void forward() {
-    	conveyerBeltMotor.set(Constants.MotorConstants.MOTOR_MAX_OUTPUT);
+    	rearSpoolMotor.set(Constants.MotorConstants.MOTOR_MAX_OUTPUT);
     }
 
     /**
@@ -61,7 +61,7 @@ public class RearMotorSpool extends Subsystem {
      */
     public void forward(double speed) {
     	if (speed > 0 && speed <= 1) {
-    		conveyerBeltMotor.set(speed);
+    		rearSpoolMotor.set(speed);
     	}
 	}
     
@@ -72,7 +72,7 @@ public class RearMotorSpool extends Subsystem {
      * </p>
      */    
     public void backward() {
-    	conveyerBeltMotor.set(Constants.MotorConstants.MOTOR_MAX_OUTPUT);
+    	rearSpoolMotor.set(Constants.MotorConstants.MOTOR_MAX_OUTPUT);
     }
     
     /**
@@ -84,10 +84,10 @@ public class RearMotorSpool extends Subsystem {
      */
 	public void backward(double speed) {
 		if (speed < 0 && speed >= -1) {
-			conveyerBeltMotor.set(speed);
+			rearSpoolMotor.set(speed);
 		}
 		if (speed > 0 && speed <= 1) {
-			conveyerBeltMotor.set(-speed);
+			rearSpoolMotor.set(-speed);
 		}
 	}
 	
@@ -98,7 +98,7 @@ public class RearMotorSpool extends Subsystem {
 	 * </p>
 	 */
 	public void stop() {
-		conveyerBeltMotor.set(0);
+		rearSpoolMotor.set(0);
 	}
 	
 	/**
@@ -110,7 +110,7 @@ public class RearMotorSpool extends Subsystem {
 	 */
 	public void setSpeed(double speed) {
 		if (speed <= 1 && speed >= -1) {
-			conveyerBeltMotor.set(speed);
+			rearSpoolMotor.set(speed);
 		}	
 	}
 }
