@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class RearLiftTote extends Command {
+	
+	public double initialDistance;
 
     public RearLiftTote() {
         // Use requires() here to declare subsystem dependencies
@@ -17,6 +19,8 @@ public class RearLiftTote extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	this.initialDistance = CommandBase.rearMotor.encoder.getDistance();
+    	
     	// Turn on motor
     	double percentSpeed = 100;
     	CommandBase.rearMotor.forward(percentSpeed / 100 * Constants.MotorConstants.MOTOR_MAX_OUTPUT);
@@ -30,7 +34,7 @@ public class RearLiftTote extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	// Command is done when encoder reaches certain amount of ticks
-        return false;
+    	return CommandBase.rearMotor.encoder.getDistance() <= this.initialDistance - Constants.TOTE_HEIGHT_INCHES;
     }
 
     // Called once after isFinished returns true

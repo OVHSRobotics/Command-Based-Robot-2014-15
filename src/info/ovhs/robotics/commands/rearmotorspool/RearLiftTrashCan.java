@@ -4,6 +4,8 @@ import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.commands.CommandBase;
 
 public class RearLiftTrashCan extends CommandBase {
+	
+	public double initialDistance;
 
     public RearLiftTrashCan() {
         // Use requires() here to declare subsystem dependencies
@@ -13,6 +15,8 @@ public class RearLiftTrashCan extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	this.initialDistance = CommandBase.rearMotor.encoder.getDistance();
+    	
     	// Turn on motor
     	double percentSpeed = 100;
     	CommandBase.rearMotor.forward(percentSpeed / 100 * Constants.MotorConstants.MOTOR_MAX_OUTPUT);	
@@ -26,7 +30,7 @@ public class RearLiftTrashCan extends CommandBase {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	// Command is done when encoder reaches certain amount of ticks 
-        return false;
+    	return CommandBase.rearMotor.encoder.getDistance() <= this.initialDistance - Constants.TOTE_HEIGHT_INCHES;
     }
 
     // Called once after isFinished returns true
