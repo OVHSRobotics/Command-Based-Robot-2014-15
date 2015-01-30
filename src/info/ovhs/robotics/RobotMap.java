@@ -77,8 +77,8 @@ public class RobotMap {
 	
 	public static void createEncoders() {
 		try {
-			conveyerBeltEncoder = new Encoder(Constants.EncoderConstants.ENCODER_PORT_A, Constants.EncoderConstants.ENCODER_PORT_B, Constants.EncoderConstants.ENCODER_REVERSED, EncodingType.k4X);
-			conveyerBeltEncoder.setDistancePerPulse(Constants.EncoderConstants.DISTANCE_PER_PULSE);
+			conveyerBeltEncoder = new Encoder(Constants.ConveyerBeltEncoderConstants.ENCODER_PORT_A, Constants.ConveyerBeltEncoderConstants.ENCODER_PORT_B, Constants.ConveyerBeltEncoderConstants.ENCODER_REVERSED, EncodingType.k4X);
+			conveyerBeltEncoder.setDistancePerPulse(Constants.ConveyerBeltEncoderConstants.DISTANCE_PER_PULSE);
 			conveyerBeltEncoder.reset();
 		}
 		catch (Exception exception) {

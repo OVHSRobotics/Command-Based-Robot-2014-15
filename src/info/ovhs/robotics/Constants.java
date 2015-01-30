@@ -12,21 +12,21 @@ public final class Constants {
 	
 	public static final int ROBOT_WEIGHT = 120;
 
-	public static final class EncoderConstants {
+	public static final class ConveyerBeltEncoderConstants {
 		
-		public static final int WHEEL_DIAMETER_FEET = 2; //Arbitrary number, change if necessary
+		public static final int SPROCKET_DIAMETER_FEET = 2; //Arbitrary number, change if necessary
 
-		public static final int WHEEL_RADIUS_FEET = 1; //Arbitrary number, change if necessary	
+		public static final int SPROCKET_RADIUS_FEET = 1; //Arbitrary number, change if necessary	
 	
-		public static final double WHEEL_CIRCUMFRENCE_FEET = Constants.EncoderConstants.WHEEL_DIAMETER_FEET * Math.PI;	
+		public static final double SPROCKET_CIRCUMFRENCE_FEET = Constants.RearEncoderConstants.SPROCKET_DIAMETER_FEET * Math.PI;	
+		
+		public static final double GEARBOX_PULSES_PER_REVOLUTION = 497;
+		
+		public static final double GEARBOX_REVOLUTIONS_PER_PULSE = 1/Constants.RearEncoderConstants.GEARBOX_PULSES_PER_REVOLUTION;
+		
+		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 10;
 	
-		public static final double DEGREES_PER_REVOLUTION_RATIO = 360 / 1;
-	
-		public static final int DEGREES_PER_FULL_REVOLUTION = 360;
-	
-		public static final int TICKS_FOR_ENCODER = 1;
-	
-		public static final double DISTANCE_PER_PULSE = Constants.EncoderConstants.WHEEL_CIRCUMFRENCE_FEET / Constants.EncoderConstants.DEGREES_PER_FULL_REVOLUTION;
+		public static final double DISTANCE_PER_PULSE = 25;
 	
 		public static final double ENCODER_TICKS_TO_FEET_RATIO = 1000 / 1;
 		
@@ -63,6 +63,8 @@ public final class Constants {
 		public static final int REAR_RIGHT_DRIVE_MOTOR_PORT = 3;
 		
 		public static final int DRIVE_BASE_GYRO_PORT = 0;
+		
+		public static final int REAR_MOTOR_PORT = 5;
 	}
 
 	public static final class OperatorControlsConstants {
@@ -120,5 +122,30 @@ public final class Constants {
 		public static final int MIN_TRIGGER_AXIS = 0;
 		
 		public static final int MAX_TRIGGER_AXIS = 1;
+	}
+
+	public static final class RearEncoderConstants {
+		
+		public static final int SPROCKET_DIAMETER_FEET = 2; //Arbitrary number, change if necessary
+	
+		public static final int SPROCKET_RADIUS_FEET = 1; //Arbitrary number, change if necessary	
+	
+		public static final double SPROCKET_CIRCUMFRENCE_FEET = Constants.RearEncoderConstants.SPROCKET_DIAMETER_FEET * Math.PI;	
+		
+		public static final double GEARBOX_PULSES_PER_REVOLUTION = 497;
+		
+		public static final double GEARBOX_REVOLUTIONS_PER_PULSE = 1/Constants.RearEncoderConstants.GEARBOX_PULSES_PER_REVOLUTION;
+		
+		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 10;
+	
+		public static final double DISTANCE_PER_PULSE = 25;
+	
+		public static final double ENCODER_TICKS_TO_FEET_RATIO = 1000 / 1;
+		
+		public static final int ENCODER_PORT_A = 8;
+		
+		public static final int ENCODER_PORT_B = 7;
+		
+		public static final boolean ENCODER_REVERSED = true;
 	}
 }
