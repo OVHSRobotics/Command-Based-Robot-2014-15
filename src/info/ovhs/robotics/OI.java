@@ -1,14 +1,9 @@
 package info.ovhs.robotics;
 
 import info.ovhs.robotics.commands.*;
-import info.ovhs.robotics.commands.drive.ArcadeDrive;
-import info.ovhs.robotics.commands.drive.MecanumDrive;
-import info.ovhs.robotics.commands.drive.TankDrive;
-import info.ovhs.robotics.commands.drive.ToggleDriveStyle;
+import info.ovhs.robotics.commands.drive.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.buttons.*;
-import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.Joystick;
 
 /**

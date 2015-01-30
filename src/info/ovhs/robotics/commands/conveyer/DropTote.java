@@ -2,7 +2,6 @@ package info.ovhs.robotics.commands.conveyer;
 
 import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.commands.CommandBase;
-import edu.wpi.first.wpilibj.command.Command;
 
 
 public class DropTote extends CommandBase {
