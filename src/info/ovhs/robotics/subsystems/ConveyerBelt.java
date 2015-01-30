@@ -106,7 +106,7 @@ public class ConveyerBelt extends Subsystem {
 	 * <p>
 	 * This can be called within commands.
 	 * </p> 
-	 * @param speed
+	 * @param speed Speed to set the conveyer belt at
 	 */
 	public void setSpeed(double speed) {
 		if (speed <= 1 && speed >= -1) {

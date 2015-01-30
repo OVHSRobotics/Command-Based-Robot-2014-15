@@ -23,7 +23,7 @@ public class RearMotorSpool extends Subsystem {
 	public Encoder encoder = RobotMap.conveyerBeltEncoder;
 	
 	/**
-	 * Gets instance of Conveyer Belt Subsystem or creates one if one is not present
+	 * Gets instance of Rear Motor Spool Subsystem or creates one if one is not present
 	 * 
 	 * @return Instance of Conveyer Belt Subsystem
 	 */
@@ -43,7 +43,7 @@ public class RearMotorSpool extends Subsystem {
     }
     
     /**
-     * Moves the Conveyer Belt forward at max speed
+     * Moves the Rear Motor Spool forward at max speed
      * <p>
      * This can be called within commands.
      * </p>
@@ -53,7 +53,7 @@ public class RearMotorSpool extends Subsystem {
     }
 
     /**
-     * Moves the Conveyer Belt forward at a set speed
+     * Moves the Rear Motor Spool forward at a set speed
      * <p>
      * This can be called within commands.
      * </p>
@@ -66,7 +66,7 @@ public class RearMotorSpool extends Subsystem {
 	}
     
     /**
-     * Moves the Conveyer Belt backwards at max speed
+     * Moves the Rear Motor Spool backwards at max speed
      * <p>
      * This can be called within commands
      * </p>
@@ -76,7 +76,7 @@ public class RearMotorSpool extends Subsystem {
     }
     
     /**
-     * Moves the Conveyer Belt backwards at a set speed
+     * Moves the Rear Motor Spool backwards at a set speed
      * <p>
      * This can be called within commands.
      * </p>
@@ -92,7 +92,7 @@ public class RearMotorSpool extends Subsystem {
 	}
 	
 	/**
-	 * Stops the Conveyer Belt
+	 * Stops the Rear Motor Spool
 	 * <p>
 	 * This can be called within commands
 	 * </p>
@@ -102,11 +102,11 @@ public class RearMotorSpool extends Subsystem {
 	}
 	
 	/**
-	 * Sets the speed for the Conveyer Belt
+	 * Sets the speed for the Rear Motor Spool
 	 * <p>
 	 * This can be called within commands.
 	 * </p> 
-	 * @param speed
+	 * @param speed Speed to set the rear motor spool at
 	 */
 	public void setSpeed(double speed) {
 		if (speed <= 1 && speed >= -1) {

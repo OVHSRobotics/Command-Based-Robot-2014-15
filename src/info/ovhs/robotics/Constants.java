@@ -26,7 +26,7 @@ public final class Constants {
 		
 		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 10;
 	
-		public static final double DISTANCE_PER_PULSE = 25;
+		public static final double DISTANCE_PER_PULSE = Constants.ConveyerBeltEncoderConstants.SPROCKET_CIRCUMFRENCE_FEET * Constants.ConveyerBeltEncoderConstants.SPROCKET_TO_GEARBOX_GEAR_RATIO * Constants.ConveyerBeltEncoderConstants.GEARBOX_REVOLUTIONS_PER_PULSE;
 	
 		public static final double ENCODER_TICKS_TO_FEET_RATIO = 1000 / 1;
 		
@@ -138,7 +138,7 @@ public final class Constants {
 		
 		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 10;
 	
-		public static final double DISTANCE_PER_PULSE = 25;
+		public static final double DISTANCE_PER_PULSE = Constants.RearEncoderConstants.SPROCKET_CIRCUMFRENCE_FEET * Constants.RearEncoderConstants.SPROCKET_TO_GEARBOX_GEAR_RATIO * Constants.RearEncoderConstants.GEARBOX_REVOLUTIONS_PER_PULSE;
 	
 		public static final double ENCODER_TICKS_TO_FEET_RATIO = 1000 / 1;
 		
