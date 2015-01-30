@@ -11,12 +11,12 @@ public abstract class CommandBase extends Command {
 	public static DriveTrain driveTrain;
 	public static OI oi;
 	public static ConveyerBelt conveyerBelt;
-	public static RearMotorSpool rearMotor;
+	public static RearMotorSpool rearMotorSpool;
 	
 	public static void init() {
 		CommandBase.driveTrain = DriveTrain.getInstance();
 		CommandBase.oi = OI.getInstance();
 		CommandBase.conveyerBelt = ConveyerBelt.getInstance();
-		CommandBase.rearMotor = RearMotorSpool.getInstance();
+		CommandBase.rearMotorSpool = RearMotorSpool.getInstance();
 	}
 }
