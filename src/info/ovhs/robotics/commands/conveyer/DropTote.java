@@ -6,6 +6,8 @@ import info.ovhs.robotics.commands.CommandBase;
 
 public class DropTote extends CommandBase {
 
+	public double initialDistance;
+	
     public DropTote() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -14,6 +16,8 @@ public class DropTote extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	this.initialDistance = CommandBase.conveyerBelt.encoder.getDistance();
+    	
     	// Turn the motor on
     	double percentSpeed = 100;
     	CommandBase.conveyerBelt.backward(percentSpeed / 100 * -Constants.MotorConstants.MOTOR_MAX_OUTPUT);
@@ -26,7 +30,7 @@ public class DropTote extends CommandBase {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	// Encoder reaches threshold
-        return false;
+    	return CommandBase.conveyerBelt.encoder.getDistance() <= this.initialDistance - Constants.TOTE_HEIGHT_INCHES;
     }
 
     // Called once after isFinished returns true

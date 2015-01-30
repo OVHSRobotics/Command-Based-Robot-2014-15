@@ -3,8 +3,6 @@ package info.ovhs.robotics.commands.conveyer;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.Command;
 
-// TODO: Implement PID loop to actually hold conveyer belt in place
-
 public class Hold extends Command {
 	
 	private double desiredDistance;
