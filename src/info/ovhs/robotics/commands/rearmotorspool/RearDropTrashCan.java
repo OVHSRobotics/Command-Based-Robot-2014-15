@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RearDropTrashCan extends Command {
+public class RearDropTrashCan extends CommandBase {
 
     public RearDropTrashCan() {
         // Use requires() here to declare subsystem dependencies

@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RearLiftTote extends Command {
+public class RearLiftTote extends CommandBase {
 
     public RearLiftTote() {
         // Use requires() here to declare subsystem dependencies
