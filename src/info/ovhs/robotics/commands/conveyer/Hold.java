@@ -3,6 +3,12 @@ package info.ovhs.robotics.commands.conveyer;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.Command;
 
+@Deprecated
+/*
+ * Deprecated
+ * 
+ * Used HoldPID instead as that implements PID on a lower level.
+ */
 public class Hold extends Command {
 	
 	private double desiredDistance;
