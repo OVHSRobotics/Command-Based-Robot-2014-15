@@ -6,6 +6,8 @@ public final class Constants {
 	
 	public static final int ROBOT_WEIGHT = 120;
 	
+	public static final boolean JOYSTICK_SAFETY = true;
+	
 	public static final class FieldElementsConstants {
 		
 		public static final double TRASHCAN_HEIGHT_INCHES = 28.8;
