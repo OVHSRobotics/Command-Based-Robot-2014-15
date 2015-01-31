@@ -3,12 +3,6 @@ package info.ovhs.robotics.commands.rearmotorspool;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.Command;
 
-@Deprecated
-/*
- * Deprecated
- * 
- * Used RearHoldPID instead as that implements PID on a lower level.
- */
 public class RearHold extends CommandBase {
 	
 	private double desiredDistance;

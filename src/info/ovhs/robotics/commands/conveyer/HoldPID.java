@@ -4,7 +4,7 @@ import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 
 /**
- *Uses PID Controller in order to hold tote in one position using the conveyer belt
+ *
  */
 public class HoldPID extends PIDCommand {
 	
