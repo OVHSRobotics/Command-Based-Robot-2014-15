@@ -2,15 +2,20 @@ package info.ovhs.robotics;
 
 public final class Constants {
 	
-	public static final int DRIVE_TRAIN_GEAR_RATIO = 1;
-	
-	public static final int TRASHCAN_HEIGHT = 36;
-	
-	public static final int TOTE_HEIGHT_INCHES = 18;
-	
-	public static final int TOTE_WEIGHT = 6;
+	public static final int DRIVE_TRAIN_GEAR_RATIO = 1;	
 	
 	public static final int ROBOT_WEIGHT = 120;
+	
+	public static final class FieldElementsConstants {
+		
+		public static final double TRASHCAN_HEIGHT_INCHES = 28.8;
+	
+		public static final double TRASHCAN_WEIGHT_POUNDS = 8.65;
+	
+		public static final double TOTE_HEIGHT_INCHES = 12.1;
+	
+		public static final double TOTE_WEIGHT_POUNDS = 7.8;
+	}
 
 	public static final class ConveyerBeltEncoderConstants {
 		

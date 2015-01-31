@@ -29,7 +29,7 @@ public class LiftTrashCan extends CommandBase {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	// Command is done when encoder reaches certain amount of ticks 
-        return CommandBase.conveyerBelt.encoder.getDistance() <= this.initialDistance + Constants.TRASHCAN_HEIGHT;
+        return CommandBase.conveyerBelt.encoder.getDistance() <= this.initialDistance + Constants.FieldElementsConstants.TRASHCAN_HEIGHT_INCHES;
     }
 
     // Called once after isFinished returns true

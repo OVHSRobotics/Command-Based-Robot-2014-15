@@ -36,7 +36,7 @@ public class RearDropTrashCan extends CommandBase {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	// Command is done when encoder reaches certain amount of ticks
-    	return CommandBase.rearMotorSpool.encoder.getDistance() <= this.initialDistance - Constants.TOTE_HEIGHT_INCHES;
+    	return CommandBase.rearMotorSpool.encoder.getDistance() <= this.initialDistance - Constants.FieldElementsConstants.TOTE_HEIGHT_INCHES;
     }
 
     // Called once after isFinished returns true

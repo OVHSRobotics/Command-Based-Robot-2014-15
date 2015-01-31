@@ -30,7 +30,7 @@ public class DropTote extends CommandBase {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	// Encoder reaches threshold
-    	return CommandBase.conveyerBelt.encoder.getDistance() <= this.initialDistance - Constants.TOTE_HEIGHT_INCHES;
+    	return CommandBase.conveyerBelt.encoder.getDistance() <= this.initialDistance - Constants.FieldElementsConstants.TOTE_HEIGHT_INCHES;
     }
 
     // Called once after isFinished returns true

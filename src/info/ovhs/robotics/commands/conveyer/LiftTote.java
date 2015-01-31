@@ -32,7 +32,7 @@ public class LiftTote extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	// Command is done when encoder reaches certain amount of ticks
-        return CommandBase.conveyerBelt.encoder.getDistance() >= this.initialDistance + Constants.TOTE_HEIGHT_INCHES;
+        return CommandBase.conveyerBelt.encoder.getDistance() >= this.initialDistance + Constants.FieldElementsConstants.TOTE_HEIGHT_INCHES;
     }
 
     // Called once after isFinished returns true
