@@ -1,7 +1,6 @@
 
 package info.ovhs.robotics.subsystems;
 
-import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.RobotMap;
 import info.ovhs.robotics.commands.drive.ArcadeDrive;
 import info.ovhs.robotics.commands.drive.MecanumDrive;
@@ -62,81 +61,45 @@ public class DriveTrain extends Subsystem {
     
     /**
      * Drive using the left joystick in arcade-style.
-     * 
-     * <p>
-     * If safety is on, motor output cannot exceed value set in constants
-     * </p>
-     * 
      * <p>
      * This can be called within commands.
      * </p>
      */
     public void arcadeDriveController() {
-    	if (Constants.JOYSTICK_SAFETY) {
-    		drive.arcadeDrive(OI.getLeftStickYAxisSafe(), OI.getLeftStickXAxisSafe());
-    	} else {
-    		drive.arcadeDrive(OI.getLeftStickYAxis(), OI.getLeftStickXAxis());
-    	}   
+        drive.arcadeDrive(OI.getLeftStickYAxis(), OI.getLeftStickXAxis());
     }
 
     /**
-     * Drive using an xbox controller in tank style, left stick controlling the left side and right stick controlling the right side.
-     * 
-     * <p>
-     * If safety is on, motor output cannot exceed value set in constants
-     * </p>
-     * 
+     * Drive using an xbox controller in tank style, left stick controlling the left side and right stick controlling the right side
      * <p>
      * This can be called within commands.
      * </p>
      */
     public void tankDriveController() {
-    	if (Constants.JOYSTICK_SAFETY) {
-    		drive.tankDrive(OI.getLeftStickXAxisSafe(), OI.getRightStickXAxisSafe());
-    	} else {
         drive.tankDrive(OI.getLeftStickYAxis(), OI.getRightStickYAxis());
-    	}
     }
     
     /**
      * Drive using an xbox controller in Cartesian Mecanum Style, left stick controlling linear motion and right stick x axis controlling rotation
-     * 
-     * <p>
-     * If safety is on, motor output cannot exceed value set in constants
-     * </p>
-     * 
      * <p>
      * This can be called within commands.
      * </p> 
      */
     public void mecanumDriveController() {
-    	if (Constants.JOYSTICK_SAFETY) {
-    		drive.mecanumDrive_Cartesian(OI.getLeftStickXAxisSafe(), OI.getLeftStickYAxisSafe(), OI.getRightStickXAxisSafe(), 0);
-    	} else {
-    		drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), OI.getRightStickXAxis(), 0);
-    	}
+    	drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), OI.getRightStickXAxis(), 0);
     }
     
     /**
      * Drive using an xbox controller in Cartesian Mecanum Style using a gyro if present
-     *     
-     * <p>
-     * If safety is on, motor output cannot exceed value set in constants
-     * </p>
-     * 
      * <p>
      * This can be called within commands.
      * </p>
-     *
+     * 
      * @param gyroAngle The angle that the gyro is currently at
      */
     public void mecanumDriveController(double gyroAngle) {
-    	if (Constants.JOYSTICK_SAFETY) {
-    		drive.mecanumDrive_Cartesian(OI.getLeftStickXAxisSafe(), OI.getLeftStickYAxisSafe(), OI.getRightStickXAxisSafe(), gyroAngle);
-    	} else {
-    		drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), OI.getRightStickXAxis(), gyroAngle);
-    	}   
-	}
+    	drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), OI.getRightStickXAxis(), gyroAngle);
+    }
     
     /**
      * Change the drive style for the default command
