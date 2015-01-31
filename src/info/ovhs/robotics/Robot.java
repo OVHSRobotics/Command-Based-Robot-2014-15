@@ -21,9 +21,6 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
 
-    public static OI oi;
-    public static DriveTrain driveTrain;
-
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -84,8 +81,8 @@ public class Robot extends IterativeRobot {
         }
         
         print("Entering teleop mode");
-        if (driveTrain.getCurrentCommand() == null) {
-        	driveTrain.initDefaultCommand();
+        if (CommandBase.driveTrain.getCurrentCommand() == null) {
+        	CommandBase.driveTrain.initDefaultCommand();
         }
         
         RobotMap.conveyerBeltEncoder.reset();
@@ -121,7 +118,7 @@ public class Robot extends IterativeRobot {
     
     public static void updateStatus() {
         // Add data to the "SmartDashboard".
-        SmartDashboard.putData(driveTrain);
+        SmartDashboard.putData(CommandBase.driveTrain);
         SmartDashboard.putNumber("Encoder Distance", RobotMap.conveyerBeltEncoder.getDistance());
         SmartDashboard.putNumber("Encoder Raw Value", RobotMap.conveyerBeltEncoder.getRaw());
     }

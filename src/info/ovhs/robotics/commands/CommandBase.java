@@ -15,8 +15,10 @@ public abstract class CommandBase extends Command {
 	
 	public static void init() {
 		CommandBase.driveTrain = DriveTrain.getInstance();
-		CommandBase.oi = OI.getInstance();
 		CommandBase.conveyerBelt = ConveyerBelt.getInstance();
 		CommandBase.rearMotorSpool = RearMotorSpool.getInstance();
+		
+		// Must be initialized after all subsystems
+		CommandBase.oi = OI.getInstance();
 	}
 }

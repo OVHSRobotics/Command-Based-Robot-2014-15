@@ -32,7 +32,7 @@ public class ZeroControllerInputs extends CommandBase {
     	}
     	
     	Robot.print("*** Zeroing controller inputs");
-    	Robot.oi.zeroAxisReadings();
+    	CommandBase.oi.zeroAxisReadings();
     	Robot.print("*** Completed zeroing controller inputs");
     	this.isFinished = true;
     }
