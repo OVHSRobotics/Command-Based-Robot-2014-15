@@ -44,7 +44,7 @@ public final class Constants {
 	
 	public static final class MotorConstants {
 		
-			public static final double MOTOR_MAX_OUTPUT = 1.0;
+			public static final double MOTOR_MAX_OUTPUT = .05;
 			
 			public static final boolean LEFT_REAR_MOTOR_REVERSED = true;
 			

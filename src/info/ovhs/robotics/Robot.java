@@ -121,5 +121,6 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData(CommandBase.driveTrain);
         SmartDashboard.putNumber("Encoder Distance", RobotMap.conveyerBeltEncoder.getDistance());
         SmartDashboard.putNumber("Encoder Raw Value", RobotMap.conveyerBeltEncoder.getRaw());
+        SmartDashboard.putData(CommandBase.conveyerBelt);
     }
 }
