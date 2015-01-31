@@ -1,6 +1,12 @@
 package info.ovhs.robotics;
 
 import info.ovhs.robotics.commands.*;
+import info.ovhs.robotics.commands.conveyer.DropTote;
+import info.ovhs.robotics.commands.conveyer.DropTrashCan;
+import info.ovhs.robotics.commands.conveyer.Hold;
+import info.ovhs.robotics.commands.conveyer.HoldPID;
+import info.ovhs.robotics.commands.conveyer.LiftTote;
+import info.ovhs.robotics.commands.conveyer.LiftTrashCan;
 import info.ovhs.robotics.commands.drive.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.buttons.*;
@@ -48,10 +54,6 @@ public class OI {
     public JoystickButton yButton;
     public JoystickButton backButton;
     public JoystickButton startButton;
-    public JoystickButton mecanumButton;
-    public JoystickButton arcadeButton;
-    public JoystickButton tankButton;
-    //public static Joystick xboxController;
     public static Joystick xboxController;
     public static Joystick fireButton;
     
@@ -60,13 +62,17 @@ public class OI {
     	xboxController = new Joystick(Constants.OperatorControlsConstants.CONTROLLER_PORT);
     	fireButton = new Joystick(Constants.OperatorControlsConstants.FIRE_BUTTON_PORT);
     	aButton = new JoystickButton(xboxController, Constants.OperatorControlsConstants.A_BUTTON);
-	    aButton.whenPressed(new ToggleDriveStyle());
+	    aButton.whenPressed(new MecanumDrive());
 	    bButton = new JoystickButton(xboxController, Constants.OperatorControlsConstants.B_BUTTON);
-	    bButton.whenPressed(new ZeroControllerInputs());
-	    /*xButton = new JoystickButton(xboxController, Constants.OperatorControlsConstants.X_BUTTON);
-	    xButton.whenPressed(new MecanumDrive());
+	    bButton.whenPressed(new DropTote());
+	    xButton = new JoystickButton(xboxController, Constants.OperatorControlsConstants.X_BUTTON);
+	    xButton.whenPressed(new DropTrashCan());
 	    yButton = new JoystickButton(xboxController, Constants.OperatorControlsConstants.Y_BUTTON);
-	    yButton.whenPressed(new ArcadeDrive());*/
+	    yButton.whenPressed(new HoldPID());
+	    backButton = new JoystickButton(xboxController, Constants.OperatorControlsConstants.BACK_BUTTON);
+	    backButton.whenPressed(new LiftTote());
+	    startButton = new JoystickButton(xboxController, Constants.OperatorControlsConstants.START_BUTTON);
+	    startButton.whenPressed(new LiftTrashCan());
     	
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
