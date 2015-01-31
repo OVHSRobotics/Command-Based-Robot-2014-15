@@ -1,6 +1,7 @@
 package info.ovhs.robotics;
 
 import info.ovhs.robotics.commands.*;
+import info.ovhs.robotics.commands.autonomous.AutonomousCommand;
 import info.ovhs.robotics.commands.conveyer.DropTote;
 import info.ovhs.robotics.commands.conveyer.DropTrashCan;
 import info.ovhs.robotics.commands.conveyer.Hold;
