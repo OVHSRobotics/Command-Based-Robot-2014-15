@@ -99,17 +99,8 @@ public class OI {
     	return OI.instance;
     }
     
-    /**
-     * Returns corrected value for joystick axes
-     * @param axis Axis to read
-     * @return Corrected value for joystick axis
-     */
     public static double getRawAxis( int axis ) {
         return xboxController.getRawAxis(axis) + axisErrors[axis];
-    }
-    
-    public static double getUncorrectedRawAxis (int axis) {
-    	return xboxController.getRawAxis(axis);
     }
     
     public static double getLeftStickXAxis() {
@@ -126,38 +117,6 @@ public class OI {
     
     public static double getRightStickYAxis() {
     	return getRawAxis(5);
-    }
-    
-    public static double getLeftStickXAxisSafe() {
-    	if (OI.getLeftStickXAxis() <= Constants.MotorConstants.MOTOR_MAX_OUTPUT && OI.getLeftStickXAxis() >= Constants.MotorConstants.MOTOR_MAX_OUTPUT) {
-    		return OI.getLeftStickXAxis();
-    	} else {
-    		return 0;
-    	}
-    }
-    
-    public static double getLeftStickYAxisSafe() {
-    	if (OI.getLeftStickYAxis() <= Constants.MotorConstants.MOTOR_MAX_OUTPUT && OI.getLeftStickYAxis() >= Constants.MotorConstants.MOTOR_MAX_OUTPUT) {
-    		return OI.getLeftStickYAxis();
-    	} else {
-    		return 0;
-    	}
-    }
-    
-    public static double getRightStickXAxisSafe() {
-    	if (OI.getRightStickXAxis() <= Constants.MotorConstants.MOTOR_MAX_OUTPUT && OI.getRightStickXAxis() >= Constants.MotorConstants.MOTOR_MAX_OUTPUT) {
-    		return OI.getRightStickXAxis();
-    	} else {
-    		return 0;
-    	}
-    }
-    
-    public static double getRightStickYAxisSafe() {
-    	if (OI.getRightStickYAxis() <= Constants.MotorConstants.MOTOR_MAX_OUTPUT && OI.getRightStickYAxis() >= Constants.MotorConstants.MOTOR_MAX_OUTPUT) {
-    		return OI.getRightStickYAxis();
-    	} else {
-    		return 0;
-    	}
     }
     
 //    public static boolean leftTriggerAllWayDown() {
