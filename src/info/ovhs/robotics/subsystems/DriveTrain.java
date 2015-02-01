@@ -86,7 +86,7 @@ public class DriveTrain extends Subsystem {
      * </p> 
      */
     public void mecanumDriveController() {
-    	drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), OI.getRightStickXAxis(), 0);
+    	this.mecanumDriveController(0);
     }
     
     /**
