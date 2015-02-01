@@ -19,21 +19,19 @@ public final class Constants {
 
 	public static final class ConveyerBeltEncoderConstants {
 		
-		public static final int SPROCKET_DIAMETER_FEET = 2; //Arbitrary number, change if necessary
+		public static final double SPROCKET_DIAMETER_INCHES = 2.5;
 
-		public static final int SPROCKET_RADIUS_FEET = 1; //Arbitrary number, change if necessary	
+		public static final double SPROCKET_RADIUS_INCHES = Constants.ConveyerBeltEncoderConstants.SPROCKET_DIAMETER_INCHES/2;
 	
-		public static final double SPROCKET_CIRCUMFRENCE_FEET = Constants.RearEncoderConstants.SPROCKET_DIAMETER_FEET * Math.PI;	
+		public static final double SPROCKET_CIRCUMFRENCE_INCHES = Constants.ConveyerBeltEncoderConstants.SPROCKET_DIAMETER_INCHES * Math.PI;	
 		
 		public static final double GEARBOX_PULSES_PER_REVOLUTION = 497;
 		
-		public static final double GEARBOX_REVOLUTIONS_PER_PULSE = 1/Constants.RearEncoderConstants.GEARBOX_PULSES_PER_REVOLUTION;
+		public static final double GEARBOX_REVOLUTIONS_PER_PULSE = 1/Constants.ConveyerBeltEncoderConstants.GEARBOX_PULSES_PER_REVOLUTION;
 		
-		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 10;
+		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 19/16;
 	
-		public static final double DISTANCE_PER_PULSE = Constants.ConveyerBeltEncoderConstants.SPROCKET_CIRCUMFRENCE_FEET * Constants.ConveyerBeltEncoderConstants.SPROCKET_TO_GEARBOX_GEAR_RATIO * Constants.ConveyerBeltEncoderConstants.GEARBOX_REVOLUTIONS_PER_PULSE;
-	
-		public static final double ENCODER_TICKS_TO_FEET_RATIO = 1000 / 1;
+		public static final double DISTANCE_PER_PULSE = Constants.ConveyerBeltEncoderConstants.SPROCKET_CIRCUMFRENCE_INCHES * Constants.ConveyerBeltEncoderConstants.SPROCKET_TO_GEARBOX_GEAR_RATIO * Constants.ConveyerBeltEncoderConstants.GEARBOX_REVOLUTIONS_PER_PULSE;
 		
 		public static final int ENCODER_PORT_A = 8;
 		
@@ -141,7 +139,7 @@ public final class Constants {
 		
 		public static final double GEARBOX_REVOLUTIONS_PER_PULSE = 1/Constants.RearEncoderConstants.GEARBOX_PULSES_PER_REVOLUTION;
 		
-		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 10;
+		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 10; //Arbitrary Number
 	
 		public static final double DISTANCE_PER_PULSE = Constants.RearEncoderConstants.SPROCKET_CIRCUMFRENCE_FEET * Constants.RearEncoderConstants.SPROCKET_TO_GEARBOX_GEAR_RATIO * Constants.RearEncoderConstants.GEARBOX_REVOLUTIONS_PER_PULSE;
 	
