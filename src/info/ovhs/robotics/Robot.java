@@ -2,8 +2,7 @@
 
 package info.ovhs.robotics;
 
-import info.ovhs.robotics.commands.*;
-import info.ovhs.robotics.subsystems.*;
+import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -119,6 +118,7 @@ public class Robot extends IterativeRobot {
     public static void updateStatus() {
         // Add data to the "SmartDashboard".
         SmartDashboard.putData(CommandBase.driveTrain);
+        SmartDashboard.putData(CommandBase.conveyerBelt);
         SmartDashboard.putNumber("Encoder Distance", RobotMap.conveyerBeltEncoder.getDistance());
         SmartDashboard.putNumber("Encoder Raw Value", RobotMap.conveyerBeltEncoder.getRaw());
     }
