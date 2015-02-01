@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.RobotMap;
 import info.ovhs.robotics.commands.conveyer.Hold;
+import info.ovhs.robotics.commands.conveyer.HoldPID;
 
 /**
  *
@@ -39,7 +40,7 @@ public class ConveyerBelt extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	
-    	setDefaultCommand(new Hold());
+    	setDefaultCommand(new HoldPID());
     }
     
     /**
