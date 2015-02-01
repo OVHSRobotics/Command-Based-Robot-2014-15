@@ -1,17 +1,19 @@
 package info.ovhs.robotics;
 
-import info.ovhs.robotics.commands.*;
+import info.ovhs.robotics.commands.ZeroControllerInputs;
 import info.ovhs.robotics.commands.autonomous.AutonomousCommand;
 import info.ovhs.robotics.commands.conveyer.DropTote;
 import info.ovhs.robotics.commands.conveyer.DropTrashCan;
-import info.ovhs.robotics.commands.conveyer.Hold;
 import info.ovhs.robotics.commands.conveyer.HoldPID;
 import info.ovhs.robotics.commands.conveyer.LiftTote;
 import info.ovhs.robotics.commands.conveyer.LiftTrashCan;
-import info.ovhs.robotics.commands.drive.*;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.buttons.*;
+import info.ovhs.robotics.commands.drive.ArcadeDrive;
+import info.ovhs.robotics.commands.drive.MecanumDrive;
+import info.ovhs.robotics.commands.drive.TankDrive;
+import info.ovhs.robotics.commands.drive.ToggleDriveStyle;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
