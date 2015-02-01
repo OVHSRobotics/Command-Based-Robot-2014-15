@@ -1,8 +1,6 @@
 package info.ovhs.robotics.commands;
 
 import info.ovhs.robotics.Robot;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.Timer;
 
 /**
  *

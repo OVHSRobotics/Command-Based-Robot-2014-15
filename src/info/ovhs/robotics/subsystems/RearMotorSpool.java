@@ -1,11 +1,10 @@
 package info.ovhs.robotics.subsystems;
 
+import info.ovhs.robotics.Constants;
+import info.ovhs.robotics.RobotMap;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import info.ovhs.robotics.Constants;
-import info.ovhs.robotics.RobotMap;
-import info.ovhs.robotics.commands.rearmotorspool.RearHold;
 
 /**
  *
