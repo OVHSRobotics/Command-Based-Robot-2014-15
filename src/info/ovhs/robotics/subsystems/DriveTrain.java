@@ -1,6 +1,7 @@
 
 package info.ovhs.robotics.subsystems;
 
+import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.RobotMap;
 import info.ovhs.robotics.commands.drive.ArcadeDrive;
 import info.ovhs.robotics.commands.drive.MecanumDrive;
@@ -86,7 +87,7 @@ public class DriveTrain extends Subsystem {
      * </p> 
      */
     public void mecanumDriveController() {
-    	drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), OI.getRightStickXAxis(), 0);
+    	this.mecanumDriveController(0);
     }
     
     /**
@@ -98,7 +99,15 @@ public class DriveTrain extends Subsystem {
      * @param gyroAngle The angle that the gyro is currently at
      */
     public void mecanumDriveController(double gyroAngle) {
-    	drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), OI.getRightStickXAxis(), gyroAngle);
+    	double rotationRate = 0;
+    	if (Math.abs(OI.getRightStickXAxis()) <= Constants.OperatorControlsConstants.AXIS_DEAD_ZONE) {
+    		rotationRate = -RobotMap.gyro1.getRate();
+    	}
+    	else {
+    		rotationRate = OI.getRightStickXAxis();
+    	}
+    	
+    	drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), rotationRate, gyroAngle);
     }
     
     /**

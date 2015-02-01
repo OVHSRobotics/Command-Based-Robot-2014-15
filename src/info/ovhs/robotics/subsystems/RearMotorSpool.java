@@ -5,6 +5,11 @@ import info.ovhs.robotics.RobotMap;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
+<<<<<<< HEAD
+=======
+import info.ovhs.robotics.Constants;
+import info.ovhs.robotics.RobotMap;
+>>>>>>> origin/master
 
 /**
  *
