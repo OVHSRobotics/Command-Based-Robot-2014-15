@@ -14,7 +14,7 @@ public class Autonomous_LiftOneTrashCan_And_LiftThreeTotes extends CommandGroup 
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    		addParallel(new LiftTrashCan());
+    		addSequential(new LiftTrashCan());
     		addSequential(new LiftTote());
         // To run multiple commands at the same time,
         // use addParallel()
