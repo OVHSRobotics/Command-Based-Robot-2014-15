@@ -102,6 +102,6 @@ public class RobotMap {
 		}
 	}
 	public static void createLimitSwitches() {
-		limitSwitch1 = new DigitalInput(2);
+		limitSwitch1 = new DigitalInput(Constants.PortConstants.LIMIT_SWITCH_PORT);
 	}
 }

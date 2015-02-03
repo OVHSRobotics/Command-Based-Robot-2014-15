@@ -68,6 +68,8 @@ public final class Constants {
 		public static final int DRIVE_BASE_GYRO_PORT = 0;
 		
 		public static final int REAR_MOTOR_PORT = 5;
+		
+		public static final int LIMIT_SWITCH_PORT = 0;
 	}
 
 	public static final class OperatorControlsConstants {
