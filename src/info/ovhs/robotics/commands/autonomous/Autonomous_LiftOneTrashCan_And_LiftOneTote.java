@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class Autonomous_LiftOneTrashCan_And_LiftThreeTotes extends CommandGroup {
+public class Autonomous_LiftOneTrashCan_And_LiftOneTote extends CommandGroup {
     
-    public  Autonomous_LiftOneTrashCan_And_LiftThreeTotes() {
+    public  Autonomous_LiftOneTrashCan_And_LiftOneTote() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
