@@ -1,6 +1,7 @@
 package info.ovhs.robotics;
 
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
@@ -27,6 +28,7 @@ public class RobotMap {
 	public static Encoder conveyerBeltEncoder;
 	public static Encoder rearEncoder;
 	public static Gyro gyro1;
+	public static DigitalInput limitSwitch1;
 
 	public static void init() {
 
@@ -35,6 +37,8 @@ public class RobotMap {
 		RobotMap.createGyro();
 		
 		RobotMap.createEncoders();
+		
+		RobotMap.createLimitSwitches();
 	}
 	
 	public static void setupDriveMotors() {
@@ -96,5 +100,8 @@ public class RobotMap {
 		catch (Exception exception){
 			System.out.println(exception);
 		}
+	}
+	public static void createLimitSwitches() {
+		limitSwitch1 = new DigitalInput(2);
 	}
 }
