@@ -18,10 +18,10 @@ public class DriveTrain extends Subsystem {
 	
 	protected static DriveTrain instance;
 	
-    SpeedController motorSpeedController1 = RobotMap.motorSpeedController1;
-    SpeedController motorSpeedController2 = RobotMap.motorSpeedController2;
-    SpeedController motorSpeedController3 = RobotMap.motorSpeedController3;
-    SpeedController motorSpeedController4 = RobotMap.motorSpeedController4;
+    SpeedController motorSpeedController1 = RobotMap.driveSpeedController1;
+    SpeedController motorSpeedController2 = RobotMap.driveSpeedController2;
+    SpeedController motorSpeedController3 = RobotMap.driveSpeedController3;
+    SpeedController motorSpeedController4 = RobotMap.driveSpeedController4;
     RobotDrive drive = RobotMap.drive;
     
     public static DriveTrain getInstance() {
