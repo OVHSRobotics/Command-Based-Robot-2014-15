@@ -7,20 +7,19 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveForwardFor5Seconds extends Command {
-	private double initialTime;
+public class PickUpOneTote extends Command {
+	private double initialValueEncoder;
 
-    public DriveForwardFor5Seconds() {
+    public PickUpOneTote() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(CommandBase.driveTrain);
-    	
+    	requires(CommandBase.conveyerBelt);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	initialTime = System.nanoTime();
-    	CommandBase.driveTrain.driveStraight(Constants.MotorConstants.MOTOR_MAX_OUTPUT);
+    	initialValueEncoder = CommandBase.conveyerBelt.encoder.getDistance();
+    	CommandBase.conveyerBelt.forward(.04);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -29,12 +28,12 @@ public class DriveForwardFor5Seconds extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return System.nanoTime() >= initialTime + 5 * Math.pow(10, 9);
+        return CommandBase.conveyerBelt.encoder.getDistance() - initialValueEncoder >= Constants.FieldElementsConstants.TOTE_HEIGHT_INCHES / 12;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	CommandBase.driveTrain.stopAllMotors();
+    	CommandBase.conveyerBelt.stop();
     }
 
     // Called when another command which requires one or more of the same
