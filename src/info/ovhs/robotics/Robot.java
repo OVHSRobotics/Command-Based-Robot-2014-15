@@ -3,6 +3,7 @@
 package info.ovhs.robotics;
 
 import info.ovhs.robotics.commands.CommandBase;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -84,6 +85,7 @@ public class Robot extends IterativeRobot {
         	CommandBase.driveTrain.initDefaultCommand();
         }
         
+        
         RobotMap.conveyerBeltEncoder.reset();
         
         updateStatus();
@@ -93,8 +95,16 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        Scheduler.getInstance().run();
+        
+    	// Won't this just constantly reset the Scheduler making adding commands pointless?
+    	Scheduler.getInstance().run();
+        
+        // Updates smart dashboard
         updateStatus();
+        
+        // Moves Robot for Testing
+        //CommandBase.driveTrain.mecanumDriveController(0);
+        
     }
     
     /**
