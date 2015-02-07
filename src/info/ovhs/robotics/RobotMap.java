@@ -1,6 +1,7 @@
 package info.ovhs.robotics;
 
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
@@ -17,16 +18,17 @@ import edu.wpi.first.wpilibj.Encoder;
  */
 public class RobotMap {
 
-	public static SpeedController motorSpeedController1;
-	public static SpeedController motorSpeedController2;
-	public static SpeedController motorSpeedController3;
-	public static SpeedController motorSpeedController4;
+	public static SpeedController driveSpeedController1;
+	public static SpeedController driveSpeedController2;
+	public static SpeedController driveSpeedController3;
+	public static SpeedController driveSpeedController4;
 	public static SpeedController conveyerBeltSpeedController1;
 	public static SpeedController rearMotorSpoolSpeedController1;
 	public static RobotDrive drive;
 	public static Encoder conveyerBeltEncoder;
 	public static Encoder rearEncoder;
 	public static Gyro gyro1;
+	public static DigitalInput limitSwitch1;
 
 	public static void init() {
 
@@ -35,31 +37,33 @@ public class RobotMap {
 		RobotMap.createGyro();
 		
 		RobotMap.createEncoders();
+		
+		RobotMap.createLimitSwitches();
 	}
 	
 	public static void setupDriveMotors() {
-		motorSpeedController1 = new Victor(Constants.PortConstants.FRONT_LEFT_DRIVE_MOTOR_PORT);
+		driveSpeedController1 = new Victor(Constants.PortConstants.FRONT_LEFT_DRIVE_MOTOR_PORT);
 		LiveWindow.addActuator("DriveTrain", "Speed Controller 1",
-				(Victor) motorSpeedController1);
+				(Victor) driveSpeedController1);
 
-		motorSpeedController2 = new Victor(Constants.PortConstants.REAR_LEFT_DRIVE_MOTOR_PORT);
+		driveSpeedController2 = new Victor(Constants.PortConstants.REAR_LEFT_DRIVE_MOTOR_PORT);
 		LiveWindow.addActuator("DriveTrain", "Speed Controller 2",
-				(Victor) motorSpeedController2);
+				(Victor) driveSpeedController2);
 
-		motorSpeedController3 = new Victor(Constants.PortConstants.FRONT_RIGHT_DRIVE_MOTOR_PORT);
+		driveSpeedController3 = new Victor(Constants.PortConstants.FRONT_RIGHT_DRIVE_MOTOR_PORT);
 		LiveWindow.addActuator("DriveTrain", "Speed Controller 3",
-				(Victor) motorSpeedController3);
+				(Victor) driveSpeedController3);
 
-		motorSpeedController4 = new Victor(Constants.PortConstants.REAR_RIGHT_DRIVE_MOTOR_PORT);
+		driveSpeedController4 = new Victor(Constants.PortConstants.REAR_RIGHT_DRIVE_MOTOR_PORT);
 		LiveWindow.addActuator("DriveTrain", "Speed Controller 4",
-				(Victor) motorSpeedController4);
+				(Victor) driveSpeedController4);
 		
 		conveyerBeltSpeedController1 = new Victor(Constants.PortConstants.CONVEYER_BELT_MOTOR_PORT);
 
 		rearMotorSpoolSpeedController1 = new Victor(Constants.PortConstants.REAR_MOTOR_PORT);
 		
-		drive = new RobotDrive(motorSpeedController1, motorSpeedController2,
-				motorSpeedController3, motorSpeedController4);
+		drive = new RobotDrive(driveSpeedController1, driveSpeedController2,
+				driveSpeedController3, driveSpeedController4);
 
 		drive.setSafetyEnabled(false);
 		drive.setMaxOutput(Constants.MotorConstants.MOTOR_MAX_OUTPUT);
@@ -96,5 +100,8 @@ public class RobotMap {
 		catch (Exception exception){
 			System.out.println(exception);
 		}
+	}
+	public static void createLimitSwitches() {
+		limitSwitch1 = new DigitalInput(Constants.PortConstants.LIMIT_SWITCH_PORT);
 	}
 }
