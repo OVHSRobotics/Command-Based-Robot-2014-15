@@ -23,7 +23,7 @@ public class OI {
 	
 	private static OI instance;
 	
-	private static final double [] axisErrors = new double[6];
+	 //private static final double [] axisErrors = new double[6];
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
@@ -101,25 +101,27 @@ public class OI {
     	return OI.instance;
     }
     
-    public static double getRawAxis( int axis ) {
-        return xboxController.getRawAxis(axis) + axisErrors[axis];
-    }
+//    public static double getRawAxis( int axis ) {
+//        return xboxController.getRawAxis(axis) + axisErrors[axis];
+//    }
     
     public static double getLeftStickXAxis() {
-    	return getRawAxis(0);
+    	return OI.xboxController.getRawAxis(0);
     }
     
     public static double getLeftStickYAxis() {
-    	return getRawAxis(1);
+    	return OI.xboxController.getRawAxis(1);
     }
     
     public static double getRightStickXAxis() {
-    	return getRawAxis(4);
+    	return OI.xboxController.getRawAxis(4);
     }
     
     public static double getRightStickYAxis() {
-    	return getRawAxis(5);
+    	return OI.xboxController.getRawAxis(5);
     }
+    
+   
     
 //    public static boolean leftTriggerAllWayDown() {
 //    	return (Math.abs(xboxController.getRawAxis(3))>= .98);
