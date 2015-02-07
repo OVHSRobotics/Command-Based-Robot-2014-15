@@ -20,7 +20,7 @@ public class RearDropTote extends CommandBase {
     	
     	// Turn the motor on
     	double percentSpeed = 100;
-    	CommandBase.rearMotorSpool.backward(percentSpeed / 100 * -Constants.MotorConstants.MOTOR_MAX_OUTPUT);
+    	CommandBase.rearMotorSpool.backward(percentSpeed / 100 * -Constants.Motors.MOTOR_MAX_OUTPUT);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -30,7 +30,7 @@ public class RearDropTote extends CommandBase {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	// Encoder reaches threshold
-    	return CommandBase.rearMotorSpool.encoder.getDistance() <= this.initialDistance - Constants.FieldElementsConstants.TOTE_HEIGHT_INCHES;
+    	return CommandBase.rearMotorSpool.encoder.getDistance() <= this.initialDistance - Constants.FieldElements.TOTE_HEIGHT_INCHES;
     }
 
     // Called once after isFinished returns true

@@ -60,19 +60,19 @@ public class OI {
     
     private OI() {
 
-    	xboxController = new Joystick(Constants.OperatorControlsConstants.CONTROLLER_PORT);
-    	fireButton = new Joystick(Constants.OperatorControlsConstants.FIRE_BUTTON_PORT);
-    	aButton = new JoystickButton(xboxController, Constants.OperatorControlsConstants.A_BUTTON);
+    	xboxController = new Joystick(Constants.Ports.Joystick.CONTROLLER);
+    	fireButton = new Joystick(Constants.Ports.Joystick.FIRE_BUTTON);
+    	aButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.A);
 	    aButton.whenPressed(new MecanumDrive());
-	    bButton = new JoystickButton(xboxController, Constants.OperatorControlsConstants.B_BUTTON);
+	    bButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.B);
 	    bButton.whenPressed(new DropTote());
-	    xButton = new JoystickButton(xboxController, Constants.OperatorControlsConstants.X_BUTTON);
+	    xButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.X);
 	    xButton.whenPressed(new DropTrashCan());
-	    yButton = new JoystickButton(xboxController, Constants.OperatorControlsConstants.Y_BUTTON);
+	    yButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.Y);
 	    yButton.whenPressed(new HoldPID());
-	    backButton = new JoystickButton(xboxController, Constants.OperatorControlsConstants.BACK_BUTTON);
+	    backButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.BACK);
 	    backButton.whenPressed(new LiftTote());
-	    startButton = new JoystickButton(xboxController, Constants.OperatorControlsConstants.START_BUTTON);
+	    startButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.START);
 	    startButton.whenPressed(new LiftTrashCan());
     	
         // SmartDashboard Buttons
@@ -102,12 +102,26 @@ public class OI {
 //    }
     
     public static double getLeftStickXAxis() {
-    	return OI.xboxController.getRawAxis(0);
+    	double rawAxis = OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_X);
+    	if (rawAxis > (Constants.OperatorControls.Controller.Deadzone.LEFT_X_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_X)) {
+    		return OI.positiveScalingX(rawAxis);
+    	} else if (rawAxis < (Constants.OperatorControls.Controller.Deadzone.LEFT_X_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_X)) {
+    		return OI.negativeScalingX(rawAxis);
+    	} else {
+    		return 0;
+    	}
     }
     
     public static double getLeftStickYAxis() {
-    	return OI.xboxController.getRawAxis(1);
-    }
+    	double rawAxis = OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_Y);
+    	if (rawAxis > (Constants.OperatorControls.Controller.Deadzone.LEFT_Y_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_Y)) {
+    		return OI.positiveScalingY(rawAxis);
+    	} else if (rawAxis < (Constants.OperatorControls.Controller.Deadzone.LEFT_Y_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_Y)) {
+    		return OI.negativeScalingY(rawAxis);
+    	} else {
+    		return 0;
+    	}
+	}
     
     public static double getRightStickXAxis() {
     	return OI.xboxController.getRawAxis(4);
@@ -132,8 +146,21 @@ public class OI {
 	}
 	
 
-	
+	private static double positiveScalingX(double x) {
+		return (1-0) * ((x-(Constants.OperatorControls.Controller.Deadzone.LEFT_X_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_X)) / (1 - (Constants.OperatorControls.Controller.Deadzone.LEFT_X_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_X)));
+	}
 
+	private static double positiveScalingY(double y) {
+		return (1-0) * ((y-(Constants.OperatorControls.Controller.Deadzone.LEFT_Y_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_Y)) / (1 - (Constants.OperatorControls.Controller.Deadzone.LEFT_Y_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_Y)));
+	}
+	
+	private static double negativeScalingX(double x) {
+		return (-1-0) * ((x-(Constants.OperatorControls.Controller.Deadzone.LEFT_X_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_X)) / (-1 - (Constants.OperatorControls.Controller.Deadzone.LEFT_X_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_X)));
+	}
+
+	private static double negativeScalingY(double y) {
+		return (-1-0) * ((y-(Constants.OperatorControls.Controller.Deadzone.LEFT_Y_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_Y)) / (-1 - (Constants.OperatorControls.Controller.Deadzone.LEFT_Y_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_Y)));
+	}
     
 }
 

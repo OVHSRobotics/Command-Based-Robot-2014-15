@@ -48,7 +48,7 @@ public class RearMotorSpool extends Subsystem {
      * </p>
      */
     public void forward() {
-    	rearSpoolMotor.set(Constants.MotorConstants.MOTOR_MAX_OUTPUT);
+    	rearSpoolMotor.set(Constants.Motors.MOTOR_MAX_OUTPUT);
     }
 
     /**
@@ -71,7 +71,7 @@ public class RearMotorSpool extends Subsystem {
      * </p>
      */    
     public void backward() {
-    	rearSpoolMotor.set(Constants.MotorConstants.MOTOR_MAX_OUTPUT);
+    	rearSpoolMotor.set(Constants.Motors.MOTOR_MAX_OUTPUT);
     }
     
     /**

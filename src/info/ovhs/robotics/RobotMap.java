@@ -42,59 +42,59 @@ public class RobotMap {
 	}
 	
 	public static void setupDriveMotors() {
-		driveSpeedController1 = new Victor(Constants.PortConstants.FRONT_LEFT_DRIVE_MOTOR_PORT);
+		driveSpeedController1 = new Victor(Constants.Ports.PWM.FRONT_LEFT_DRIVE_MOTOR);
 		LiveWindow.addActuator("DriveTrain", "Speed Controller 1",
 				(Victor) driveSpeedController1);
 
-		driveSpeedController2 = new Victor(Constants.PortConstants.REAR_LEFT_DRIVE_MOTOR_PORT);
+		driveSpeedController2 = new Victor(Constants.Ports.PWM.REAR_LEFT_DRIVE_MOTOR);
 		LiveWindow.addActuator("DriveTrain", "Speed Controller 2",
 				(Victor) driveSpeedController2);
 
-		driveSpeedController3 = new Victor(Constants.PortConstants.FRONT_RIGHT_DRIVE_MOTOR_PORT);
+		driveSpeedController3 = new Victor(Constants.Ports.PWM.FRONT_RIGHT_DRIVE_MOTOR);
 		LiveWindow.addActuator("DriveTrain", "Speed Controller 3",
 				(Victor) driveSpeedController3);
 
-		driveSpeedController4 = new Victor(Constants.PortConstants.REAR_RIGHT_DRIVE_MOTOR_PORT);
+		driveSpeedController4 = new Victor(Constants.Ports.PWM.REAR_RIGHT_DRIVE_MOTOR);
 		LiveWindow.addActuator("DriveTrain", "Speed Controller 4",
 				(Victor) driveSpeedController4);
 		
-		conveyerBeltSpeedController1 = new Victor(Constants.PortConstants.CONVEYER_BELT_MOTOR_PORT);
+		conveyerBeltSpeedController1 = new Victor(Constants.Ports.PWM.CONVEYER_BELT_MOTOR);
 
-		rearMotorSpoolSpeedController1 = new Victor(Constants.PortConstants.REAR_MOTOR_PORT);
+		rearMotorSpoolSpeedController1 = new Victor(Constants.Ports.PWM.REAR_MOTOR);
 		
 		drive = new RobotDrive(driveSpeedController1, driveSpeedController2,
 				driveSpeedController3, driveSpeedController4);
 
 		drive.setSafetyEnabled(false);
-		drive.setMaxOutput(Constants.MotorConstants.MOTOR_MAX_OUTPUT);
+		drive.setMaxOutput(Constants.Motors.MOTOR_MAX_OUTPUT);
 		drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft,
-				Constants.MotorConstants.LEFT_REAR_MOTOR_REVERSED);
+				Constants.Motors.LEFT_REAR_REVERSED);
 		drive.setInvertedMotor(RobotDrive.MotorType.kRearRight,
-				Constants.MotorConstants.RIGHT_REAR_MOTOR_REVERSED);
+				Constants.Motors.RIGHT_REAR_REVERSED);
 		drive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, 
-				Constants.MotorConstants.LEFT_FRONT_MOTOR_REVERSED);
+				Constants.Motors.LEFT_FRONT_REVERSED);
 		drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, 
-				Constants.MotorConstants.RIGHT_FRONT_MOTOR_REVERSED);
+				Constants.Motors.RIGHT_FRONT_REVERSED);
 	}
 	
 	public static void createGyro() {
-		gyro1 = new Gyro(Constants.PortConstants.DRIVE_BASE_GYRO_PORT);
+		gyro1 = new Gyro(Constants.Ports.Analog.DRIVE_BASE_GYRO);
 		gyro1.setSensitivity(.007);
 		LiveWindow.addSensor("Drive Train", "Gyro 1", gyro1);
 	}
 	
 	public static void createEncoders() {
 		try {
-			conveyerBeltEncoder = new Encoder(Constants.ConveyerBeltEncoderConstants.ENCODER_PORT_A, Constants.ConveyerBeltEncoderConstants.ENCODER_PORT_B, Constants.ConveyerBeltEncoderConstants.ENCODER_REVERSED, EncodingType.k4X);
-			conveyerBeltEncoder.setDistancePerPulse(Constants.ConveyerBeltEncoderConstants.DISTANCE_PER_PULSE);
+			conveyerBeltEncoder = new Encoder(Constants.Ports.DIO.CONVEYER_BELT_ENCODER_A, Constants.Ports.DIO.CONVEYER_BELT_ENCODER_B, Constants.ConveyerBelt.Encoder.REVERSED, EncodingType.k4X);
+			conveyerBeltEncoder.setDistancePerPulse(Constants.ConveyerBelt.Encoder.DISTANCE_PER_PULSE);
 			conveyerBeltEncoder.reset();
 		}
 		catch (Exception exception) {
 			System.out.println(exception);
 		}
 		try {
-			rearEncoder = new Encoder(Constants.RearEncoderConstants.ENCODER_PORT_A, Constants.RearEncoderConstants.ENCODER_PORT_B, Constants.RearEncoderConstants.ENCODER_REVERSED, EncodingType.k4X);
-			rearEncoder.setDistancePerPulse(Constants.RearEncoderConstants.DISTANCE_PER_PULSE);
+			rearEncoder = new Encoder(Constants.Ports.DIO.REAR_MOTOR_ENCODER_A, Constants.Ports.DIO.REAR_MOTOR_ENCODER_B, Constants.RearMotorSpool.Encoder.REVERSED, EncodingType.k4X);
+			rearEncoder.setDistancePerPulse(Constants.RearMotorSpool.Encoder.DISTANCE_PER_PULSE);
 			rearEncoder.reset();
 		}
 		catch (Exception exception){
@@ -102,6 +102,6 @@ public class RobotMap {
 		}
 	}
 	public static void createLimitSwitches() {
-		limitSwitch1 = new DigitalInput(Constants.PortConstants.LIMIT_SWITCH_PORT);
+		limitSwitch1 = new DigitalInput(Constants.Ports.Analog.LIMIT_SWITCH);
 	}
 }

@@ -100,7 +100,7 @@ public class DriveTrain extends Subsystem {
      */
     public void mecanumDriveController(double gyroAngle) {
     	double rotationRate = 0;
-    	if (Math.abs(OI.getRightStickXAxis()) <= Constants.OperatorControlsConstants.AXIS_DEAD_ZONE) {
+    	if (Math.abs(OI.getRightStickXAxis()) <= Constants.OperatorControls.Controller.Deadzone.RIGHT_X) {
     		rotationRate = -RobotMap.gyro1.getRate();
     	}
     	else {

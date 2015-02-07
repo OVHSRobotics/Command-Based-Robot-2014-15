@@ -21,7 +21,7 @@ public class LiftTote extends Command {
     	this.initialDistance = CommandBase.conveyerBelt.encoder.getDistance();
     	// Turn on motor
     	double percentSpeed = 100;
-    	CommandBase.conveyerBelt.forward(percentSpeed / 100 * Constants.MotorConstants.MOTOR_MAX_OUTPUT);
+    	CommandBase.conveyerBelt.forward(percentSpeed / 100 * Constants.Motors.MOTOR_MAX_OUTPUT);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -32,7 +32,7 @@ public class LiftTote extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	// Command is done when encoder reaches certain amount of ticks
-        return CommandBase.conveyerBelt.encoder.getDistance() >= this.initialDistance + Constants.FieldElementsConstants.TOTE_HEIGHT_INCHES;
+        return CommandBase.conveyerBelt.encoder.getDistance() >= this.initialDistance + Constants.FieldElements.TOTE_HEIGHT_INCHES;
     }
 
     // Called once after isFinished returns true

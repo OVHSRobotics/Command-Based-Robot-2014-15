@@ -22,7 +22,7 @@ public class DropTrashCan extends Command {
     	
     	this.initialDistance = CommandBase.conveyerBelt.encoder.getDistance();
     	double percentSpeed = 100;
-    	CommandBase.conveyerBelt.backward(percentSpeed / 100 * -Constants.MotorConstants.MOTOR_MAX_OUTPUT);
+    	CommandBase.conveyerBelt.backward(percentSpeed / 100 * -Constants.Motors.MOTOR_MAX_OUTPUT);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -33,7 +33,7 @@ public class DropTrashCan extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	// Command is done when encoder reaches certain amount of ticks
-    	return CommandBase.conveyerBelt.encoder.getDistance() <= this.initialDistance - Constants.FieldElementsConstants.TOTE_HEIGHT_INCHES;
+    	return CommandBase.conveyerBelt.encoder.getDistance() <= this.initialDistance - Constants.FieldElements.TOTE_HEIGHT_INCHES;
     }
 
     // Called once after isFinished returns true

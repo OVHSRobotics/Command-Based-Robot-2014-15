@@ -49,7 +49,7 @@ public class ConveyerBelt extends Subsystem {
      * </p>
      */
     public void forward() {
-    	conveyerBeltMotor.set(Constants.MotorConstants.MOTOR_MAX_OUTPUT);
+    	conveyerBeltMotor.set(Constants.Motors.MOTOR_MAX_OUTPUT);
     }
 
     /**
@@ -72,7 +72,7 @@ public class ConveyerBelt extends Subsystem {
      * </p>
      */    
     public void backward() {
-    	conveyerBeltMotor.set(Constants.MotorConstants.MOTOR_MAX_OUTPUT);
+    	conveyerBeltMotor.set(Constants.Motors.MOTOR_MAX_OUTPUT);
     }
     
     /**
