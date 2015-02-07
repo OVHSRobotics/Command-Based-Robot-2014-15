@@ -21,6 +21,7 @@ public class ConveyerBelt extends Subsystem {
     // here. Call these from Commands.
 	
 	public Encoder encoder = RobotMap.conveyerBeltEncoder;
+	public double initialEncoderValue = 0;
 	
 	/**
 	 * Gets instance of Conveyer Belt Subsystem or creates one if one is not present
@@ -30,6 +31,7 @@ public class ConveyerBelt extends Subsystem {
 	public static ConveyerBelt getInstance() {
 		if (ConveyerBelt.instance == null) {
 			ConveyerBelt.instance = new ConveyerBelt();
+			ConveyerBelt.instance.initialEncoderValue = ConveyerBelt.instance.encoder.getDistance();
 		}
 		
 		return ConveyerBelt.instance;
