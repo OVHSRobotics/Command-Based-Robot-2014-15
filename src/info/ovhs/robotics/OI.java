@@ -1,6 +1,5 @@
 package info.ovhs.robotics;
 
-import info.ovhs.robotics.commands.ZeroControllerInputs;
 import info.ovhs.robotics.commands.autonomous.AutonomousCommand;
 import info.ovhs.robotics.commands.conveyer.DropTote;
 import info.ovhs.robotics.commands.conveyer.DropTrashCan;
@@ -23,8 +22,7 @@ public class OI {
 	
 	private static OI instance;
 	
-	 //private static final double [] axisErrors = new double[6];
-    //// CREATING BUTTONS
+	//// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
     // number it is.
@@ -85,9 +83,7 @@ public class OI {
         SmartDashboard.putData("TankDrive", new TankDrive());
 
         SmartDashboard.putData("ArcadeDrive", new ArcadeDrive());
-        
-        SmartDashboard.putData("Zero Controller", new ZeroControllerInputs());
-        
+                
         SmartDashboard.putData("Toggle Drive Style", new ToggleDriveStyle());
        
 
@@ -137,15 +133,7 @@ public class OI {
 	
 
 	
-    /**
-     * Read all of the axis values to determine the error values, and then record the corrections for each of these axes. This
-     * method should be called only when the controller axes are physically in their neutral position.
-     */
-    public void zeroAxisReadings() {
-        for (int i = 0; i < axisErrors.length; i++) {
-            axisErrors[i] = -xboxController.getRawAxis(i);
-        }
-    }
+
     
 }
 

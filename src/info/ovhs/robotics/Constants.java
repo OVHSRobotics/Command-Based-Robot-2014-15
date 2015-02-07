@@ -71,6 +71,17 @@ public final class Constants {
 		
 		public static final int LIMIT_SWITCH_PORT = 0;
 	}
+	
+	public static final class ControllerConstants{
+		
+		public static final double DEADZONE_X_CENTER = 5;
+		
+		public static final double DEADZONE_Y_CENTER = 7;
+		
+		public static final double DEADZONE_X = 7;
+		
+		public static final double DEADZONE_Y = 7;
+	}
 
 	public static final class OperatorControlsConstants {
 				
