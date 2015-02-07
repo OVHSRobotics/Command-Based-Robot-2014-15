@@ -1,5 +1,6 @@
 package info.ovhs.robotics.commands.autonomous;
 
+import info.ovhs.robotics.commands.conveyer.DropTote;
 import info.ovhs.robotics.commands.conveyer.LiftTote;
 import info.ovhs.robotics.commands.conveyer.LiftTrashCan;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -7,19 +8,38 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class Autonomous_LiftOneTrashCan_And_LiftOneTote extends CommandGroup {
+public class Autonomous_LiftOneTrashCan_And_LiftThreeTotes_Then_DropAll extends CommandGroup {
     
-    public  Autonomous_LiftOneTrashCan_And_LiftOneTote() {
+    public  Autonomous_LiftOneTrashCan_And_LiftThreeTotes_Then_DropAll() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	addSequential(new LiftTrashCan());
+    		addSequential(new LiftTrashCan());
     		
-    	//Drive forward set power value and number of seconds;
+    		//Drive forward set power value and number of seconds
     		addSequential(new DriveForward(1, 2));
-    	
+    		
     		addSequential(new LiftTote());
+    		//Completely lift first tote
+    		
+    		//Drive forward set power value and number of seconds
+    		addSequential(new DriveForward(1,2));
+    		
+    		addSequential(new LiftTote());
+    		//Completely lift second tote
+    		
+    		//Drive forward set power value and number of seconds
+    		addSequential(new DriveForward(1,2));
+    		
+    		addSequential(new LiftTote());
+    		//Completely lift third tote
+    		
+    		addSequential(new DropTote());
+    		addSequential(new DropTote());
+    		addSequential(new DropTote());
+    		//Drop all three totes
+    		
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());
