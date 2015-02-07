@@ -7,20 +7,23 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveForwardFullFor5Seconds extends Command {
+public class DriveForward extends Command {
 	private double initialTime;
+	private double time;
+	private double power;
 
-    public DriveForwardFullFor5Seconds() {
+    public DriveForward(double power, double time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(CommandBase.driveTrain);
-    	
+    	this.time = time;
+    	this.power = power;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	initialTime = System.nanoTime();
-    	CommandBase.driveTrain.driveStraight(Constants.MotorConstants.MOTOR_MAX_OUTPUT);
+    	CommandBase.driveTrain.driveStraight(this.power);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -29,7 +32,7 @@ public class DriveForwardFullFor5Seconds extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return System.nanoTime() >= initialTime + 5 * Math.pow(10, 9);
+        return System.nanoTime() >= this.initialTime + this.time * Math.pow(10, 9);
     }
 
     // Called once after isFinished returns true
