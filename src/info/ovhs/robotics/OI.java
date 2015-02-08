@@ -4,6 +4,7 @@ import info.ovhs.robotics.commands.autonomous.AutonomousCommand;
 import info.ovhs.robotics.commands.conveyer.DropTote;
 import info.ovhs.robotics.commands.conveyer.DropTrashCan;
 import info.ovhs.robotics.commands.conveyer.HoldPID;
+import info.ovhs.robotics.commands.conveyer.JoystickControlConveyer;
 import info.ovhs.robotics.commands.conveyer.LiftTote;
 import info.ovhs.robotics.commands.conveyer.LiftTrashCan;
 import info.ovhs.robotics.commands.drive.ArcadeDrive;
@@ -73,7 +74,7 @@ public class OI {
 	    backButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.BACK);
 	    backButton.whenPressed(new LiftTote());
 	    startButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.START);
-	    startButton.whenPressed(new LiftTrashCan());
+	    startButton.whileHeld(new JoystickControlConveyer());
     	
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
