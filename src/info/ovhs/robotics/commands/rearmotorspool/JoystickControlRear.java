@@ -1,4 +1,4 @@
-package info.ovhs.robotics.commands.conveyer;
+package info.ovhs.robotics.commands.rearmotorspool;
 
 import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.OI;
@@ -8,12 +8,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class JoystickControlConveyer extends Command {
+public class JoystickControlRear extends Command {
 
-    public JoystickControlConveyer() {
+    public JoystickControlRear() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(CommandBase.conveyerBelt);
+    	requires(CommandBase.rearMotorSpool);
     }
 
     // Called just before this Command runs the first time
@@ -22,8 +22,7 @@ public class JoystickControlConveyer extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	CommandBase.conveyerBelt.setSpeed(OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_Y));
-    	CommandBase.driveTrain.stopAllMotors();
+    	CommandBase.rearMotorSpool.setSpeed(OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_Y));
     }
 
     // Make this return true when this Command no longer needs to run execute()

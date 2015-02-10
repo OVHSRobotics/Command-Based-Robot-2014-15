@@ -1,5 +1,6 @@
 package info.ovhs.robotics.commands.rearmotorspool;
 
+import info.ovhs.robotics.Robot;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 
@@ -48,11 +49,13 @@ public class RearHoldPID extends PIDCommand {
     
     @Override
     protected double returnPIDInput() {
+    	Robot.print("Rear spool encoder: " + new Double(CommandBase.rearMotorSpool.encoder.getDistance()).toString());
     	return CommandBase.rearMotorSpool.encoder.getDistance();
     }
     
     @Override
     protected void usePIDOutput(double output) {
     	CommandBase.rearMotorSpool.setSpeed(output);
+    	Robot.print("Rear speed PID Output: " + output);
     }
 }

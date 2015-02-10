@@ -50,13 +50,13 @@ public class HoldPID extends PIDCommand {
 
 	@Override
 	protected double returnPIDInput() {
-		Robot.print(new Double(CommandBase.conveyerBelt.encoder.getDistance()).toString());
+		Robot.print("Conveyer belt encoder: " + new Double(CommandBase.conveyerBelt.encoder.getDistance()).toString());
 		return CommandBase.conveyerBelt.encoder.getDistance();
 	}
 
 	@Override
 	protected void usePIDOutput(double output) {
 		CommandBase.conveyerBelt.setSpeed(output);
-		Robot.print("Is in PID Output: " + output);
+		Robot.print("Converyer belt PID Output: " + output);
 	}
 }

@@ -11,6 +11,11 @@ import info.ovhs.robotics.commands.drive.ArcadeDrive;
 import info.ovhs.robotics.commands.drive.MecanumDrive;
 import info.ovhs.robotics.commands.drive.TankDrive;
 import info.ovhs.robotics.commands.drive.ToggleDriveStyle;
+import info.ovhs.robotics.commands.rearmotorspool.JoystickControlRear;
+import info.ovhs.robotics.commands.rearmotorspool.RearDropTote;
+import info.ovhs.robotics.commands.rearmotorspool.RearDropTrashCan;
+import info.ovhs.robotics.commands.rearmotorspool.RearHoldPID;
+import info.ovhs.robotics.commands.rearmotorspool.RearLiftTote;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -56,6 +61,8 @@ public class OI {
     public JoystickButton yButton;
     public JoystickButton backButton;
     public JoystickButton startButton;
+    public JoystickButton leftBumper;
+    public JoystickButton rightBumper;
     public static Joystick xboxController;
     public static Joystick fireButton;
     
@@ -66,15 +73,19 @@ public class OI {
     	aButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.A);
 	    aButton.whenPressed(new MecanumDrive());
 	    bButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.B);
-	    bButton.whenPressed(new DropTote());
+	    bButton.whenPressed(new RearDropTote());
 	    xButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.X);
-	    xButton.whenPressed(new DropTrashCan());
+	    xButton.whenPressed(new RearDropTrashCan());
 	    yButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.Y);
-	    yButton.whenPressed(new HoldPID());
+	    yButton.whenPressed(new RearHoldPID());
 	    backButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.BACK);
-	    backButton.whenPressed(new LiftTote());
-	    startButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.START);
-	    startButton.whileHeld(new JoystickControlConveyer());
+	    backButton.whenPressed(new RearLiftTote());
+//	    startButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.START);
+//	    startButton.whileHeld(new JoystickControlRear());
+	    leftBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.LEFT_BUMPER);
+	    leftBumper.whileHeld(new JoystickControlConveyer());
+	    rightBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.RIGHT_BUMPER);
+	    rightBumper.whileHeld(new JoystickControlRear());
     	
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
