@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.Gyro;
@@ -42,21 +43,21 @@ public class RobotMap {
 	}
 	
 	public static void setupDriveMotors() {
-		driveSpeedController1 = new Victor(Constants.Ports.PWM.FRONT_LEFT_DRIVE_MOTOR);
+		driveSpeedController1 = new Talon(Constants.Ports.PWM.FRONT_LEFT_DRIVE_MOTOR);
 		LiveWindow.addActuator("DriveTrain", "Speed Controller 1",
-				(Victor) driveSpeedController1);
+				(Talon) driveSpeedController1);
 
-		driveSpeedController2 = new Victor(Constants.Ports.PWM.REAR_LEFT_DRIVE_MOTOR);
+		driveSpeedController2 = new Talon(Constants.Ports.PWM.REAR_LEFT_DRIVE_MOTOR);
 		LiveWindow.addActuator("DriveTrain", "Speed Controller 2",
-				(Victor) driveSpeedController2);
+				(Talon) driveSpeedController2);
 
-		driveSpeedController3 = new Victor(Constants.Ports.PWM.FRONT_RIGHT_DRIVE_MOTOR);
+		driveSpeedController3 = new Talon(Constants.Ports.PWM.FRONT_RIGHT_DRIVE_MOTOR);
 		LiveWindow.addActuator("DriveTrain", "Speed Controller 3",
-				(Victor) driveSpeedController3);
+				(Talon) driveSpeedController3);
 
-		driveSpeedController4 = new Victor(Constants.Ports.PWM.REAR_RIGHT_DRIVE_MOTOR);
+		driveSpeedController4 = new Talon(Constants.Ports.PWM.REAR_RIGHT_DRIVE_MOTOR);
 		LiveWindow.addActuator("DriveTrain", "Speed Controller 4",
-				(Victor) driveSpeedController4);
+				(Talon) driveSpeedController4);
 		
 		conveyerBeltSpeedController1 = new Victor(Constants.Ports.PWM.CONVEYER_BELT_MOTOR);
 

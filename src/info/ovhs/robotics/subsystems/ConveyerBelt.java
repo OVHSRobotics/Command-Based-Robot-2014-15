@@ -111,7 +111,7 @@ public class ConveyerBelt extends Subsystem {
 	public void setSpeed(double speed) {
 		if (speed <= 1 && speed >= -1) {
 			conveyerBeltMotor.set(speed);
-		}	
+		}
 	}
 }
 

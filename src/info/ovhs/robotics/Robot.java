@@ -1,5 +1,4 @@
 
-
 package info.ovhs.robotics;
 
 import info.ovhs.robotics.commands.CommandBase;
@@ -121,5 +120,14 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData(CommandBase.conveyerBelt);
         SmartDashboard.putNumber("Encoder Distance", RobotMap.conveyerBeltEncoder.getDistance());
         SmartDashboard.putNumber("Encoder Raw Value", RobotMap.conveyerBeltEncoder.getRaw());
+        SmartDashboard.putNumber("Front Left", RobotMap.driveSpeedController1.get());
+        SmartDashboard.putNumber("Front Right", RobotMap.driveSpeedController3.get());
+        SmartDashboard.putNumber("Rear Left", RobotMap.driveSpeedController2.get());
+        SmartDashboard.putNumber("Rear Right", RobotMap.driveSpeedController4.get());
+        SmartDashboard.putNumber("Left Y", OI.getLeftStickYAxis());
+        SmartDashboard.putNumber("Left X", OI.getLeftStickXAxis());
+        SmartDashboard.putNumber("Right Y", OI.getRightStickYAxis());
+        SmartDashboard.putNumber("Right X", OI.getRightStickXAxis());
+        
     }
 }

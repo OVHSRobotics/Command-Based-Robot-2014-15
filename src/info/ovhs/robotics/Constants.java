@@ -75,7 +75,7 @@ public final class Constants {
 				
 				public static final double LEFT_Y_CENTER = -0.039;
 				
-				public static final double RIGHT_X_CENTER = 0;
+				public static final double RIGHT_X_CENTER = -0.125;
 				
 				public static final double RIGHT_Y_CENTER = 0;
 				
@@ -127,9 +127,9 @@ public final class Constants {
 		
 			public static final double MOTOR_MAX_OUTPUT = 1.0;
 			
-			public static final boolean LEFT_REAR_REVERSED = true;
+			public static final boolean LEFT_REAR_REVERSED = false;
 			
-			public static final boolean RIGHT_REAR_REVERSED = false;
+			public static final boolean RIGHT_REAR_REVERSED = true;
 			
 			public static final boolean LEFT_FRONT_REVERSED = true;
 			
@@ -166,9 +166,9 @@ public final class Constants {
 		
 			public static final int CONVEYER_BELT_ENCODER_B = 7;
 			
-			public static final int REAR_MOTOR_ENCODER_A = 8;
+			public static final int REAR_MOTOR_ENCODER_A = 6;
 		
-			public static final int REAR_MOTOR_ENCODER_B = 7;
+			public static final int REAR_MOTOR_ENCODER_B = 5;
 		}
 		
 		public static final class Analog {

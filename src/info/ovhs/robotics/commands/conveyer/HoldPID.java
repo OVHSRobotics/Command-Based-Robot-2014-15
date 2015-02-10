@@ -1,5 +1,6 @@
 package info.ovhs.robotics.commands.conveyer;
 
+import info.ovhs.robotics.Robot;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -9,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class HoldPID extends PIDCommand {
 	
-	private static final double k_p = 1;
+	private static final double k_p = 1.0;
 	private static final double k_i = 0.1;
 	private static final double k_d = 0;
 	
@@ -49,11 +50,13 @@ public class HoldPID extends PIDCommand {
 
 	@Override
 	protected double returnPIDInput() {
+		Robot.print(new Double(CommandBase.conveyerBelt.encoder.getDistance()).toString());
 		return CommandBase.conveyerBelt.encoder.getDistance();
 	}
 
 	@Override
 	protected void usePIDOutput(double output) {
 		CommandBase.conveyerBelt.setSpeed(output);
+		Robot.print("Is in PID Output: " + output);
 	}
 }

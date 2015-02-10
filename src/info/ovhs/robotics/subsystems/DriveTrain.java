@@ -34,7 +34,8 @@ public class DriveTrain extends Subsystem {
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new MecanumDrive());
+        //setDefaultCommand(new MecanumDrive());
+    	setDefaultCommand(new MecanumDrive());
     }
     
     /**
@@ -107,7 +108,8 @@ public class DriveTrain extends Subsystem {
     		rotationRate = OI.getRightStickXAxis();
     	}
     	
-    	drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), rotationRate, gyroAngle);
+    	//drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), rotationRate, gyroAngle);
+    	drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), OI.getRightStickXAxis(), 0);
     }
     
     /**
@@ -118,11 +120,11 @@ public class DriveTrain extends Subsystem {
     		setDefaultCommand(new MecanumDrive());
     	}
     	
-    	if (getDefaultCommand() instanceof ArcadeDrive) {
+    	else if (getDefaultCommand() instanceof ArcadeDrive) {
     		setDefaultCommand(new TankDrive());
     	}
     	
-    	if (getDefaultCommand() instanceof MecanumDrive) {
+    	else if (getDefaultCommand() instanceof MecanumDrive) {
     		setDefaultCommand(new ArcadeDrive());
     	}
     	

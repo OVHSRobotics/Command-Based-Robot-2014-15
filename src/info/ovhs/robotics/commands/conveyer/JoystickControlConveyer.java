@@ -21,7 +21,7 @@ public class JoystickControlConveyer extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	CommandBase.conveyerBelt.setSpeed(OI.xboxController.getRawAxis(5)/5);
+    	CommandBase.conveyerBelt.setSpeed(OI.xboxController.getRawAxis(5));
     }
 
     // Make this return true when this Command no longer needs to run execute()

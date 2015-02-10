@@ -2,7 +2,9 @@
 
 package info.ovhs.robotics.commands.drive;
 
+import info.ovhs.robotics.OI;
 import info.ovhs.robotics.Robot;
+import info.ovhs.robotics.RobotMap;
 import info.ovhs.robotics.commands.CommandBase;
 
 /**
@@ -23,12 +25,13 @@ public class  MecanumDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {    
-    	driveTrain.mecanumDriveController();
+    	//CommandBase.driveTrain.mecanumDriveController();
+    	RobotMap.drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), OI.getRightStickXAxis(), 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
