@@ -75,11 +75,17 @@ public final class Constants {
 				
 				public static final double LEFT_Y_CENTER = -0.039;
 				
+				public static final double RIGHT_X_CENTER = 0;
+				
+				public static final double RIGHT_Y_CENTER = 0;
+				
 				public static final double LEFT_X = 0.10;
 				
 				public static final double LEFT_Y = 0.07;
 				
 				public static final double RIGHT_X = 0.1;
+				
+				public static final double RIGHT_Y = 0.1;
 			}	
 		}
 	}

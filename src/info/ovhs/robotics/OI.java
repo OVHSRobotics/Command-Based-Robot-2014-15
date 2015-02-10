@@ -104,32 +104,22 @@ public class OI {
     
     public static double getLeftStickXAxis() {
     	double rawAxis = OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_X);
-    	if (rawAxis > (Constants.OperatorControls.Controller.Deadzone.LEFT_X_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_X)) {
-    		return OI.positiveScalingX(rawAxis);
-    	} else if (rawAxis < (Constants.OperatorControls.Controller.Deadzone.LEFT_X_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_X)) {
-    		return OI.negativeScalingX(rawAxis);
-    	} else {
-    		return 0;
-    	}
+    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.LEFT_X_CENTER, Constants.OperatorControls.Controller.Deadzone.LEFT_X, rawAxis);
     }
     
     public static double getLeftStickYAxis() {
     	double rawAxis = OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_Y);
-    	if (rawAxis > (Constants.OperatorControls.Controller.Deadzone.LEFT_Y_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_Y)) {
-    		return OI.positiveScalingY(rawAxis);
-    	} else if (rawAxis < (Constants.OperatorControls.Controller.Deadzone.LEFT_Y_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_Y)) {
-    		return OI.negativeScalingY(rawAxis);
-    	} else {
-    		return 0;
-    	}
+    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.LEFT_Y_CENTER, Constants.OperatorControls.Controller.Deadzone.LEFT_Y, rawAxis);
 	}
     
     public static double getRightStickXAxis() {
-    	return OI.xboxController.getRawAxis(4);
+    	double rawAxis = OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_X);
+    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.RIGHT_X_CENTER, Constants.OperatorControls.Controller.Deadzone.RIGHT_X, rawAxis);
     }
     
     public static double getRightStickYAxis() {
-    	return OI.xboxController.getRawAxis(5);
+    	double rawAxis = OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_Y);
+    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.RIGHT_Y_CENTER, Constants.OperatorControls.Controller.Deadzone.RIGHT_Y, rawAxis);
     }
     
    
@@ -146,21 +136,22 @@ public class OI {
 		return xboxController;
 	}
 	
-
-	private static double positiveScalingX(double x) {
-		return (1-0) * ((x-(Constants.OperatorControls.Controller.Deadzone.LEFT_X_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_X)) / (1 - (Constants.OperatorControls.Controller.Deadzone.LEFT_X_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_X)));
-	}
-
-	private static double positiveScalingY(double y) {
-		return (1-0) * ((y-(Constants.OperatorControls.Controller.Deadzone.LEFT_Y_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_Y)) / (1 - (Constants.OperatorControls.Controller.Deadzone.LEFT_Y_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_Y)));
+	private static double getValueAfterDeadZoneScaling(double center, double deadZone, double value) {
+		if (value > center + deadZone) {
+    		return OI.positiveScaling(center, deadZone, value);
+    	} else if (value < center - deadZone) {
+    		return OI.negativeScaling(center, deadZone, value);
+    	} else {
+    		return 0;
+    	}
 	}
 	
-	private static double negativeScalingX(double x) {
-		return (-1-0) * ((x-(Constants.OperatorControls.Controller.Deadzone.LEFT_X_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_X)) / (-1 - (Constants.OperatorControls.Controller.Deadzone.LEFT_X_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_X)));
+	private static double positiveScaling(double center, double deadZone, double value) {
+		return (1 - 0) * (value - (center + deadZone)) / (1 - (center + deadZone));
 	}
-
-	private static double negativeScalingY(double y) {
-		return (-1-0) * ((y-(Constants.OperatorControls.Controller.Deadzone.LEFT_Y_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_Y)) / (-1 - (Constants.OperatorControls.Controller.Deadzone.LEFT_Y_CENTER + Constants.OperatorControls.Controller.Deadzone.LEFT_Y)));
+	
+	private static double negativeScaling(double center, double deadZone, double value) {
+		return (-1 - 0) * (value - (center - deadZone)) / (-1 - (center - deadZone));
 	}
     
 }
