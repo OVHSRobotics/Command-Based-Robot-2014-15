@@ -102,28 +102,46 @@ public class OI {
 //        return xboxController.getRawAxis(axis) + axisErrors[axis];
 //    }
     
+    /**
+     * Gets the value for the x-axis on the left stick of the xbox controller
+     * 
+     * @return Value for the x-axis on the left stick of the xbox controller
+     */
     public static double getLeftStickXAxis() {
     	double rawAxis = OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_X);
     	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.LEFT_X_CENTER, Constants.OperatorControls.Controller.Deadzone.LEFT_X, rawAxis);
     }
     
+    /**
+     * Gets the value for the y-axis on the left stick of the xbox controller
+     * 
+     * @return Value for the y-axis on the left stick of the xbox controller
+     */
     public static double getLeftStickYAxis() {
     	double rawAxis = OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_Y);
     	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.LEFT_Y_CENTER, Constants.OperatorControls.Controller.Deadzone.LEFT_Y, rawAxis);
 	}
     
+    /**
+     * Gets the value for the x-axis on the right stick of the xbox controller
+     * 
+     * @return Value for the x-axis on the right stick of the xbox controller
+     */    
     public static double getRightStickXAxis() {
     	double rawAxis = OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_X);
     	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.RIGHT_X_CENTER, Constants.OperatorControls.Controller.Deadzone.RIGHT_X, rawAxis);
     }
     
+    /**
+     * Gets the value for the y-axis on the right stick of the xbox controller
+     * 
+     * @return Value for the y-axis on the right stick of the xbox controller
+     */    
     public static double getRightStickYAxis() {
     	double rawAxis = OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_Y);
     	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.RIGHT_Y_CENTER, Constants.OperatorControls.Controller.Deadzone.RIGHT_Y, rawAxis);
     }
-    
-   
-    
+     
 //    public static boolean leftTriggerAllWayDown() {
 //    	return (Math.abs(xboxController.getRawAxis(3))>= .98);
 //    }
@@ -136,6 +154,14 @@ public class OI {
 		return xboxController;
 	}
 	
+	/**
+	 * Gets the value after the scaling for the deadzones
+	 * 
+	 * @param center Center value for the deadzones
+	 * @param deadZone The amount for the deadzone
+	 * @param value Current value
+	 * @return Value after deadzone scaling
+	 */
 	private static double getValueAfterDeadZoneScaling(double center, double deadZone, double value) {
 		if (value > center + deadZone) {
     		return OI.positiveScaling(center, deadZone, value);
@@ -146,10 +172,26 @@ public class OI {
     	}
 	}
 	
+	/**
+	 * Gets the value after the positive scaling for the deadzones
+	 * 
+	 * @param center Center value for the deadzones
+	 * @param deadZone The amount for the deadzone
+	 * @param value Current value
+	 * @return Value after positive deadzone scaling
+	 */
 	private static double positiveScaling(double center, double deadZone, double value) {
 		return (1 - 0) * (value - (center + deadZone)) / (1 - (center + deadZone));
 	}
 	
+	/**
+	 * Gets the value after the negative scaling for the deadzones
+	 * 
+	 * @param center Center value for the deadzones
+	 * @param deadZone The amount for the deadzone
+	 * @param value Current value
+	 * @return Value after negative deadzone scaling
+	 */	
 	private static double negativeScaling(double center, double deadZone, double value) {
 		return (-1 - 0) * (value - (center - deadZone)) / (-1 - (center - deadZone));
 	}
