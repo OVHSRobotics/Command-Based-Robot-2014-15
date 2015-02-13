@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.Gyro;
 import info.ovhs.robotics.Constants;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.AnalogInput;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -19,17 +20,18 @@ import edu.wpi.first.wpilibj.Encoder;
  */
 public class RobotMap {
 
-	public static SpeedController driveSpeedController1;
-	public static SpeedController driveSpeedController2;
-	public static SpeedController driveSpeedController3;
-	public static SpeedController driveSpeedController4;
-	public static SpeedController conveyerBeltSpeedController1;
-	public static SpeedController rearMotorSpoolSpeedController1;
+	public static SpeedController frontLeftDriveSpeedController;
+	public static SpeedController rearLeftDriveSpeedController;
+	public static SpeedController frontRightDriveSpeedController;
+	public static SpeedController rearRightDriveSpeedController;
+	public static SpeedController conveyerBeltSpeedController;
+	public static SpeedController rearMotorSpoolSpeedController;
 	public static RobotDrive drive;
 	public static Encoder conveyerBeltEncoder;
 	public static Encoder rearEncoder;
-	public static Gyro gyro1;
-	public static DigitalInput limitSwitch1;
+	public static Gyro robotGyro;
+	public static AnalogInput robotGyroTempSensor;
+	public static DigitalInput robotLimitSwitch;
 
 	public static void init() {
 
@@ -37,34 +39,39 @@ public class RobotMap {
 		
 		RobotMap.createGyro();
 		
+		RobotMap.createGyroTempSensor();
+		
 		RobotMap.createEncoders();
 		
 		RobotMap.createLimitSwitches();
 	}
 	
 	public static void setupDriveMotors() {
-		driveSpeedController1 = new Talon(Constants.Ports.PWM.FRONT_LEFT_DRIVE_MOTOR);
-		LiveWindow.addActuator("DriveTrain", "Speed Controller 1",
-				(Talon) driveSpeedController1);
+		frontLeftDriveSpeedController = new Talon(Constants.Ports.PWM.FRONT_LEFT_DRIVE_MOTOR);
+		LiveWindow.addActuator("DriveTrain", "Front Left Drive Speed Controller",
+				(Talon) frontLeftDriveSpeedController);
 
-		driveSpeedController2 = new Talon(Constants.Ports.PWM.REAR_LEFT_DRIVE_MOTOR);
-		LiveWindow.addActuator("DriveTrain", "Speed Controller 2",
-				(Talon) driveSpeedController2);
+		rearLeftDriveSpeedController = new Talon(Constants.Ports.PWM.REAR_LEFT_DRIVE_MOTOR);
+		LiveWindow.addActuator("DriveTrain", "Back Left Drive Speed Controller",
+				(Talon) rearLeftDriveSpeedController);
 
-		driveSpeedController3 = new Talon(Constants.Ports.PWM.FRONT_RIGHT_DRIVE_MOTOR);
-		LiveWindow.addActuator("DriveTrain", "Speed Controller 3",
-				(Talon) driveSpeedController3);
+		frontRightDriveSpeedController = new Talon(Constants.Ports.PWM.FRONT_RIGHT_DRIVE_MOTOR);
+		LiveWindow.addActuator("DriveTrain", "Front Right Drive Speed Controller",
+				(Talon) frontRightDriveSpeedController);
 
-		driveSpeedController4 = new Talon(Constants.Ports.PWM.REAR_RIGHT_DRIVE_MOTOR);
-		LiveWindow.addActuator("DriveTrain", "Speed Controller 4",
-				(Talon) driveSpeedController4);
+		rearRightDriveSpeedController = new Talon(Constants.Ports.PWM.REAR_RIGHT_DRIVE_MOTOR);
+		LiveWindow.addActuator("DriveTrain", "Back Right Drive Speed Controller",
+				(Talon) rearRightDriveSpeedController);
 		
-		conveyerBeltSpeedController1 = new Victor(Constants.Ports.PWM.CONVEYER_BELT_MOTOR);
+		conveyerBeltSpeedController = new Victor(Constants.Ports.PWM.CONVEYER_BELT_MOTOR);
+		LiveWindow.addActuator("Conveyer Belt", "Conveyer Belt Motor", (Victor) conveyerBeltSpeedController);
 
-		rearMotorSpoolSpeedController1 = new Victor(Constants.Ports.PWM.REAR_MOTOR);
+		rearMotorSpoolSpeedController = new Victor(Constants.Ports.PWM.REAR_MOTOR);
+		LiveWindow.addActuator("Rear Motor Spool", "Rear Motor Spool Motor", (Victor) rearMotorSpoolSpeedController);
+
 		
-		drive = new RobotDrive(driveSpeedController1, driveSpeedController2,
-				driveSpeedController3, driveSpeedController4);
+		drive = new RobotDrive(frontLeftDriveSpeedController, rearLeftDriveSpeedController,
+				frontRightDriveSpeedController, rearRightDriveSpeedController);
 
 		drive.setSafetyEnabled(false);
 		drive.setMaxOutput(Constants.Motors.MOTOR_MAX_OUTPUT);
@@ -79,9 +86,14 @@ public class RobotMap {
 	}
 	
 	public static void createGyro() {
-		gyro1 = new Gyro(Constants.Ports.Analog.DRIVE_BASE_GYRO);
-		gyro1.setSensitivity(.007);
-		LiveWindow.addSensor("Drive Train", "Gyro 1", gyro1);
+		robotGyro = new Gyro(Constants.Ports.Analog.DRIVE_BASE_GYRO);
+		robotGyro.setSensitivity(.007);
+		LiveWindow.addSensor("Drive Train", "Gyro 1", robotGyro);
+	}
+	
+	public static void createGyroTempSensor() {
+		robotGyroTempSensor = new AnalogInput(Constants.Ports.Analog.GYRO_TEMP_SENSOR);
+		LiveWindow.addSensor("DriveTrain", "Temperature Sensor", robotGyroTempSensor);
 	}
 	
 	public static void createEncoders() {
@@ -89,6 +101,7 @@ public class RobotMap {
 			conveyerBeltEncoder = new Encoder(Constants.Ports.DIO.CONVEYER_BELT_ENCODER_A, Constants.Ports.DIO.CONVEYER_BELT_ENCODER_B, Constants.ConveyerBelt.Encoder.REVERSED, EncodingType.k4X);
 			conveyerBeltEncoder.setDistancePerPulse(Constants.ConveyerBelt.Encoder.DISTANCE_PER_PULSE);
 			conveyerBeltEncoder.reset();
+			LiveWindow.addSensor("Conveyer Belt", "Conveyer Belt Encoder", conveyerBeltEncoder);
 		}
 		catch (Exception exception) {
 			System.out.println(exception);
@@ -97,12 +110,18 @@ public class RobotMap {
 			rearEncoder = new Encoder(Constants.Ports.DIO.REAR_MOTOR_ENCODER_A, Constants.Ports.DIO.REAR_MOTOR_ENCODER_B, Constants.RearMotorSpool.Encoder.REVERSED, EncodingType.k4X);
 			rearEncoder.setDistancePerPulse(Constants.RearMotorSpool.Encoder.DISTANCE_PER_PULSE);
 			rearEncoder.reset();
+			LiveWindow.addSensor("Rear Motor Spool", "Rear Encoder", rearEncoder);
 		}
 		catch (Exception exception){
 			System.out.println(exception);
 		}
 	}
 	public static void createLimitSwitches() {
-		limitSwitch1 = new DigitalInput(Constants.Ports.Analog.LIMIT_SWITCH);
+		robotLimitSwitch = new DigitalInput(Constants.Ports.Analog.LIMIT_SWITCH);
+		LiveWindow.addActuator("DriveTrain", "Limit Switch", robotLimitSwitch);
+	}
+	
+	public static void createAutonomousSwitches() {
+		
 	}
 }

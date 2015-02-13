@@ -14,7 +14,7 @@ public class RearMotorSpool extends Subsystem {
 
 	protected static RearMotorSpool instance;
 	
-	protected SpeedController rearSpoolMotor = RobotMap.rearMotorSpoolSpeedController1;		
+	protected SpeedController rearSpoolMotor = RobotMap.rearMotorSpoolSpeedController;		
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

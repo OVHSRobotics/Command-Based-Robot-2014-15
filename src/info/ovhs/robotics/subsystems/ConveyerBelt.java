@@ -15,7 +15,7 @@ public class ConveyerBelt extends Subsystem {
 
 	protected static ConveyerBelt instance;
 	
-	protected SpeedController conveyerBeltMotor = RobotMap.conveyerBeltSpeedController1;		
+	protected SpeedController conveyerBeltMotor = RobotMap.conveyerBeltSpeedController;		
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

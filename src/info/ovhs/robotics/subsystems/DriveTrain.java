@@ -18,10 +18,10 @@ public class DriveTrain extends Subsystem {
 	
 	protected static DriveTrain instance;
 	
-    SpeedController motorSpeedController1 = RobotMap.driveSpeedController1;
-    SpeedController motorSpeedController2 = RobotMap.driveSpeedController2;
-    SpeedController motorSpeedController3 = RobotMap.driveSpeedController3;
-    SpeedController motorSpeedController4 = RobotMap.driveSpeedController4;
+    SpeedController motorSpeedController1 = RobotMap.frontLeftDriveSpeedController;
+    SpeedController motorSpeedController2 = RobotMap.rearLeftDriveSpeedController;
+    SpeedController motorSpeedController3 = RobotMap.frontRightDriveSpeedController;
+    SpeedController motorSpeedController4 = RobotMap.rearRightDriveSpeedController;
     RobotDrive drive = RobotMap.drive;
     
     public static DriveTrain getInstance() {
@@ -102,7 +102,7 @@ public class DriveTrain extends Subsystem {
     public void mecanumDriveController(double gyroAngle) {
     	double rotationRate = 0;
     	if (Math.abs(OI.getRightStickXAxis()) <= Constants.OperatorControls.Controller.Deadzone.RIGHT_X) {
-    		rotationRate = -RobotMap.gyro1.getRate();
+    		rotationRate = -RobotMap.robotGyro.getRate();
     	}
     	else {
     		rotationRate = OI.getRightStickXAxis();

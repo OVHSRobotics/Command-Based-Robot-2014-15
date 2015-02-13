@@ -4,14 +4,14 @@ import info.ovhs.robotics.commands.autonomous.AutonomousCommand;
 import info.ovhs.robotics.commands.conveyer.DropTote;
 import info.ovhs.robotics.commands.conveyer.DropTrashCan;
 import info.ovhs.robotics.commands.conveyer.HoldPID;
-import info.ovhs.robotics.commands.conveyer.JoystickControlConveyer;
+import info.ovhs.robotics.commands.conveyer.ConveyerJoystickControl;
 import info.ovhs.robotics.commands.conveyer.LiftTote;
 import info.ovhs.robotics.commands.conveyer.LiftTrashCan;
 import info.ovhs.robotics.commands.drive.ArcadeDrive;
 import info.ovhs.robotics.commands.drive.MecanumDrive;
 import info.ovhs.robotics.commands.drive.TankDrive;
 import info.ovhs.robotics.commands.drive.ToggleDriveStyle;
-import info.ovhs.robotics.commands.rearmotorspool.JoystickControlRear;
+import info.ovhs.robotics.commands.rearmotorspool.RearJoystickControl;
 import info.ovhs.robotics.commands.rearmotorspool.RearDropTote;
 import info.ovhs.robotics.commands.rearmotorspool.RearDropTrashCan;
 import info.ovhs.robotics.commands.rearmotorspool.RearHoldPID;
@@ -83,9 +83,9 @@ public class OI {
 //	    startButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.START);
 //	    startButton.whileHeld(new JoystickControlRear());
 	    leftBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.LEFT_BUMPER);
-	    leftBumper.whileHeld(new JoystickControlConveyer());
+	    leftBumper.whileHeld(new ConveyerJoystickControl());
 	    rightBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.RIGHT_BUMPER);
-	    rightBumper.whileHeld(new JoystickControlRear());
+	    rightBumper.whileHeld(new RearJoystickControl());
     	
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
@@ -153,13 +153,13 @@ public class OI {
     	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.RIGHT_Y_CENTER, Constants.OperatorControls.Controller.Deadzone.RIGHT_Y, rawAxis);
     }
      
-//    public static boolean leftTriggerAllWayDown() {
-//    	return (Math.abs(xboxController.getRawAxis(3))>= .98);
-//    }
-//    
-//    public static boolean rightTriggerAllWayDown() {
-//    	return ((-1 * Math.abs(xboxController.getRawAxis(3)) <= -.98));
-//    }
+    public static boolean leftTriggerAllWayDown() {
+    	return (Math.abs(xboxController.getRawAxis(2))>= .98);
+    }
+    
+    public static boolean rightTriggerAllWayDown() {
+    	return (xboxController.getRawAxis(3) <= -.98);
+    }
 
 	public Joystick getController() {
 		return xboxController;

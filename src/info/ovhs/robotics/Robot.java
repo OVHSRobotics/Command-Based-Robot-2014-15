@@ -27,7 +27,7 @@ public class Robot extends IterativeRobot {
     	RobotMap.init();
         CommandBase.init();
         
-        RobotMap.gyro1.initGyro();        
+        RobotMap.robotGyro.initGyro();        
     	
         // OI must be constructed after subsystems. If the OI creates Commands 
         //(which it very likely will), subsystems are not guaranteed to be 
@@ -123,14 +123,17 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Conveyer Encoder Raw Value", RobotMap.conveyerBeltEncoder.getRaw());
         SmartDashboard.putNumber("Rear Encoder Distance", RobotMap.rearEncoder.getDistance());
         SmartDashboard.putNumber("Rear Encoder Raw Value", RobotMap.rearEncoder.getRaw());
-        SmartDashboard.putNumber("Front Left", RobotMap.driveSpeedController1.get());
-        SmartDashboard.putNumber("Front Right", RobotMap.driveSpeedController3.get());
-        SmartDashboard.putNumber("Rear Left", RobotMap.driveSpeedController2.get());
-        SmartDashboard.putNumber("Rear Right", RobotMap.driveSpeedController4.get());
+        SmartDashboard.putNumber("Front Left", RobotMap.frontLeftDriveSpeedController.get());
+        SmartDashboard.putNumber("Front Right", RobotMap.frontRightDriveSpeedController.get());
+        SmartDashboard.putNumber("Rear Left", RobotMap.rearLeftDriveSpeedController.get());
+        SmartDashboard.putNumber("Rear Right", RobotMap.rearRightDriveSpeedController.get());
         SmartDashboard.putNumber("Left Y", OI.getLeftStickYAxis());
         SmartDashboard.putNumber("Left X", OI.getLeftStickXAxis());
         SmartDashboard.putNumber("Right Y", OI.getRightStickYAxis());
         SmartDashboard.putNumber("Right X", OI.getRightStickXAxis());
-        
+        SmartDashboard.putNumber("Left Y Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_Y));
+        SmartDashboard.putNumber("Left X Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_X));
+        SmartDashboard.putNumber("Right Y Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_Y));
+        SmartDashboard.putNumber("Right X Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_X));    
     }
 }

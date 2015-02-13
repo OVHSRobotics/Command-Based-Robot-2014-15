@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class JoystickControlConveyer extends Command {
+public class ConveyerJoystickControl extends Command {
 
-    public JoystickControlConveyer() {
+    public ConveyerJoystickControl() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(CommandBase.conveyerBelt);

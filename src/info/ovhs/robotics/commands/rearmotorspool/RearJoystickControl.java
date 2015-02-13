@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class JoystickControlRear extends Command {
+public class RearJoystickControl extends Command {
 
-    public JoystickControlRear() {
+    public RearJoystickControl() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(CommandBase.rearMotorSpool);

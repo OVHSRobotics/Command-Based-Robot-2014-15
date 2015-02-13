@@ -83,9 +83,9 @@ public final class Constants {
 				
 				public static final double LEFT_Y = 0.07;
 				
-				public static final double RIGHT_X = 0.1;
+				public static final double RIGHT_X = 0.15;
 				
-				public static final double RIGHT_Y = 0.1;
+				public static final double RIGHT_Y = 0.225;
 			}	
 		}
 	}
@@ -169,13 +169,19 @@ public final class Constants {
 			public static final int REAR_MOTOR_ENCODER_A = 6;
 		
 			public static final int REAR_MOTOR_ENCODER_B = 5;
+			
+			public static final int AUTONOMOUS_SWITCH_A = 0;
+			
+			public static final int AUTONOMOUS_SWITCH_B = 1;
 		}
 		
 		public static final class Analog {
 			
 			public static final int DRIVE_BASE_GYRO = 0;
 			
-			public static final int LIMIT_SWITCH = 0;
+			public static final int GYRO_TEMP_SENSOR = 1;
+			
+			public static final int LIMIT_SWITCH = 2;
 		}
 	}
 

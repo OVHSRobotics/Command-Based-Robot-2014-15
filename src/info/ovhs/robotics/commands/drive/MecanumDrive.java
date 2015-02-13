@@ -25,8 +25,8 @@ public class  MecanumDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {    
-    	//CommandBase.driveTrain.mecanumDriveController();
-    	RobotMap.drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), OI.getRightStickXAxis(), 0);
+    	CommandBase.driveTrain.mecanumDriveController();
+//    	RobotMap.drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), OI.getRightStickXAxis(), 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
