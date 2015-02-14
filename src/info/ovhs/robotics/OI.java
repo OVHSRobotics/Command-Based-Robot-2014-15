@@ -83,15 +83,19 @@ public class OI {
 	    
     	
         // SmartDashboard Buttons
-        SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
-
         SmartDashboard.putData("MecanumDrive", new MecanumDrive());
 
         SmartDashboard.putData("TankDrive", new TankDrive());
 
         SmartDashboard.putData("ArcadeDrive", new ArcadeDrive());
+        
+        SmartDashboard.putData("Lower Conveyer To Bottom", new LowerConveyerToBottom());
+        
+        SmartDashboard.putData("ResetConveyer", new ResetConveyer());
+        
+        SmartDashboard.putData("Reset Rear", new ResetRear());
                 
-        SmartDashboard.putData("Toggle Drive Style", new ToggleDriveStyle());
+
        
 
     }

@@ -190,20 +190,20 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData(CommandBase.conveyerBelt);
         SmartDashboard.putData(CommandBase.rearMotorSpool);
         SmartDashboard.putNumber("Conveyer Encoder Distance", RobotMap.conveyerBeltEncoder.getDistance());
-        SmartDashboard.putNumber("Conveyer Encoder Raw Value", RobotMap.conveyerBeltEncoder.getRaw());
+        SmartDashboard.putNumber("Conveyer Encoder Raw", RobotMap.conveyerBeltEncoder.getRaw());
         SmartDashboard.putNumber("Rear Encoder Distance", RobotMap.rearEncoder.getDistance());
-        SmartDashboard.putNumber("Rear Encoder Raw Value", RobotMap.rearEncoder.getRaw());
-        SmartDashboard.putNumber("Front Left", RobotMap.frontLeftDriveSpeedController.get());
-        SmartDashboard.putNumber("Front Right", RobotMap.frontRightDriveSpeedController.get());
-        SmartDashboard.putNumber("Rear Left", RobotMap.rearLeftDriveSpeedController.get());
-        SmartDashboard.putNumber("Rear Right", RobotMap.rearRightDriveSpeedController.get());
-        SmartDashboard.putNumber("Left Y", OI.getLeftStickYAxis());
-        SmartDashboard.putNumber("Left X", OI.getLeftStickXAxis());
-        SmartDashboard.putNumber("Right Y", OI.getRightStickYAxis());
-        SmartDashboard.putNumber("Right X", OI.getRightStickXAxis());
-        SmartDashboard.putNumber("Left Y Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_Y));
-        SmartDashboard.putNumber("Left X Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_X));
-        SmartDashboard.putNumber("Right Y Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_Y));
-        SmartDashboard.putNumber("Right X Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_X));    
+        SmartDashboard.putNumber("Rear Encoder Raw", RobotMap.rearEncoder.getRaw());
+        SmartDashboard.putNumber("Front Left Motor", RobotMap.frontLeftDriveSpeedController.get());
+        SmartDashboard.putNumber("Front Right Motor", RobotMap.frontRightDriveSpeedController.get());
+        SmartDashboard.putNumber("Rear Left Motor", RobotMap.rearLeftDriveSpeedController.get());
+        SmartDashboard.putNumber("Rear Right Motor", RobotMap.rearRightDriveSpeedController.get());
+        SmartDashboard.putNumber("Left Y Axis", OI.getLeftStickYAxis());
+        SmartDashboard.putNumber("Left X Axis", OI.getLeftStickXAxis());
+        SmartDashboard.putNumber("Right Y Axis", OI.getRightStickYAxis());
+        SmartDashboard.putNumber("Right X Axis", OI.getRightStickXAxis());
+        SmartDashboard.putNumber("Left Y Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_Y));
+        SmartDashboard.putNumber("Left X Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_X));
+        SmartDashboard.putNumber("Right Y Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_Y));
+        SmartDashboard.putNumber("Right X Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_X));    
     }
 }
