@@ -1,21 +1,9 @@
 package info.ovhs.robotics;
 
 import info.ovhs.robotics.commands.autonomous.AutonomousCommand;
-import info.ovhs.robotics.commands.conveyer.DropTote;
-import info.ovhs.robotics.commands.conveyer.DropTrashCan;
-import info.ovhs.robotics.commands.conveyer.HoldPID;
-import info.ovhs.robotics.commands.conveyer.ConveyerJoystickControl;
-import info.ovhs.robotics.commands.conveyer.LiftTote;
-import info.ovhs.robotics.commands.conveyer.LiftTrashCan;
-import info.ovhs.robotics.commands.drive.ArcadeDrive;
-import info.ovhs.robotics.commands.drive.MecanumDrive;
-import info.ovhs.robotics.commands.drive.TankDrive;
-import info.ovhs.robotics.commands.drive.ToggleDriveStyle;
-import info.ovhs.robotics.commands.rearmotorspool.RearJoystickControl;
-import info.ovhs.robotics.commands.rearmotorspool.RearDropTote;
-import info.ovhs.robotics.commands.rearmotorspool.RearDropTrashCan;
-import info.ovhs.robotics.commands.rearmotorspool.RearHoldPID;
-import info.ovhs.robotics.commands.rearmotorspool.RearLiftTote;
+import info.ovhs.robotics.commands.conveyer.*;
+import info.ovhs.robotics.commands.drive.*;
+import info.ovhs.robotics.commands.rearmotorspool.*;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -63,6 +51,8 @@ public class OI {
     public JoystickButton startButton;
     public JoystickButton leftBumper;
     public JoystickButton rightBumper;
+    public JoystickTriggerAsButton leftTrigger;
+    public JoystickTriggerAsButton rightTrigger;
     public static Joystick xboxController;
     public static Joystick fireButton;
     
@@ -71,21 +61,26 @@ public class OI {
     	xboxController = new Joystick(Constants.Ports.Joystick.CONTROLLER);
     	fireButton = new Joystick(Constants.Ports.Joystick.FIRE_BUTTON);
     	aButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.A);
-	    aButton.whenPressed(new MecanumDrive());
+	    aButton.whenPressed(new LiftTote());
 	    bButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.B);
-	    bButton.whenPressed(new RearDropTote());
+	    bButton.whenPressed(new DropTote());
 	    xButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.X);
-	    xButton.whenPressed(new RearDropTrashCan());
+	    xButton.whenPressed(new RearLiftTrashCan());
 	    yButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.Y);
-	    yButton.whenPressed(new RearHoldPID());
-	    backButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.BACK);
-	    backButton.whenPressed(new RearLiftTote());
+	    yButton.whenPressed(new RearDropTrashCan());
+//	    backButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.BACK);
+//	    backButton.whenPressed(new LiftTote());
 //	    startButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.START);
 //	    startButton.whileHeld(new JoystickControlRear());
 	    leftBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.LEFT_BUMPER);
-	    leftBumper.whileHeld(new ConveyerJoystickControl());
+	    leftBumper.whileHeld(new RearMove(false));
 	    rightBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.RIGHT_BUMPER);
-	    rightBumper.whileHeld(new RearJoystickControl());
+	    rightBumper.whileHeld(new RearMove(true));
+	    leftTrigger = new JoystickTriggerAsButton(xboxController, Constants.OperatorControls.Controller.Axes.LEFT_TRIGGER, .04);
+	    leftTrigger.whenPressed(new ConveyerMove(false));
+	    rightTrigger = new JoystickTriggerAsButton(xboxController, Constants.OperatorControls.Controller.Axes.RIGHT_TRIGGER, .04);
+	    rightTrigger.whenPressed(new ConveyerMove(true));
+	    
     	
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
@@ -151,14 +146,6 @@ public class OI {
     public static double getRightStickYAxis() {
     	double rawAxis = OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_Y);
     	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.RIGHT_Y_CENTER, Constants.OperatorControls.Controller.Deadzone.RIGHT_Y, rawAxis);
-    }
-     
-    public static boolean leftTriggerAllWayDown() {
-    	return (Math.abs(xboxController.getRawAxis(2))>= .98);
-    }
-    
-    public static boolean rightTriggerAllWayDown() {
-    	return (xboxController.getRawAxis(3) <= -.98);
     }
 
 	public Joystick getController() {
