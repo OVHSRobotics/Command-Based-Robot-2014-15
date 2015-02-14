@@ -8,10 +8,25 @@ public class DropTote extends CommandBase {
 
 	private double initialDistance;
 	
-    public DropTote() {
+	private double percentSpeed;
+	
+	/**
+	 * Drops tote at full speed
+	 */
+	public DropTote() {
+		this(100);
+	}
+	
+	/**
+	 * Drops tote at a set speed
+	 * 
+	 * @param percentSpeed Speed to drop tote at
+	 */
+    public DropTote(double percentSpeed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(CommandBase.conveyerBelt);
+    	this.percentSpeed = percentSpeed;
     }
 
     // Called just before this Command runs the first time
@@ -19,8 +34,7 @@ public class DropTote extends CommandBase {
     	this.initialDistance = CommandBase.conveyerBelt.encoder.getDistance();
     	
     	// Turn the motor on
-    	double percentSpeed = 100;
-    	CommandBase.conveyerBelt.backward(percentSpeed / 100 * -Constants.Motors.MOTOR_MAX_OUTPUT);
+    	CommandBase.conveyerBelt.backward(this.percentSpeed / 100 * -Constants.Motors.MOTOR_MAX_OUTPUT);
     }
 
     // Called repeatedly when this Command is scheduled to run

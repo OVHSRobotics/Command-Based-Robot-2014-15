@@ -29,9 +29,9 @@ public class RearMove extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (this.forward) {
-    		CommandBase.rearMotorSpool.forward(.15);
+    		CommandBase.rearMotorSpool.forward(1);
     	} else if (!this.forward) {
-    		CommandBase.rearMotorSpool.backward(.15);
+    		CommandBase.rearMotorSpool.backward(1);
     	} else {
 
     	}

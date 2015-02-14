@@ -1,5 +1,6 @@
 package info.ovhs.robotics.commands.rearmotorspool;
 
+import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.Robot;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.PIDCommand;
@@ -23,6 +24,7 @@ public class ResetRear extends PIDCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.print(this.toString());
     	CommandBase.rearMotorSpool.stop();
     	this.setSetpoint(CommandBase.rearMotorSpool.initialEncoderValue);
     }
@@ -33,7 +35,7 @@ public class ResetRear extends PIDCommand {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return CommandBase.rearMotorSpool.encoder.getDistance() <= 0;
+    	return Math.abs(CommandBase.rearMotorSpool.encoder.getDistance() - CommandBase.rearMotorSpool.initialEncoderValue) < Constants.RearMotorSpool.Encoder.RESET_THRESHOLD;
     }
 
     // Called once after isFinished returns true
@@ -55,5 +57,10 @@ public class ResetRear extends PIDCommand {
     @Override
     protected void usePIDOutput(double output) {
     	CommandBase.rearMotorSpool.setSpeed(output);
+    }
+    
+    @Override
+    public String toString() {
+    	return "Resetting RearMotorSpool";
     }
 }

@@ -83,7 +83,7 @@ public final class Constants {
 				
 				public static final double LEFT_Y = 0.07;
 				
-				public static final double RIGHT_X = 0.15;
+				public static final double RIGHT_X = 0.260;
 				
 				public static final double RIGHT_Y = 0.225;
 			}	
@@ -120,6 +120,8 @@ public final class Constants {
 			public static final double DISTANCE_PER_PULSE = Constants.ConveyerBelt.SPROCKET_CIRCUMFRENCE_INCHES * Constants.ConveyerBelt.SPROCKET_TO_GEARBOX_GEAR_RATIO * Constants.ConveyerBelt.Encoder.GEARBOX_REVOLUTIONS_PER_PULSE;
 			
 			public static final boolean REVERSED = false;
+			
+			public static final double RESET_THRESHOLD = 3;
 		}
 	}
 	
@@ -188,9 +190,9 @@ public final class Constants {
 
 	public static final class RearMotorSpool {
 		
-		public static final double SPROCKET_DIAMETER_FEET = 2.5; //Arbitrary number, change if necessary
+		public static final double SPROCKET_DIAMETER_FEET = 2.5;
 	
-		public static final double SPROCKET_RADIUS_FEET = Constants.RearMotorSpool.SPROCKET_DIAMETER_FEET/2; //Arbitrary number, change if necessary	
+		public static final double SPROCKET_RADIUS_FEET = Constants.RearMotorSpool.SPROCKET_DIAMETER_FEET/2;
 	
 		public static final double SPROCKET_CIRCUMFRENCE_FEET = Constants.RearMotorSpool.SPROCKET_DIAMETER_FEET * Math.PI;
 		
@@ -205,6 +207,8 @@ public final class Constants {
 			public static final double GEARBOX_REVOLUTIONS_PER_PULSE = 1/Constants.RearMotorSpool.Encoder.GEARBOX_PULSES_PER_REVOLUTION;
 					
 			public static final boolean REVERSED = true;
+			
+			public static final double RESET_THRESHOLD = 3;
 		}	
 	}
 }

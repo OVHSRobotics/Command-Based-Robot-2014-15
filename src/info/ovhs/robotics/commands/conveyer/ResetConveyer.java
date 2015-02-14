@@ -1,5 +1,6 @@
 package info.ovhs.robotics.commands.conveyer;
 
+import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.Robot;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.PIDCommand;
@@ -17,10 +18,12 @@ public class ResetConveyer extends PIDCommand {
     	super(k_p, k_i, k_d);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(CommandBase.conveyerBelt);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.print(this.toString());
     	CommandBase.conveyerBelt.stop();
     	this.setSetpoint(CommandBase.conveyerBelt.initialEncoderValue);
     }
@@ -31,7 +34,7 @@ public class ResetConveyer extends PIDCommand {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return CommandBase.conveyerBelt.encoder.getDistance() <= 0;
+    	return Math.abs(CommandBase.conveyerBelt.encoder.getDistance() - CommandBase.conveyerBelt.initialEncoderValue) < Constants.ConveyerBelt.Encoder.RESET_THRESHOLD;
     }
 
     // Called once after isFinished returns true
@@ -53,5 +56,10 @@ public class ResetConveyer extends PIDCommand {
     @Override
     protected void usePIDOutput(double output) {
     	CommandBase.conveyerBelt.setSpeed(output);
+    }
+    
+    @Override    
+    public String toString() {
+    	return "Resetting Conveyer Belt";
     }
 }

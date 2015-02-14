@@ -2,7 +2,7 @@ package info.ovhs.robotics.commands.autonomous;
 
 import info.ovhs.robotics.commands.conveyer.DropTote;
 import info.ovhs.robotics.commands.conveyer.LiftTote;
-import info.ovhs.robotics.commands.conveyer.LiftTrashCan;
+import info.ovhs.robotics.commands.rearmotorspool.RearLiftTrashCan;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -15,22 +15,22 @@ public class LiftOneTrashCanAndThreeTotesThenDropAll extends CommandGroup {
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    		addSequential(new LiftTrashCan());
+    		addSequential(new RearLiftTrashCan());
     		
     		//Drive forward set power value and number of seconds
-    		addSequential(new DriveForward(1, 2));
+    		addSequential(new Drive(1, 2, true));
     		
     		addSequential(new LiftTote());
     		//Completely lift first tote
     		
     		//Drive forward set power value and number of seconds
-    		addSequential(new DriveForward(1,2));
+    		addSequential(new Drive(1,2, true));
     		
     		addSequential(new LiftTote());
     		//Completely lift second tote
     		
     		//Drive forward set power value and number of seconds
-    		addSequential(new DriveForward(1,2));
+    		addSequential(new Drive(1,2, true));
     		
     		addSequential(new LiftTote());
     		//Completely lift third tote

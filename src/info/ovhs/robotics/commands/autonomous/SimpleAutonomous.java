@@ -12,7 +12,7 @@ public class SimpleAutonomous extends CommandGroup {
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	addSequential(new DriveForward(1, 5));
+    	addSequential(new Drive(1, 5, true));
 
         // To run multiple commands at the same time,
         // use addParallel()

@@ -37,6 +37,8 @@ public class RobotMap {
 	public static DigitalInput autonomousSwitch2;
 
 	public static void init() {
+		
+		Robot.print("Begin RobotMap Init");
 
 		RobotMap.setupDriveMotors();
 		
@@ -49,9 +51,13 @@ public class RobotMap {
 		RobotMap.createLimitSwitches();
 		
 		RobotMap.createAutonomousSwitches();
+		
+		Robot.print("End RobotMap Init");
 	}
 	
 	public static void setupDriveMotors() {
+		Robot.print("Begin setupDriveMotors");
+		
 		frontLeftDriveSpeedController = new Talon(Constants.Ports.PWM.FRONT_LEFT_DRIVE_MOTOR);
 		LiveWindow.addActuator("DriveTrain", "Front Left Drive Speed Controller",
 				(Talon) frontLeftDriveSpeedController);
@@ -88,20 +94,34 @@ public class RobotMap {
 				Constants.Motors.LEFT_FRONT_REVERSED);
 		drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, 
 				Constants.Motors.RIGHT_FRONT_REVERSED);
+		
+		Robot.print("End setupDriveMotors");
 	}
 	
 	public static void createGyro() {
+		
+		Robot.print("Begin createGyro");
+		
 		robotGyro = new Gyro(Constants.Ports.Analog.DRIVE_BASE_GYRO);
 		robotGyro.setSensitivity(.007);
 		LiveWindow.addSensor("Drive Train", "Gyro 1", robotGyro);
+		
+		Robot.print("End createGyro");
 	}
 	
 	public static void createGyroTempSensor() {
+		Robot.print("Begin createGyroTempSensor");
+		
 		robotGyroTempSensor = new AnalogInput(Constants.Ports.Analog.GYRO_TEMP_SENSOR);
 		LiveWindow.addSensor("DriveTrain", "Temperature Sensor", robotGyroTempSensor);
+		
+		Robot.print("End createGyroTempSensor");
 	}
 	
 	public static void createEncoders() {
+		
+		Robot.print("Begin createEncoders");
+		
 		try {
 			conveyerBeltEncoder = new Encoder(Constants.Ports.DIO.CONVEYER_BELT_ENCODER_A, Constants.Ports.DIO.CONVEYER_BELT_ENCODER_B, Constants.ConveyerBelt.Encoder.REVERSED, EncodingType.k4X);
 			conveyerBeltEncoder.setDistancePerPulse(Constants.ConveyerBelt.Encoder.DISTANCE_PER_PULSE);
@@ -120,25 +140,47 @@ public class RobotMap {
 		catch (Exception exception){
 			System.out.println(exception);
 		}
+		
+		Robot.print("End createEncoders");
 	}
+	
 	public static void createLimitSwitches() {
+		
+		Robot.print("Begin createLimitSwitches");
+		
 		robotLimitSwitch = new DigitalInput(Constants.Ports.DIO.LIMIT_SWITCH);
 		LiveWindow.addActuator("DriveTrain", "Limit Switch", robotLimitSwitch);
+		
+		Robot.print("End createLimitSwitches");
 	}
 	
 	public static void createAutonomousSwitches() {
+		
+		Robot.print("Begin createAutonomousSwitches");
+		
 		autonomousSwitch1 = new DigitalInput(Constants.Ports.DIO.AUTONOMOUS_SWITCH_A);
 		LiveWindow.addSensor("Autonomous", "Autonomous Switch 1", autonomousSwitch1);
 		
 		autonomousSwitch2 = new DigitalInput(Constants.Ports.DIO.AUTONOMOUS_SWITCH_B);
 		LiveWindow.addSensor("Autonomous", "Autonomous Switch 2", autonomousSwitch2);
+		
+		Robot.print("End createAutonomousSwitches");
 	}
 	
-	public static void setInitialConveyerEncoderValue() {
+	public static void setInitialConveyerEncoderDistance() {
+		Robot.print("Begin setInitialConveyerEncoderDistance");
+		
     	CommandBase.conveyerBelt.initialEncoderValue = CommandBase.conveyerBelt.encoder.getDistance();
+    	
+    	Robot.print("End setInitialConveyerEncoderDistance");
     }
     
-    public static void setInitialRearEncoderValue() {
+    public static void setInitialRearEncoderDistance() {
+		Robot.print("Begin setInitialRearEncoderDistance");
+
     	CommandBase.rearMotorSpool.initialEncoderValue = CommandBase.rearMotorSpool.encoder.getDistance();
+    	
+		Robot.print("End setInitialRearEncoderDistance");
+
 	}
 }

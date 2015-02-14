@@ -10,21 +10,34 @@ import info.ovhs.robotics.commands.CommandBase;
 public class RearDropTrashCan extends CommandBase {
 
 	
-	public double initialDistance;
+	private double initialDistance;
 
+	private double percentSpeed;
+	
+	/**
+	 * Drops a trash can at full speed
+	 */
+	public RearDropTrashCan() {
+		this(100);
+	}
 
-    public RearDropTrashCan() {
+	/**
+	 * Drops a trash can at a set speed
+	 * 
+	 * @param percentSpeed Speed to drop trash can at
+	 */
+    public RearDropTrashCan(double percentSpeed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(CommandBase.rearMotorSpool);
+    	this.percentSpeed = percentSpeed;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	this.initialDistance = CommandBase.rearMotorSpool.encoder.getDistance();
     
-    	double percentSpeed = 100;
-    	CommandBase.rearMotorSpool.backward(percentSpeed / 100 * -Constants.Motors.MOTOR_MAX_OUTPUT);
+    	CommandBase.rearMotorSpool.backward(this.percentSpeed / 100 * -Constants.Motors.MOTOR_MAX_OUTPUT);
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -29,9 +29,9 @@ public class ConveyerMove extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (this.forward) {
-    		CommandBase.conveyerBelt.forward(.15);
+    		CommandBase.conveyerBelt.forward(1);
     	} else if (!this.forward) {
-    		CommandBase.conveyerBelt.backward(.15);
+    		CommandBase.conveyerBelt.backward(1);
     	} else {
 
     	}

@@ -29,13 +29,18 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+    	print("Begin Robot Init");
+    	
     	RobotMap.init();
         CommandBase.init();
         
+        print("Initializing Gyro");        
         RobotMap.robotGyro.initGyro();
-        RobotMap.setInitialConveyerEncoderValue();
-        RobotMap.setInitialRearEncoderValue();
         
+        RobotMap.setInitialConveyerEncoderDistance();
+        RobotMap.setInitialRearEncoderDistance();
+        
+        print("End Robot Init");
     	
         // OI must be constructed after subsystems. If the OI creates Commands 
         //(which it very likely will), subsystems are not guaranteed to be 
@@ -52,10 +57,14 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
+    	print("Entering disabled mode");
+    	
     	Scheduler.getInstance().removeAll();
     }
 
     public void disabledPeriodic() {
+    	print("In disabled mode");
+    	
         Scheduler.getInstance().run();
     }
 
@@ -67,23 +76,26 @@ public class Robot extends IterativeRobot {
         
         print("Entering autonomous mode");
         
-        if (RobotMap.autonomousSwitch1.get() && RobotMap.autonomousSwitch2.get()) {
+        boolean switch1 = RobotMap.autonomousSwitch1.get();
+        boolean switch2 = RobotMap.autonomousSwitch2.get();
+        
+        if (switch1 && switch2) {
         	// Drives forward at full power for 3 seconds
-        	driveForward = new DriveForward(1, 3);
+        	driveForward = new Drive(1, 3, true);
         	if (driveForward != null){
         		driveForward.start();
         	}
-        } else if (RobotMap.autonomousSwitch1.get() && !RobotMap.autonomousSwitch2.get()) {
+        } else if (switch1 && !switch2) {
         	pickUpOneTote = new PickUpOneTote();
         	if (pickUpOneTote != null) {
         		pickUpOneTote.start();
         	}
-        } else if (!RobotMap.autonomousSwitch1.get() && RobotMap.autonomousSwitch2.get()) {
+        } else if (!switch1 && switch2) {
         	liftOneTrashCanAndOneTote = new LiftOneTrashCanAndOneTote();
         	if (liftOneTrashCanAndOneTote != null) {
         		liftOneTrashCanAndOneTote.start();
         	}
-        } else if (!RobotMap.autonomousSwitch1.get() && !RobotMap.autonomousSwitch2.get()) {
+        } else if (!switch1 && !switch2) {
         	liftOneTrashCanAndThreeTotesThenDropAll = new LiftOneTrashCanAndThreeTotesThenDropAll();
         	if (liftOneTrashCanAndThreeTotesThenDropAll != null) {
         		liftOneTrashCanAndThreeTotesThenDropAll.start();
@@ -162,12 +174,38 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
+    	print("In test mode");
+    	
         LiveWindow.run();
     }
     
     public static void print( String message ) {
         System.out.println(message);
-    } 
+    }
+    
+    public static void print( double message) {
+    	System.out.println(message);
+    }
+    
+    public static void print( int message) {
+    	System.out.println(message);
+    }
+    
+    public static void print( boolean message) {
+    	System.out.println(message);
+    }
+    
+    public static void print( char message) {
+    	System.out.println(message);
+    }
+    
+    public static void print( long message) {
+    	System.out.println(message);
+    }
+    
+    public static void print( float message) {
+    	System.out.println(message);
+    }
     
     public static void updateStatus() {
         // Add data to the "SmartDashboard".

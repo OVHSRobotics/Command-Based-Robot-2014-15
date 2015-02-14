@@ -77,9 +77,9 @@ public class OI {
 	    rightBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.RIGHT_BUMPER);
 	    rightBumper.whileHeld(new RearMove(true));
 	    leftTrigger = new JoystickTriggerAsButton(xboxController, Constants.OperatorControls.Controller.Axes.LEFT_TRIGGER, .04);
-	    leftTrigger.whenPressed(new ConveyerMove(false));
+	    leftTrigger.whileHeld(new ConveyerMove(false));
 	    rightTrigger = new JoystickTriggerAsButton(xboxController, Constants.OperatorControls.Controller.Axes.RIGHT_TRIGGER, .04);
-	    rightTrigger.whenPressed(new ConveyerMove(true));
+	    rightTrigger.whileHeld(new ConveyerMove(true));
 	    
     	
         // SmartDashboard Buttons
