@@ -21,6 +21,8 @@ public class RearMotorSpool extends Subsystem {
 	
 	public Encoder encoder = RobotMap.rearEncoder;
 	
+	public double initialEncoderValue;
+	
 	/**
 	 * Gets instance of Rear Motor Spool Subsystem or creates one if one is not present
 	 * 

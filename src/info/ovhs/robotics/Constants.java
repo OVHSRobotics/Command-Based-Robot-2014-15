@@ -173,6 +173,8 @@ public final class Constants {
 			public static final int AUTONOMOUS_SWITCH_A = 0;
 			
 			public static final int AUTONOMOUS_SWITCH_B = 1;
+			
+			public static final int LIMIT_SWITCH = 2;
 		}
 		
 		public static final class Analog {
@@ -181,19 +183,18 @@ public final class Constants {
 			
 			public static final int GYRO_TEMP_SENSOR = 1;
 			
-			public static final int LIMIT_SWITCH = 2;
 		}
 	}
 
 	public static final class RearMotorSpool {
 		
-		public static final int SPROCKET_DIAMETER_FEET = 2; //Arbitrary number, change if necessary
+		public static final double SPROCKET_DIAMETER_FEET = 2.5; //Arbitrary number, change if necessary
 	
-		public static final int SPROCKET_RADIUS_FEET = 1; //Arbitrary number, change if necessary	
+		public static final double SPROCKET_RADIUS_FEET = Constants.RearMotorSpool.SPROCKET_DIAMETER_FEET/2; //Arbitrary number, change if necessary	
 	
 		public static final double SPROCKET_CIRCUMFRENCE_FEET = Constants.RearMotorSpool.SPROCKET_DIAMETER_FEET * Math.PI;
 		
-		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 10;
+		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 1;
 		
 		public static final class Encoder {
 			

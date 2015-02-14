@@ -1,31 +1,30 @@
-package info.ovhs.robotics.commands.conveyer;
+package info.ovhs.robotics.commands.rearmotorspool;
 
 import info.ovhs.robotics.Robot;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.PIDCommand;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- *Uses PID Controller in order to hold tote in one position using the conveyer belt
+ *
  */
-public class HoldPID extends PIDCommand {
+public class ResetRear extends PIDCommand {
 	
 	private static final double k_p = 1.0;
 	private static final double k_i = 0.1;
 	private static final double k_d = 0;
-	
-    public HoldPID() {
+
+    public ResetRear() {
     	super(k_p, k_i, k_d);
-    	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(CommandBase.conveyerBelt);
+    	
+    	requires(CommandBase.rearMotorSpool);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	CommandBase.conveyerBelt.stop();
-    	this.setSetpoint(CommandBase.conveyerBelt.encoder.getDistance());
+    	CommandBase.rearMotorSpool.stop();
+    	this.setSetpoint(CommandBase.rearMotorSpool.initialEncoderValue);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -34,27 +33,27 @@ public class HoldPID extends PIDCommand {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return CommandBase.rearMotorSpool.encoder.getDistance() <= 0;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	CommandBase.conveyerBelt.stop();
+    	CommandBase.rearMotorSpool.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	CommandBase.conveyerBelt.stop();
+    	CommandBase.rearMotorSpool.stop();
     }
-
-	@Override
-	protected double returnPIDInput() {
-		return CommandBase.conveyerBelt.encoder.getDistance();
-	}
-
-	@Override
-	protected void usePIDOutput(double output) {
-		CommandBase.conveyerBelt.setSpeed(output);
-	}
+    
+    @Override
+    protected double returnPIDInput() {
+    	return CommandBase.rearMotorSpool.encoder.getDistance();
+    }
+    
+    @Override
+    protected void usePIDOutput(double output) {
+    	CommandBase.rearMotorSpool.setSpeed(output);
+    }
 }

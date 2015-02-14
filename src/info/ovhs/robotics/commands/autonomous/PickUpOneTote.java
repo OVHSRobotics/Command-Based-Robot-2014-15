@@ -28,7 +28,7 @@ public class PickUpOneTote extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return CommandBase.conveyerBelt.encoder.getDistance() - initialValueEncoder >= Constants.FieldElementsConstants.TOTE_HEIGHT_INCHES / 12;
+        return CommandBase.conveyerBelt.encoder.getDistance() - initialValueEncoder >= Constants.FieldElements.TOTE_HEIGHT_INCHES / 12;
     }
 
     // Called once after isFinished returns true

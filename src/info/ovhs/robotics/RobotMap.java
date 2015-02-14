@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.Gyro;
 import info.ovhs.robotics.Constants;
+import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.AnalogInput;
 
@@ -32,6 +33,8 @@ public class RobotMap {
 	public static Gyro robotGyro;
 	public static AnalogInput robotGyroTempSensor;
 	public static DigitalInput robotLimitSwitch;
+	public static DigitalInput autonomousSwitch1;
+	public static DigitalInput autonomousSwitch2;
 
 	public static void init() {
 
@@ -44,6 +47,8 @@ public class RobotMap {
 		RobotMap.createEncoders();
 		
 		RobotMap.createLimitSwitches();
+		
+		RobotMap.createAutonomousSwitches();
 	}
 	
 	public static void setupDriveMotors() {
@@ -117,11 +122,23 @@ public class RobotMap {
 		}
 	}
 	public static void createLimitSwitches() {
-		robotLimitSwitch = new DigitalInput(Constants.Ports.Analog.LIMIT_SWITCH);
+		robotLimitSwitch = new DigitalInput(Constants.Ports.DIO.LIMIT_SWITCH);
 		LiveWindow.addActuator("DriveTrain", "Limit Switch", robotLimitSwitch);
 	}
 	
 	public static void createAutonomousSwitches() {
+		autonomousSwitch1 = new DigitalInput(Constants.Ports.DIO.AUTONOMOUS_SWITCH_A);
+		LiveWindow.addSensor("Autonomous", "Autonomous Switch 1", autonomousSwitch1);
 		
+		autonomousSwitch2 = new DigitalInput(Constants.Ports.DIO.AUTONOMOUS_SWITCH_B);
+		LiveWindow.addSensor("Autonomous", "Autonomous Switch 2", autonomousSwitch2);
+	}
+	
+	public static void setInitialConveyerEncoderValue() {
+    	CommandBase.conveyerBelt.initialEncoderValue = CommandBase.conveyerBelt.encoder.getDistance();
+    }
+    
+    public static void setInitialRearEncoderValue() {
+    	CommandBase.rearMotorSpool.initialEncoderValue = CommandBase.rearMotorSpool.encoder.getDistance();
 	}
 }

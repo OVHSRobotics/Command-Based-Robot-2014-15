@@ -2,7 +2,7 @@
 package info.ovhs.robotics;
 
 import info.ovhs.robotics.commands.CommandBase;
-
+import info.ovhs.robotics.commands.autonomous.*;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -18,7 +18,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-    Command autonomousCommand;
+    Command driveForward;
+    Command liftOneTrashCanAndOneTote;
+    Command liftOneTrashCanAndThreeTotesThenDropAll;
+    Command pickUpOneTote;
+    
 
     /**
      * This function is run when the robot is first started up and should be
@@ -28,7 +32,10 @@ public class Robot extends IterativeRobot {
     	RobotMap.init();
         CommandBase.init();
         
-        RobotMap.robotGyro.initGyro();        
+        RobotMap.robotGyro.initGyro();
+        RobotMap.setInitialConveyerEncoderValue();
+        RobotMap.setInitialRearEncoderValue();
+        
     	
         // OI must be constructed after subsystems. If the OI creates Commands 
         //(which it very likely will), subsystems are not guaranteed to be 
@@ -54,13 +61,36 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        if (autonomousCommand != null) {
-        	autonomousCommand.start();
-        }
+//        if (autonomousCommand != null) {
+//        	autonomousCommand.start();
+//        }
         
         print("Entering autonomous mode");
         
-        RobotMap.conveyerBeltEncoder.reset();
+        if (RobotMap.autonomousSwitch1.get() && RobotMap.autonomousSwitch2.get()) {
+        	// Drives forward at full power for 3 seconds
+        	driveForward = new DriveForward(1, 3);
+        	if (driveForward != null){
+        		driveForward.start();
+        	}
+        } else if (RobotMap.autonomousSwitch1.get() && !RobotMap.autonomousSwitch2.get()) {
+        	pickUpOneTote = new PickUpOneTote();
+        	if (pickUpOneTote != null) {
+        		pickUpOneTote.start();
+        	}
+        } else if (!RobotMap.autonomousSwitch1.get() && RobotMap.autonomousSwitch2.get()) {
+        	liftOneTrashCanAndOneTote = new LiftOneTrashCanAndOneTote();
+        	if (liftOneTrashCanAndOneTote != null) {
+        		liftOneTrashCanAndOneTote.start();
+        	}
+        } else if (!RobotMap.autonomousSwitch1.get() && !RobotMap.autonomousSwitch2.get()) {
+        	liftOneTrashCanAndThreeTotesThenDropAll = new LiftOneTrashCanAndThreeTotesThenDropAll();
+        	if (liftOneTrashCanAndThreeTotesThenDropAll != null) {
+        		liftOneTrashCanAndThreeTotesThenDropAll.start();
+        	}
+        } else {
+        	//do nothing; impossible case
+        }
     }
 
     /**
@@ -75,18 +105,33 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (autonomousCommand != null) {
-        	autonomousCommand.cancel();
+//        if (autonomousCommand != null) {
+//        	autonomousCommand.cancel();
+//        }
+        
+        if (RobotMap.autonomousSwitch1.get() && RobotMap.autonomousSwitch2.get()) {
+        	if (driveForward != null){
+        		driveForward.cancel();
+        	}
+        } else if (RobotMap.autonomousSwitch1.get() && !RobotMap.autonomousSwitch2.get()) {
+        	if (pickUpOneTote != null) {
+        		pickUpOneTote.cancel();
+        	}
+        } else if (!RobotMap.autonomousSwitch1.get() && RobotMap.autonomousSwitch2.get()) {
+        	if (liftOneTrashCanAndOneTote != null) {
+        		liftOneTrashCanAndOneTote.cancel();
+        	}
+        } else if (!RobotMap.autonomousSwitch1.get() && !RobotMap.autonomousSwitch2.get()) {
+        	if (liftOneTrashCanAndThreeTotesThenDropAll != null) {
+        		liftOneTrashCanAndThreeTotesThenDropAll.cancel();
+        	}
         }
         
         print("Entering teleop mode");
         if (CommandBase.driveTrain.getCurrentCommand() == null) {
         	CommandBase.driveTrain.initDefaultCommand();
         }
-        
-        
-        RobotMap.conveyerBeltEncoder.reset();
-        
+                
         updateStatus();
     }
 

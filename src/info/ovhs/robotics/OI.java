@@ -68,10 +68,10 @@ public class OI {
 	    xButton.whenPressed(new RearLiftTrashCan());
 	    yButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.Y);
 	    yButton.whenPressed(new RearDropTrashCan());
-//	    backButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.BACK);
-//	    backButton.whenPressed(new LiftTote());
-//	    startButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.START);
-//	    startButton.whileHeld(new JoystickControlRear());
+	    backButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.BACK);
+	    backButton.whenPressed(new ResetConveyer());
+	    startButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.START);
+	    startButton.whileHeld(new ResetRear());
 	    leftBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.LEFT_BUMPER);
 	    leftBumper.whileHeld(new RearMove(false));
 	    rightBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.RIGHT_BUMPER);
