@@ -9,6 +9,14 @@ public class JoystickTriggerAsButton extends Button {
 	int axis;
 	double threshold;
 	
+	
+	/**
+	 * Uses a joystick trigger as a button
+	 * 
+	 * @param joystick Which joystick to use
+	 * @param axis Which axis to use
+	 * @param threshold The threshold to read true
+	 */
 	public JoystickTriggerAsButton(GenericHID joystick, int axis, double threshold) {
         this.joystick = joystick;
         this.axis = axis;

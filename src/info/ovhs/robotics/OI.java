@@ -1,9 +1,17 @@
 package info.ovhs.robotics;
 
-import info.ovhs.robotics.commands.autonomous.AutonomousCommand;
-import info.ovhs.robotics.commands.conveyer.*;
-import info.ovhs.robotics.commands.drive.*;
-import info.ovhs.robotics.commands.rearmotorspool.*;
+import info.ovhs.robotics.commands.conveyer.ConveyerMove;
+import info.ovhs.robotics.commands.conveyer.DropTote;
+import info.ovhs.robotics.commands.conveyer.LiftTote;
+import info.ovhs.robotics.commands.conveyer.LowerConveyerToBottom;
+import info.ovhs.robotics.commands.conveyer.ResetConveyer;
+import info.ovhs.robotics.commands.drive.ArcadeDrive;
+import info.ovhs.robotics.commands.drive.MecanumDrive;
+import info.ovhs.robotics.commands.drive.TankDrive;
+import info.ovhs.robotics.commands.rearmotorspool.RearDropTrashCan;
+import info.ovhs.robotics.commands.rearmotorspool.RearLiftTrashCan;
+import info.ovhs.robotics.commands.rearmotorspool.RearMove;
+import info.ovhs.robotics.commands.rearmotorspool.ResetRear;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -43,18 +51,10 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
     
-    public JoystickButton aButton;
-    public JoystickButton bButton;
-    public JoystickButton xButton;
-    public JoystickButton yButton;
-    public JoystickButton backButton;
-    public JoystickButton startButton;
-    public JoystickButton leftBumper;
-    public JoystickButton rightBumper;
-    public JoystickTriggerAsButton leftTrigger;
-    public JoystickTriggerAsButton rightTrigger;
-    public static Joystick xboxController;
-    public static Joystick fireButton;
+    public JoystickButton aButton, bButton, xButton, yButton, backButton, startButton, leftBumper, rightBumper;
+    public JoystickTriggerAsButton leftTrigger, rightTrigger;
+    public JoystickPOVAsButton leftPOV, rightPOV, upPOV, downPOV;
+    public static Joystick xboxController, fireButton;
     
     private OI() {
 
@@ -80,6 +80,10 @@ public class OI {
 	    leftTrigger.whileHeld(new ConveyerMove(false));
 	    rightTrigger = new JoystickTriggerAsButton(xboxController, Constants.OperatorControls.Controller.Axes.RIGHT_TRIGGER, .04);
 	    rightTrigger.whileHeld(new ConveyerMove(true));
+	    leftPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.POV.LEFT, Constants.OperatorControls.Controller.POV.LEFT_THRESHOLD);
+	    rightPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.POV.RIGHT, Constants.OperatorControls.Controller.POV.RIGHT_THRESHOLD);
+	    upPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.POV.UP, Constants.OperatorControls.Controller.POV.UP_THRESHOLD);
+	    downPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.POV.DOWN, Constants.OperatorControls.Controller.POV.DOWN_THRESHOLD);
 	    
     	
         // SmartDashboard Buttons
@@ -94,10 +98,6 @@ public class OI {
         SmartDashboard.putData("ResetConveyer", new ResetConveyer());
         
         SmartDashboard.putData("Reset Rear", new ResetRear());
-                
-
-       
-
     }
     
     public static OI getInstance() {
