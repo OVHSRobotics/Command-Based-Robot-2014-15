@@ -111,6 +111,8 @@ public final class Constants {
 		
 		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 19/16;
 		
+		public static final double MANUAL_MOVE_SPEED = .5;
+		
 		public static final class Encoder {
 		
 			public static final double GEARBOX_PULSES_PER_REVOLUTION = 497;
@@ -190,13 +192,15 @@ public final class Constants {
 
 	public static final class RearMotorSpool {
 		
-		public static final double SPROCKET_DIAMETER_FEET = 2.5;
+		public static final double SPROCKET_DIAMETER_FEET = 1;
 	
 		public static final double SPROCKET_RADIUS_FEET = Constants.RearMotorSpool.SPROCKET_DIAMETER_FEET/2;
 	
 		public static final double SPROCKET_CIRCUMFRENCE_FEET = Constants.RearMotorSpool.SPROCKET_DIAMETER_FEET * Math.PI;
 		
-		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 1;
+		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 36/16;
+		
+		public static final double MANUAL_MOVE_SPEED = .5;
 		
 		public static final class Encoder {
 			

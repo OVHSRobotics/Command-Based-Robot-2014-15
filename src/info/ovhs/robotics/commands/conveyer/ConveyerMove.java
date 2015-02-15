@@ -1,5 +1,6 @@
 package info.ovhs.robotics.commands.conveyer;
 
+import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -29,9 +30,9 @@ public class ConveyerMove extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (this.forward) {
-    		CommandBase.conveyerBelt.forward(1);
+    		CommandBase.conveyerBelt.forward(Constants.ConveyerBelt.MANUAL_MOVE_SPEED);
     	} else if (!this.forward) {
-    		CommandBase.conveyerBelt.backward(1);
+    		CommandBase.conveyerBelt.backward(Constants.ConveyerBelt.MANUAL_MOVE_SPEED);
     	} else {
 
     	}
