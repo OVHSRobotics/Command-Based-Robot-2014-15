@@ -1,5 +1,6 @@
 package info.ovhs.robotics;
 
+import info.ovhs.robotics.commands.Rumble;
 import info.ovhs.robotics.commands.conveyer.ConveyerMove;
 import info.ovhs.robotics.commands.conveyer.DropTote;
 import info.ovhs.robotics.commands.conveyer.LiftTote;
@@ -12,7 +13,9 @@ import info.ovhs.robotics.commands.rearmotorspool.RearDropTrashCan;
 import info.ovhs.robotics.commands.rearmotorspool.RearLiftTrashCan;
 import info.ovhs.robotics.commands.rearmotorspool.RearMove;
 import info.ovhs.robotics.commands.rearmotorspool.ResetRear;
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Joystick.RumbleType;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -74,12 +77,16 @@ public class OI {
 	    startButton.whileHeld(new ResetRear());
 	    leftBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.LEFT_BUMPER);
 	    leftBumper.whileHeld(new RearMove(false));
+	    leftBumper.whileHeld(new Rumble(25));
 	    rightBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.RIGHT_BUMPER);
 	    rightBumper.whileHeld(new RearMove(true));
+	    rightBumper.whileHeld(new Rumble(25));
 	    leftTrigger = new JoystickTriggerAsButton(xboxController, Constants.OperatorControls.Controller.Axes.LEFT_TRIGGER, .04);
 	    leftTrigger.whileHeld(new ConveyerMove(false));
+	    leftTrigger.whileHeld(new Rumble(25));
 	    rightTrigger = new JoystickTriggerAsButton(xboxController, Constants.OperatorControls.Controller.Axes.RIGHT_TRIGGER, .04);
 	    rightTrigger.whileHeld(new ConveyerMove(true));
+	    rightTrigger.whileHeld(new Rumble(25));
 	    leftPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.POV.LEFT, Constants.OperatorControls.Controller.POV.LEFT_THRESHOLD);
 	    leftPOV.whileHeld(new DropTote(50));
 	    rightPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.POV.RIGHT, Constants.OperatorControls.Controller.POV.RIGHT_THRESHOLD);
@@ -108,11 +115,7 @@ public class OI {
     	
     	return OI.instance;
     }
-    
-//    public static double getRawAxis( int axis ) {
-//        return xboxController.getRawAxis(axis) + axisErrors[axis];
-//    }
-    
+        
     /**
      * Gets the value for the x-axis on the left stick of the xbox controller
      * 
@@ -211,6 +214,27 @@ public class OI {
 	 */
     public static double getExponentialValue(double value, double scalingPower) {
     	return Math.pow(value, scalingPower);
+    }
+    
+    public static void controllerRumble(Joystick controller, double time) {
+    	double initialTime = System.nanoTime();
+    	if (System.nanoTime() < initialTime + time * Math.pow(10, 9)) {
+    		controller.setRumble(RumbleType.kLeftRumble, 1);
+    		controller.setRumble(RumbleType.kRightRumble, 1);
+    	} else {
+    		controller.setRumble(RumbleType.kLeftRumble, 0);
+    		controller.setRumble(RumbleType.kRightRumble, 0);
+    	}
+    }
+    
+    public static void startControllerRumble(Joystick controller) {
+    	controller.setRumble(RumbleType.kLeftRumble, 1);
+    	controller.setRumble(RumbleType.kRightRumble, 1);
+    }
+    
+    public static void stopControllerRumble(Joystick controller) {
+    	controller.setRumble(RumbleType.kLeftRumble, 0);
+    	controller.setRumble(RumbleType.kRightRumble, 0);
     }
     
 }
