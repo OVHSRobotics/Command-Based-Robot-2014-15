@@ -10,18 +10,23 @@ import edu.wpi.first.wpilibj.command.Command;
 public class LiftTote extends Command {
 	
 	private double initialDistance;
-    public LiftTote() {
+	private double percentSpeed;
+	
+	public LiftTote() {
+		this(85);
+	}
+    public LiftTote(double percentSpeed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(CommandBase.conveyerBelt);
+    	this.percentSpeed = percentSpeed;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	this.initialDistance = CommandBase.conveyerBelt.encoder.getDistance();
     	// Turn on motor
-    	double percentSpeed = 100;
-    	CommandBase.conveyerBelt.forward(percentSpeed / 100 * Constants.Motors.MOTOR_MAX_OUTPUT);
+    	CommandBase.conveyerBelt.forward(this.percentSpeed / 100 * Constants.Motors.MOTOR_MAX_OUTPUT);
     }
 
     // Called repeatedly when this Command is scheduled to run

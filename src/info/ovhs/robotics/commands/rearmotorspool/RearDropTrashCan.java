@@ -18,7 +18,7 @@ public class RearDropTrashCan extends CommandBase {
 	 * Drops a trash can at full speed
 	 */
 	public RearDropTrashCan() {
-		this(100);
+		this(50);
 	}
 
 	/**

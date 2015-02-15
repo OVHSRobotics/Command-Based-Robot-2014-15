@@ -14,7 +14,7 @@ public class DropTote extends CommandBase {
 	 * Drops tote at full speed
 	 */
 	public DropTote() {
-		this(100);
+		this(85);
 	}
 	
 	/**

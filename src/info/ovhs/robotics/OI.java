@@ -61,13 +61,13 @@ public class OI {
     	xboxController = new Joystick(Constants.Ports.Joystick.CONTROLLER);
     	fireButton = new Joystick(Constants.Ports.Joystick.FIRE_BUTTON);
     	aButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.A);
-	    aButton.whenPressed(new LiftTote());
+	    aButton.whenPressed(new LiftTote(50));
 	    bButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.B);
-	    bButton.whenPressed(new DropTote());
+	    bButton.whenPressed(new DropTote(50));
 	    xButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.X);
-	    xButton.whenPressed(new RearLiftTrashCan());
+	    xButton.whenPressed(new RearLiftTrashCan(50));
 	    yButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.Y);
-	    yButton.whenPressed(new RearDropTrashCan());
+	    yButton.whenPressed(new RearDropTrashCan(50));
 	    backButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.BACK);
 	    backButton.whenPressed(new ResetConveyer());
 	    startButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Buttons.START);
@@ -81,6 +81,7 @@ public class OI {
 	    rightTrigger = new JoystickTriggerAsButton(xboxController, Constants.OperatorControls.Controller.Axes.RIGHT_TRIGGER, .04);
 	    rightTrigger.whileHeld(new ConveyerMove(true));
 	    leftPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.POV.LEFT, Constants.OperatorControls.Controller.POV.LEFT_THRESHOLD);
+	    leftPOV.whileHeld(new DropTote(50));
 	    rightPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.POV.RIGHT, Constants.OperatorControls.Controller.POV.RIGHT_THRESHOLD);
 	    upPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.POV.UP, Constants.OperatorControls.Controller.POV.UP_THRESHOLD);
 	    downPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.POV.DOWN, Constants.OperatorControls.Controller.POV.DOWN_THRESHOLD);
@@ -95,7 +96,7 @@ public class OI {
         
         SmartDashboard.putData("Lower Conveyer To Bottom", new LowerConveyerToBottom());
         
-        SmartDashboard.putData("ResetConveyer", new ResetConveyer());
+        SmartDashboard.putData("Reset Conveyer", new ResetConveyer());
         
         SmartDashboard.putData("Reset Rear", new ResetRear());
     }
@@ -199,4 +200,3 @@ public class OI {
 	}
     
 }
-

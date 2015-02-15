@@ -56,15 +56,11 @@ public class Robot extends IterativeRobot {
      * This function is called when the disabled button is hit.
      * You can use it to reset subsystems before shutting down.
      */
-    public void disabledInit(){
-    	print("Entering disabled mode");
-    	
+    public void disabledInit(){    	
     	Scheduler.getInstance().removeAll();
     }
 
-    public void disabledPeriodic() {
-    	print("In disabled mode");
-    	
+    public void disabledPeriodic() {   	
         Scheduler.getInstance().run();
     }
 
@@ -205,5 +201,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Left X Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_X));
         SmartDashboard.putNumber("Right Y Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_Y));
         SmartDashboard.putNumber("Right X Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_X));    
+        print("Conveyer Encoder Distance: " + RobotMap.conveyerBeltEncoder.getDistance());
+        print("Rear Encoder Distance: " + RobotMap.rearEncoder.getDistance());
     }
 }

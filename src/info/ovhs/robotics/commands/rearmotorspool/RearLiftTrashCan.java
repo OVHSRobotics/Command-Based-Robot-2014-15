@@ -14,7 +14,7 @@ public class RearLiftTrashCan extends CommandBase {
 	 * Lifts trash can with rear motor spool at full speed
 	 */
 	public RearLiftTrashCan() {
-		this(100);
+		this(50);
 	}
 	
 	/**

@@ -107,6 +107,7 @@ public class DriveTrain extends Subsystem {
     	else {
     		rotationRate = OI.getRightStickXAxis();
     	}
+    	rotationRate = OI.getRightStickXAxis();
     	
     	drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), rotationRate, gyroAngle);
     	//drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), OI.getRightStickXAxis(), 0);

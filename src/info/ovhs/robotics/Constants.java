@@ -91,9 +91,9 @@ public final class Constants {
 				
 				public static final double LEFT_Y = 0.07;
 				
-				public static final double RIGHT_X = 0.260;
+				public static final double RIGHT_X = 0.10;
 				
-				public static final double RIGHT_Y = 0.225;
+				public static final double RIGHT_Y = 0.10;
 			}	
 		}
 	}
@@ -119,7 +119,7 @@ public final class Constants {
 		
 		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 19/16;
 		
-		public static final double MANUAL_MOVE_SPEED = .5;
+		public static final double MANUAL_MOVE_SPEED = .85;
 		
 		public static final class Encoder {
 		
@@ -208,7 +208,7 @@ public final class Constants {
 		
 		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 36/16;
 		
-		public static final double MANUAL_MOVE_SPEED = .5;
+		public static final double MANUAL_MOVE_SPEED = .75;
 		
 		public static final class Encoder {
 			
