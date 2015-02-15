@@ -17,12 +17,12 @@ public class Drive extends Command {
 	 * Drives the robot forward at full speed for 3 seconds
 	 */
 	public Drive() {
-		this(1, 3, true);
+		this(1, 1.5, true);
 	}
 	
 	/**
 	 * Drives the robot forward at full speed for a set amount of time
-	 * @param time How long to drive the robot
+	 * @param time How long to drive the robot (in seconds)
 	 */
 	public Drive(double time) {
 		this(1, time, true);
@@ -31,7 +31,7 @@ public class Drive extends Command {
 	/**
 	 * Drives the robot forward
 	 * @param power What power to drive the robot at
-	 * @param time How long to drive the robot
+	 * @param time How long to drive the robot (in seconds)
 	 */
 	public Drive(double power, double time) {
 		this(power, time, true);
@@ -40,7 +40,7 @@ public class Drive extends Command {
 	/**
 	 * Drives the robot
 	 * @param power What power to drive the robot at
-	 * @param time How long to drive the robot
+	 * @param time How long to drive the robot (in seconds)
 	 * @param forward Whether or not the robot is driving forward
 	 */
     public Drive(double power, double time, boolean forward) {

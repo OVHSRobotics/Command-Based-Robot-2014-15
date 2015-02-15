@@ -120,7 +120,7 @@ public class OI {
      */
     public static double getLeftStickXAxis() {
     	double rawAxis = OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_X);
-    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.LEFT_X_CENTER, Constants.OperatorControls.Controller.Deadzone.LEFT_X, rawAxis);
+    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.LEFT_X_CENTER, Constants.OperatorControls.Controller.Deadzone.LEFT_X, rawAxis, Constants.OperatorControls.Controller.ScalingValue.LEFT_X);
     }
     
     /**
@@ -130,7 +130,7 @@ public class OI {
      */
     public static double getLeftStickYAxis() {
     	double rawAxis = OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_Y);
-    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.LEFT_Y_CENTER, Constants.OperatorControls.Controller.Deadzone.LEFT_Y, rawAxis);
+    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.LEFT_Y_CENTER, Constants.OperatorControls.Controller.Deadzone.LEFT_Y, rawAxis, Constants.OperatorControls.Controller.ScalingValue.LEFT_Y);
 	}
     
     /**
@@ -140,7 +140,7 @@ public class OI {
      */    
     public static double getRightStickXAxis() {
     	double rawAxis = OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_X);
-    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.RIGHT_X_CENTER, Constants.OperatorControls.Controller.Deadzone.RIGHT_X, rawAxis);
+    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.RIGHT_X_CENTER, Constants.OperatorControls.Controller.Deadzone.RIGHT_X, rawAxis, Constants.OperatorControls.Controller.ScalingValue.RIGHT_X);
     }
     
     /**
@@ -150,7 +150,7 @@ public class OI {
      */    
     public static double getRightStickYAxis() {
     	double rawAxis = OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_Y);
-    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.RIGHT_Y_CENTER, Constants.OperatorControls.Controller.Deadzone.RIGHT_Y, rawAxis);
+    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Deadzone.RIGHT_Y_CENTER, Constants.OperatorControls.Controller.Deadzone.RIGHT_Y, rawAxis, Constants.OperatorControls.Controller.ScalingValue.RIGHT_Y);
     }
 
 	public Joystick getController() {
@@ -165,14 +165,18 @@ public class OI {
 	 * @param value Current value
 	 * @return Value after deadzone scaling
 	 */
-	private static double getValueAfterDeadZoneScaling(double center, double deadZone, double value) {
+	private static double getValueAfterDeadZoneScaling(double center, double deadZone, double value, double scalingPower) {
+		double returnValue = 0;
 		if (value > center + deadZone) {
-    		return OI.positiveScaling(center, deadZone, value);
+    		returnValue = OI.positiveScaling(center, deadZone, value);
     	} else if (value < center - deadZone) {
-    		return OI.negativeScaling(center, deadZone, value);
+    		returnValue = OI.negativeScaling(center, deadZone, value);
     	} else {
-    		return 0;
+    		returnValue = 0;
     	}
+		
+		
+			return OI.getExponentialValue(returnValue, scalingPower);
 	}
 	
 	/**
@@ -198,5 +202,15 @@ public class OI {
 	private static double negativeScaling(double center, double deadZone, double value) {
 		return (-1 - 0) * (value - (center - deadZone)) / (-1 - (center - deadZone));
 	}
+	
+	/**
+	 * Returns the exponentially scaled value
+	 * @param value Value that you're scaling
+	 * @param scalingPower Exponent to scale it to
+	 * @return Exponentially Scaled Value
+	 */
+    public static double getExponentialValue(double value, double scalingPower) {
+    	return Math.pow(value, scalingPower);
+    }
     
 }

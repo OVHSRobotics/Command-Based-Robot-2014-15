@@ -94,7 +94,18 @@ public final class Constants {
 				public static final double RIGHT_X = 0.10;
 				
 				public static final double RIGHT_Y = 0.10;
-			}	
+			}
+			
+			public static final class ScalingValue {
+				
+				public static final double LEFT_X = 3;
+				
+				public static final double LEFT_Y = 3;
+				
+				public static final double RIGHT_X = 3;
+				
+				public static final double RIGHT_Y = 3;
+			}
 		}
 	}
 	
