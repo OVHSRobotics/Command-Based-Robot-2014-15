@@ -22,7 +22,7 @@ public class RearJoystickControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	CommandBase.rearMotorSpool.setSpeed(OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_Y));
+    	CommandBase.rearMotorSpool.setSpeed(OI.trashCanController.getRawAxis(Constants.OperatorControls.Controller.TrashCanController.Axes.Y));
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -18,93 +18,157 @@ public final class Constants {
 		
 		public static final class Controller {
 			
-			public static final class Axes {
+			public static final class Xbox {
 			
-				public static final int LEFT_STICK_X = 0;
+				public static final class Axes {
 				
-				public static final int LEFT_STICK_Y = 1;
+					public static final int LEFT_STICK_X = 0;
+					
+					public static final int LEFT_STICK_Y = 1;
+					
+					public static final int LEFT_TRIGGER = 2;
+					
+					public static final int RIGHT_TRIGGER = 3;
+					
+					public static final int RIGHT_STICK_X = 4;
+					
+					public static final int RIGHT_STICK_Y = 5;
+				}
 				
-				public static final int LEFT_TRIGGER = 2;
+				public static final class Buttons {
 				
-				public static final int RIGHT_TRIGGER = 3;
+					public static final int A = 1;
+					
+					public static final int B = 2;
+					
+					public static final int X = 3;
+					
+					public static final int Y = 4;
+					
+					public static final int LEFT_BUMPER = 5;
+					
+					public static final int RIGHT_BUMPER = 6;
+					
+					public static final int BACK = 7;
+					
+					public static final int START = 8;
+					
+					public static final int LEFT_STICK = 9;
+					
+					public static final int RIGHT_STICK = 10;
+				}
 				
-				public static final int RIGHT_STICK_X = 4;
+				public static final class POV {
+					
+					public static final int CENTER = -1;
 				
-				public static final int RIGHT_STICK_Y = 5;
+					public static final int UP = 0;
+					
+					public static final double UP_THRESHOLD = 0;
+					
+					public static final int RIGHT = 90;
+					
+					public static final int RIGHT_THRESHOLD = 0;
+					
+					public static final int DOWN = 180;
+					
+					public static final int DOWN_THRESHOLD = 0;
+					
+					public static final int LEFT = 270;
+	
+					public static final int LEFT_THRESHOLD = 0;
+				}
+				
+				public static final class Deadzone {
+					
+					public static final double LEFT_X_CENTER = -0.043;
+					
+					public static final double LEFT_Y_CENTER = -0.039;
+					
+					public static final double RIGHT_X_CENTER = -0.125;
+					
+					public static final double RIGHT_Y_CENTER = 0;
+					
+					public static final double LEFT_X = 0.10;
+					
+					public static final double LEFT_Y = 0.07;
+					
+					public static final double RIGHT_X = 0.10;
+					
+					public static final double RIGHT_Y = 0.10;
+				}
+				
+				public static final class ScalingValue {
+					
+					public static final double LEFT_X = 3;
+					
+					public static final double LEFT_Y = 3;
+					
+					public static final double RIGHT_X = 3;
+					
+					public static final double RIGHT_Y = 3;
+				}
 			}
 			
-			public static final class Buttons {
-			
-				public static final int A = 1;
+			public static final class TrashCanController {
 				
-				public static final int B = 2;
+				public static final class Axes {
+					
+					public static final int X = 0;
+					
+					public static final int Y = 1;
+					
+					public static final int Z = 2;
+				}
 				
-				public static final int X = 3;
+				public static final class Buttons {
 				
-				public static final int Y = 4;
+					public static final int TRASH_CAN_1 = 1;
+					
+					public static final int TRASH_CAN_2 = 2;
+					
+					public static final int TRASH_CAN_3 = 3;
+					
+					public static final int TRASH_CAN_4 = 4;
+					
+					public static final int TRASH_CAN_5 = 5;
+					
+					public static final int TRASH_CAN_6 = 6;
+					
+					public static final int TRASH_CAN_7 = 7;
+					
+					public static final int TRASH_CAN_8 = 8;
+					
+					public static final int TRASH_CAN_9 = 9;
+					
+					public static final int TRASH_CAN_10 = 10;
+					
+					public static final int TRASH_CAN_11 = 11;
+				}
 				
-				public static final int LEFT_BUMPER = 5;
+				public static final class Deadzone {
+					
+					public static final double X_CENTER = -0.043;
+					
+					public static final double Y_CENTER = -0.039;
+					
+					public static final double Z_CENTER = 0;
+					
+					public static final double X = 0.10;
+					
+					public static final double Y = 0.07;
+					
+					public static final double Z = 0.00;
+				}
 				
-				public static final int RIGHT_BUMPER = 6;
-				
-				public static final int BACK = 7;
-				
-				public static final int START = 8;
-				
-				public static final int LEFT_STICK = 9;
-				
-				public static final int RIGHT_STICK = 10;
-			}
-			
-			public static final class POV {
-				
-				public static final int CENTER = -1;
-			
-				public static final int UP = 0;
-				
-				public static final double UP_THRESHOLD = 0;
-				
-				public static final int RIGHT = 90;
-				
-				public static final int RIGHT_THRESHOLD = 0;
-				
-				public static final int DOWN = 180;
-				
-				public static final int DOWN_THRESHOLD = 0;
-				
-				public static final int LEFT = 270;
-
-				public static final int LEFT_THRESHOLD = 0;
-			}
-			
-			public static final class Deadzone {
-				
-				public static final double LEFT_X_CENTER = -0.043;
-				
-				public static final double LEFT_Y_CENTER = -0.039;
-				
-				public static final double RIGHT_X_CENTER = -0.125;
-				
-				public static final double RIGHT_Y_CENTER = 0;
-				
-				public static final double LEFT_X = 0.10;
-				
-				public static final double LEFT_Y = 0.07;
-				
-				public static final double RIGHT_X = 0.10;
-				
-				public static final double RIGHT_Y = 0.10;
-			}
-			
-			public static final class ScalingValue {
-				
-				public static final double LEFT_X = 3;
-				
-				public static final double LEFT_Y = 3;
-				
-				public static final double RIGHT_X = 3;
-				
-				public static final double RIGHT_Y = 3;
+				public static final class ScalingValue {
+					
+					public static final double X = 1;
+					
+					public static final double Y = 1;
+					
+					public static final double Z = 1;
+				}
 			}
 		}
 	}
@@ -165,7 +229,7 @@ public final class Constants {
 			
 			public static final int CONTROLLER = 0;
 
-			public static final int FIRE_BUTTON = 1;
+			public static final int TRASH_CAN_CONTROLLER = 1;
 		}
 		
 		public static final class PWM {

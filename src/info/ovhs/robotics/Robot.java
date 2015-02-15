@@ -201,14 +201,14 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Front Right Motor", RobotMap.frontRightDriveSpeedController.get());
         SmartDashboard.putNumber("Rear Left Motor", RobotMap.rearLeftDriveSpeedController.get());
         SmartDashboard.putNumber("Rear Right Motor", RobotMap.rearRightDriveSpeedController.get());
-        SmartDashboard.putNumber("Left Y Axis", OI.getLeftStickYAxis());
-        SmartDashboard.putNumber("Left X Axis", OI.getLeftStickXAxis());
-        SmartDashboard.putNumber("Right Y Axis", OI.getRightStickYAxis());
-        SmartDashboard.putNumber("Right X Axis", OI.getRightStickXAxis());
-        SmartDashboard.putNumber("Left Y Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_Y));
-        SmartDashboard.putNumber("Left X Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.LEFT_STICK_X));
-        SmartDashboard.putNumber("Right Y Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_Y));
-        SmartDashboard.putNumber("Right X Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Axes.RIGHT_STICK_X));    
+        SmartDashboard.putNumber("Left Y Axis", OI.getXboxLeftStickYAxis());
+        SmartDashboard.putNumber("Left X Axis", OI.getXboxLeftStickXAxis());
+        SmartDashboard.putNumber("Right Y Axis", OI.getXboxRightStickYAxis());
+        SmartDashboard.putNumber("Right X Axis", OI.getXboxRightStickXAxis());
+        SmartDashboard.putNumber("Left Y Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.LEFT_STICK_Y));
+        SmartDashboard.putNumber("Left X Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.LEFT_STICK_X));
+        SmartDashboard.putNumber("Right Y Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.RIGHT_STICK_Y));
+        SmartDashboard.putNumber("Right X Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.RIGHT_STICK_X));    
         print("Conveyer Encoder Distance: " + RobotMap.conveyerBeltEncoder.getDistance());
         print("Rear Encoder Distance: " + RobotMap.rearEncoder.getDistance());
     }

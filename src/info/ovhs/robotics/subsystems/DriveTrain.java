@@ -48,7 +48,7 @@ public class DriveTrain extends Subsystem {
      *        power)
      */
     public void driveStraight( double speedFactor ) {
-        drive.tankDrive(speedFactor, speedFactor);
+    	drive.mecanumDrive_Cartesian(0, speedFactor, 0, 0);
     }
 
     /**
@@ -68,7 +68,7 @@ public class DriveTrain extends Subsystem {
      * </p>
      */
     public void arcadeDriveController() {
-        drive.arcadeDrive(OI.getLeftStickYAxis(), OI.getLeftStickXAxis());
+        drive.arcadeDrive(OI.getXboxLeftStickYAxis(), OI.getXboxLeftStickXAxis());
     }
 
     /**
@@ -78,7 +78,7 @@ public class DriveTrain extends Subsystem {
      * </p>
      */
     public void tankDriveController() {
-        drive.tankDrive(OI.getLeftStickYAxis(), OI.getRightStickYAxis());
+        drive.tankDrive(OI.getXboxLeftStickYAxis(), OI.getXboxRightStickYAxis());
     }
     
     /**
@@ -101,15 +101,15 @@ public class DriveTrain extends Subsystem {
      */
     public void mecanumDriveController(double gyroAngle) {
     	double rotationRate = 0;
-    	if (Math.abs(OI.getRightStickXAxis()) <= Constants.OperatorControls.Controller.Deadzone.RIGHT_X) {
+    	if (Math.abs(OI.getXboxRightStickXAxis()) <= Constants.OperatorControls.Controller.Xbox.Deadzone.RIGHT_X) {
     		rotationRate = -RobotMap.robotGyro.getRate();
     	}
     	else {
-    		rotationRate = OI.getRightStickXAxis();
+    		rotationRate = OI.getXboxRightStickXAxis();
     	}
-    	rotationRate = OI.getRightStickXAxis();
+    	rotationRate = OI.getXboxRightStickXAxis();
     	
-    	drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), rotationRate, gyroAngle);
+    	drive.mecanumDrive_Cartesian(OI.getXboxLeftStickXAxis(), OI.getXboxLeftStickYAxis(), rotationRate, gyroAngle);
     	//drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), OI.getRightStickXAxis(), 0);
     }
     
