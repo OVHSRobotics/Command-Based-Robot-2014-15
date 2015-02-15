@@ -72,33 +72,38 @@ public class Robot extends IterativeRobot {
         
         print("Entering autonomous mode");
         
-        boolean switch1 = RobotMap.autonomousSwitch1.get();
-        boolean switch2 = RobotMap.autonomousSwitch2.get();
-        
-        if (switch1 && switch2) {
-        	// Drives forward at full power for 3 seconds
-        	driveForward = new Drive(1, 3, true);
-        	if (driveForward != null){
-        		driveForward.start();
-        	}
-        } else if (switch1 && !switch2) {
-        	pickUpOneTote = new PickUpOneTote();
-        	if (pickUpOneTote != null) {
-        		pickUpOneTote.start();
-        	}
-        } else if (!switch1 && switch2) {
-        	liftOneTrashCanAndOneTote = new LiftOneTrashCanAndOneTote();
-        	if (liftOneTrashCanAndOneTote != null) {
-        		liftOneTrashCanAndOneTote.start();
-        	}
-        } else if (!switch1 && !switch2) {
-        	liftOneTrashCanAndThreeTotesThenDropAll = new LiftOneTrashCanAndThreeTotesThenDropAll();
-        	if (liftOneTrashCanAndThreeTotesThenDropAll != null) {
-        		liftOneTrashCanAndThreeTotesThenDropAll.start();
-        	}
-        } else {
-        	//do nothing; impossible case
+        driveForward = new Drive(1, 1.5, true);
+        if (driveForward != null) {
+        	driveForward.start();
         }
+        
+//        boolean switch1 = RobotMap.autonomousSwitch1.get();
+//        boolean switch2 = RobotMap.autonomousSwitch2.get();
+//        
+//        if (switch1 && switch2) {
+//        	// Drives forward at full power for 3 seconds
+//        	driveForward = new Drive(1, 3, true);
+//        	if (driveForward != null){
+//        		driveForward.start();
+//        	}
+//        } else if (switch1 && !switch2) {
+//        	pickUpOneTote = new PickUpOneTote();
+//        	if (pickUpOneTote != null) {
+//        		pickUpOneTote.start();
+//        	}
+//        } else if (!switch1 && switch2) {
+//        	liftOneTrashCanAndOneTote = new LiftOneTrashCanAndOneTote();
+//        	if (liftOneTrashCanAndOneTote != null) {
+//        		liftOneTrashCanAndOneTote.start();
+//        	}
+//        } else if (!switch1 && !switch2) {
+//        	liftOneTrashCanAndThreeTotesThenDropAll = new LiftOneTrashCanAndThreeTotesThenDropAll();
+//        	if (liftOneTrashCanAndThreeTotesThenDropAll != null) {
+//        		liftOneTrashCanAndThreeTotesThenDropAll.start();
+//        	}
+//        } else {
+//        	//do nothing; impossible case
+//        }
     }
 
     /**
@@ -116,24 +121,27 @@ public class Robot extends IterativeRobot {
 //        if (autonomousCommand != null) {
 //        	autonomousCommand.cancel();
 //        }
+    	if (driveForward != null) {
+    		driveForward.cancel();
+    	}
         
-        if (RobotMap.autonomousSwitch1.get() && RobotMap.autonomousSwitch2.get()) {
-        	if (driveForward != null){
-        		driveForward.cancel();
-        	}
-        } else if (RobotMap.autonomousSwitch1.get() && !RobotMap.autonomousSwitch2.get()) {
-        	if (pickUpOneTote != null) {
-        		pickUpOneTote.cancel();
-        	}
-        } else if (!RobotMap.autonomousSwitch1.get() && RobotMap.autonomousSwitch2.get()) {
-        	if (liftOneTrashCanAndOneTote != null) {
-        		liftOneTrashCanAndOneTote.cancel();
-        	}
-        } else if (!RobotMap.autonomousSwitch1.get() && !RobotMap.autonomousSwitch2.get()) {
-        	if (liftOneTrashCanAndThreeTotesThenDropAll != null) {
-        		liftOneTrashCanAndThreeTotesThenDropAll.cancel();
-        	}
-        }
+//        if (RobotMap.autonomousSwitch1.get() && RobotMap.autonomousSwitch2.get()) {
+//        	if (driveForward != null){
+//        		driveForward.cancel();
+//        	}
+//        } else if (RobotMap.autonomousSwitch1.get() && !RobotMap.autonomousSwitch2.get()) {
+//        	if (pickUpOneTote != null) {
+//        		pickUpOneTote.cancel();
+//        	}
+//        } else if (!RobotMap.autonomousSwitch1.get() && RobotMap.autonomousSwitch2.get()) {
+//        	if (liftOneTrashCanAndOneTote != null) {
+//        		liftOneTrashCanAndOneTote.cancel();
+//        	}
+//        } else if (!RobotMap.autonomousSwitch1.get() && !RobotMap.autonomousSwitch2.get()) {
+//        	if (liftOneTrashCanAndThreeTotesThenDropAll != null) {
+//        		liftOneTrashCanAndThreeTotesThenDropAll.cancel();
+//        	}
+//        }
         
         print("Entering teleop mode");
         if (CommandBase.driveTrain.getCurrentCommand() == null) {
