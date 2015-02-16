@@ -2,6 +2,7 @@ package info.ovhs.robotics;
 
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
@@ -35,6 +36,7 @@ public class RobotMap {
 	public static DigitalInput robotLimitSwitch;
 	public static DigitalInput autonomousSwitch1;
 	public static DigitalInput autonomousSwitch2;
+	public static PowerDistributionPanel PDP;
 
 	public static void init() {
 		
@@ -51,6 +53,8 @@ public class RobotMap {
 		RobotMap.createLimitSwitches();
 		
 		RobotMap.createAutonomousSwitches();
+		
+		RobotMap.createPDPObject();
 		
 		Robot.print("End RobotMap Init");
 	}
@@ -181,6 +185,13 @@ public class RobotMap {
     	CommandBase.rearMotorSpool.initialEncoderValue = CommandBase.rearMotorSpool.encoder.getDistance();
     	
 		Robot.print("End setInitialRearEncoderDistance");
-
 	}
+    
+    public static void createPDPObject() {
+    	Robot.print("Begin CreatePDPObject");
+    	
+    	PDP = new PowerDistributionPanel();
+    	
+    	Robot.print("End CreatePDPObject");
+    }
 }
