@@ -194,4 +194,16 @@ public class RobotMap {
     	
     	Robot.print("End CreatePDPObject");
     }
+    
+    public static void resetEncoders() {
+    	Robot.print("Resetting Encoders");
+    	
+    	CommandBase.conveyerBelt.encoder.reset();
+    	CommandBase.rearMotorSpool.encoder.reset();
+    	
+    	RobotMap.setInitialConveyerEncoderDistance();
+    	RobotMap.setInitialRearEncoderDistance();
+    	
+    	Robot.print("Finished Resetting Encoders");
+    }
 }

@@ -48,7 +48,60 @@ public class DriveTrain extends Subsystem {
      *        power)
      */
     public void driveStraight( double speedFactor ) {
-    	drive.mecanumDrive_Cartesian(0, speedFactor, 0, 0);
+    	drive.mecanumDrive_Cartesian(0, -speedFactor, 0, 0);
+    }
+    
+    public void strafeLeft( double speedFactor) {
+    	drive.mecanumDrive_Cartesian(speedFactor, 0, 0, 0);
+    }
+    
+    public void strafeRight( double speedFactor) {
+    	drive.mecanumDrive_Cartesian(-speedFactor, 0, 0, 0);
+    }
+    
+    /**
+     * Moves the robot at 45 degrees relative at a specified speed
+     * 
+     * @param speedFactor Speed to move robot at
+     */
+    public void moveAt45DegreeAngle( double speedFactor) {
+    	drive.mecanumDrive_Cartesian(-speedFactor, -speedFactor, 0, 0);
+    }
+    
+    /**
+     * Moves the robot at 135 degrees relative at a specified speed
+     * 
+     * @param speedFactor Speed to move robot at
+     */    
+    public void moveAt135DegreeAngle( double speedFactor) {
+    	drive.mecanumDrive_Cartesian(speedFactor, -speedFactor, 0, 0);
+    }
+    
+    /**
+     * Moves the robot at 225 degrees relative at a specified speed
+     * 
+     * @param speedFactor Speed to move robot at
+     */
+    public void moveAt225DegreeAngle( double speedFactor) {
+    	drive.mecanumDrive_Cartesian(speedFactor, speedFactor, 0, 0);
+    }
+    
+    /**
+     * Moves the robot at 315 degrees relative at a specified speed
+     * 
+     * @param speedFactor Speed to move robot at
+     */
+    public void moveAt315DegreeAngle( double speedFactor) {
+    	drive.mecanumDrive_Cartesian(-speedFactor, speedFactor, 0, 0);
+    }
+    
+    /**
+     * Moves the robot at a specified angle at a specified speed
+     * @param speedFactor Speed for robot to move at
+     * @param angle Angle for robot to move at
+     */
+    public void moveAtAngle( double speedFactor, double angle) {
+    	drive.mecanumDrive_Polar(-speedFactor, angle, 0);
     }
 
     /**
