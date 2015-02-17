@@ -86,7 +86,7 @@ public class Robot extends IterativeRobot {
         if (driveForward != null) {
         	driveForward.start();
         }
-        /*
+        
         
 //        boolean switch1 = RobotMap.autonomousSwitch1.get();
 //        boolean switch2 = RobotMap.autonomousSwitch2.get();
