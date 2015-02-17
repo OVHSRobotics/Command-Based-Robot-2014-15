@@ -245,6 +245,10 @@ public final class Constants {
 			public static final int REAR_RIGHT_DRIVE_MOTOR = 3;
 			
 			public static final int REAR_MOTOR = 5;
+			
+			public static final int TEST_MOTOR_LEFT = 6;
+			
+			public static final int TEST_MOTOR_RIGHT = 7;
 		}
 		
 		public static final class DIO {

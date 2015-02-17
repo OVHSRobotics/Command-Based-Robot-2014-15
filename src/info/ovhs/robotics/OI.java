@@ -2,6 +2,7 @@ package info.ovhs.robotics;
 
 import info.ovhs.robotics.commands.RumbleLeft;
 import info.ovhs.robotics.commands.RumbleRight;
+import info.ovhs.robotics.commands.TestActiveInput;
 import info.ovhs.robotics.commands.conveyer.ConveyerMove;
 import info.ovhs.robotics.commands.conveyer.DropTote;
 import info.ovhs.robotics.commands.conveyer.LiftTote;
@@ -69,7 +70,7 @@ public class OI {
     	aButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.A);
 	    aButton.whenPressed(new LiftTote(50));
 	    bButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.B);
-	    bButton.whenPressed(new DropTote(50));
+	    bButton.whileHeld(new TestActiveInput());
 	    xButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.X);
 	    xButton.whenPressed(new RearLiftTrashCan(50));
 	    yButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.Y);
@@ -78,12 +79,12 @@ public class OI {
 	    backButton.whenPressed(new ResetConveyer());
 	    startButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.START);
 	    startButton.whileHeld(new ResetRear());
-//	    leftBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.LEFT_BUMPER);
-//	    leftBumper.whileHeld(new RearMove(false));
-//	    leftBumper.whileHeld(new RumbleLeft(25));
-//	    rightBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.RIGHT_BUMPER);
-//	    rightBumper.whileHeld(new RearMove(true));
-//	    rightBumper.whileHeld(new RumbleRight(25));
+	    leftBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.LEFT_BUMPER);
+	    leftBumper.whileHeld(new RearMove(false));
+	    leftBumper.whileHeld(new RumbleLeft(25));
+	    rightBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.RIGHT_BUMPER);
+	    rightBumper.whileHeld(new RearMove(true));
+	    rightBumper.whileHeld(new RumbleRight(25));
 	    leftTrigger = new JoystickTriggerAsButton(xboxController, Constants.OperatorControls.Controller.Xbox.Axes.LEFT_TRIGGER, .04);
 	    leftTrigger.whileHeld(new ConveyerMove(false));
 	    leftTrigger.whileHeld(new RumbleLeft(25));
@@ -98,10 +99,10 @@ public class OI {
 	    trashCan1 = new JoystickButton(trashCanController, Constants.OperatorControls.Controller.TrashCanController.Buttons.TRASH_CAN_1);
 	    trashCan1.whileHeld(new RearJoystickControl());
 	    trashCan2 = new JoystickButton(trashCanController, Constants.OperatorControls.Controller.TrashCanController.Buttons.TRASH_CAN_2);
-	    trashCan2.whileHeld(new RearMove(false));
+	    trashCan2.whileHeld(new RearMove(true));
 	    trashCan3 = new JoystickButton(trashCanController, Constants.OperatorControls.Controller.TrashCanController.Buttons.TRASH_CAN_3);
-	    trashCan3.whileHeld(new RearMove(true));
-    	
+	    trashCan3.whileHeld(new RearMove(false));
+    	/*
         // SmartDashboard Buttons
         SmartDashboard.putData("MecanumDrive", new MecanumDrive());
 
@@ -114,6 +115,7 @@ public class OI {
         SmartDashboard.putData("Reset Conveyer", new ResetConveyer());
         
         SmartDashboard.putData("Reset Rear", new ResetRear());
+        */
     }
     
     public static OI getInstance() {

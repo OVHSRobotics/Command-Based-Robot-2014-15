@@ -28,6 +28,8 @@ public class RobotMap {
 	public static SpeedController rearRightDriveSpeedController;
 	public static SpeedController conveyerBeltSpeedController;
 	public static SpeedController rearMotorSpoolSpeedController;
+	public static SpeedController testSpeedControllerLeft;
+	public static SpeedController testSpeedControllerRight;
 	public static RobotDrive drive;
 	public static Encoder conveyerBeltEncoder;
 	public static Encoder rearEncoder;
@@ -83,6 +85,12 @@ public class RobotMap {
 
 		rearMotorSpoolSpeedController = new Victor(Constants.Ports.PWM.REAR_MOTOR);
 		LiveWindow.addActuator("Rear Motor Spool", "Rear Motor Spool Motor", (Victor) rearMotorSpoolSpeedController);
+		
+		testSpeedControllerLeft = new Talon(Constants.Ports.PWM.TEST_MOTOR_LEFT);
+		LiveWindow.addActuator("Test", "Test Motor Left", (Talon) testSpeedControllerLeft);
+		
+		testSpeedControllerRight = new Victor(Constants.Ports.PWM.TEST_MOTOR_RIGHT);
+		LiveWindow.addActuator("Test", "Test Motor Right", (Victor) testSpeedControllerRight);
 
 		
 		drive = new RobotDrive(frontLeftDriveSpeedController, rearLeftDriveSpeedController,

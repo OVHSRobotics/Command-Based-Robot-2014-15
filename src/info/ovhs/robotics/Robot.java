@@ -38,6 +38,7 @@ public class Robot extends IterativeRobot {
         
         print("Initializing Gyro");        
         RobotMap.robotGyro.initGyro();
+        print("End Initializing Gyro");
         
         RobotMap.setInitialConveyerEncoderDistance();
         RobotMap.setInitialRearEncoderDistance();
@@ -81,6 +82,38 @@ public class Robot extends IterativeRobot {
 //        driveForward = new Drive(1, 1.5, true);
 //        if (driveForward != null) {
 //        	driveForward.start();
+        driveForward = new Drive(.75, .35, true);
+        if (driveForward != null) {
+        	driveForward.start();
+        }
+        /*
+        
+//        boolean switch1 = RobotMap.autonomousSwitch1.get();
+//        boolean switch2 = RobotMap.autonomousSwitch2.get();
+//        
+//        if (switch1 && switch2) {
+//        	// Drives forward at full power for 3 seconds
+//        	driveForward = new Drive(1, 3, true);
+//        	if (driveForward != null){
+//        		driveForward.start();
+//        	}
+//        } else if (switch1 && !switch2) {
+//        	pickUpOneTote = new PickUpOneTote();
+//        	if (pickUpOneTote != null) {
+//        		pickUpOneTote.start();
+//        	}
+//        } else if (!switch1 && switch2) {
+//        	liftOneTrashCanAndOneTote = new LiftOneTrashCanAndOneTote();
+//        	if (liftOneTrashCanAndOneTote != null) {
+//        		liftOneTrashCanAndOneTote.start();
+//        	}
+//        } else if (!switch1 && !switch2) {
+//        	liftOneTrashCanAndThreeTotesThenDropAll = new LiftOneTrashCanAndThreeTotesThenDropAll();
+//        	if (liftOneTrashCanAndThreeTotesThenDropAll != null) {
+//        		liftOneTrashCanAndThreeTotesThenDropAll.start();
+//        	}
+//        } else {
+//        	//do nothing; impossible case
 //        }
         
         
@@ -212,6 +245,10 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Left X Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.LEFT_STICK_X));
         SmartDashboard.putNumber("Right Y Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.RIGHT_STICK_Y));
         SmartDashboard.putNumber("Right X Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.RIGHT_STICK_X));
+        SmartDashboard.putBoolean("Auto Switch 1", RobotMap.autonomousSwitch1.get());
+        SmartDashboard.putBoolean("Auto Switch 2", RobotMap.autonomousSwitch2.get());
+        SmartDashboard.putBoolean("Limit Switch", RobotMap.robotLimitSwitch.get());
+        SmartDashboard.putNumber("Rear Motor Spool Motor", RobotMap.rearMotorSpoolSpeedController.get());
         Robot.updatePDPStatus();
     }
     
@@ -227,15 +264,15 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("PDP Current Port 1", RobotMap.PDP.getCurrent(1));
         SmartDashboard.putNumber("PDP Current Port 2", RobotMap.PDP.getCurrent(2));
         SmartDashboard.putNumber("PDP Current Port 3", RobotMap.PDP.getCurrent(3));
-        SmartDashboard.putNumber("PDP Current Port 4", RobotMap.PDP.getCurrent(4));
-        SmartDashboard.putNumber("PDP Current Port 5", RobotMap.PDP.getCurrent(5));
-        SmartDashboard.putNumber("PDP Current Port 6", RobotMap.PDP.getCurrent(6));
-        SmartDashboard.putNumber("PDP Current Port 7", RobotMap.PDP.getCurrent(7));
-        SmartDashboard.putNumber("PDP Current Port 8", RobotMap.PDP.getCurrent(8));
-        SmartDashboard.putNumber("PDP Current Port 9", RobotMap.PDP.getCurrent(9));
-        SmartDashboard.putNumber("PDP Current Port 10", RobotMap.PDP.getCurrent(10));
-        SmartDashboard.putNumber("PDP Current Port 11", RobotMap.PDP.getCurrent(11));
-        SmartDashboard.putNumber("PDP Current Port 12", RobotMap.PDP.getCurrent(12));
+//        SmartDashboard.putNumber("PDP Current Port 4", RobotMap.PDP.getCurrent(4));
+//        SmartDashboard.putNumber("PDP Current Port 5", RobotMap.PDP.getCurrent(5));
+//        SmartDashboard.putNumber("PDP Current Port 6", RobotMap.PDP.getCurrent(6));
+//        SmartDashboard.putNumber("PDP Current Port 7", RobotMap.PDP.getCurrent(7));
+//        SmartDashboard.putNumber("PDP Current Port 8", RobotMap.PDP.getCurrent(8));
+//        SmartDashboard.putNumber("PDP Current Port 9", RobotMap.PDP.getCurrent(9));
+//        SmartDashboard.putNumber("PDP Current Port 10", RobotMap.PDP.getCurrent(10));
+//        SmartDashboard.putNumber("PDP Current Port 11", RobotMap.PDP.getCurrent(11));
+//        SmartDashboard.putNumber("PDP Current Port 12", RobotMap.PDP.getCurrent(12));
         SmartDashboard.putNumber("PDP Current Port 13", RobotMap.PDP.getCurrent(13));
         SmartDashboard.putNumber("PDP Current Port 14", RobotMap.PDP.getCurrent(14));
         SmartDashboard.putNumber("PDP Current Port 15", RobotMap.PDP.getCurrent(15));
