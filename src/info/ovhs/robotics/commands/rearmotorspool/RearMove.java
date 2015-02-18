@@ -1,6 +1,7 @@
 package info.ovhs.robotics.commands.rearmotorspool;
 
 import info.ovhs.robotics.Constants;
+import info.ovhs.robotics.RobotMap;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -31,6 +32,8 @@ public class RearMove extends Command {
     protected void execute() {
     	if (this.forward) {
     		CommandBase.rearMotorSpool.forward(Constants.RearMotorSpool.MANUAL_MOVE_SPEED);
+    	} else if (!this.forward && RobotMap.robotLimitSwitch.get()) {
+    		CommandBase.rearMotorSpool.backward(0);
     	} else if (!this.forward) {
     		CommandBase.rearMotorSpool.backward(Constants.RearMotorSpool.MANUAL_MOVE_SPEED);
     	} else {

@@ -22,7 +22,7 @@ public class ConveyerJoystickControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	CommandBase.conveyerBelt.setSpeed(OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.LEFT_STICK_Y));
+    	CommandBase.conveyerBelt.setSpeed(OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.TrashCanController.Axes.Y));
     	CommandBase.driveTrain.stopAllMotors();
     }
 

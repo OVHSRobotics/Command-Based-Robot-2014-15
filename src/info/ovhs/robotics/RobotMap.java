@@ -1,18 +1,17 @@
 package info.ovhs.robotics;
 
+import info.ovhs.robotics.commands.CommandBase;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.Gyro;
-import info.ovhs.robotics.Constants;
-import info.ovhs.robotics.commands.CommandBase;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.AnalogInput;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -83,8 +82,8 @@ public class RobotMap {
 		conveyerBeltSpeedController = new Victor(Constants.Ports.PWM.CONVEYER_BELT_MOTOR);
 		LiveWindow.addActuator("Conveyer Belt", "Conveyer Belt Motor", (Victor) conveyerBeltSpeedController);
 
-		rearMotorSpoolSpeedController = new Victor(Constants.Ports.PWM.REAR_MOTOR);
-		LiveWindow.addActuator("Rear Motor Spool", "Rear Motor Spool Motor", (Victor) rearMotorSpoolSpeedController);
+		rearMotorSpoolSpeedController = new Talon(Constants.Ports.PWM.REAR_MOTOR);
+		LiveWindow.addActuator("Rear Motor Spool", "Rear Motor Spool Motor", (Talon) rearMotorSpoolSpeedController);
 		
 		testSpeedControllerLeft = new Talon(Constants.Ports.PWM.TEST_MOTOR_LEFT);
 		LiveWindow.addActuator("Test", "Test Motor Left", (Talon) testSpeedControllerLeft);
@@ -214,4 +213,5 @@ public class RobotMap {
     	
     	Robot.print("Finished Resetting Encoders");
     }
+    
 }

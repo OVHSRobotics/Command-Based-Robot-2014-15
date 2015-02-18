@@ -2,6 +2,7 @@ package info.ovhs.robotics.commands.conveyer;
 
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.PIDCommand;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -24,6 +25,7 @@ public class HoldPID extends PIDCommand {
     // Called just before this Command runs the first time
     protected void initialize() {
     	CommandBase.conveyerBelt.stop();
+    	this.getPIDController().enable();
     	this.setSetpoint(CommandBase.conveyerBelt.encoder.getDistance());
     }
 

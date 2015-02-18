@@ -3,23 +3,19 @@ package info.ovhs.robotics;
 import info.ovhs.robotics.commands.RumbleLeft;
 import info.ovhs.robotics.commands.RumbleRight;
 import info.ovhs.robotics.commands.TestActiveInput;
+import info.ovhs.robotics.commands.conveyer.ConveyerJoystickControl;
 import info.ovhs.robotics.commands.conveyer.ConveyerMove;
 import info.ovhs.robotics.commands.conveyer.DropTote;
 import info.ovhs.robotics.commands.conveyer.LiftTote;
-import info.ovhs.robotics.commands.conveyer.LowerConveyerToBottom;
 import info.ovhs.robotics.commands.conveyer.ResetConveyer;
-import info.ovhs.robotics.commands.drive.ArcadeDrive;
-import info.ovhs.robotics.commands.drive.MecanumDrive;
-import info.ovhs.robotics.commands.drive.TankDrive;
 import info.ovhs.robotics.commands.rearmotorspool.RearDropTrashCan;
 import info.ovhs.robotics.commands.rearmotorspool.RearJoystickControl;
 import info.ovhs.robotics.commands.rearmotorspool.RearLiftTrashCan;
 import info.ovhs.robotics.commands.rearmotorspool.RearMove;
-import info.ovhs.robotics.commands.rearmotorspool.ResetRear;
+//import info.ovhs.robotics.commands.rearmotorspool.ResetRear;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -78,7 +74,7 @@ public class OI {
 	    backButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.BACK);
 	    backButton.whenPressed(new ResetConveyer());
 	    startButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.START);
-	    startButton.whileHeld(new ResetRear());
+//	    startButton.whileHeld(new ResetRear());
 	    leftBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.LEFT_BUMPER);
 	    leftBumper.whileHeld(new RearMove(false));
 	    leftBumper.whileHeld(new RumbleLeft(25));
@@ -97,11 +93,16 @@ public class OI {
 	    upPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.Xbox.POV.UP, Constants.OperatorControls.Controller.Xbox.POV.UP_THRESHOLD);
 	    downPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.Xbox.POV.DOWN, Constants.OperatorControls.Controller.Xbox.POV.DOWN_THRESHOLD);
 	    trashCan1 = new JoystickButton(trashCanController, Constants.OperatorControls.Controller.TrashCanController.Buttons.TRASH_CAN_1);
-	    trashCan1.whileHeld(new RearJoystickControl());
+	    trashCan1.whileHeld(new ConveyerJoystickControl());
 	    trashCan2 = new JoystickButton(trashCanController, Constants.OperatorControls.Controller.TrashCanController.Buttons.TRASH_CAN_2);
-	    trashCan2.whileHeld(new RearMove(true));
+	    trashCan2.whileHeld(new ConveyerMove(true));
 	    trashCan3 = new JoystickButton(trashCanController, Constants.OperatorControls.Controller.TrashCanController.Buttons.TRASH_CAN_3);
-	    trashCan3.whileHeld(new RearMove(false));
+	    trashCan3.whileHeld(new ConveyerMove(false));
+	    
+	    trashCan4 = new JoystickButton(trashCanController, Constants.OperatorControls.Controller.TrashCanController.Buttons.TRASH_CAN_4);
+	    trashCan4.whenPressed(new LiftTote());
+	    trashCan5 = new JoystickButton(trashCanController, Constants.OperatorControls.Controller.TrashCanController.Buttons.TRASH_CAN_5);
+	    trashCan5.whenPressed(new DropTote());
     	/*
         // SmartDashboard Buttons
         SmartDashboard.putData("MecanumDrive", new MecanumDrive());

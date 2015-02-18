@@ -1,8 +1,8 @@
 package info.ovhs.robotics.commands.rearmotorspool;
 
-import info.ovhs.robotics.Robot;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.PIDCommand;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -30,6 +30,7 @@ public class RearHoldPID extends PIDCommand {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	SmartDashboard.putNumber("PID Setpoint REar", this.getSetpoint());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -59,6 +60,6 @@ public class RearHoldPID extends PIDCommand {
     protected void usePIDOutput(double output) {
     	CommandBase.rearMotorSpool.setSpeed(output);
     	//Robot.print("Rear speed PID Output: " + output);
-    	SmartDashboard.putNumber("Rear Spool Encoder PID Output", output);
+    	SmartDashboard.putNumber("Rear Spool Encoder PID Output", -output);
     }
 }

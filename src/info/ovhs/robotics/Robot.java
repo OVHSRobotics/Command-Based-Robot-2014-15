@@ -82,10 +82,10 @@ public class Robot extends IterativeRobot {
 //        driveForward = new Drive(1, 1.5, true);
 //        if (driveForward != null) {
 //        	driveForward.start();
-        driveForward = new Drive(.75, .35, true);
-        if (driveForward != null) {
-        	driveForward.start();
-        }
+//        driveForward = new Drive(.75, .35, true);
+//        if (driveForward != null) {
+//        	driveForward.start();
+//        }
         
         
 //        boolean switch1 = RobotMap.autonomousSwitch1.get();
@@ -199,6 +199,8 @@ public class Robot extends IterativeRobot {
         
         // Updates SmartDashboard
         updateStatus();
+        
+
         
         // Moves Robot for Testing
         //CommandBase.driveTrain.mecanumDriveController(0);

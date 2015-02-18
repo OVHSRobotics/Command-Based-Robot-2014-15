@@ -18,7 +18,7 @@ public class TestActiveInput extends Command {
     protected void initialize() {
     	CommandBase.driveTrain.stopAllMotors();
     	RobotMap.testSpeedControllerLeft.set(OI.getXboxRightStickYAxis());
-    	RobotMap.testSpeedControllerRight.set(-OI.getXboxRightStickYAxis());
+    	RobotMap.testSpeedControllerRight.set(OI.getXboxRightStickYAxis());
     	
     }
 
@@ -26,7 +26,7 @@ public class TestActiveInput extends Command {
     protected void execute() {
     	CommandBase.driveTrain.stopAllMotors();
     	RobotMap.testSpeedControllerLeft.set(OI.getXboxRightStickYAxis());
-    	RobotMap.testSpeedControllerRight.set(-OI.getXboxRightStickYAxis());
+    	RobotMap.testSpeedControllerRight.set(OI.getXboxRightStickYAxis());
     }
 
     // Make this return true when this Command no longer needs to run execute()

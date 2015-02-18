@@ -2,6 +2,7 @@ package info.ovhs.robotics.subsystems;
 
 import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.RobotMap;
+import info.ovhs.robotics.commands.rearmotorspool.RearHold;
 import info.ovhs.robotics.commands.rearmotorspool.RearHoldPID;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -40,7 +41,9 @@ public class RearMotorSpool extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	
-    	setDefaultCommand(new RearHoldPID());
+//    	setDefaultCommand(new RearHoldPID());
+    	setDefaultCommand(new RearHold());
+
     }
     
     /**
