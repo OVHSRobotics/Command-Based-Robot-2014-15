@@ -9,43 +9,46 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ResetEncoders extends Command {
 	
-	private double initialTime;
+	private long initialTime;
+	private int secondsWaited = 0;
+	private int secondsToWait = 2;
 
     public ResetEncoders() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires (CommandBase.conveyerBelt);
     	requires (CommandBase.rearMotorSpool);
-    	this.initialTime = System.nanoTime();
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.print("DO NOT MOVE CONVEYER OR REAR MOTOR SPOOL; ENCODERS RESETTING"); 
-    	for (int i = 2; i < 0; i--) {
-    		Robot.print("Resetting in " + i + "seconds.");
-    	}
-    	if (System.nanoTime() > initialTime + 2 * Math.pow(10, 9)) {
-    		RobotMap.resetEncoders();
-    	}
-    	Robot.print("Finished Resetting Encoders");
+    	this.initialTime = System.nanoTime();
+    	Robot.print("DO NOT MOVE CONVEYER OR REAR MOTOR SPOOL; ENCODERS RESETTING");
+    	Robot.print("Resetting in " + this.secondsToWait + " seconds");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if (secondsToWait - (int)((System.nanoTime() - this.initialTime) / Math.pow(10, 9)) > this.secondsWaited) {
+    		Robot.print("Resetting in " + (secondsToWait - this.secondsWaited - 1) + " seconds");
+    		this.secondsWaited = secondsToWait - (int)((System.nanoTime() - this.initialTime) / Math.pow(10, 9));
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return System.nanoTime() - this.initialTime > this.secondsToWait * Math.pow(10, 9);
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	RobotMap.resetEncoders();
+    	Robot.print("Finished resetting encoders");
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.print("Resetting encoders was interrupted");
     }
 }
