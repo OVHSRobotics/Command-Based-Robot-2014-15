@@ -3,10 +3,25 @@ package info.ovhs.robotics;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.buttons.Button;
 
+/**
+ * Uses a Joystick Trigger as a Button
+ *
+ */
 public class JoystickTriggerAsButton extends Button {
 	
+	/**
+	 * Joystick to use
+	 */
 	GenericHID joystick;
+	
+	/**
+	 * Axis to use
+	 */
 	int axis;
+	
+	/**
+	 * Threshold to read true
+	 */
 	double threshold;
 	
 	
@@ -23,6 +38,10 @@ public class JoystickTriggerAsButton extends Button {
         this.threshold = threshold;
     }
 	
+	
+	/**
+	 * Gets the Trigger Button Value
+	 */
 	@Override
 	public boolean get() {
 		if (Math.abs(this.joystick.getRawAxis(this.axis)) > threshold) {
