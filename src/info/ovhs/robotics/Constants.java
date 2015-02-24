@@ -176,10 +176,14 @@ public final class Constants {
 	public static final class FieldElements {
 		
 		public static final double TRASHCAN_HEIGHT_INCHES = 28.8;
+		
+		public static final double TRASHCAN_HEIGHT_FEET = Constants.FieldElements.TRASHCAN_HEIGHT_INCHES / 12;
 	
 		public static final double TRASHCAN_WEIGHT_POUNDS = 8.65;
 	
 		public static final double TOTE_HEIGHT_INCHES = 12.1;
+		
+		public static final double TOTE_HEIGHT_FEET = Constants.FieldElements.TOTE_HEIGHT_INCHES / 12;
 	
 		public static final double TOTE_WEIGHT_POUNDS = 7.8;
 	}
@@ -280,10 +284,16 @@ public final class Constants {
 	public static final class RearMotorSpool {
 		
 		public static final double SPROCKET_DIAMETER_FEET = 1;
+		
+		public static final double SPROCKET_DIAMETER_INCHES = Constants.RearMotorSpool.SPROCKET_DIAMETER_FEET * 12;
 	
 		public static final double SPROCKET_RADIUS_FEET = Constants.RearMotorSpool.SPROCKET_DIAMETER_FEET/2;
 	
+		public static final double SPROCKET_RADIUS_INCHES = Constants.RearMotorSpool.SPROCKET_DIAMETER_INCHES/2;
+
 		public static final double SPROCKET_CIRCUMFRENCE_FEET = Constants.RearMotorSpool.SPROCKET_DIAMETER_FEET * Math.PI;
+		
+		public static final double SPROCKET_CIRCUMFRENCE_INCHES = Constants.RearMotorSpool.SPROCKET_DIAMETER_INCHES * Math.PI;
 		
 		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 36/16;
 		
