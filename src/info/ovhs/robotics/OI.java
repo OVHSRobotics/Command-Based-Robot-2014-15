@@ -24,6 +24,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 	
+	/**	
+	 * Instance of the OI Class
+	 */
 	private static OI instance;
 	
 	//// CREATING BUTTONS
@@ -52,15 +55,35 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
-    
+    /**
+     * Button on the xbox Controller
+     */
     public JoystickButton aButton, bButton, xButton, yButton, backButton, startButton, leftBumper, rightBumper;
+    
+    /**
+     * Button on the joystick for trash can control
+     */
     public JoystickButton trashCan1, trashCan2, trashCan3, trashCan4, trashCan5, trashCan6, trashCan7, trashCan8, trashCan9, trashCan10, trashCan11;
+   
+    /**
+     * Trigger on xbox Controller
+     */
     public JoystickTriggerAsButton leftTrigger, rightTrigger;
+    
+    /**
+     * POV on Xbox Controller
+     */
     public JoystickPOVAsButton leftPOV, rightPOV, upPOV, downPOV;
+    
+    /**
+     * Joystick
+     */
     public static Joystick xboxController, trashCanController;
     
+    /**
+     * Creates all Operator Interface Objects
+     */
     private OI() {
-
     	xboxController = new Joystick(Constants.Ports.Joystick.CONTROLLER);
     	trashCanController = new Joystick(Constants.Ports.Joystick.TRASH_CAN_CONTROLLER);
     	aButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.A);
@@ -119,6 +142,10 @@ public class OI {
         */
     }
     
+    /**
+     * Gets the instance of the OI Class and creates one if one doesn't exist
+     * @return instance of OI Class
+     */
     public static OI getInstance() {
     	if (OI.instance == null) {
     		OI.instance = new OI();
@@ -167,21 +194,37 @@ public class OI {
     	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.Xbox.Deadzone.RIGHT_Y_CENTER, Constants.OperatorControls.Controller.Xbox.Deadzone.RIGHT_Y, rawAxis, Constants.OperatorControls.Controller.Xbox.ScalingValue.RIGHT_Y);
     }
     
+    /**
+     * Gets the value for the x-axis on the trash can controller    
+     * @return value for the x-axis on the trash can controller
+     */
     public static double getTrashCanControllerXAxis() {
     	double rawAxis = OI.trashCanController.getRawAxis(Constants.OperatorControls.Controller.TrashCanController.Axes.X);
     	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.TrashCanController.Deadzone.X_CENTER, Constants.OperatorControls.Controller.TrashCanController.Deadzone.X, rawAxis, Constants.OperatorControls.Controller.TrashCanController.ScalingValue.X);
     }
     
+    /**
+     * Gets the value for the y-axis on the trash can controller    
+     * @return value for the y-axis on the trash can controller
+     */
     public static double getTrashCanControllerYAxis() {
     	double rawAxis = OI.trashCanController.getRawAxis(Constants.OperatorControls.Controller.TrashCanController.Axes.Y);
     	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.TrashCanController.Deadzone.Y_CENTER, Constants.OperatorControls.Controller.TrashCanController.Deadzone.Y, rawAxis, Constants.OperatorControls.Controller.TrashCanController.ScalingValue.Y);
     }
     
+    /**
+     * Gets the value for the z-axis on the trash can controller    
+     * @return value for the z-axis on the trash can controller
+     */
     public static double getTrashCanControllerZAxis() {
     	double rawAxis = OI.trashCanController.getRawAxis(Constants.OperatorControls.Controller.TrashCanController.Axes.Z);
     	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.TrashCanController.Deadzone.Z_CENTER, Constants.OperatorControls.Controller.TrashCanController.Deadzone.Z, rawAxis, Constants.OperatorControls.Controller.TrashCanController.ScalingValue.Z);
     }
 
+    /**
+     * Gets the instance of the xbox controller
+     * @return instance of xbox controller
+     */
 	public Joystick getController() {
 		return xboxController;
 	}
@@ -242,6 +285,12 @@ public class OI {
     	return Math.pow(value, scalingPower);
     }
     
+    /**    
+     * Rumbles the controller
+     * 
+     * @param controller Controller to rumble
+     * @param time How long to rumble
+     */
     public static void controllerRumble(Joystick controller, double time) {
     	double initialTime = System.nanoTime();
     	if (System.nanoTime() < initialTime + time * Math.pow(10, 9)) {
@@ -253,11 +302,22 @@ public class OI {
     	}
     }
     
+    /**
+     * Starts the controller rumbling on both sides 
+     * 
+     * @param controller Which controller to rumble
+     */
     public static void startControllerRumble(Joystick controller) {
     	controller.setRumble(RumbleType.kLeftRumble, 1);
     	controller.setRumble(RumbleType.kRightRumble, 1);
     }
     
+    /**
+     * Starts the controller rumbling on a specified side
+     * 
+     * @param controller Which controller to rumble
+     * @param side Which side to rumble; choose from "left" or "right"
+     */
     public static void startControllerRumble(Joystick controller, String side) {
     	if (side.equalsIgnoreCase("left")) {
     		controller.setRumble(RumbleType.kLeftRumble, 0);
@@ -269,11 +329,22 @@ public class OI {
     	}
     }
     
+    /**    
+     * Stops the controller from rumbling on both sides
+     * 
+     * @param controller Which controller to stop rumbling
+     */
     public static void stopControllerRumble(Joystick controller) {
     	controller.setRumble(RumbleType.kLeftRumble, 0);
     	controller.setRumble(RumbleType.kRightRumble, 0);
     }
     
+    /**
+     * Stops the controller from rumbling
+     * 
+     * @param controller Which controller to stop rumbling
+     * @param side Which side to stop rumbling
+     */
     public static void stopControllerRumble(Joystick controller, String side) {
     	switch (side) {
     		case "left": controller.setRumble(RumbleType.kLeftRumble, 0);
