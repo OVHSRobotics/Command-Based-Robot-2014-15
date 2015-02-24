@@ -5,7 +5,7 @@ import info.ovhs.robotics.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Moves the active input arms based on the joystick input from the xbox controller's right stick's Y-axis
  */
 public class TestActiveInput extends Command {
 
@@ -17,16 +17,16 @@ public class TestActiveInput extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	CommandBase.driveTrain.stopAllMotors();
-    	RobotMap.testSpeedControllerLeft.set(OI.getXboxRightStickYAxis());
-    	RobotMap.testSpeedControllerRight.set(OI.getXboxRightStickYAxis());
+    	RobotMap.activeInputSpeedControllerLeft.set(OI.getXboxRightStickYAxis());
+    	RobotMap.activeInputSpeedControllerRight.set(OI.getXboxRightStickYAxis());
     	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	CommandBase.driveTrain.stopAllMotors();
-    	RobotMap.testSpeedControllerLeft.set(OI.getXboxRightStickYAxis());
-    	RobotMap.testSpeedControllerRight.set(OI.getXboxRightStickYAxis());
+    	RobotMap.activeInputSpeedControllerLeft.set(OI.getXboxRightStickYAxis());
+    	RobotMap.activeInputSpeedControllerRight.set(OI.getXboxRightStickYAxis());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -36,13 +36,13 @@ public class TestActiveInput extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	RobotMap.testSpeedControllerLeft.set(0);
-    	RobotMap.testSpeedControllerRight.set(0);
+    	RobotMap.activeInputSpeedControllerLeft.set(0);
+    	RobotMap.activeInputSpeedControllerRight.set(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	RobotMap.testSpeedControllerLeft.set(0);
+    	RobotMap.activeInputSpeedControllerLeft.set(0);
     }
 }

@@ -5,7 +5,8 @@ import info.ovhs.robotics.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Resets the values on the encoders after waiting for a certain amount of seconds, 
+ * denoted by the <code> secondsToWait </code> variable.
  */
 public class ResetEncoders extends Command {
 	

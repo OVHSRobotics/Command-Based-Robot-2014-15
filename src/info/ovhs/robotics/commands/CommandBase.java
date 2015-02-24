@@ -7,6 +7,14 @@ import info.ovhs.robotics.subsystems.DriveTrain;
 import info.ovhs.robotics.subsystems.RearMotorSpool;
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ * This class is to hold all of the subsystems on the robot in order to have one instance of the subsystems to work
+ * off of.  Call all subsystems as instances in the CommandBase.
+ * 
+ * <p>
+ * INITIALIZE OI LAST!!!
+ * </p>
+ */
 public abstract class CommandBase extends Command {
 	
 	public static DriveTrain driveTrain;
@@ -14,6 +22,9 @@ public abstract class CommandBase extends Command {
 	public static ConveyerBelt conveyerBelt;
 	public static RearMotorSpool rearMotorSpool;
 	
+	/**
+	 * Initializes the subsystems on the robot
+	 */
 	public static void init() {
 		Robot.print("Begin CommandBase Init");
 		

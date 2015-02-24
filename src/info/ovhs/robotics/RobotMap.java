@@ -21,29 +21,93 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class RobotMap {
 
+	/**
+	 * Speed Controller for the Front Left Drive Motor
+	 */
 	public static SpeedController frontLeftDriveSpeedController;
+	/**
+	 * Speed Controller for the Back Left Drive Motor
+	 */
 	public static SpeedController rearLeftDriveSpeedController;
+	/**
+	 * Speed Controller for the Front Right Drive Motor
+	 */
 	public static SpeedController frontRightDriveSpeedController;
+	/**
+	 * Speed Controller for the Back Right Drive Motor
+	 */
 	public static SpeedController rearRightDriveSpeedController;
+	/**
+	 * Speed Controller for the Conveyer Belt Motor
+	 */
 	public static SpeedController conveyerBeltSpeedController;
+	/**
+	 * Speed Controller for the Rear Motor Spool
+	 */
 	public static SpeedController rearMotorSpoolSpeedController;
-	public static SpeedController testSpeedControllerLeft;
-	public static SpeedController testSpeedControllerRight;
+	/**
+	 * Speed Controller for the Active Input Motor on the left
+	 */
+	public static SpeedController activeInputSpeedControllerLeft;
+	/**
+	 * Speed Controller for the Active Input Motor on the right
+	 */
+	public static SpeedController activeInputSpeedControllerRight;
+	/**
+	 * RobotDrive Drive Motor Configuration
+	 */
 	public static RobotDrive drive;
+	/**
+	 * Encoder on the Conveyer Belt
+	 */
 	public static Encoder conveyerBeltEncoder;
+	/**
+	 * Encoder on the Rear Motor Spool
+	 */
 	public static Encoder rearEncoder;
+	/**
+	 * Gyroscope on the robot
+	 * 
+	 * <p>
+	 * Not currently being used, power output lowered when gyro is plugged in
+	 * </p>
+	 */
 	public static Gyro robotGyro;
+	/**
+	 * Temperature sensor integrated into the robot gyroscope
+	 * 
+	 * <p>
+	 * Not currently being used, power output lowered when gyro is plugged in
+	 * </p>
+	 */
 	public static AnalogInput robotGyroTempSensor;
+	/**
+	 * Limit switch on the robot in order to tell when the arms are all the way down
+	 */
 	public static DigitalInput robotLimitSwitch;
+	/**
+	 * Switch to switch between different autonomous modes
+	 */
 	public static DigitalInput autonomousSwitch1;
+	/**
+	 * Switch to switch between different autonomous modes
+	 */
 	public static DigitalInput autonomousSwitch2;
+	/**
+	 * Power Distribution Panel for determining current draw from the PDP
+	 */
 	public static PowerDistributionPanel PDP;
 
+	/**
+	 * Initializes the RobotMap as well as creates all of the objects for the sensors and actuators on the robot
+	 */
 	public static void init() {
 		
 		Robot.print("Begin RobotMap Init");
 
-		RobotMap.setupDriveMotors();
+		RobotMap.setupDrive();
+		
+		RobotMap.setupSubsystemSpeedControllers();
 		
 		RobotMap.createGyro();
 		
@@ -60,7 +124,10 @@ public class RobotMap {
 		Robot.print("End RobotMap Init");
 	}
 	
-	public static void setupDriveMotors() {
+	/**
+	 * Sets up the configuration for the driving systems on the robot
+	 */
+	public static void setupDrive() {
 		Robot.print("Begin setupDriveMotors");
 		
 		frontLeftDriveSpeedController = new Talon(Constants.Ports.PWM.FRONT_LEFT_DRIVE_MOTOR);
@@ -79,19 +146,6 @@ public class RobotMap {
 		LiveWindow.addActuator("DriveTrain", "Back Right Drive Speed Controller",
 				(Talon) rearRightDriveSpeedController);
 		
-		conveyerBeltSpeedController = new Victor(Constants.Ports.PWM.CONVEYER_BELT_MOTOR);
-		LiveWindow.addActuator("Conveyer Belt", "Conveyer Belt Motor", (Victor) conveyerBeltSpeedController);
-
-		rearMotorSpoolSpeedController = new Talon(Constants.Ports.PWM.REAR_MOTOR);
-		LiveWindow.addActuator("Rear Motor Spool", "Rear Motor Spool Motor", (Talon) rearMotorSpoolSpeedController);
-		
-		testSpeedControllerLeft = new Talon(Constants.Ports.PWM.TEST_MOTOR_LEFT);
-		LiveWindow.addActuator("Test", "Test Motor Left", (Talon) testSpeedControllerLeft);
-		
-		testSpeedControllerRight = new Victor(Constants.Ports.PWM.TEST_MOTOR_RIGHT);
-		LiveWindow.addActuator("Test", "Test Motor Right", (Victor) testSpeedControllerRight);
-
-		
 		drive = new RobotDrive(frontLeftDriveSpeedController, rearLeftDriveSpeedController,
 				frontRightDriveSpeedController, rearRightDriveSpeedController);
 
@@ -109,6 +163,30 @@ public class RobotMap {
 		Robot.print("End setupDriveMotors");
 	}
 	
+	/**
+	 * Sets up the speed controllers that are for anything other than driving
+	 */
+	public static void setupSubsystemSpeedControllers() {
+		Robot.print("Begin setupSubsystemSpeedControllers");
+		
+		conveyerBeltSpeedController = new Victor(Constants.Ports.PWM.CONVEYER_BELT_MOTOR);
+		LiveWindow.addActuator("Conveyer Belt", "Conveyer Belt Motor", (Victor) conveyerBeltSpeedController);
+
+		rearMotorSpoolSpeedController = new Talon(Constants.Ports.PWM.REAR_MOTOR);
+		LiveWindow.addActuator("Rear Motor Spool", "Rear Motor Spool Motor", (Talon) rearMotorSpoolSpeedController);
+		
+		activeInputSpeedControllerLeft = new Talon(Constants.Ports.PWM.TEST_MOTOR_LEFT);
+		LiveWindow.addActuator("Test", "Test Motor Left", (Talon) activeInputSpeedControllerLeft);
+		
+		activeInputSpeedControllerRight = new Victor(Constants.Ports.PWM.TEST_MOTOR_RIGHT);
+		LiveWindow.addActuator("Test", "Test Motor Right", (Victor) activeInputSpeedControllerRight);		
+		
+		Robot.print("End setupSubsystemSpeedControllers");
+	}
+	
+	/**
+	 * Creates the Gyro object on the robot
+	 */
 	public static void createGyro() {
 		
 		Robot.print("Begin createGyro");
@@ -120,6 +198,9 @@ public class RobotMap {
 		Robot.print("End createGyro");
 	}
 	
+	/**
+	 * Creates the Gyro Temp Sensor object on the robot
+	 */
 	public static void createGyroTempSensor() {
 		Robot.print("Begin createGyroTempSensor");
 		
@@ -129,6 +210,9 @@ public class RobotMap {
 		Robot.print("End createGyroTempSensor");
 	}
 	
+	/**
+	 * Creates the objects for all encoders on the robot
+	 */
 	public static void createEncoders() {
 		
 		Robot.print("Begin createEncoders");
@@ -155,6 +239,9 @@ public class RobotMap {
 		Robot.print("End createEncoders");
 	}
 	
+	/**
+	 * Creates the objects for all limit switches on the robot
+	 */
 	public static void createLimitSwitches() {
 		
 		Robot.print("Begin createLimitSwitches");
@@ -165,6 +252,9 @@ public class RobotMap {
 		Robot.print("End createLimitSwitches");
 	}
 	
+	/**
+	 * Creates the objects for the autonomous switches on the robot
+	 */
 	public static void createAutonomousSwitches() {
 		
 		Robot.print("Begin createAutonomousSwitches");
@@ -178,6 +268,9 @@ public class RobotMap {
 		Robot.print("End createAutonomousSwitches");
 	}
 	
+	/**
+	 * Sets the initial distance for the conveyer encoder in order to use the reset command
+	 */
 	public static void setInitialConveyerEncoderDistance() {
 		Robot.print("Begin setInitialConveyerEncoderDistance");
 		
@@ -186,6 +279,9 @@ public class RobotMap {
     	Robot.print("End setInitialConveyerEncoderDistance");
     }
     
+	/**
+	 * Sets the initial distance for the rear encoder in order to use the reset command
+	 */
     public static void setInitialRearEncoderDistance() {
 		Robot.print("Begin setInitialRearEncoderDistance");
 
@@ -194,6 +290,9 @@ public class RobotMap {
 		Robot.print("End setInitialRearEncoderDistance");
 	}
     
+    /**
+     * Creates the object for the PDP in order to get current draws from the PDP on the robot
+     */
     public static void createPDPObject() {
     	Robot.print("Begin CreatePDPObject");
     	
@@ -202,6 +301,9 @@ public class RobotMap {
     	Robot.print("End CreatePDPObject");
     }
     
+    /**
+     * Resets both of the encoders and then sets a new initial distance
+     */
     public static void resetEncoders() {
     	Robot.print("Resetting Encoders");
     	

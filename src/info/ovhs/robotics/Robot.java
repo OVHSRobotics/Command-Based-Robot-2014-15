@@ -18,13 +18,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-    Command driveForward;
-    Command strafeRight;
-    Command strafeLeft;
-    Command pickUpOneTote;    
-    
-    boolean switch1;
-    boolean switch2;
+	/**
+	 * Command for autonomous mode
+	 */
+    Command driveForward, strafeRight, strafeLeft, pickUpOneTote;
+
+    /**
+     * Switch to switch between different autonomous modes
+     */
+    boolean autoSwitch1, autoSwitch2;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -67,10 +69,17 @@ public class Robot extends IterativeRobot {
     	Scheduler.getInstance().removeAll();
     }
 
+    /**
+     * This function is called every 20 ms during disabled mode.
+     */
     public void disabledPeriodic() {   	
         Scheduler.getInstance().run();
     }
 
+    /**
+     * This function is called once at the beginning of autonomous mode.
+     * Place all autonomous command initializations here.
+     */
     public void autonomousInit() {
         // schedule the autonomous command (example)
 //        if (autonomousCommand != null) {
@@ -79,64 +88,26 @@ public class Robot extends IterativeRobot {
         
         print("Entering autonomous mode");
         
-//        driveForward = new Drive(1, 1.5, true);
-//        if (driveForward != null) {
-//        	driveForward.start();
-//        driveForward = new Drive(.75, .35, true);
-//        if (driveForward != null) {
-//        	driveForward.start();
-//        }
+        this.autoSwitch1 = RobotMap.autonomousSwitch1.get();
+        this.autoSwitch2 = RobotMap.autonomousSwitch2.get();
         
-        
-//        boolean switch1 = RobotMap.autonomousSwitch1.get();
-//        boolean switch2 = RobotMap.autonomousSwitch2.get();
-//        
-//        if (switch1 && switch2) {
-//        	// Drives forward at full power for 3 seconds
-//        	driveForward = new Drive(1, 3, true);
-//        	if (driveForward != null){
-//        		driveForward.start();
-//        	}
-//        } else if (switch1 && !switch2) {
-//        	pickUpOneTote = new PickUpOneTote();
-//        	if (pickUpOneTote != null) {
-//        		pickUpOneTote.start();
-//        	}
-//        } else if (!switch1 && switch2) {
-//        	liftOneTrashCanAndOneTote = new LiftOneTrashCanAndOneTote();
-//        	if (liftOneTrashCanAndOneTote != null) {
-//        		liftOneTrashCanAndOneTote.start();
-//        	}
-//        } else if (!switch1 && !switch2) {
-//        	liftOneTrashCanAndThreeTotesThenDropAll = new LiftOneTrashCanAndThreeTotesThenDropAll();
-//        	if (liftOneTrashCanAndThreeTotesThenDropAll != null) {
-//        		liftOneTrashCanAndThreeTotesThenDropAll.start();
-//        	}
-//        } else {
-//        	//do nothing; impossible case
-//        }
-        
-        
-        this.switch1 = RobotMap.autonomousSwitch1.get();
-        this.switch2 = RobotMap.autonomousSwitch2.get();
-        
-        if (switch1 && switch2) {
+        if (autoSwitch1 && autoSwitch2) {
         	// Drives forward at full power for 3 seconds
         	driveForward = new Drive(.75, 1.0, true);
         	if (driveForward != null){
         		driveForward.start();
         	}
-        } else if (switch1 && !switch2) {
+        } else if (autoSwitch1 && !autoSwitch2) {
         	pickUpOneTote = new PickUpOneTote();
         	if (pickUpOneTote != null) {
         		pickUpOneTote.start();
         	}
-        } else if (!switch1 && switch2) {
+        } else if (!autoSwitch1 && autoSwitch2) {
         	strafeRight = new Strafe(.5, 1, true);
         	if (strafeRight != null) {
         		strafeRight.start();
         	}
-        } else if (!switch1 && !switch2) {
+        } else if (!autoSwitch1 && !autoSwitch2) {
         	strafeLeft = new Strafe(.5, 1, false);
         	if (strafeLeft != null) {
         		strafeLeft.start();
@@ -152,31 +123,30 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
     }
 
+    /**
+     * This function is called once at the beginning of operator control mode.
+     */
     public void teleopInit() {
         // This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to 
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
-//        if (autonomousCommand != null) {
-//        	autonomousCommand.cancel();
-//        }
+        // teleop starts running.
+
     	if (driveForward != null) {
     		driveForward.cancel();
     	}
         
-        if (this.switch1 && this.switch2) {
+        if (this.autoSwitch1 && this.autoSwitch2) {
         	if (driveForward != null){
         		driveForward.cancel();
         	}
-        } else if (this.switch1 && !this.switch2) {
+        } else if (this.autoSwitch1 && !this.autoSwitch2) {
         	if (pickUpOneTote != null) {
         		pickUpOneTote.cancel();
         	}
-        } else if (!this.switch1 && this.switch2) {
+        } else if (!this.autoSwitch1 && this.autoSwitch2) {
         	if (strafeRight != null) {
         		strafeRight.cancel();
         	}
-        } else if (!this.switch1 && !this.switch2) {
+        } else if (!this.autoSwitch1 && !this.autoSwitch2) {
         	if (strafeLeft != null) {
         		strafeLeft.cancel();
         	}
@@ -197,14 +167,7 @@ public class Robot extends IterativeRobot {
         
     	Scheduler.getInstance().run();
         
-        // Updates SmartDashboard
-        updateStatus();
-        
-
-        
-        // Moves Robot for Testing
-        //CommandBase.driveTrain.mecanumDriveController(0);
-        
+        updateStatus();        
     }
     
     /**
@@ -223,11 +186,26 @@ public class Robot extends IterativeRobot {
         LiveWindow.run();
     }
     
+    /**
+     * Prints a message of any type to the RoboRio Console, which can be accessed with NetConsole for cRIO
+     * 
+     * <p>
+     * Substitute for System.out.println()
+     * </p>
+     * 
+     * @param message Message to print
+     */
     public static void print( Object message) {
     	System.out.println(message);
     }
     
-    
+    /**
+     * Updates the SmartDashboard data outputs
+     * 
+     * <p>
+     * For operator use
+     * </p>
+     */
     public static void updateStatus() {
         // Add data to the "SmartDashboard"
     	Robot.updateSubsystemStatus();
@@ -254,12 +232,26 @@ public class Robot extends IterativeRobot {
         Robot.updatePDPStatus();
     }
     
+    /**
+     * Updates the smartDashboard subsystem command readouts
+     * 
+     * <p>
+     * For operator use
+     * </p>
+     */
     public static void updateSubsystemStatus() {
     	SmartDashboard.putData(CommandBase.driveTrain);
         SmartDashboard.putData(CommandBase.conveyerBelt);
         SmartDashboard.putData(CommandBase.rearMotorSpool);
     }
     
+    /**
+     * Updates the smartDashboard PDP Power readouts
+     * 
+     * <p>
+     * For operator use
+     * </p>
+     */
     public static void updatePDPStatus() {
     	SmartDashboard.putNumber("PDP Total Current", RobotMap.PDP.getTotalCurrent());
         SmartDashboard.putNumber("PDP Current Port 0", RobotMap.PDP.getCurrent(0));

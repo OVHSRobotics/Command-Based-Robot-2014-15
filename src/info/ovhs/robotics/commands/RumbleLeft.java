@@ -4,13 +4,18 @@ import info.ovhs.robotics.OI;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Rumbles the left side of the controller for a set amount of time
  */
 public class RumbleLeft extends Command {
 
 	double time;
 	double initialTime;
 	
+	/**
+	 * Rumbles the left side of the controller for a set amount of time
+	 * 
+	 * @param time Time to rumble the controller for
+	 */
     public RumbleLeft(double time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
