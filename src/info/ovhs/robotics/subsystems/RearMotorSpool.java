@@ -8,19 +8,30 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * Rear Motor Spool Subsystem
  */
 public class RearMotorSpool extends Subsystem {
 
+	/**
+	 * Instance of Rear Motor Spool Subsystem
+	 */
 	protected static RearMotorSpool instance;
-	
+	/**
+	 * Speed Controller for the Rear Motor Spool
+	 */
 	protected SpeedController rearSpoolMotor = RobotMap.rearMotorSpoolSpeedController;		
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
+	/**
+	 * Rear Encoder
+	 */
 	public Encoder encoder = RobotMap.rearEncoder;
 	
+	/**
+	 * Initial value of rear encoder
+	 */
 	public double initialEncoderValue;
 	
 	/**

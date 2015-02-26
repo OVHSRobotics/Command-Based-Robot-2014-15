@@ -10,15 +10,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class HoldPID extends PIDCommand {
 	
 	/**
-	 * Proportional Constant
+	 * Proportional PID Constant
 	 */
 	private static final double k_p = 1.0;
 	/**
-	 * Integral Constant
+	 * Integral PID Constant
 	 */
 	private static final double k_i = 0.1;
 	/**
-	 * Derivative Constant
+	 * Derivative PID Constant
 	 */
 	private static final double k_d = 0;
 	

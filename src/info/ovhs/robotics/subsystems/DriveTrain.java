@@ -11,19 +11,41 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- *
+/** 
+ * Drive Train Subsystem on the robot
  */
 public class DriveTrain extends Subsystem {
 	
+	/**
+	 * Instance of the Drive Train Subsystem
+	 */
 	protected static DriveTrain instance;
 	
-    SpeedController motorSpeedController1 = RobotMap.frontLeftDriveSpeedController;
-    SpeedController motorSpeedController2 = RobotMap.rearLeftDriveSpeedController;
-    SpeedController motorSpeedController3 = RobotMap.frontRightDriveSpeedController;
-    SpeedController motorSpeedController4 = RobotMap.rearRightDriveSpeedController;
+	/**
+	 * Speed Controller for the front left drive motor
+	 */
+    SpeedController frontLeftDriveMotorSpeedController = RobotMap.frontLeftDriveSpeedController;
+    /**
+     * Speed Controller for the rear left drive motor
+     */
+    SpeedController rearLeftDriveMotorSpeedController = RobotMap.rearLeftDriveSpeedController;
+    /**
+     * Speed Controller for the front right drive motor
+     */
+    SpeedController frontRightDriveMotorSpeedController = RobotMap.frontRightDriveSpeedController;
+    /**
+     * Speed Controller for the rear right drive motor
+     */
+    SpeedController rearRightDriveMotorSpeedController = RobotMap.rearRightDriveSpeedController;
+    /**
+     * RobotDrive Drive Motor Configuration
+     */
     RobotDrive drive = RobotMap.drive;
     
+    /**
+     * Gets the instance of the DriveTrain Subsystem and creates one if there isn't one already
+     * @return instance of DriveTrain Subsystem
+     */
     public static DriveTrain getInstance() {
     	if (DriveTrain.instance == null) {
     		DriveTrain.instance = new DriveTrain();
@@ -51,10 +73,18 @@ public class DriveTrain extends Subsystem {
     	drive.mecanumDrive_Cartesian(0, -speedFactor, 0, 0);
     }
     
+    /**
+     * Strafes the robot to the left
+     * @param speedFactor How fast to strafe
+     */
     public void strafeLeft( double speedFactor) {
     	drive.mecanumDrive_Cartesian(speedFactor, 0, 0, 0);
     }
     
+    /**
+     * Strafes the robot to the right
+     * @param speedFactor How fast to strafe
+     */
     public void strafeRight( double speedFactor) {
     	drive.mecanumDrive_Cartesian(-speedFactor, 0, 0, 0);
     }
@@ -96,9 +126,9 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
-     * Moves the robot at a specified angle at a specified speed
+     * Moves the robot at a specified relative angle at a specified speed
      * @param speedFactor Speed for robot to move at
-     * @param angle Angle for robot to move at
+     * @param angle Relative angle for robot to move at
      */
     public void moveAtAngle( double speedFactor, double angle) {
     	drive.mecanumDrive_Polar(-speedFactor, angle, 0);

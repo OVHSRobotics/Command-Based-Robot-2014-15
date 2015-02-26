@@ -9,19 +9,29 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * The conveyer belt subsystem on the robot
  */
 public class ConveyerBelt extends Subsystem {
 
+	/**
+	 * Instance of the Conveyer Belt Subsystem
+	 */
 	protected static ConveyerBelt instance;
-	
+	/**
+	 * Speed controller for the Conveyer Belt Motor
+	 */
 	protected SpeedController conveyerBeltMotor = RobotMap.conveyerBeltSpeedController;		
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
+	/**
+	 * Conveyer Belt Encoder
+	 */
 	public Encoder encoder = RobotMap.conveyerBeltEncoder;
-	
+	/**
+	 * Initial encoder value
+	 */
 	public double initialEncoderValue;
 	
 	/**
