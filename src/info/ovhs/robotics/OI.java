@@ -246,6 +246,7 @@ public class OI {
 	 * @param center Center value for the deadzones
 	 * @param deadZone The amount for the deadzone
 	 * @param value Current value
+	 * @param scalingPower Scaling for the driving power
 	 * @return Value after deadzone scaling
 	 */
 	private static double getValueAfterDeadZoneScaling(double center, double deadZone, double value, double scalingPower) {
