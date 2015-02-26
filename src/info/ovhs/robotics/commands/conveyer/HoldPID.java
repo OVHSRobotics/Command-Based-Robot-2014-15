@@ -2,7 +2,6 @@ package info.ovhs.robotics.commands.conveyer;
 
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.PIDCommand;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -10,10 +9,22 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class HoldPID extends PIDCommand {
 	
+	/**
+	 * Proportional Constant
+	 */
 	private static final double k_p = 1.0;
+	/**
+	 * Integral Constant
+	 */
 	private static final double k_i = 0.1;
+	/**
+	 * Derivative Constant
+	 */
 	private static final double k_d = 0;
 	
+	/**
+	 * Uses PID Controller in order to hold tote in one position using the conveyer belt
+	 */
     public HoldPID() {
     	super(k_p, k_i, k_d);
     	
@@ -22,39 +33,58 @@ public class HoldPID extends PIDCommand {
     	requires(CommandBase.conveyerBelt);
     }
 
-    // Called just before this Command runs the first time
+    /**
+     *  Called just before this Command runs the first time
+     */
     protected void initialize() {
     	CommandBase.conveyerBelt.stop();
     	this.getPIDController().enable();
     	this.setSetpoint(CommandBase.conveyerBelt.encoder.getDistance());
     }
 
-    // Called repeatedly when this Command is scheduled to run
+    /**
+     *  Called repeatedly when this Command is scheduled to run
+     */
     protected void execute() {
     }
 
-    // Make this return true when this Command no longer needs to run execute()
+    /**
+     *  Make this return true when this Command no longer needs to run execute()
+     */
     protected boolean isFinished() {
         return false;
     }
 
-    // Called once after isFinished returns true
+    /**
+     *  Called once after isFinished returns true
+     */
     protected void end() {
     	CommandBase.conveyerBelt.stop();
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
+    /**
+     * Called when another command which requires one or more of the same subsystems is scheduled to run
+     */
     protected void interrupted() {
     	CommandBase.conveyerBelt.stop();
     }
 
+    /**
+     * Returns the Input to the PID Controller
+     */
 	@Override
 	protected double returnPIDInput() {
 		SmartDashboard.putNumber("Conveyer PID Input", CommandBase.conveyerBelt.encoder.getDistance());
 		return CommandBase.conveyerBelt.encoder.getDistance();
 	}
 
+	/**
+	 * Uses the PID Controller output
+	 * 
+	 * <p>
+	 * Sets the conveyer belt motor to the PID Controller's output value
+	 * </p>
+	 */
 	@Override
 	protected void usePIDOutput(double output) {
 		SmartDashboard.putNumber("Conveyer PID Output", output);

@@ -5,7 +5,7 @@ import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Strafes the robot either left or right for a certain amount of time and power
  */
 public class Strafe extends Command {
 	private double initialTime;
@@ -52,7 +52,9 @@ public class Strafe extends Command {
     	this.right = right;
     }
 
-    // Called just before this Command runs the first time
+    /**
+     *  Called just before this Command runs the first time
+     */
     protected void initialize() {
     	Robot.print(this.toString());
     	this.initialTime = System.nanoTime();
@@ -63,26 +65,36 @@ public class Strafe extends Command {
     	}
     }
 
-    // Called repeatedly when this Command is scheduled to run
+    /**
+     *  Called repeatedly when this Command is scheduled to run
+     */
     protected void execute() {
     }
 
-    // Make this return true when this Command no longer needs to run execute()
+    /**
+     *  Make this return true when this Command no longer needs to run execute()
+     */
     protected boolean isFinished() {
         return System.nanoTime() >= this.initialTime + this.time * Math.pow(10, 9);
     }
 
-    // Called once after isFinished returns true
+    /**
+     *  Called once after isFinished returns true
+     */
     protected void end() {
     	CommandBase.driveTrain.stopAllMotors();
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
+    /**
+     *  Called when another command which requires one or more of the same subsystems is scheduled to run
+     */
     protected void interrupted() {
     	this.end();
     }
     
+    /**
+     * String representation of command
+     */
     public String toString() {
     	if (this.right) {
     		return "Strafing right for " + this.time + "seconds at " + (this.power * 100) + "percent power";

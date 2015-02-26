@@ -9,7 +9,6 @@ import info.ovhs.robotics.commands.conveyer.DropTote;
 import info.ovhs.robotics.commands.conveyer.LiftTote;
 import info.ovhs.robotics.commands.conveyer.ResetConveyer;
 import info.ovhs.robotics.commands.rearmotorspool.RearDropTrashCan;
-import info.ovhs.robotics.commands.rearmotorspool.RearJoystickControl;
 import info.ovhs.robotics.commands.rearmotorspool.RearLiftTrashCan;
 import info.ovhs.robotics.commands.rearmotorspool.RearMove;
 //import info.ovhs.robotics.commands.rearmotorspool.ResetRear;
@@ -61,9 +60,9 @@ public class OI {
     public JoystickButton aButton, bButton, xButton, yButton, backButton, startButton, leftBumper, rightBumper;
     
     /**
-     * Button on the joystick for trash can control
+     * Button on the joystick for operator control
      */
-    public JoystickButton trashCan1, trashCan2, trashCan3, trashCan4, trashCan5, trashCan6, trashCan7, trashCan8, trashCan9, trashCan10, trashCan11;
+    public JoystickButton operatorController1, operatorController2, operatorController3, operatorController4, operatorController5, operatorController6, operatorController7, operatorController8, operatorController9, operatorController10, operatorController11;
    
     /**
      * Trigger on xbox Controller
@@ -78,14 +77,14 @@ public class OI {
     /**
      * Joystick
      */
-    public static Joystick xboxController, trashCanController;
+    public static Joystick xboxController, operatorController;
     
     /**
      * Creates all Operator Interface Objects
      */
     private OI() {
     	xboxController = new Joystick(Constants.Ports.Joystick.CONTROLLER);
-    	trashCanController = new Joystick(Constants.Ports.Joystick.TRASH_CAN_CONTROLLER);
+    	operatorController = new Joystick(Constants.Ports.Joystick.TRASH_CAN_CONTROLLER);
     	aButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.A);
 	    aButton.whenPressed(new LiftTote(50));
 	    bButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.B);
@@ -115,17 +114,17 @@ public class OI {
 	    rightPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.Xbox.POV.RIGHT, Constants.OperatorControls.Controller.Xbox.POV.RIGHT_THRESHOLD);
 	    upPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.Xbox.POV.UP, Constants.OperatorControls.Controller.Xbox.POV.UP_THRESHOLD);
 	    downPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.Xbox.POV.DOWN, Constants.OperatorControls.Controller.Xbox.POV.DOWN_THRESHOLD);
-	    trashCan1 = new JoystickButton(trashCanController, Constants.OperatorControls.Controller.TrashCanController.Buttons.TRASH_CAN_1);
-	    trashCan1.whileHeld(new ConveyerJoystickControl());
-	    trashCan2 = new JoystickButton(trashCanController, Constants.OperatorControls.Controller.TrashCanController.Buttons.TRASH_CAN_2);
-	    trashCan2.whileHeld(new ConveyerMove(true));
-	    trashCan3 = new JoystickButton(trashCanController, Constants.OperatorControls.Controller.TrashCanController.Buttons.TRASH_CAN_3);
-	    trashCan3.whileHeld(new ConveyerMove(false));
+	    operatorController1 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_1);
+	    operatorController1.whileHeld(new ConveyerJoystickControl());
+	    operatorController2 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_2);
+	    operatorController2.whileHeld(new ConveyerMove(true));
+	    operatorController3 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_3);
+	    operatorController3.whileHeld(new ConveyerMove(false));
 	    
-	    trashCan4 = new JoystickButton(trashCanController, Constants.OperatorControls.Controller.TrashCanController.Buttons.TRASH_CAN_4);
-	    trashCan4.whenPressed(new LiftTote());
-	    trashCan5 = new JoystickButton(trashCanController, Constants.OperatorControls.Controller.TrashCanController.Buttons.TRASH_CAN_5);
-	    trashCan5.whenPressed(new DropTote());
+	    operatorController4 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_4);
+	    operatorController4.whenPressed(new LiftTote());
+	    operatorController5 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_5);
+	    operatorController5.whenPressed(new DropTote());
     	/*
         // SmartDashboard Buttons
         SmartDashboard.putData("MecanumDrive", new MecanumDrive());
@@ -198,35 +197,47 @@ public class OI {
      * Gets the value for the x-axis on the trash can controller    
      * @return value for the x-axis on the trash can controller
      */
-    public static double getTrashCanControllerXAxis() {
-    	double rawAxis = OI.trashCanController.getRawAxis(Constants.OperatorControls.Controller.TrashCanController.Axes.X);
-    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.TrashCanController.Deadzone.X_CENTER, Constants.OperatorControls.Controller.TrashCanController.Deadzone.X, rawAxis, Constants.OperatorControls.Controller.TrashCanController.ScalingValue.X);
+    public static double getOperatorControllerXAxis() {
+    	double rawAxis = OI.operatorController.getRawAxis(Constants.OperatorControls.Controller.OperatorController.Axes.X);
+    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.OperatorController.Deadzone.X_CENTER, Constants.OperatorControls.Controller.OperatorController.Deadzone.X, rawAxis, Constants.OperatorControls.Controller.OperatorController.ScalingValue.X);
     }
     
     /**
      * Gets the value for the y-axis on the trash can controller    
      * @return value for the y-axis on the trash can controller
      */
-    public static double getTrashCanControllerYAxis() {
-    	double rawAxis = OI.trashCanController.getRawAxis(Constants.OperatorControls.Controller.TrashCanController.Axes.Y);
-    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.TrashCanController.Deadzone.Y_CENTER, Constants.OperatorControls.Controller.TrashCanController.Deadzone.Y, rawAxis, Constants.OperatorControls.Controller.TrashCanController.ScalingValue.Y);
+    public static double getOperatorControllerYAxis() {
+    	double rawAxis = OI.operatorController.getRawAxis(Constants.OperatorControls.Controller.OperatorController.Axes.Y);
+    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.OperatorController.Deadzone.Y_CENTER, Constants.OperatorControls.Controller.OperatorController.Deadzone.Y, rawAxis, Constants.OperatorControls.Controller.OperatorController.ScalingValue.Y);
     }
     
     /**
-     * Gets the value for the z-axis on the trash can controller    
+     * Gets the value for the z-axis on the trash can controller
+     * <p>
+     * z-axis is paddle lever right below the joystick
+     * </p>
+     * 
      * @return value for the z-axis on the trash can controller
      */
-    public static double getTrashCanControllerZAxis() {
-    	double rawAxis = OI.trashCanController.getRawAxis(Constants.OperatorControls.Controller.TrashCanController.Axes.Z);
-    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.TrashCanController.Deadzone.Z_CENTER, Constants.OperatorControls.Controller.TrashCanController.Deadzone.Z, rawAxis, Constants.OperatorControls.Controller.TrashCanController.ScalingValue.Z);
+    public static double getOperatorControllerZAxis() {
+    	double rawAxis = OI.operatorController.getRawAxis(Constants.OperatorControls.Controller.OperatorController.Axes.Z);
+    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.OperatorController.Deadzone.Z_CENTER, Constants.OperatorControls.Controller.OperatorController.Deadzone.Z, rawAxis, Constants.OperatorControls.Controller.OperatorController.ScalingValue.Z);
     }
 
     /**
      * Gets the instance of the xbox controller
      * @return instance of xbox controller
      */
-	public Joystick getController() {
+	public Joystick getXboxController() {
 		return xboxController;
+	}
+	
+	/**
+	 * Gets the instance of the operator controller
+	 * @return instance of the operator controller
+	 */
+	public Joystick getOperatorController() {
+		return operatorController;
 	}
 	
 	/**
@@ -246,7 +257,6 @@ public class OI {
     	} else {
     		returnValue = 0;
     	}
-		
 		
 			return OI.getExponentialValue(returnValue, scalingPower);
 	}

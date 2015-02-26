@@ -5,12 +5,27 @@ import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Moves the conveyer a set direction
  */
 public class ConveyerMove extends Command {
 	
+	/**
+	 * Whether or not the conveyer is moving forward
+	 */
 	boolean forward = true;
 
+	/**
+	 * Sets the conveyer to move forward
+	 */
+	public ConveyerMove() {
+		this(true);
+	}
+	
+	/**
+	 * Sets the conveyer to move a set direction
+	 * 
+	 * @param forward Whether or not the conveyer is moving forward
+	 */
     public ConveyerMove(boolean forward) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -22,12 +37,20 @@ public class ConveyerMove extends Command {
     	}
     }
 
-    // Called just before this Command runs the first time
+    /**
+     *  Called just before this Command runs the first time
+     */
     protected void initialize() {
     	
     }
 
-    // Called repeatedly when this Command is scheduled to run
+    /**
+     *  Called repeatedly when this Command is scheduled to run
+     *  
+     *  <p>
+     *  Moves the conveyer a set direction with a speed set in Constants
+     *  </p>
+     */
     protected void execute() {
     	if (this.forward) {
     		CommandBase.conveyerBelt.forward(Constants.ConveyerBelt.MANUAL_MOVE_SPEED);
@@ -38,17 +61,32 @@ public class ConveyerMove extends Command {
     	}
     }
 
-    // Make this return true when this Command no longer needs to run execute()
+    /**
+     *  Make this return true when this Command no longer needs to run execute()
+     */
     protected boolean isFinished() {
         return false;
     }
 
-    // Called once after isFinished returns true
+    /**
+     *  Called once after isFinished returns true
+     *  
+     *  <p>
+     *  Stops the motors
+     *  </p>
+     */
     protected void end() {
+    	CommandBase.conveyerBelt.stop();
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
+    /**
+     *  Called when another command which requires one or more of the same subsystems is scheduled to run
+     *  
+     *  <p>
+     *  Stops the motors
+     *  </p>
+     */
     protected void interrupted() {
+    	this.end();
     }
 }

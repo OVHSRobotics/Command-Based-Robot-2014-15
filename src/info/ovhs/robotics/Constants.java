@@ -110,7 +110,7 @@ public final class Constants {
 				}
 			}
 			
-			public static final class TrashCanController {
+			public static final class OperatorController {
 				
 				public static final class Axes {
 					
@@ -123,27 +123,27 @@ public final class Constants {
 				
 				public static final class Buttons {
 				
-					public static final int TRASH_CAN_1 = 1;
+					public static final int OPERATOR_CONTROL_1 = 1;
 					
-					public static final int TRASH_CAN_2 = 2;
+					public static final int OPERATOR_CONTROL_2 = 2;
 					
-					public static final int TRASH_CAN_3 = 3;
+					public static final int OPERATOR_CONTROL_3 = 3;
 					
-					public static final int TRASH_CAN_4 = 4;
+					public static final int OPERATOR_CONTROL_4 = 4;
 					
-					public static final int TRASH_CAN_5 = 5;
+					public static final int OPERATOR_CONTROL_5 = 5;
 					
-					public static final int TRASH_CAN_6 = 6;
+					public static final int OPERATOR_CONTROL_6 = 6;
 					
-					public static final int TRASH_CAN_7 = 7;
+					public static final int OPERATOR_CONTROL_7 = 7;
 					
-					public static final int TRASH_CAN_8 = 8;
+					public static final int OPERATOR_CONTROL_8 = 8;
 					
-					public static final int TRASH_CAN_9 = 9;
+					public static final int OPERATOR_CONTROL_9 = 9;
 					
-					public static final int TRASH_CAN_10 = 10;
+					public static final int OPERATOR_CONTROL_10 = 10;
 					
-					public static final int TRASH_CAN_11 = 11;
+					public static final int OPERATOR_CONTROL_11 = 11;
 				}
 				
 				public static final class Deadzone {

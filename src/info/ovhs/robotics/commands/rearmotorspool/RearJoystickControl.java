@@ -1,7 +1,5 @@
 package info.ovhs.robotics.commands.rearmotorspool;
 
-import info.ovhs.robotics.Constants;
-import info.ovhs.robotics.OI;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.Command;
 

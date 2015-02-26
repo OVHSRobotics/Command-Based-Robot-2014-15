@@ -6,10 +6,13 @@ import info.ovhs.robotics.commands.rearmotorspool.RearLiftTrashCan;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * Lifts one trash can, drives, then lifts 3 totes sequentially, driving in between each tote pickup, then drops them all
  */
 public class LiftOneTrashCanAndThreeTotesThenDropAll extends CommandGroup {
     
+	/**
+	 * Lifts one trash can, drives, then lifts 3 totes sequentially, driving in between each tote pickup, then drops them all
+	 */
     public  LiftOneTrashCanAndThreeTotesThenDropAll() {
         // Add Commands here:
         // e.g. addSequential(new Command1());

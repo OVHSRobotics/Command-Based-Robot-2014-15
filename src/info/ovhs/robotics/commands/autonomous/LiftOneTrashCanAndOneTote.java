@@ -5,10 +5,13 @@ import info.ovhs.robotics.commands.rearmotorspool.*;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * Lifts one trash can and one tote
  */
 public class LiftOneTrashCanAndOneTote extends CommandGroup {
     
+	/**
+	 * Lifts one trash can and one tote
+	 */
     public  LiftOneTrashCanAndOneTote() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
@@ -17,9 +20,9 @@ public class LiftOneTrashCanAndOneTote extends CommandGroup {
     	addSequential(new RearLiftTrashCan());
     		
     	//Drive forward set power value and number of seconds;
-    		addSequential(new Drive(1, 2, true));
+		addSequential(new Drive(1, 2, true));
     	
-    		addSequential(new LiftTote());
+		addSequential(new LiftTote());
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());

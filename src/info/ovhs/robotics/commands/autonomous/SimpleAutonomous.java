@@ -3,8 +3,9 @@ package info.ovhs.robotics.commands.autonomous;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * DEPRECATED, Example command group
  */
+@Deprecated
 public class SimpleAutonomous extends CommandGroup {
     
     public  SimpleAutonomous() {
