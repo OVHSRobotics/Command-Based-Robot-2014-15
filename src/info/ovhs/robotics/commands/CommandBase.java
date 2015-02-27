@@ -17,9 +17,21 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public abstract class CommandBase extends Command {
 	
+	/**
+	 * Instance of the Drive Train Subsystem
+	 */
 	public static DriveTrain driveTrain;
+	/**
+	 * Instance of the OI Class
+	 */
 	public static OI oi;
+	/**
+	 * Instance of the Conveyer Belt Subsystem
+	 */
 	public static ConveyerBelt conveyerBelt;
+	/**
+	 * Instance of the Rear Motor Spool Subsystem
+	 */
 	public static RearMotorSpool rearMotorSpool;
 	
 	/**
