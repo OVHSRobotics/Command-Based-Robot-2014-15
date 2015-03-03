@@ -103,7 +103,9 @@ public class RobotMap {
 	 */
 	public static void init() {
 		
-		Robot.print("Begin RobotMap Init");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("Begin RobotMap Init");
+		}
 
 		RobotMap.setupDrive();
 		
@@ -121,14 +123,18 @@ public class RobotMap {
 		
 		RobotMap.createPDPObject();
 		
-		Robot.print("End RobotMap Init");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("End RobotMap Init");
+		}
 	}
 	
 	/**
 	 * Sets up the configuration for the driving systems on the robot
 	 */
 	public static void setupDrive() {
-		Robot.print("Begin setupDriveMotors");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("Begin setupDriveMotors");
+		}
 		
 		frontLeftDriveSpeedController = new Talon(Constants.Ports.PWM.FRONT_LEFT_DRIVE_MOTOR);
 		LiveWindow.addActuator("DriveTrain", "Front Left Drive Speed Controller",
@@ -160,14 +166,18 @@ public class RobotMap {
 		drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, 
 				Constants.Motors.RIGHT_FRONT_REVERSED);
 		
-		Robot.print("End setupDriveMotors");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("End setupDriveMotors");
+		}
 	}
 	
 	/**
 	 * Sets up the speed controllers that are for anything other than driving
 	 */
 	public static void setupSubsystemSpeedControllers() {
-		Robot.print("Begin setupSubsystemSpeedControllers");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("Begin setupSubsystemSpeedControllers");
+		}
 		
 		conveyerBeltSpeedController = new Victor(Constants.Ports.PWM.CONVEYER_BELT_MOTOR);
 		LiveWindow.addActuator("Conveyer Belt", "Conveyer Belt Motor", (Victor) conveyerBeltSpeedController);
@@ -181,7 +191,9 @@ public class RobotMap {
 		activeInputSpeedControllerRight = new Victor(Constants.Ports.PWM.TEST_MOTOR_RIGHT);
 		LiveWindow.addActuator("Test", "Test Motor Right", (Victor) activeInputSpeedControllerRight);		
 		
-		Robot.print("End setupSubsystemSpeedControllers");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("End setupSubsystemSpeedControllers");
+		}
 	}
 	
 	/**
@@ -189,25 +201,33 @@ public class RobotMap {
 	 */
 	public static void createGyro() {
 		
-		Robot.print("Begin createGyro");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("Begin createGyro");
+		}
 		
 		robotGyro = new Gyro(Constants.Ports.Analog.DRIVE_BASE_GYRO);
 		robotGyro.setSensitivity(.007);
 		LiveWindow.addSensor("Drive Train", "Gyro 1", robotGyro);
 		
-		Robot.print("End createGyro");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("End createGyro");
+		}
 	}
 	
 	/**
 	 * Creates the Gyro Temp Sensor object on the robot
 	 */
 	public static void createGyroTempSensor() {
-		Robot.print("Begin createGyroTempSensor");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("Begin createGyroTempSensor");
+		}
 		
 		robotGyroTempSensor = new AnalogInput(Constants.Ports.Analog.GYRO_TEMP_SENSOR);
 		LiveWindow.addSensor("DriveTrain", "Temperature Sensor", robotGyroTempSensor);
 		
-		Robot.print("End createGyroTempSensor");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("End createGyroTempSensor");
+		}
 	}
 	
 	/**
@@ -215,7 +235,9 @@ public class RobotMap {
 	 */
 	public static void createEncoders() {
 		
-		Robot.print("Begin createEncoders");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("Begin createEncoders");
+		}
 		
 		try {
 			conveyerBeltEncoder = new Encoder(Constants.Ports.DIO.CONVEYER_BELT_ENCODER_A, Constants.Ports.DIO.CONVEYER_BELT_ENCODER_B, Constants.ConveyerBelt.Encoder.REVERSED, EncodingType.k4X);
@@ -236,7 +258,9 @@ public class RobotMap {
 			System.out.println(exception);
 		}
 		
-		Robot.print("End createEncoders");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("End createEncoders");
+		}
 	}
 	
 	/**
@@ -244,12 +268,16 @@ public class RobotMap {
 	 */
 	public static void createLimitSwitches() {
 		
-		Robot.print("Begin createLimitSwitches");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("Begin createLimitSwitches");
+		}
 		
 		robotLimitSwitch = new DigitalInput(Constants.Ports.DIO.LIMIT_SWITCH);
 		LiveWindow.addActuator("DriveTrain", "Limit Switch", robotLimitSwitch);
 		
-		Robot.print("End createLimitSwitches");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("End createLimitSwitches");
+		}
 	}
 	
 	/**
@@ -257,7 +285,9 @@ public class RobotMap {
 	 */
 	public static void createAutonomousSwitches() {
 		
-		Robot.print("Begin createAutonomousSwitches");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("Begin createAutonomousSwitches");
+		}
 		
 		autonomousSwitch1 = new DigitalInput(Constants.Ports.DIO.AUTONOMOUS_SWITCH_A);
 		LiveWindow.addSensor("Autonomous", "Autonomous Switch 1", autonomousSwitch1);
@@ -265,40 +295,54 @@ public class RobotMap {
 		autonomousSwitch2 = new DigitalInput(Constants.Ports.DIO.AUTONOMOUS_SWITCH_B);
 		LiveWindow.addSensor("Autonomous", "Autonomous Switch 2", autonomousSwitch2);
 		
-		Robot.print("End createAutonomousSwitches");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("End createAutonomousSwitches");
+		}
 	}
 	
 	/**
 	 * Sets the initial distance for the conveyer encoder in order to use the reset command
 	 */
 	public static void setInitialConveyerEncoderDistance() {
-		Robot.print("Begin setInitialConveyerEncoderDistance");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("Begin setInitialConveyerEncoderDistance");
+		}
 		
     	CommandBase.conveyerBelt.initialEncoderValue = CommandBase.conveyerBelt.encoder.getDistance();
     	
-    	Robot.print("End setInitialConveyerEncoderDistance");
+    	if (Constants.DEBUG_MODE) {
+    		Robot.print("End setInitialConveyerEncoderDistance");
+    	}
     }
     
 	/**
 	 * Sets the initial distance for the rear encoder in order to use the reset command
 	 */
     public static void setInitialRearEncoderDistance() {
-		Robot.print("Begin setInitialRearEncoderDistance");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("Begin setInitialRearEncoderDistance");
+		}
 
     	CommandBase.rearMotorSpool.initialEncoderValue = CommandBase.rearMotorSpool.encoder.getDistance();
     	
-		Robot.print("End setInitialRearEncoderDistance");
+		if (Constants.DEBUG_MODE) {
+			Robot.print("End setInitialRearEncoderDistance");
+		}
 	}
     
     /**
      * Creates the object for the PDP in order to get current draws from the PDP on the robot
      */
     public static void createPDPObject() {
-    	Robot.print("Begin CreatePDPObject");
+    	if (Constants.DEBUG_MODE) {
+    		Robot.print("Begin CreatePDPObject");
+    	}
     	
     	PDP = new PowerDistributionPanel();
     	
-    	Robot.print("End CreatePDPObject");
+    	if (Constants.DEBUG_MODE) {
+    		Robot.print("End CreatePDPObject");
+    	}
     }
     
     /**

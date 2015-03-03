@@ -33,22 +33,29 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-    	print("Begin Robot Init");
+    	if (Constants.DEBUG_MODE) {
+    		print("Begin Robot Init");
+    	}
     	
     	RobotMap.init();
         CommandBase.init();
         
-        print("Initializing Gyro");        
+        if (Constants.DEBUG_MODE) {
+        	print("Initializing Gyro");        
+        }
         RobotMap.robotGyro.initGyro();
-        print("End Initializing Gyro");
+        if (Constants.DEBUG_MODE){
+        	print("End Initializing Gyro");
+        }
         
         RobotMap.setInitialConveyerEncoderDistance();
         RobotMap.setInitialRearEncoderDistance();
         
         
         
-        
-        print("End Robot Init");
+        if (Constants.DEBUG_MODE) {
+        	print("End Robot Init");
+        }
         print("Robot is Ready");
     	
         // OI must be constructed after subsystems. If the OI creates Commands 
@@ -157,7 +164,12 @@ public class Robot extends IterativeRobot {
         	CommandBase.driveTrain.initDefaultCommand();
         }
                 
-        updateStatus();
+        SmartDashboardUpdate.DriveTrain();
+        SmartDashboardUpdate.ConveyerBelt();
+        SmartDashboardUpdate.RearMotorSpool();
+        SmartDashboardUpdate.Switches();
+        SmartDashboardUpdate.JoystickOutput();
+        SmartDashboardUpdate.PDP();
     }
 
     /**
@@ -167,8 +179,12 @@ public class Robot extends IterativeRobot {
         
     	Scheduler.getInstance().run();
         
-        updateStatus();        
-    }
+        SmartDashboardUpdate.DriveTrain();
+        SmartDashboardUpdate.ConveyerBelt();
+        SmartDashboardUpdate.RearMotorSpool();
+        SmartDashboardUpdate.Switches();
+        SmartDashboardUpdate.JoystickOutput();
+        SmartDashboardUpdate.PDP();    }
     
     /**
      * This function is called once when test mode begins.
@@ -181,7 +197,9 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
-    	print("In test mode");
+    	if (Constants.DEBUG_MODE) {
+    		print("In test mode");
+    	}
     	
         LiveWindow.run();
     }
@@ -197,82 +215,5 @@ public class Robot extends IterativeRobot {
      */
     public static void print( Object message) {
     	System.out.println(message);
-    }
-    
-    /**
-     * Updates the SmartDashboard data outputs
-     * 
-     * <p>
-     * For operator use
-     * </p>
-     */
-    public static void updateStatus() {
-        // Add data to the "SmartDashboard"
-    	Robot.updateSubsystemStatus();
-        SmartDashboard.putNumber("Conveyer Encoder Distance", RobotMap.conveyerBeltEncoder.getDistance());
-        SmartDashboard.putNumber("Conveyer Encoder Raw", RobotMap.conveyerBeltEncoder.getRaw());
-        SmartDashboard.putNumber("Rear Encoder Distance", RobotMap.rearEncoder.getDistance());
-        SmartDashboard.putNumber("Rear Encoder Raw", RobotMap.rearEncoder.getRaw());
-        SmartDashboard.putNumber("Front Left Motor", RobotMap.frontLeftDriveSpeedController.get());
-        SmartDashboard.putNumber("Front Right Motor", RobotMap.frontRightDriveSpeedController.get());
-        SmartDashboard.putNumber("Rear Left Motor", RobotMap.rearLeftDriveSpeedController.get());
-        SmartDashboard.putNumber("Rear Right Motor", RobotMap.rearRightDriveSpeedController.get());
-        SmartDashboard.putNumber("Left Y Axis", OI.getXboxLeftStickYAxis());
-        SmartDashboard.putNumber("Left X Axis", OI.getXboxLeftStickXAxis());
-        SmartDashboard.putNumber("Right Y Axis", OI.getXboxRightStickYAxis());
-        SmartDashboard.putNumber("Right X Axis", OI.getXboxRightStickXAxis());
-        SmartDashboard.putNumber("Left Y Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.LEFT_STICK_Y));
-        SmartDashboard.putNumber("Left X Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.LEFT_STICK_X));
-        SmartDashboard.putNumber("Right Y Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.RIGHT_STICK_Y));
-        SmartDashboard.putNumber("Right X Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.RIGHT_STICK_X));
-        SmartDashboard.putBoolean("Auto Switch 1", RobotMap.autonomousSwitch1.get());
-        SmartDashboard.putBoolean("Auto Switch 2", RobotMap.autonomousSwitch2.get());
-        SmartDashboard.putBoolean("Limit Switch", RobotMap.robotLimitSwitch.get());
-        SmartDashboard.putNumber("Rear Motor Spool Motor", RobotMap.rearMotorSpoolSpeedController.get());
-        Robot.updatePDPStatus();
-    }
-    
-    /**
-     * Updates the smartDashboard subsystem command readouts
-     * 
-     * <p>
-     * For operator use
-     * </p>
-     */
-    public static void updateSubsystemStatus() {
-    	SmartDashboard.putData(CommandBase.driveTrain);
-        SmartDashboard.putData(CommandBase.conveyerBelt);
-        SmartDashboard.putData(CommandBase.rearMotorSpool);
-    }
-    
-    /**
-     * Updates the smartDashboard PDP Power readouts
-     * 
-     * <p>
-     * For operator use
-     * </p>
-     */
-    public static void updatePDPStatus() {
-    	SmartDashboard.putNumber("PDP Total Current", RobotMap.PDP.getTotalCurrent());
-        SmartDashboard.putNumber("PDP Current Port 0", RobotMap.PDP.getCurrent(0));
-        SmartDashboard.putNumber("PDP Current Port 1", RobotMap.PDP.getCurrent(1));
-        SmartDashboard.putNumber("PDP Current Port 2", RobotMap.PDP.getCurrent(2));
-        SmartDashboard.putNumber("PDP Current Port 3", RobotMap.PDP.getCurrent(3));
-//        SmartDashboard.putNumber("PDP Current Port 4", RobotMap.PDP.getCurrent(4));
-//        SmartDashboard.putNumber("PDP Current Port 5", RobotMap.PDP.getCurrent(5));
-//        SmartDashboard.putNumber("PDP Current Port 6", RobotMap.PDP.getCurrent(6));
-//        SmartDashboard.putNumber("PDP Current Port 7", RobotMap.PDP.getCurrent(7));
-//        SmartDashboard.putNumber("PDP Current Port 8", RobotMap.PDP.getCurrent(8));
-//        SmartDashboard.putNumber("PDP Current Port 9", RobotMap.PDP.getCurrent(9));
-//        SmartDashboard.putNumber("PDP Current Port 10", RobotMap.PDP.getCurrent(10));
-//        SmartDashboard.putNumber("PDP Current Port 11", RobotMap.PDP.getCurrent(11));
-//        SmartDashboard.putNumber("PDP Current Port 12", RobotMap.PDP.getCurrent(12));
-        SmartDashboard.putNumber("PDP Current Port 13", RobotMap.PDP.getCurrent(13));
-        SmartDashboard.putNumber("PDP Current Port 14", RobotMap.PDP.getCurrent(14));
-        SmartDashboard.putNumber("PDP Current Port 15", RobotMap.PDP.getCurrent(15));
-        SmartDashboard.putNumber("PDP Temperature", RobotMap.PDP.getTemperature());
-        SmartDashboard.putNumber("PDP Voltage", RobotMap.PDP.getVoltage());
-        SmartDashboard.putNumber("PDP Total Energy", RobotMap.PDP.getTotalEnergy());
-        SmartDashboard.putNumber("PDP Total Power", RobotMap.PDP.getTotalPower());
     }
 }

@@ -6,6 +6,8 @@ public final class Constants {
 	
 	public static final int ROBOT_WEIGHT = 120;
 	
+	public static final boolean DEBUG_MODE = true;
+	
 	public static final class OperatorControls {
 		
 		public static final int MAX_JOYSTICK_AXIS = 1;
