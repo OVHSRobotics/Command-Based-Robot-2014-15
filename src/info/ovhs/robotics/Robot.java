@@ -1,8 +1,8 @@
 
-
 package info.ovhs.robotics;
 
 import info.ovhs.robotics.commands.CommandBase;
+import info.ovhs.robotics.commands.autonomous.*;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -18,17 +18,52 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-    Command autonomousCommand;
+	/**
+	 * Command for autonomous mode
+	 */
+    Command driveForward, strafeRight, strafeLeft, pickUpOneTote;
+
+    /**
+     * Switch to switch between different autonomous modes
+     */
+    boolean autoSwitch1, autoSwitch2;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
+    	if (Constants.DEBUG_MODE) {
+    		print("Begin Robot Init");
+    	}
+    	
     	RobotMap.init();
         CommandBase.init();
         
-        RobotMap.gyro1.initGyro();        
+        if (Constants.DEBUG_MODE) {
+        	print("Initializing Gyro");        
+        }
+        RobotMap.robotGyro.initGyro();
+        if (Constants.DEBUG_MODE){
+        	print("End Initializing Gyro");
+        }
+        
+        if (Constants.DEBUG_MODE) {
+        	print("Setting initial Encoder Distances");
+        }
+        RobotMap.setInitialConveyerEncoderDistance();
+        RobotMap.setInitialRearEncoderDistance();
+        
+        if (Constants.DEBUG_MODE) {
+        	print("Done Setting initial Encoder Distances");
+        }
+        
+        
+        
+        if (Constants.DEBUG_MODE) {
+        	print("End Robot Init");
+        }
+        print("Robot is Ready");
     	
         // OI must be constructed after subsystems. If the OI creates Commands 
         //(which it very likely will), subsystems are not guaranteed to be 
@@ -44,24 +79,56 @@ public class Robot extends IterativeRobot {
      * This function is called when the disabled button is hit.
      * You can use it to reset subsystems before shutting down.
      */
-    public void disabledInit(){
+    public void disabledInit(){    	
     	Scheduler.getInstance().removeAll();
     }
 
-    public void disabledPeriodic() {
+    /**
+     * This function is called every 20 ms during disabled mode.
+     */
+    public void disabledPeriodic() {   	
         Scheduler.getInstance().run();
     }
 
+    /**
+     * This function is called once at the beginning of autonomous mode.
+     * Place all autonomous command initializations here.
+     */
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        if (autonomousCommand != null) {
-        	autonomousCommand.start();
-        }
+//        if (autonomousCommand != null) {
+//        	autonomousCommand.start();
+//        }
         
         print("Entering autonomous mode");
         
-        RobotMap.conveyerBeltEncoder.reset();
+        this.autoSwitch1 = RobotMap.autonomousSwitch1.get();
+        this.autoSwitch2 = RobotMap.autonomousSwitch2.get();
+        
+        if (autoSwitch1 && autoSwitch2) {
+        	// Drives forward at full power for 3 seconds
+        	driveForward = new Drive(.75, 1.0, true);
+        	if (driveForward != null){
+        		driveForward.start();
+        	}
+        } else if (autoSwitch1 && !autoSwitch2) {
+        	pickUpOneTote = new PickUpOneTote();
+        	if (pickUpOneTote != null) {
+        		pickUpOneTote.start();
+        	}
+        } else if (!autoSwitch1 && autoSwitch2) {
+        	strafeRight = new Strafe(.5, 1, true);
+        	if (strafeRight != null) {
+        		strafeRight.start();
+        	}
+        } else if (!autoSwitch1 && !autoSwitch2) {
+        	strafeLeft = new Strafe(.5, 1, false);
+        	if (strafeLeft != null) {
+        		strafeLeft.start();
+        	}
+        }
     }
+   
 
     /**
      * This function is called periodically during autonomous
@@ -70,32 +137,61 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
     }
 
+    /**
+     * This function is called once at the beginning of operator control mode.
+     */
     public void teleopInit() {
         // This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to 
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
-        if (autonomousCommand != null) {
-        	autonomousCommand.cancel();
+        // teleop starts running.
+
+    	if (driveForward != null) {
+    		driveForward.cancel();
+    	}
+        
+        if (this.autoSwitch1 && this.autoSwitch2) {
+        	if (driveForward != null){
+        		driveForward.cancel();
+        	}
+        } else if (this.autoSwitch1 && !this.autoSwitch2) {
+        	if (pickUpOneTote != null) {
+        		pickUpOneTote.cancel();
+        	}
+        } else if (!this.autoSwitch1 && this.autoSwitch2) {
+        	if (strafeRight != null) {
+        		strafeRight.cancel();
+        	}
+        } else if (!this.autoSwitch1 && !this.autoSwitch2) {
+        	if (strafeLeft != null) {
+        		strafeLeft.cancel();
+        	}
         }
         
         print("Entering teleop mode");
         if (CommandBase.driveTrain.getCurrentCommand() == null) {
         	CommandBase.driveTrain.initDefaultCommand();
         }
-        
-        RobotMap.conveyerBeltEncoder.reset();
-        
-        updateStatus();
+                
+        SmartDashboardUpdate.DriveTrain();
+        SmartDashboardUpdate.ConveyerBelt();
+        SmartDashboardUpdate.RearMotorSpool();
+        SmartDashboardUpdate.Switches();
+        SmartDashboardUpdate.JoystickOutput();
+        SmartDashboardUpdate.PDP();
     }
 
     /**
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        Scheduler.getInstance().run();
-        updateStatus();
-    }
+        
+    	Scheduler.getInstance().run();
+        
+        SmartDashboardUpdate.DriveTrain();
+        SmartDashboardUpdate.ConveyerBelt();
+        SmartDashboardUpdate.RearMotorSpool();
+        SmartDashboardUpdate.Switches();
+        SmartDashboardUpdate.JoystickOutput();
+        SmartDashboardUpdate.PDP();    }
     
     /**
      * This function is called once when test mode begins.
@@ -108,18 +204,23 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
+    	if (Constants.DEBUG_MODE) {
+    		print("In test mode");
+    	}
+    	
         LiveWindow.run();
     }
     
-    public static void print( String message ) {
-        System.out.println(message);
-    } 
-    
-    public static void updateStatus() {
-        // Add data to the "SmartDashboard".
-        SmartDashboard.putData(CommandBase.driveTrain);
-        SmartDashboard.putData(CommandBase.conveyerBelt);
-        SmartDashboard.putNumber("Encoder Distance", RobotMap.conveyerBeltEncoder.getDistance());
-        SmartDashboard.putNumber("Encoder Raw Value", RobotMap.conveyerBeltEncoder.getRaw());
+    /**
+     * Prints a message of any type to the RoboRio Console, which can be accessed with NetConsole for cRIO
+     * 
+     * <p>
+     * Substitute for System.out.println()
+     * </p>
+     * 
+     * @param message Message to print
+     */
+    public static void print( Object message) {
+    	System.out.println(message);
     }
 }

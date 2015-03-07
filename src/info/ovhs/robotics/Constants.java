@@ -6,119 +6,9 @@ public final class Constants {
 	
 	public static final int ROBOT_WEIGHT = 120;
 	
-	public static final class FieldElementsConstants {
-		
-		public static final double TRASHCAN_HEIGHT_INCHES = 28.8;
+	public static final boolean DEBUG_MODE = true;
 	
-		public static final double TRASHCAN_WEIGHT_POUNDS = 8.65;
-	
-		public static final double TOTE_HEIGHT_INCHES = 12.1;
-	
-		public static final double TOTE_WEIGHT_POUNDS = 7.8;
-	}
-
-	public static final class ConveyerBeltEncoderConstants {
-		
-		public static final double SPROCKET_DIAMETER_INCHES = 2.5;
-
-		public static final double SPROCKET_RADIUS_INCHES = Constants.ConveyerBeltEncoderConstants.SPROCKET_DIAMETER_INCHES/2;
-	
-		public static final double SPROCKET_CIRCUMFRENCE_INCHES = Constants.ConveyerBeltEncoderConstants.SPROCKET_DIAMETER_INCHES * Math.PI;	
-		
-		public static final double GEARBOX_PULSES_PER_REVOLUTION = 497;
-		
-		public static final double GEARBOX_REVOLUTIONS_PER_PULSE = 1/Constants.ConveyerBeltEncoderConstants.GEARBOX_PULSES_PER_REVOLUTION;
-		
-		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 19/16;
-	
-		public static final double DISTANCE_PER_PULSE = Constants.ConveyerBeltEncoderConstants.SPROCKET_CIRCUMFRENCE_INCHES * Constants.ConveyerBeltEncoderConstants.SPROCKET_TO_GEARBOX_GEAR_RATIO * Constants.ConveyerBeltEncoderConstants.GEARBOX_REVOLUTIONS_PER_PULSE;
-		
-		public static final int ENCODER_PORT_A = 8;
-		
-		public static final int ENCODER_PORT_B = 7;
-		
-		public static final boolean ENCODER_REVERSED = false;
-	}
-	
-	public static final class MotorConstants {
-		
-			public static final double MOTOR_MAX_OUTPUT = 1.0;
-			
-			public static final boolean LEFT_REAR_MOTOR_REVERSED = true;
-			
-			public static final boolean RIGHT_REAR_MOTOR_REVERSED = false;
-			
-			public static final boolean LEFT_FRONT_MOTOR_REVERSED = true;
-			
-			public static final boolean RIGHT_FRONT_MOTOR_REVERSED = false;
-	}
-	
-	public static final class PortConstants {
-		
-		public static final int CONVEYER_BELT_MOTOR_PORT = 4;
-
-		public static final int FRONT_LEFT_DRIVE_MOTOR_PORT = 0;
-		
-		public static final int REAR_LEFT_DRIVE_MOTOR_PORT = 1;
-		
-		public static final int FRONT_RIGHT_DRIVE_MOTOR_PORT = 2;
-		
-		public static final int REAR_RIGHT_DRIVE_MOTOR_PORT = 3;
-		
-		public static final int DRIVE_BASE_GYRO_PORT = 0;
-		
-		public static final int REAR_MOTOR_PORT = 5;
-		
-		public static final int LIMIT_SWITCH_PORT = 0;
-	}
-
-	public static final class OperatorControlsConstants {
-				
-		public static final int CONTROLLER_PORT = 0;
-
-		public static final int FIRE_BUTTON_PORT = 1;
-		
-		public static final int LEFT_STICK_X_AXIS = 0;
-		
-		public static final int LEFT_STICK_Y_AXIS = 1;
-		
-		public static final int LEFT_TRIGGER_AXIS = 2;
-		
-		public static final int RIGHT_TRIGGER_AXIS = 3;
-		
-		public static final int RIGHT_STICK_X_AXIS = 4;
-		
-		public static final int RIGHT_STICK_Y_AXIS = 5;
-		
-		public static final int A_BUTTON = 1;
-		
-		public static final int B_BUTTON = 2;
-		
-		public static final int X_BUTTON = 3;
-		
-		public static final int Y_BUTTON = 4;
-		
-		public static final int LEFT_BUMPER = 5;
-		
-		public static final int RIGHT_BUMPER = 6;
-		
-		public static final int BACK_BUTTON = 7;
-		
-		public static final int START_BUTTON = 8;
-		
-		public static final int PUSH_LEFT_STICK_BUTTON = 9;
-		
-		public static final int PUSH_RIGHT_STICK_BUTTON = 10;
-		
-		public static final int POV_CENTER = -1;
-		
-		public static final int POV_UP = 0;
-		
-		public static final int POV_RIGHT = 90;
-		
-		public static final int POV_DOWN = 180;
-		
-		public static final int POV_LEFT = 270;		
+	public static final class OperatorControls {
 		
 		public static final int MAX_JOYSTICK_AXIS = 1;
 		
@@ -128,31 +18,300 @@ public final class Constants {
 		
 		public static final int MAX_TRIGGER_AXIS = 1;
 		
-		public static final double AXIS_DEAD_ZONE = 0.05;
+		public static final class Controller {
+			
+			public static final class Xbox {
+			
+				public static final class Axes {
+				
+					public static final int LEFT_STICK_X = 0;
+					
+					public static final int LEFT_STICK_Y = 1;
+					
+					public static final int LEFT_TRIGGER = 2;
+					
+					public static final int RIGHT_TRIGGER = 3;
+					
+					public static final int RIGHT_STICK_X = 4;
+					
+					public static final int RIGHT_STICK_Y = 5;
+				}
+				
+				public static final class Buttons {
+				
+					public static final int A = 1;
+					
+					public static final int B = 2;
+					
+					public static final int X = 3;
+					
+					public static final int Y = 4;
+					
+					public static final int LEFT_BUMPER = 5;
+					
+					public static final int RIGHT_BUMPER = 6;
+					
+					public static final int BACK = 7;
+					
+					public static final int START = 8;
+					
+					public static final int LEFT_STICK = 9;
+					
+					public static final int RIGHT_STICK = 10;
+				}
+				
+				public static final class POV {
+					
+					public static final int CENTER = -1;
+				
+					public static final int UP = 0;
+					
+					public static final double UP_THRESHOLD = 0;
+					
+					public static final int RIGHT = 90;
+					
+					public static final int RIGHT_THRESHOLD = 0;
+					
+					public static final int DOWN = 180;
+					
+					public static final int DOWN_THRESHOLD = 0;
+					
+					public static final int LEFT = 270;
+	
+					public static final int LEFT_THRESHOLD = 0;
+				}
+				
+				public static final class Deadzone {
+					
+					public static final double LEFT_X_CENTER = -0.043;
+					
+					public static final double LEFT_Y_CENTER = -0.039;
+					
+					public static final double RIGHT_X_CENTER = -0.125;
+					
+					public static final double RIGHT_Y_CENTER = 0;
+					
+					public static final double LEFT_X = 0.10;
+					
+					public static final double LEFT_Y = 0.07;
+					
+					public static final double RIGHT_X = 0.10;
+					
+					public static final double RIGHT_Y = 0.10;
+				}
+				
+				public static final class ScalingValue {
+					
+					public static final double LEFT_X = 3;
+					
+					public static final double LEFT_Y = 3;
+					
+					public static final double RIGHT_X = 3;
+					
+					public static final double RIGHT_Y = 3;
+				}
+			}
+			
+			public static final class OperatorController {
+				
+				public static final class Axes {
+					
+					public static final int X = 0;
+					
+					public static final int Y = 1;
+					
+					public static final int Z = 2;
+				}
+				
+				public static final class Buttons {
+				
+					public static final int OPERATOR_CONTROL_1 = 1;
+					
+					public static final int OPERATOR_CONTROL_2 = 2;
+					
+					public static final int OPERATOR_CONTROL_3 = 3;
+					
+					public static final int OPERATOR_CONTROL_4 = 4;
+					
+					public static final int OPERATOR_CONTROL_5 = 5;
+					
+					public static final int OPERATOR_CONTROL_6 = 6;
+					
+					public static final int OPERATOR_CONTROL_7 = 7;
+					
+					public static final int OPERATOR_CONTROL_8 = 8;
+					
+					public static final int OPERATOR_CONTROL_9 = 9;
+					
+					public static final int OPERATOR_CONTROL_10 = 10;
+					
+					public static final int OPERATOR_CONTROL_11 = 11;
+				}
+				
+				public static final class Deadzone {
+					
+					public static final double X_CENTER = -0.043;
+					
+					public static final double Y_CENTER = -0.039;
+					
+					public static final double Z_CENTER = 0;
+					
+					public static final double X = 0.10;
+					
+					public static final double Y = 0.07;
+					
+					public static final double Z = 0.00;
+				}
+				
+				public static final class ScalingValue {
+					
+					public static final double X = 1;
+					
+					public static final double Y = 1;
+					
+					public static final double Z = 1;
+				}
+			}
+		}
+	}
+	
+	public static final class FieldElements {
+		
+		public static final double TRASHCAN_HEIGHT_INCHES = 28.8;
+		
+		public static final double TRASHCAN_HEIGHT_FEET = Constants.FieldElements.TRASHCAN_HEIGHT_INCHES / 12;
+	
+		public static final double TRASHCAN_WEIGHT_POUNDS = 8.65;
+	
+		public static final double TOTE_HEIGHT_INCHES = 12.1;
+		
+		public static final double TOTE_HEIGHT_FEET = Constants.FieldElements.TOTE_HEIGHT_INCHES / 12;
+	
+		public static final double TOTE_WEIGHT_POUNDS = 7.8;
 	}
 
-	public static final class RearEncoderConstants {
+	public static final class ConveyerBelt {
 		
-		public static final int SPROCKET_DIAMETER_FEET = 2; //Arbitrary number, change if necessary
+		public static final double SPROCKET_DIAMETER_INCHES = 2.5;
+
+		public static final double SPROCKET_RADIUS_INCHES = Constants.ConveyerBelt.SPROCKET_DIAMETER_INCHES/2;
 	
-		public static final int SPROCKET_RADIUS_FEET = 1; //Arbitrary number, change if necessary	
+		public static final double SPROCKET_CIRCUMFRENCE_INCHES = Constants.ConveyerBelt.SPROCKET_DIAMETER_INCHES * Math.PI;	
+		
+		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 19/16;
+		
+		public static final double MANUAL_MOVE_SPEED = .85;
+		
+		public static final class Encoder {
+		
+			public static final double GEARBOX_PULSES_PER_REVOLUTION = 497;
+			
+			public static final double GEARBOX_REVOLUTIONS_PER_PULSE = 1/Constants.ConveyerBelt.Encoder.GEARBOX_PULSES_PER_REVOLUTION;
+		
+			public static final double DISTANCE_PER_PULSE = Constants.ConveyerBelt.SPROCKET_CIRCUMFRENCE_INCHES * Constants.ConveyerBelt.SPROCKET_TO_GEARBOX_GEAR_RATIO * Constants.ConveyerBelt.Encoder.GEARBOX_REVOLUTIONS_PER_PULSE;
+			
+			public static final boolean REVERSED = false;
+			
+			public static final double RESET_THRESHOLD = 3;
+		}
+	}
 	
-		public static final double SPROCKET_CIRCUMFRENCE_FEET = Constants.RearEncoderConstants.SPROCKET_DIAMETER_FEET * Math.PI;	
+	public static final class Motors {
 		
-		public static final double GEARBOX_PULSES_PER_REVOLUTION = 497;
-		
-		public static final double GEARBOX_REVOLUTIONS_PER_PULSE = 1/Constants.RearEncoderConstants.GEARBOX_PULSES_PER_REVOLUTION;
-		
-		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 10; //Arbitrary Number
+			public static final double MOTOR_MAX_OUTPUT = 1.0;
+			
+			public static final boolean LEFT_REAR_REVERSED = false;
+			
+			public static final boolean RIGHT_REAR_REVERSED = true;
+			
+			public static final boolean LEFT_FRONT_REVERSED = true;
+			
+			public static final boolean RIGHT_FRONT_REVERSED = false;
+	}
 	
-		public static final double DISTANCE_PER_PULSE = Constants.RearEncoderConstants.SPROCKET_CIRCUMFRENCE_FEET * Constants.RearEncoderConstants.SPROCKET_TO_GEARBOX_GEAR_RATIO * Constants.RearEncoderConstants.GEARBOX_REVOLUTIONS_PER_PULSE;
+	public static final class Ports {
+		
+		public static final class Joystick {
+			
+			public static final int CONTROLLER = 0;
+
+			public static final int TRASH_CAN_CONTROLLER = 1;
+		}
+		
+		public static final class PWM {
+			
+			public static final int CONVEYER_BELT_MOTOR = 4;
+			
+			public static final int FRONT_LEFT_DRIVE_MOTOR = 0;
+		
+			public static final int REAR_LEFT_DRIVE_MOTOR = 1;
+			
+			public static final int FRONT_RIGHT_DRIVE_MOTOR = 2;
+			
+			public static final int REAR_RIGHT_DRIVE_MOTOR = 3;
+			
+			public static final int REAR_MOTOR = 5;
+			
+			public static final int TEST_MOTOR_LEFT = 6;
+			
+			public static final int TEST_MOTOR_RIGHT = 7;
+		}
+		
+		public static final class DIO {
+			
+			public static final int CONVEYER_BELT_ENCODER_A = 8;
+		
+			public static final int CONVEYER_BELT_ENCODER_B = 7;
+			
+			public static final int REAR_MOTOR_ENCODER_A = 6;
+		
+			public static final int REAR_MOTOR_ENCODER_B = 5;
+			
+			public static final int AUTONOMOUS_SWITCH_A = 0;
+			
+			public static final int AUTONOMOUS_SWITCH_B = 1;
+			
+			public static final int LIMIT_SWITCH = 2;
+		}
+		
+		public static final class Analog {
+			
+			public static final int DRIVE_BASE_GYRO = 0;
+			
+			public static final int GYRO_TEMP_SENSOR = 1;
+			
+		}
+	}
+
+	public static final class RearMotorSpool {
+		
+		public static final double SPROCKET_DIAMETER_FEET = 1;
+		
+		public static final double SPROCKET_DIAMETER_INCHES = Constants.RearMotorSpool.SPROCKET_DIAMETER_FEET * 12;
 	
-		public static final double ENCODER_TICKS_TO_FEET_RATIO = 1000 / 1;
+		public static final double SPROCKET_RADIUS_FEET = Constants.RearMotorSpool.SPROCKET_DIAMETER_FEET/2;
+	
+		public static final double SPROCKET_RADIUS_INCHES = Constants.RearMotorSpool.SPROCKET_DIAMETER_INCHES/2;
+
+		public static final double SPROCKET_CIRCUMFRENCE_FEET = Constants.RearMotorSpool.SPROCKET_DIAMETER_FEET * Math.PI;
 		
-		public static final int ENCODER_PORT_A = 8;
+		public static final double SPROCKET_CIRCUMFRENCE_INCHES = Constants.RearMotorSpool.SPROCKET_DIAMETER_INCHES * Math.PI;
 		
-		public static final int ENCODER_PORT_B = 7;
+		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 36/16;
 		
-		public static final boolean ENCODER_REVERSED = true;
+		public static final double MANUAL_MOVE_SPEED = .75;
+		
+		public static final class Encoder {
+			
+			public static final double DISTANCE_PER_PULSE = Constants.RearMotorSpool.SPROCKET_CIRCUMFRENCE_FEET * Constants.RearMotorSpool.SPROCKET_TO_GEARBOX_GEAR_RATIO * Constants.RearMotorSpool.Encoder.GEARBOX_REVOLUTIONS_PER_PULSE;
+						
+			public static final double GEARBOX_PULSES_PER_REVOLUTION = 497;
+			
+			public static final double GEARBOX_REVOLUTIONS_PER_PULSE = 1/Constants.RearMotorSpool.Encoder.GEARBOX_PULSES_PER_REVOLUTION;
+					
+			public static final boolean REVERSED = true;
+			
+			public static final double RESET_THRESHOLD = 3;
+		}	
 	}
 }

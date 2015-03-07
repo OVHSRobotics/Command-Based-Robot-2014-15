@@ -3,24 +3,36 @@ package info.ovhs.robotics.subsystems;
 
 import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.RobotMap;
-import info.ovhs.robotics.commands.conveyer.HoldPID;
+import info.ovhs.robotics.commands.conveyer.Hold;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * The conveyer belt subsystem on the robot
  */
 public class ConveyerBelt extends Subsystem {
 
+	/**
+	 * Instance of the Conveyer Belt Subsystem
+	 */
 	protected static ConveyerBelt instance;
-	
-	protected SpeedController conveyerBeltMotor = RobotMap.conveyerBeltSpeedController1;		
+	/**
+	 * Speed controller for the Conveyer Belt Motor
+	 */
+	protected SpeedController conveyerBeltMotor = RobotMap.conveyerBeltSpeedController;		
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
+	/**
+	 * Conveyer Belt Encoder
+	 */
 	public Encoder encoder = RobotMap.conveyerBeltEncoder;
+	/**
+	 * Initial encoder value
+	 */
+	public double initialEncoderValue;
 	
 	/**
 	 * Gets instance of Conveyer Belt Subsystem or creates one if one is not present
@@ -39,7 +51,8 @@ public class ConveyerBelt extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	
-    	setDefaultCommand(new HoldPID());
+    	//setDefaultCommand(new HoldPID());
+    	setDefaultCommand(new Hold());
     }
     
     /**
@@ -49,7 +62,7 @@ public class ConveyerBelt extends Subsystem {
      * </p>
      */
     public void forward() {
-    	conveyerBeltMotor.set(Constants.MotorConstants.MOTOR_MAX_OUTPUT);
+    	conveyerBeltMotor.set(Constants.Motors.MOTOR_MAX_OUTPUT);
     }
 
     /**
@@ -72,7 +85,7 @@ public class ConveyerBelt extends Subsystem {
      * </p>
      */    
     public void backward() {
-    	conveyerBeltMotor.set(Constants.MotorConstants.MOTOR_MAX_OUTPUT);
+    	conveyerBeltMotor.set(Constants.Motors.MOTOR_MAX_OUTPUT);
     }
     
     /**
@@ -111,7 +124,7 @@ public class ConveyerBelt extends Subsystem {
 	public void setSpeed(double speed) {
 		if (speed <= 1 && speed >= -1) {
 			conveyerBeltMotor.set(speed);
-		}	
+		}
 	}
 }
 

@@ -11,19 +11,41 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- *
+/** 
+ * Drive Train Subsystem on the robot
  */
 public class DriveTrain extends Subsystem {
 	
+	/**
+	 * Instance of the Drive Train Subsystem
+	 */
 	protected static DriveTrain instance;
 	
-    SpeedController motorSpeedController1 = RobotMap.driveSpeedController1;
-    SpeedController motorSpeedController2 = RobotMap.driveSpeedController2;
-    SpeedController motorSpeedController3 = RobotMap.driveSpeedController3;
-    SpeedController motorSpeedController4 = RobotMap.driveSpeedController4;
+	/**
+	 * Speed Controller for the front left drive motor
+	 */
+    SpeedController frontLeftDriveMotorSpeedController = RobotMap.frontLeftDriveSpeedController;
+    /**
+     * Speed Controller for the rear left drive motor
+     */
+    SpeedController rearLeftDriveMotorSpeedController = RobotMap.rearLeftDriveSpeedController;
+    /**
+     * Speed Controller for the front right drive motor
+     */
+    SpeedController frontRightDriveMotorSpeedController = RobotMap.frontRightDriveSpeedController;
+    /**
+     * Speed Controller for the rear right drive motor
+     */
+    SpeedController rearRightDriveMotorSpeedController = RobotMap.rearRightDriveSpeedController;
+    /**
+     * RobotDrive Drive Motor Configuration
+     */
     RobotDrive drive = RobotMap.drive;
     
+    /**
+     * Gets the instance of the DriveTrain Subsystem and creates one if there isn't one already
+     * @return instance of DriveTrain Subsystem
+     */
     public static DriveTrain getInstance() {
     	if (DriveTrain.instance == null) {
     		DriveTrain.instance = new DriveTrain();
@@ -34,7 +56,8 @@ public class DriveTrain extends Subsystem {
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new MecanumDrive());
+        //setDefaultCommand(new MecanumDrive());
+    	setDefaultCommand(new MecanumDrive());
     }
     
     /**
@@ -47,7 +70,68 @@ public class DriveTrain extends Subsystem {
      *        power)
      */
     public void driveStraight( double speedFactor ) {
-        drive.tankDrive(speedFactor, speedFactor);
+    	drive.mecanumDrive_Cartesian(0, -speedFactor, 0, 0);
+    }
+    
+    /**
+     * Strafes the robot to the left
+     * @param speedFactor How fast to strafe
+     */
+    public void strafeLeft( double speedFactor) {
+    	drive.mecanumDrive_Cartesian(speedFactor, 0, 0, 0);
+    }
+    
+    /**
+     * Strafes the robot to the right
+     * @param speedFactor How fast to strafe
+     */
+    public void strafeRight( double speedFactor) {
+    	drive.mecanumDrive_Cartesian(-speedFactor, 0, 0, 0);
+    }
+    
+    /**
+     * Moves the robot at 45 degrees relative at a specified speed
+     * 
+     * @param speedFactor Speed to move robot at
+     */
+    public void moveAt45DegreeAngle( double speedFactor) {
+    	drive.mecanumDrive_Cartesian(-speedFactor, -speedFactor, 0, 0);
+    }
+    
+    /**
+     * Moves the robot at 135 degrees relative at a specified speed
+     * 
+     * @param speedFactor Speed to move robot at
+     */    
+    public void moveAt135DegreeAngle( double speedFactor) {
+    	drive.mecanumDrive_Cartesian(speedFactor, -speedFactor, 0, 0);
+    }
+    
+    /**
+     * Moves the robot at 225 degrees relative at a specified speed
+     * 
+     * @param speedFactor Speed to move robot at
+     */
+    public void moveAt225DegreeAngle( double speedFactor) {
+    	drive.mecanumDrive_Cartesian(speedFactor, speedFactor, 0, 0);
+    }
+    
+    /**
+     * Moves the robot at 315 degrees relative at a specified speed
+     * 
+     * @param speedFactor Speed to move robot at
+     */
+    public void moveAt315DegreeAngle( double speedFactor) {
+    	drive.mecanumDrive_Cartesian(-speedFactor, speedFactor, 0, 0);
+    }
+    
+    /**
+     * Moves the robot at a specified relative angle at a specified speed
+     * @param speedFactor Speed for robot to move at
+     * @param angle Relative angle for robot to move at
+     */
+    public void moveAtAngle( double speedFactor, double angle) {
+    	drive.mecanumDrive_Polar(-speedFactor, angle, 0);
     }
 
     /**
@@ -67,7 +151,7 @@ public class DriveTrain extends Subsystem {
      * </p>
      */
     public void arcadeDriveController() {
-        drive.arcadeDrive(OI.getLeftStickYAxis(), OI.getLeftStickXAxis());
+        drive.arcadeDrive(OI.getXboxLeftStickYAxis(), OI.getXboxLeftStickXAxis());
     }
 
     /**
@@ -77,7 +161,7 @@ public class DriveTrain extends Subsystem {
      * </p>
      */
     public void tankDriveController() {
-        drive.tankDrive(OI.getLeftStickYAxis(), OI.getRightStickYAxis());
+        drive.tankDrive(OI.getXboxLeftStickYAxis(), OI.getXboxRightStickYAxis());
     }
     
     /**
@@ -100,14 +184,16 @@ public class DriveTrain extends Subsystem {
      */
     public void mecanumDriveController(double gyroAngle) {
     	double rotationRate = 0;
-    	if (Math.abs(OI.getRightStickXAxis()) <= Constants.OperatorControlsConstants.AXIS_DEAD_ZONE) {
-    		rotationRate = -RobotMap.gyro1.getRate();
+    	if (Math.abs(OI.getXboxRightStickXAxis()) <= Constants.OperatorControls.Controller.Xbox.Deadzone.RIGHT_X) {
+    		rotationRate = -RobotMap.robotGyro.getRate();
     	}
     	else {
-    		rotationRate = OI.getRightStickXAxis();
+    		rotationRate = OI.getXboxRightStickXAxis();
     	}
+    	rotationRate = OI.getXboxRightStickXAxis();
     	
-    	drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), rotationRate, gyroAngle);
+    	drive.mecanumDrive_Cartesian(OI.getXboxLeftStickXAxis(), OI.getXboxLeftStickYAxis(), rotationRate, gyroAngle);
+    	//drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), OI.getRightStickXAxis(), 0);
     }
     
     /**
@@ -118,11 +204,11 @@ public class DriveTrain extends Subsystem {
     		setDefaultCommand(new MecanumDrive());
     	}
     	
-    	if (getDefaultCommand() instanceof ArcadeDrive) {
+    	else if (getDefaultCommand() instanceof ArcadeDrive) {
     		setDefaultCommand(new TankDrive());
     	}
     	
-    	if (getDefaultCommand() instanceof MecanumDrive) {
+    	else if (getDefaultCommand() instanceof MecanumDrive) {
     		setDefaultCommand(new ArcadeDrive());
     	}
     	

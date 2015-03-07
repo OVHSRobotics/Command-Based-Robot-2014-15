@@ -2,13 +2,12 @@
 
 package info.ovhs.robotics.commands.autonomous;
 
-import info.ovhs.robotics.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-@SuppressWarnings("unused")
+
 public class AutonomousCommand extends Command {
 
     public AutonomousCommand() {

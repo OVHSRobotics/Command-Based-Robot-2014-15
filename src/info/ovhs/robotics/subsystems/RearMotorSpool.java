@@ -2,24 +2,37 @@ package info.ovhs.robotics.subsystems;
 
 import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.RobotMap;
-import info.ovhs.robotics.commands.rearmotorspool.RearHoldPID;
+import info.ovhs.robotics.commands.rearmotorspool.RearHold;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * Rear Motor Spool Subsystem
  */
 public class RearMotorSpool extends Subsystem {
 
+	/**
+	 * Instance of Rear Motor Spool Subsystem
+	 */
 	protected static RearMotorSpool instance;
-	
-	protected SpeedController rearSpoolMotor = RobotMap.rearMotorSpoolSpeedController1;		
+	/**
+	 * Speed Controller for the Rear Motor Spool
+	 */
+	protected SpeedController rearSpoolMotor = RobotMap.rearMotorSpoolSpeedController;		
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
+	/**
+	 * Rear Encoder
+	 */
 	public Encoder encoder = RobotMap.rearEncoder;
+	
+	/**
+	 * Initial value of rear encoder
+	 */
+	public double initialEncoderValue;
 	
 	/**
 	 * Gets instance of Rear Motor Spool Subsystem or creates one if one is not present
@@ -38,7 +51,9 @@ public class RearMotorSpool extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	
-    	setDefaultCommand(new RearHoldPID());
+//    	setDefaultCommand(new RearHoldPID());
+    	setDefaultCommand(new RearHold());
+
     }
     
     /**
@@ -48,7 +63,7 @@ public class RearMotorSpool extends Subsystem {
      * </p>
      */
     public void forward() {
-    	rearSpoolMotor.set(Constants.MotorConstants.MOTOR_MAX_OUTPUT);
+    	rearSpoolMotor.set(Constants.Motors.MOTOR_MAX_OUTPUT);
     }
 
     /**
@@ -71,7 +86,7 @@ public class RearMotorSpool extends Subsystem {
      * </p>
      */    
     public void backward() {
-    	rearSpoolMotor.set(Constants.MotorConstants.MOTOR_MAX_OUTPUT);
+    	rearSpoolMotor.set(Constants.Motors.MOTOR_MAX_OUTPUT);
     }
     
     /**

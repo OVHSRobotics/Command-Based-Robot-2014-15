@@ -35,14 +35,15 @@ public class PIDDriveTrain extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    	return RobotMap.gyro1.getAngle();
+//    	return RobotMap.gyro1.getAngle();
+    	return 0;
     }
     
     protected void usePIDOutput(double output) {
-    	if (OI.getRightStickXAxis() == 0) {
-    		RobotMap.drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), 0, RobotMap.gyro1.getAngle());
+    	if (OI.getXboxRightStickXAxis() == 0) {
+    		RobotMap.drive.mecanumDrive_Cartesian(OI.getXboxLeftStickXAxis(), OI.getXboxLeftStickYAxis(), 0, /*RobotMap.gyro1.getAngle()*/0);
     	} else {
-    		RobotMap.drive.mecanumDrive_Cartesian(OI.getLeftStickXAxis(), OI.getLeftStickYAxis(), output, RobotMap.gyro1.getAngle());
+    		RobotMap.drive.mecanumDrive_Cartesian(OI.getXboxLeftStickXAxis(), OI.getXboxLeftStickYAxis(), output, /*RobotMap.gyro1.getAngle()*/0);
     	}
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
