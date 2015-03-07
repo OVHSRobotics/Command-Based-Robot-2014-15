@@ -48,8 +48,15 @@ public class Robot extends IterativeRobot {
         	print("End Initializing Gyro");
         }
         
+        if (Constants.DEBUG_MODE) {
+        	print("Setting initial Encoder Distances");
+        }
         RobotMap.setInitialConveyerEncoderDistance();
         RobotMap.setInitialRearEncoderDistance();
+        
+        if (Constants.DEBUG_MODE) {
+        	print("Done Setting initial Encoder Distances");
+        }
         
         
         
