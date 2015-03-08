@@ -103,7 +103,7 @@ public class RobotMap {
 	 */
 	public static void init() {
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("Begin RobotMap Init");
 		}
 
@@ -123,7 +123,7 @@ public class RobotMap {
 		
 		RobotMap.createPDPObject();
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("End RobotMap Init");
 		}
 	}
@@ -132,7 +132,7 @@ public class RobotMap {
 	 * Sets up the configuration for the driving systems on the robot
 	 */
 	public static void setupDrive() {
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("Begin setupDriveMotors");
 		}
 		
@@ -158,15 +158,15 @@ public class RobotMap {
 		drive.setSafetyEnabled(false);
 		drive.setMaxOutput(Constants.Motors.MOTOR_MAX_OUTPUT);
 		drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft,
-				Constants.Motors.LEFT_REAR_REVERSED);
+				Constants.Motors.LEFT_REAR_DRIVE_REVERSED);
 		drive.setInvertedMotor(RobotDrive.MotorType.kRearRight,
-				Constants.Motors.RIGHT_REAR_REVERSED);
+				Constants.Motors.RIGHT_REAR_DRIVE_REVERSED);
 		drive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, 
-				Constants.Motors.LEFT_FRONT_REVERSED);
+				Constants.Motors.LEFT_FRONT_DRIVE_REVERSED);
 		drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, 
-				Constants.Motors.RIGHT_FRONT_REVERSED);
+				Constants.Motors.RIGHT_FRONT_DRIVE_REVERSED);
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("End setupDriveMotors");
 		}
 	}
@@ -175,7 +175,7 @@ public class RobotMap {
 	 * Sets up the speed controllers that are for anything other than driving
 	 */
 	public static void setupSubsystemSpeedControllers() {
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("Begin setupSubsystemSpeedControllers");
 		}
 		
@@ -185,13 +185,13 @@ public class RobotMap {
 		rearMotorSpoolSpeedController = new Talon(Constants.Ports.PWM.REAR_MOTOR);
 		LiveWindow.addActuator("Rear Motor Spool", "Rear Motor Spool Motor", (Talon) rearMotorSpoolSpeedController);
 		
-		activeInputSpeedControllerLeft = new Talon(Constants.Ports.PWM.TEST_MOTOR_LEFT);
+		activeInputSpeedControllerLeft = new Talon(Constants.Ports.PWM.ACTIVE_INPUT_MOTOR_LEFT);
 		LiveWindow.addActuator("Test", "Test Motor Left", (Talon) activeInputSpeedControllerLeft);
 		
-		activeInputSpeedControllerRight = new Victor(Constants.Ports.PWM.TEST_MOTOR_RIGHT);
+		activeInputSpeedControllerRight = new Victor(Constants.Ports.PWM.ACTIVE_INPUT_MOTOR_RIGHT);
 		LiveWindow.addActuator("Test", "Test Motor Right", (Victor) activeInputSpeedControllerRight);		
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("End setupSubsystemSpeedControllers");
 		}
 	}
@@ -201,7 +201,7 @@ public class RobotMap {
 	 */
 	public static void createGyro() {
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("Begin createGyro");
 		}
 		
@@ -209,7 +209,7 @@ public class RobotMap {
 		robotGyro.setSensitivity(.007);
 		LiveWindow.addSensor("Drive Train", "Gyro 1", robotGyro);
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("End createGyro");
 		}
 	}
@@ -218,14 +218,14 @@ public class RobotMap {
 	 * Creates the Gyro Temp Sensor object on the robot
 	 */
 	public static void createGyroTempSensor() {
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("Begin createGyroTempSensor");
 		}
 		
 		robotGyroTempSensor = new AnalogInput(Constants.Ports.Analog.GYRO_TEMP_SENSOR);
 		LiveWindow.addSensor("DriveTrain", "Temperature Sensor", robotGyroTempSensor);
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("End createGyroTempSensor");
 		}
 	}
@@ -235,7 +235,7 @@ public class RobotMap {
 	 */
 	public static void createEncoders() {
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("Begin createEncoders");
 		}
 		
@@ -258,7 +258,7 @@ public class RobotMap {
 			System.out.println(exception);
 		}
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("End createEncoders");
 		}
 	}
@@ -268,14 +268,14 @@ public class RobotMap {
 	 */
 	public static void createLimitSwitches() {
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("Begin createLimitSwitches");
 		}
 		
 		robotLimitSwitch = new DigitalInput(Constants.Ports.DIO.LIMIT_SWITCH);
 		LiveWindow.addActuator("DriveTrain", "Limit Switch", robotLimitSwitch);
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("End createLimitSwitches");
 		}
 	}
@@ -285,7 +285,7 @@ public class RobotMap {
 	 */
 	public static void createAutonomousSwitches() {
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("Begin createAutonomousSwitches");
 		}
 		
@@ -295,7 +295,7 @@ public class RobotMap {
 		autonomousSwitch2 = new DigitalInput(Constants.Ports.DIO.AUTONOMOUS_SWITCH_B);
 		LiveWindow.addSensor("Autonomous", "Autonomous Switch 2", autonomousSwitch2);
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("End createAutonomousSwitches");
 		}
 	}
@@ -304,13 +304,13 @@ public class RobotMap {
 	 * Sets the initial distance for the conveyer encoder in order to use the reset command
 	 */
 	public static void setInitialConveyerEncoderDistance() {
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("Begin setInitialConveyerEncoderDistance");
 		}
 		
     	CommandBase.conveyerBelt.initialEncoderValue = CommandBase.conveyerBelt.encoder.getDistance();
     	
-    	if (Constants.DEBUG_MODE) {
+    	if (Constants.VERBOSE_OUTPUT) {
     		Robot.print("End setInitialConveyerEncoderDistance");
     	}
     }
@@ -319,13 +319,13 @@ public class RobotMap {
 	 * Sets the initial distance for the rear encoder in order to use the reset command
 	 */
     public static void setInitialRearEncoderDistance() {
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("Begin setInitialRearEncoderDistance");
 		}
 
     	CommandBase.rearMotorSpool.initialEncoderValue = CommandBase.rearMotorSpool.encoder.getDistance();
     	
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("End setInitialRearEncoderDistance");
 		}
 	}
@@ -334,13 +334,13 @@ public class RobotMap {
      * Creates the object for the PDP in order to get current draws from the PDP on the robot
      */
     public static void createPDPObject() {
-    	if (Constants.DEBUG_MODE) {
+    	if (Constants.VERBOSE_OUTPUT) {
     		Robot.print("Begin CreatePDPObject");
     	}
     	
     	PDP = new PowerDistributionPanel();
     	
-    	if (Constants.DEBUG_MODE) {
+    	if (Constants.VERBOSE_OUTPUT) {
     		Robot.print("End CreatePDPObject");
     	}
     }

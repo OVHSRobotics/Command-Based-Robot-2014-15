@@ -2,11 +2,13 @@ package info.ovhs.robotics;
 
 public final class Constants {
 	
+
+
 	public static final int DRIVE_TRAIN_GEAR_RATIO = 1;	
 	
 	public static final int ROBOT_WEIGHT = 120;
 	
-	public static final boolean DEBUG_MODE = true;
+	public static final boolean VERBOSE_OUTPUT = true;
 	
 	public static final class OperatorControls {
 		
@@ -188,6 +190,8 @@ public final class Constants {
 		public static final double TOTE_HEIGHT_FEET = Constants.FieldElements.TOTE_HEIGHT_INCHES / 12;
 	
 		public static final double TOTE_WEIGHT_POUNDS = 7.8;
+		
+		public static final double TOTE_WIDTH_BOTTOM = 14.7;
 	}
 
 	public static final class ConveyerBelt {
@@ -220,13 +224,13 @@ public final class Constants {
 		
 			public static final double MOTOR_MAX_OUTPUT = 1.0;
 			
-			public static final boolean LEFT_REAR_REVERSED = false;
+			public static final boolean LEFT_REAR_DRIVE_REVERSED = false;
 			
-			public static final boolean RIGHT_REAR_REVERSED = true;
+			public static final boolean RIGHT_REAR_DRIVE_REVERSED = true;
 			
-			public static final boolean LEFT_FRONT_REVERSED = true;
+			public static final boolean LEFT_FRONT_DRIVE_REVERSED = true;
 			
-			public static final boolean RIGHT_FRONT_REVERSED = false;
+			public static final boolean RIGHT_FRONT_DRIVE_REVERSED = false;
 	}
 	
 	public static final class Ports {
@@ -252,9 +256,9 @@ public final class Constants {
 			
 			public static final int REAR_MOTOR = 5;
 			
-			public static final int TEST_MOTOR_LEFT = 6;
+			public static final int ACTIVE_INPUT_MOTOR_LEFT = 6;
 			
-			public static final int TEST_MOTOR_RIGHT = 7;
+			public static final int ACTIVE_INPUT_MOTOR_RIGHT = 7;
 		}
 		
 		public static final class DIO {
@@ -313,5 +317,8 @@ public final class Constants {
 			
 			public static final double RESET_THRESHOLD = 3;
 		}	
+	}
+	public static final class ActiveInput {
+		public static final double AUTO_MOVE_SPEED = .75;
 	}
 }

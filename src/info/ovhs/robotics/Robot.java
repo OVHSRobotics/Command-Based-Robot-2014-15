@@ -33,34 +33,34 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-    	if (Constants.DEBUG_MODE) {
+    	if (Constants.VERBOSE_OUTPUT) {
     		print("Begin Robot Init");
     	}
     	
     	RobotMap.init();
         CommandBase.init();
         
-        if (Constants.DEBUG_MODE) {
+        if (Constants.VERBOSE_OUTPUT) {
         	print("Initializing Gyro");        
         }
         RobotMap.robotGyro.initGyro();
-        if (Constants.DEBUG_MODE){
+        if (Constants.VERBOSE_OUTPUT){
         	print("End Initializing Gyro");
         }
         
-        if (Constants.DEBUG_MODE) {
+        if (Constants.VERBOSE_OUTPUT) {
         	print("Setting initial Encoder Distances");
         }
         RobotMap.setInitialConveyerEncoderDistance();
         RobotMap.setInitialRearEncoderDistance();
         
-        if (Constants.DEBUG_MODE) {
+        if (Constants.VERBOSE_OUTPUT) {
         	print("Done Setting initial Encoder Distances");
         }
         
         
         
-        if (Constants.DEBUG_MODE) {
+        if (Constants.VERBOSE_OUTPUT) {
         	print("End Robot Init");
         }
         print("Robot is Ready");
@@ -204,7 +204,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
-    	if (Constants.DEBUG_MODE) {
+    	if (Constants.VERBOSE_OUTPUT) {
     		print("In test mode");
     	}
     	

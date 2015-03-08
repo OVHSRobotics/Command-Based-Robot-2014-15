@@ -3,6 +3,7 @@ package info.ovhs.robotics.commands;
 import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.OI;
 import info.ovhs.robotics.Robot;
+import info.ovhs.robotics.subsystems.ActiveInput;
 import info.ovhs.robotics.subsystems.ConveyerBelt;
 import info.ovhs.robotics.subsystems.DriveTrain;
 import info.ovhs.robotics.subsystems.RearMotorSpool;
@@ -34,37 +35,46 @@ public abstract class CommandBase extends Command {
 	 * Instance of the Rear Motor Spool Subsystem
 	 */
 	public static RearMotorSpool rearMotorSpool;
+	/**
+	 * Instance of the Active Input Subsystem
+	 */
+	public static ActiveInput activeInput;
 	
 	/**
 	 * Initializes the subsystems on the robot
 	 */
 	public static void init() {
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("Begin CommandBase Init");
 		}
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("Begin DriveTrain Instance Creation");
 		}
 		CommandBase.driveTrain = DriveTrain.getInstance();
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("Begin ConveyerBelt Instance Creation");
 		}
 		CommandBase.conveyerBelt = ConveyerBelt.getInstance();
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("Begin RearMotorSpool Instance Creation");
 		}
 		CommandBase.rearMotorSpool = RearMotorSpool.getInstance();
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
+			Robot.print("Begin ActiveInput Instance Creation");
+		}
+		CommandBase.activeInput = ActiveInput.getInstance();
+		
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("Begin OI Instance Creation");
 		}
 		// Must be initialized after all subsystems
 		CommandBase.oi = OI.getInstance();
 		
-		if (Constants.DEBUG_MODE) {
+		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("End CommandBase Init");
 		}
 	}

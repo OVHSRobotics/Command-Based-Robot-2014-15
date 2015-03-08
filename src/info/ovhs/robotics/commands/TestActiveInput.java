@@ -6,7 +6,9 @@ import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * Moves the active input arms based on the joystick input from the xbox controller's right stick's Y-axis
+ * DEPRECATED, Use Active Input Subsystem
  */
+@Deprecated
 public class TestActiveInput extends Command {
 
     public TestActiveInput() {
