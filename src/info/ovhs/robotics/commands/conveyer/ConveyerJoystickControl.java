@@ -2,6 +2,7 @@ package info.ovhs.robotics.commands.conveyer;
 
 import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.OI;
+import info.ovhs.robotics.Robot;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -10,13 +11,18 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ConveyerJoystickControl extends Command {
 
+	private int joystickToUse;
+	private int joystickAxisToUse;
+	
 	/**
 	 * Allows control of conveyer belt with joystick control (Uses Y axis on the operator control
 	 */
-    public ConveyerJoystickControl() {
+    public ConveyerJoystickControl(int joystickToUse, int joystickAxisToUse) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(CommandBase.conveyerBelt);
+    	this.joystickToUse = joystickToUse;
+    	this.joystickAxisToUse = joystickAxisToUse;
     }
 
     /**
@@ -29,7 +35,19 @@ public class ConveyerJoystickControl extends Command {
      *  Called repeatedly when this Command is scheduled to run
      */
     protected void execute() {
-    	CommandBase.conveyerBelt.setSpeed(OI.operatorController.getRawAxis(Constants.OperatorControls.Controller.OperatorController.Axes.Y));
+    	switch (this.joystickToUse){
+    	case 0:
+    		CommandBase.conveyerBelt.setSpeed(OI.xboxController.getRawAxis(this.joystickAxisToUse));
+    	case 1: 
+    		CommandBase.conveyerBelt.setSpeed(OI.operatorControllerOne.getRawAxis(this.joystickAxisToUse));
+    		break;
+    	case 2:
+    		CommandBase.conveyerBelt.setSpeed(OI.operatorControllerTwo.getRawAxis(this.joystickAxisToUse));
+    		break;
+    	default:
+    		Robot.print("Invalid Number as parameter for axis");
+    	}
+//    	CommandBase.conveyerBelt.setSpeed(OI.operatorControllerOne.getRawAxis(Constants.OperatorControls.Controller.OperatorController1.Axes.Y));
     }
 
     /**

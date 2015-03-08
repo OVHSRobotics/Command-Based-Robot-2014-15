@@ -2,6 +2,7 @@ package info.ovhs.robotics.commands.rearmotorspool;
 
 import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.OI;
+import info.ovhs.robotics.Robot;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -10,13 +11,18 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class RearJoystickControl extends Command {
 
+	private int joystickToUse;
+	private int joystickAxisToUse;
+	
 	/**
 	 * Uses the Z-Axis on the operator joystick to control the rear motor spool
 	 */
-    public RearJoystickControl() {
+    public RearJoystickControl(int joystickToUse, int joystickAxisToUse) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(CommandBase.rearMotorSpool);
+    	this.joystickToUse = joystickToUse;
+    	this.joystickAxisToUse = joystickAxisToUse;
     }
 
     /**
@@ -29,7 +35,19 @@ public class RearJoystickControl extends Command {
      *  Called repeatedly when this Command is scheduled to run
      */
     protected void execute() {
-    	CommandBase.rearMotorSpool.setSpeed(OI.operatorController.getRawAxis(Constants.OperatorControls.Controller.OperatorController.Axes.Z));
+    	switch (this.joystickToUse){
+    	case 0:
+    		CommandBase.rearMotorSpool.setSpeed(OI.xboxController.getRawAxis(this.joystickAxisToUse));
+    	case 1: 
+    		CommandBase.rearMotorSpool.setSpeed(OI.operatorControllerOne.getRawAxis(this.joystickAxisToUse));
+    		break;
+    	case 2:
+    		CommandBase.rearMotorSpool.setSpeed(OI.operatorControllerTwo.getRawAxis(this.joystickAxisToUse));
+    		break;
+    	default:
+    		Robot.print("Invalid Number as parameter for axis");
+    	}
+    	//CommandBase.rearMotorSpool.setSpeed(OI.operatorControllerOne.getRawAxis(Constants.OperatorControls.Controller.OperatorController1.Axes.Z));
     }
 
     /**

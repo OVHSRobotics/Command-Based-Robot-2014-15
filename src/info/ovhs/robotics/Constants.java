@@ -114,7 +114,7 @@ public final class Constants {
 				}
 			}
 			
-			public static final class OperatorController {
+			public static final class OperatorController1 {
 				
 				public static final class Axes {
 					
@@ -124,6 +124,66 @@ public final class Constants {
 					
 					public static final int Z = 2;
 				}
+				
+				public static final class Buttons {
+				
+					public static final int OPERATOR_CONTROL_1 = 1;
+					
+					public static final int OPERATOR_CONTROL_2 = 2;
+					
+					public static final int OPERATOR_CONTROL_3 = 3;
+					
+					public static final int OPERATOR_CONTROL_4 = 4;
+					
+					public static final int OPERATOR_CONTROL_5 = 5;
+					
+					public static final int OPERATOR_CONTROL_6 = 6;
+					
+					public static final int OPERATOR_CONTROL_7 = 7;
+					
+					public static final int OPERATOR_CONTROL_8 = 8;
+					
+					public static final int OPERATOR_CONTROL_9 = 9;
+					
+					public static final int OPERATOR_CONTROL_10 = 10;
+					
+					public static final int OPERATOR_CONTROL_11 = 11;
+				}
+				
+				public static final class Deadzone {
+					
+					public static final double X_CENTER = -0.043;
+					
+					public static final double Y_CENTER = -0.039;
+					
+					public static final double Z_CENTER = 0;
+					
+					public static final double X = 0.10;
+					
+					public static final double Y = 0.07;
+					
+					public static final double Z = 0.00;
+				}
+				
+				public static final class ScalingValue {
+					
+					public static final double X = 1;
+					
+					public static final double Y = 1;
+					
+					public static final double Z = 1;
+				}
+			}
+			public static final class OperatorController2 {
+				
+				public static final class Axes {
+						
+					public static final int X = 0;
+					
+					public static final int Y = 1;
+					
+					public static final int Z = 2;
+				}	
 				
 				public static final class Buttons {
 				
@@ -237,9 +297,11 @@ public final class Constants {
 		
 		public static final class Joystick {
 			
-			public static final int CONTROLLER = 0;
+			public static final int XBOX_CONTROLLER = 0;
 
-			public static final int TRASH_CAN_CONTROLLER = 1;
+			public static final int OPERATOR_CONTROLLER_1 = 1;
+			
+			public static final int OPERATOR_CONTROLLER_2 = 2;
 		}
 		
 		public static final class PWM {
