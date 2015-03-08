@@ -360,4 +360,36 @@ public class RobotMap {
     	Robot.print("Finished Resetting Encoders");
     }
     
+    public static String limitSwitchReadout() {
+    	if (RobotMap.robotLimitSwitch.get()) {
+    		return "Pressed";
+    	} else {
+    		return "Not Pressed";
+    	}
+    }
+    
+    public static int autoSwitchReadout(int switchNumber) {
+    	int returnedValue;
+    	switch (switchNumber) {
+    	case 1: 
+    		if (RobotMap.autonomousSwitch1.get()) {
+    			returnedValue = 1;
+    		} else {
+    			returnedValue = 0;
+    		}
+    		break;
+		case 2:
+    		if (RobotMap.autonomousSwitch2.get()) {
+    			returnedValue = 1;
+    		} else {
+    			returnedValue = 0;
+    		}
+    		break;
+    	default:
+    		returnedValue = 2;
+    		break;
+    	}
+		return returnedValue;
+    }
+    
 }

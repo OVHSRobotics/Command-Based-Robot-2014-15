@@ -74,7 +74,7 @@ public class HoldPID extends PIDCommand {
      */
 	@Override
 	protected double returnPIDInput() {
-		SmartDashboard.putNumber("Conveyer PID Input", CommandBase.conveyerBelt.encoder.getDistance());
+		//SmartDashboard.putNumber("Conveyer PID Input", CommandBase.conveyerBelt.encoder.getDistance());
 		return CommandBase.conveyerBelt.encoder.getDistance();
 	}
 
@@ -87,7 +87,7 @@ public class HoldPID extends PIDCommand {
 	 */
 	@Override
 	protected void usePIDOutput(double output) {
-		SmartDashboard.putNumber("Conveyer PID Output", output);
+		//SmartDashboard.putNumber("Conveyer PID Output", output);
 		CommandBase.conveyerBelt.setSpeed(output);
 	}
 }

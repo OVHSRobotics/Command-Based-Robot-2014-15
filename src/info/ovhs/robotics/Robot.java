@@ -176,7 +176,7 @@ public class Robot extends IterativeRobot {
         SmartDashboardUpdate.RearMotorSpool();
         SmartDashboardUpdate.Switches();
         SmartDashboardUpdate.JoystickOutput();
-        SmartDashboardUpdate.PDP();
+//        SmartDashboardUpdate.PDP();
     }
 
     /**
@@ -191,7 +191,8 @@ public class Robot extends IterativeRobot {
         SmartDashboardUpdate.RearMotorSpool();
         SmartDashboardUpdate.Switches();
         SmartDashboardUpdate.JoystickOutput();
-        SmartDashboardUpdate.PDP();    }
+//        SmartDashboardUpdate.PDP();    
+        }
     
     /**
      * This function is called once when test mode begins.
@@ -223,4 +224,6 @@ public class Robot extends IterativeRobot {
     public static void print( Object message) {
     	System.out.println(message);
     }
+    
+    
 }

@@ -75,39 +75,30 @@ public class SmartDashboardUpdate{
      * </p>
      */
 	public static void Switches() {
-		SmartDashboard.putBoolean("Auto Switch 1", RobotMap.autonomousSwitch1.get());
-        SmartDashboard.putBoolean("Auto Switch 2", RobotMap.autonomousSwitch2.get());
-        SmartDashboard.putBoolean("Limit Switch", RobotMap.robotLimitSwitch.get());
+		SmartDashboard.putNumber("Auto Switch 1 Setting", RobotMap.autoSwitchReadout(1));
+        SmartDashboard.putNumber("Auto Switch 2 Setting", RobotMap.autoSwitchReadout(2));
+        SmartDashboard.putString("Limit Switch", RobotMap.limitSwitchReadout());
 	}
 	
-	/**
-     * Updates the SmartDashboard data output for the PDP CAN Outputs
-     * 
-     * <p>
-     * For operator use
-     * </p>
-     */
-	public static void PDP() {
-		SmartDashboard.putNumber("PDP Total Current", RobotMap.PDP.getTotalCurrent());
-        SmartDashboard.putNumber("PDP Current Port 0", RobotMap.PDP.getCurrent(0));
-        SmartDashboard.putNumber("PDP Current Port 1", RobotMap.PDP.getCurrent(1));
-        SmartDashboard.putNumber("PDP Current Port 2", RobotMap.PDP.getCurrent(2));
-        SmartDashboard.putNumber("PDP Current Port 3", RobotMap.PDP.getCurrent(3));
-//        SmartDashboard.putNumber("PDP Current Port 4", RobotMap.PDP.getCurrent(4)); // Not Used
-//        SmartDashboard.putNumber("PDP Current Port 5", RobotMap.PDP.getCurrent(5)); // Not Used
-//        SmartDashboard.putNumber("PDP Current Port 6", RobotMap.PDP.getCurrent(6)); // Not Used
-//        SmartDashboard.putNumber("PDP Current Port 7", RobotMap.PDP.getCurrent(7)); // Not Used
-//        SmartDashboard.putNumber("PDP Current Port 8", RobotMap.PDP.getCurrent(8)); // Not Used
-//        SmartDashboard.putNumber("PDP Current Port 9", RobotMap.PDP.getCurrent(9)); // Not Used
-//        SmartDashboard.putNumber("PDP Current Port 10", RobotMap.PDP.getCurrent(10)); // Not Used
-//        SmartDashboard.putNumber("PDP Current Port 11", RobotMap.PDP.getCurrent(11)); // Not Used
-//        SmartDashboard.putNumber("PDP Current Port 12", RobotMap.PDP.getCurrent(12)); // Not Used
-        SmartDashboard.putNumber("PDP Current Port 13", RobotMap.PDP.getCurrent(13));
-        SmartDashboard.putNumber("PDP Current Port 14", RobotMap.PDP.getCurrent(14));
-        SmartDashboard.putNumber("PDP Current Port 15", RobotMap.PDP.getCurrent(15));
-        SmartDashboard.putNumber("PDP Temperature", RobotMap.PDP.getTemperature());
-        SmartDashboard.putNumber("PDP Voltage", RobotMap.PDP.getVoltage());
-        SmartDashboard.putNumber("PDP Total Energy", RobotMap.PDP.getTotalEnergy());
-        SmartDashboard.putNumber("PDP Total Power", RobotMap.PDP.getTotalPower());
-	}
+//	/**
+//     * Updates the SmartDashboard data output for the PDP CAN Outputs
+//     * 
+//     * <p>
+//     * For operator use
+//     * </p>
+//     */
+//	public static void PDP() {
+//		SmartDashboard.putNumber("PDP Total Current", RobotMap.PDP.getTotalCurrent());
+//        SmartDashboard.putNumber("PDP Current Port 0", RobotMap.PDP.getCurrent(0));
+//        SmartDashboard.putNumber("PDP Current Port 1", RobotMap.PDP.getCurrent(1));
+//        SmartDashboard.putNumber("PDP Current Port 2", RobotMap.PDP.getCurrent(2));
+//        SmartDashboard.putNumber("PDP Current Port 3", RobotMap.PDP.getCurrent(3));
+//        SmartDashboard.putNumber("PDP Current Port 13", RobotMap.PDP.getCurrent(13));
+//        SmartDashboard.putNumber("PDP Current Port 14", RobotMap.PDP.getCurrent(14));
+//        SmartDashboard.putNumber("PDP Current Port 15", RobotMap.PDP.getCurrent(15));
+//        SmartDashboard.putNumber("PDP Temperature", RobotMap.PDP.getTemperature());
+//        SmartDashboard.putNumber("PDP Voltage", RobotMap.PDP.getVoltage());
+//        SmartDashboard.putNumber("PDP Total Energy", RobotMap.PDP.getTotalEnergy());
+//        SmartDashboard.putNumber("PDP Total Power", RobotMap.PDP.getTotalPower());
+//	}
 }

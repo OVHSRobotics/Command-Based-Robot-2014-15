@@ -45,7 +45,7 @@ public class RearHoldPID extends PIDCommand {
      *  Called repeatedly when this Command is scheduled to run
      */
     protected void execute() {
-    	SmartDashboard.putNumber("PID Setpoint REar", this.getSetpoint());
+    	//SmartDashboard.putNumber("PID Setpoint REar", this.getSetpoint());
     }
 
     /**
@@ -75,7 +75,7 @@ public class RearHoldPID extends PIDCommand {
     @Override
     protected double returnPIDInput() {
     	//Robot.print("Rear spool encoder: " + new Double(CommandBase.rearMotorSpool.encoder.getDistance()).toString());
-    	SmartDashboard.putNumber("Rear Spool Encoder PID Input", CommandBase.rearMotorSpool.encoder.getDistance());
+    	//SmartDashboard.putNumber("Rear Spool Encoder PID Input", CommandBase.rearMotorSpool.encoder.getDistance());
     	return CommandBase.rearMotorSpool.encoder.getDistance();
     }
     
@@ -86,6 +86,6 @@ public class RearHoldPID extends PIDCommand {
     protected void usePIDOutput(double output) {
     	CommandBase.rearMotorSpool.setSpeed(output);
     	//Robot.print("Rear speed PID Output: " + output);
-    	SmartDashboard.putNumber("Rear Spool Encoder PID Output", -output);
+    	//SmartDashboard.putNumber("Rear Spool Encoder PID Output", -output);
     }
 }
