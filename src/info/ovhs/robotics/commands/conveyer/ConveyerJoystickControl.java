@@ -1,6 +1,5 @@
 package info.ovhs.robotics.commands.conveyer;
 
-import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.OI;
 import info.ovhs.robotics.Robot;
 import info.ovhs.robotics.commands.CommandBase;

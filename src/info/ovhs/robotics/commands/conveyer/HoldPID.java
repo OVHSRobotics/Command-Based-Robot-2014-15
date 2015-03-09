@@ -2,7 +2,6 @@ package info.ovhs.robotics.commands.conveyer;
 
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.PIDCommand;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *Uses PID Controller in order to hold tote in one position using the conveyer belt
