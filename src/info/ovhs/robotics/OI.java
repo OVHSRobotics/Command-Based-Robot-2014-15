@@ -179,7 +179,7 @@ public class OI {
      * Gets the value for the x-axis on the trash can controller    
      * @return value for the x-axis on the trash can controller
      */
-    public static double getOperatorControllerXAxis() {
+    public static double getOperatorController1XAxis() {
     	double rawAxis = OI.operatorControllerOne.getRawAxis(Constants.OperatorControls.Controller.OperatorController1.Axes.X);
     	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.OperatorController1.Deadzone.X_CENTER, Constants.OperatorControls.Controller.OperatorController1.Deadzone.X, rawAxis, Constants.OperatorControls.Controller.OperatorController1.ScalingValue.X);
     }
@@ -188,7 +188,7 @@ public class OI {
      * Gets the value for the y-axis on the trash can controller    
      * @return value for the y-axis on the trash can controller
      */
-    public static double getOperatorControllerYAxis() {
+    public static double getOperatorController1YAxis() {
     	double rawAxis = OI.operatorControllerOne.getRawAxis(Constants.OperatorControls.Controller.OperatorController1.Axes.Y);
     	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.OperatorController1.Deadzone.Y_CENTER, Constants.OperatorControls.Controller.OperatorController1.Deadzone.Y, rawAxis, Constants.OperatorControls.Controller.OperatorController1.ScalingValue.Y);
     }
@@ -201,9 +201,40 @@ public class OI {
      * 
      * @return value for the z-axis on the trash can controller
      */
-    public static double getOperatorControllerZAxis() {
+    public static double getOperatorController1ZAxis() {
     	double rawAxis = OI.operatorControllerOne.getRawAxis(Constants.OperatorControls.Controller.OperatorController1.Axes.Z);
     	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.OperatorController1.Deadzone.Z_CENTER, Constants.OperatorControls.Controller.OperatorController1.Deadzone.Z, rawAxis, Constants.OperatorControls.Controller.OperatorController1.ScalingValue.Z);
+    }
+    
+    /**
+     * Gets the value for the x-axis on the trash can controller    
+     * @return value for the x-axis on the trash can controller
+     */
+    public static double getOperatorController2XAxis() {
+    	double rawAxis = OI.operatorControllerTwo.getRawAxis(Constants.OperatorControls.Controller.OperatorController2.Axes.X);
+    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.OperatorController2.Deadzone.X_CENTER, Constants.OperatorControls.Controller.OperatorController2.Deadzone.X, rawAxis, Constants.OperatorControls.Controller.OperatorController2.ScalingValue.X);
+    }
+    
+    /**
+     * Gets the value for the y-axis on the trash can controller    
+     * @return value for the y-axis on the trash can controller
+     */
+    public static double getOperatorController2YAxis() {
+    	double rawAxis = OI.operatorControllerTwo.getRawAxis(Constants.OperatorControls.Controller.OperatorController2.Axes.Y);
+    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.OperatorController2.Deadzone.Y_CENTER, Constants.OperatorControls.Controller.OperatorController2.Deadzone.Y, rawAxis, Constants.OperatorControls.Controller.OperatorController2.ScalingValue.Y);
+    }
+    
+    /**
+     * Gets the value for the z-axis on the trash can controller
+     * <p>
+     * z-axis is paddle lever right below the joystick
+     * </p>
+     * 
+     * @return value for the z-axis on the trash can controller
+     */
+    public static double getOperatorController2ZAxis() {
+    	double rawAxis = OI.operatorControllerTwo.getRawAxis(Constants.OperatorControls.Controller.OperatorController2.Axes.Z);
+    	return OI.getValueAfterDeadZoneScaling(Constants.OperatorControls.Controller.OperatorController2.Deadzone.Z_CENTER, Constants.OperatorControls.Controller.OperatorController2.Deadzone.Z, rawAxis, Constants.OperatorControls.Controller.OperatorController2.ScalingValue.Z);
     }
 
     /**

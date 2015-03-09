@@ -57,14 +57,20 @@ public class SmartDashboardUpdate{
      * </p>
      */
 	public static void JoystickOutput() {
-		SmartDashboard.putNumber("Left Y Axis", OI.getXboxLeftStickYAxis());
-        SmartDashboard.putNumber("Left X Axis", OI.getXboxLeftStickXAxis());
-        SmartDashboard.putNumber("Right Y Axis", OI.getXboxRightStickYAxis());
-        SmartDashboard.putNumber("Right X Axis", OI.getXboxRightStickXAxis());
-        SmartDashboard.putNumber("Left Y Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.LEFT_STICK_Y));
-        SmartDashboard.putNumber("Left X Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.LEFT_STICK_X));
-        SmartDashboard.putNumber("Right Y Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.RIGHT_STICK_Y));
-        SmartDashboard.putNumber("Right X Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.RIGHT_STICK_X));
+		SmartDashboard.putNumber("Xbox Left Y Axis", OI.getXboxLeftStickYAxis());
+        SmartDashboard.putNumber("Xbox Left X Axis", OI.getXboxLeftStickXAxis());
+        SmartDashboard.putNumber("Xbox Right Y Axis", OI.getXboxRightStickYAxis());
+        SmartDashboard.putNumber("Xbox Right X Axis", OI.getXboxRightStickXAxis());
+//        SmartDashboard.putNumber("Left Y Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.LEFT_STICK_Y));
+//        SmartDashboard.putNumber("Left X Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.LEFT_STICK_X));
+//        SmartDashboard.putNumber("Right Y Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.RIGHT_STICK_Y));
+//        SmartDashboard.putNumber("Right X Axis Unscaled", OI.xboxController.getRawAxis(Constants.OperatorControls.Controller.Xbox.Axes.RIGHT_STICK_X));
+        SmartDashboard.putNumber("Operator 1 X Axis", OI.getOperatorController1XAxis());
+        SmartDashboard.putNumber("Operator 1 Y Axis", OI.getOperatorController1YAxis());
+        SmartDashboard.putNumber("Operator 1 Z Axis", OI.getOperatorController1ZAxis());
+        SmartDashboard.putNumber("Operator 2 X Axis", OI.getOperatorController2XAxis());
+        SmartDashboard.putNumber("Operator 2 Y Axis", OI.getOperatorController2YAxis());
+        SmartDashboard.putNumber("Operator 2 Z Axis", OI.getOperatorController2ZAxis());
 	}
 	
 	/**
