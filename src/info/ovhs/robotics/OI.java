@@ -114,9 +114,10 @@ public class OI {
     	operatorController1 = new DualCommandButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_1, 
     			false, new ConveyerJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER, Constants.OperatorControls.Controller.OperatorController.Axes.Y), 
     			new RearJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER, Constants.OperatorControls.Controller.OperatorController.Axes.Y));
+    	operatorController2 = new DualCommandButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_2,
+    			false, new ReleaseTote(), new ReleaseTote());
     	operatorController3 = new DualCommandButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_1, 
-    			false, new ConveyerJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER, Constants.OperatorControls.Controller.OperatorController.Axes.Y), 
-    			new RearJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER, Constants.OperatorControls.Controller.OperatorController.Axes.Y));
+    			false, new SuckInTote(), new SuckInTote());
     	operatorController4 = new DualCommandButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_3, 
     			false, new DropTote(), new RearDropTrashCan());
     	operatorController5 = new DualCommandButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_4, 
