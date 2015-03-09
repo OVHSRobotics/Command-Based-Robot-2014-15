@@ -1,6 +1,5 @@
 package info.ovhs.robotics.subsystems;
 
-import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.OI;
 import info.ovhs.robotics.RobotMap;
 import info.ovhs.robotics.commands.activeinput.StopActiveInput;
