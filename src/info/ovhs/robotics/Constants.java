@@ -158,9 +158,9 @@ public final class Constants {
 					
 					public static final double Z_CENTER = 0;
 					
-					public static final double X = 0.10;
+					public static final double X = 0.19;
 					
-					public static final double Y = 0.07;
+					public static final double Y = 0.12;
 					
 					public static final double Z = 0.00;
 				}
@@ -319,6 +319,7 @@ public final class Constants {
 		}	
 	}
 	public static final class ActiveInput {
+		
 		public static final double AUTO_MOVE_SPEED = .75;
 	}
 }
