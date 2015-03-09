@@ -104,4 +104,19 @@ public class SmartDashboardUpdate{
 //        SmartDashboard.putNumber("PDP Total Energy", RobotMap.PDP.getTotalEnergy());
 //        SmartDashboard.putNumber("PDP Total Power", RobotMap.PDP.getTotalPower());
 //	}
+	
+	public static void OperatorCommandSwitch() {
+		String o1 = CommandBase.oi.operatorController1.getSetting();
+		//String o2 = CommandBase.oi.operatorController2.getSetting();
+		String o3 = CommandBase.oi.operatorController3.getSetting();
+		String o4 = CommandBase.oi.operatorController4.getSetting();
+		String o5 = CommandBase.oi.operatorController5.getSetting();
+		String returned;
+		if (o1.equals(o3) && o1.equals(o4) && o1.equals(o5) && o3.equals(o4) && o3.equals(o5) && o4.equals(o5)) {
+			returned = o1;
+		} else {
+			returned = "There is a problem with the swap method";
+		}
+		SmartDashboard.putString("Operator Command Mode: ", returned );
+	}
 }
