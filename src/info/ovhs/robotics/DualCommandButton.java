@@ -25,6 +25,14 @@ public class DualCommandButton extends Button {
 		this.command1 = command1;
 		this.command2 = command2;
 	}
+	
+	public String getSetting() {
+		if (this.commandChoice) {
+			return "Command 2";
+		} else {
+			return "Command 1";
+		}
+	}
 
 	@Override
 	public boolean get() {
