@@ -15,6 +15,7 @@ public class SwapOperatorJoystickMode extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	CommandBase.oi.operatorController1.switchCommand();
+    	CommandBase.oi.operatorController2.switchCommand();
     	CommandBase.oi.operatorController3.switchCommand();
     	CommandBase.oi.operatorController4.switchCommand();
     	CommandBase.oi.operatorController5.switchCommand();

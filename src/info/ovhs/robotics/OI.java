@@ -1,5 +1,6 @@
 package info.ovhs.robotics;
 
+import info.ovhs.robotics.commands.SwapOperatorJoystickMode;
 import info.ovhs.robotics.commands.activeinput.ReleaseTote;
 import info.ovhs.robotics.commands.activeinput.SuckInTote;
 import info.ovhs.robotics.commands.conveyer.ConveyerJoystickControl;
@@ -59,8 +60,10 @@ public class OI {
     /**
      * Button on the joystick for operator control
      */
-    public DualCommandButton operatorController1, operatorController2, operatorController3, operatorController4, operatorController5, operatorController6, operatorController7, operatorController8, operatorController9, operatorController10, operatorController11;
+    public DualCommandButton operatorController1, operatorController2, operatorController3, operatorController4, operatorController5, operatorController6, operatorController8, operatorController9, operatorController10, operatorController11;
    
+    public JoystickButton operatorController7;
+    
     /**
      * Trigger on xbox Controller
      */
@@ -122,6 +125,8 @@ public class OI {
     			false, new DropTote(), new RearDropTrashCan());
     	operatorController5 = new DualCommandButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_4, 
     			false, new LiftTote(), new RearLiftTrashCan());
+    	operatorController7 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_7);
+    	operatorController7.whenPressed(new SwapOperatorJoystickMode());
     }
     
     
