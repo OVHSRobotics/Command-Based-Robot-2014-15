@@ -237,9 +237,9 @@ public final class Constants {
 		
 		public static final class Joystick {
 			
-			public static final int CONTROLLER = 0;
+			public static final int XBOX_CONTROLLER = 0;
 
-			public static final int TRASH_CAN_CONTROLLER = 1;
+			public static final int OPERATOR_CONTROLLER = 1;
 		}
 		
 		public static final class PWM {

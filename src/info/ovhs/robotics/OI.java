@@ -86,8 +86,8 @@ public class OI {
      * Creates all Operator Interface Objects
      */
     private OI() {
-    	xboxController = new Joystick(Constants.Ports.Joystick.CONTROLLER);
-    	operatorController = new Joystick(Constants.Ports.Joystick.TRASH_CAN_CONTROLLER);
+    	xboxController = new Joystick(Constants.Ports.Joystick.XBOX_CONTROLLER);
+    	operatorController = new Joystick(Constants.Ports.Joystick.OPERATOR_CONTROLLER);
     	aButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.A);
 	    aButton.whenPressed(new LiftTote(50));
 	    bButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.B);
