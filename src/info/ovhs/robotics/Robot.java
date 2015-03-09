@@ -2,12 +2,13 @@
 package info.ovhs.robotics;
 
 import info.ovhs.robotics.commands.CommandBase;
-import info.ovhs.robotics.commands.autonomous.*;
+import info.ovhs.robotics.commands.autonomous.Drive;
+import info.ovhs.robotics.commands.autonomous.PickUpOneTote;
+import info.ovhs.robotics.commands.autonomous.Strafe;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
