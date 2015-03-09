@@ -1,8 +1,5 @@
 package info.ovhs.robotics;
 
-import info.ovhs.robotics.commands.RumbleLeft;
-import info.ovhs.robotics.commands.RumbleRight;
-import info.ovhs.robotics.commands.TestActiveInput;
 import info.ovhs.robotics.commands.activeinput.ReleaseTote;
 import info.ovhs.robotics.commands.activeinput.SuckInTote;
 import info.ovhs.robotics.commands.conveyer.ConveyerJoystickControl;
@@ -10,11 +7,8 @@ import info.ovhs.robotics.commands.conveyer.ConveyerMove;
 import info.ovhs.robotics.commands.conveyer.DropTote;
 import info.ovhs.robotics.commands.conveyer.LiftTote;
 import info.ovhs.robotics.commands.conveyer.ResetConveyer;
-import info.ovhs.robotics.commands.rearmotorspool.RearDropTrashCan;
-import info.ovhs.robotics.commands.rearmotorspool.RearLiftTrashCan;
 import info.ovhs.robotics.commands.rearmotorspool.RearMove;
 import info.ovhs.robotics.commands.rearmotorspool.ResetRear;
-//import info.ovhs.robotics.commands.rearmotorspool.ResetRear;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -108,11 +102,7 @@ public class OI {
 	    leftTrigger.whileHeld(new ConveyerMove(false));
 	    rightTrigger = new JoystickTriggerAsButton(xboxController, Constants.OperatorControls.Controller.Xbox.Axes.RIGHT_TRIGGER, .04);
 	    rightTrigger.whileHeld(new ConveyerMove(true));
-/*	    leftPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.Xbox.POV.LEFT, Constants.OperatorControls.Controller.Xbox.POV.LEFT_THRESHOLD);
-	    rightPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.Xbox.POV.RIGHT, Constants.OperatorControls.Controller.Xbox.POV.RIGHT_THRESHOLD);
-	    upPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.Xbox.POV.UP, Constants.OperatorControls.Controller.Xbox.POV.UP_THRESHOLD);
-	    downPOV = new JoystickPOVAsButton(xboxController, Constants.OperatorControls.Controller.Xbox.POV.DOWN, Constants.OperatorControls.Controller.Xbox.POV.DOWN_THRESHOLD);
-*/	    operatorController1 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_1);
+	    operatorController1 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_1);
 	    operatorController1.whileHeld(new ConveyerJoystickControl());
 	    operatorController2 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_2);
 	    operatorController2.whileHeld(new ConveyerMove(true));
@@ -126,32 +116,32 @@ public class OI {
     }
     
     public void xboxControllerMappings() {
-    	xboxController = new Joystick(Constants.Ports.Joystick.XBOX_CONTROLLER);
-    	aButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.A); //does nothing
-	    bButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.B); //does nothing
-	    xButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.X); //does nothing
-	    yButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.Y); //does nothing
-	    backButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.BACK); //does nothing
-	    startButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.START); //does nothing
-	    leftBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.LEFT_BUMPER); 
-	    leftBumper.whileHeld(new SuckInTote());
-	    rightBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.RIGHT_BUMPER);
-	    rightBumper.whileHeld(new ReleaseTote());
-	    leftTrigger = new JoystickTriggerAsButton(xboxController, Constants.OperatorControls.Controller.Xbox.Axes.LEFT_TRIGGER, .04); //does nothing
-	    rightTrigger = new JoystickTriggerAsButton(xboxController, Constants.OperatorControls.Controller.Xbox.Axes.RIGHT_TRIGGER, .04); //does nothing
+//    	xboxController = new Joystick(Constants.Ports.Joystick.XBOX_CONTROLLER);
+//    	aButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.A); //does nothing
+//	    bButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.B); //does nothing
+//	    xButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.X); //does nothing
+//	    yButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.Y); //does nothing
+//	    backButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.BACK); //does nothing
+//	    startButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.START); //does nothing
+//	    leftBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.LEFT_BUMPER); 
+//	    leftBumper.whileHeld(new SuckInTote());
+//	    rightBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.RIGHT_BUMPER);
+//	    rightBumper.whileHeld(new ReleaseTote());
+//	    leftTrigger = new JoystickTriggerAsButton(xboxController, Constants.OperatorControls.Controller.Xbox.Axes.LEFT_TRIGGER, .04); //does nothing
+//	    rightTrigger = new JoystickTriggerAsButton(xboxController, Constants.OperatorControls.Controller.Xbox.Axes.RIGHT_TRIGGER, .04); //does nothing
     }
     
     public void operatorControllerMappings() {
-    	operatorController = new Joystick(Constants.Ports.Joystick.OPERATOR_CONTROLLER_1);
-   	 	operatorController1 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_1);
-		operatorController1.whileHeld(new ConveyerJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER, Constants.OperatorControls.Controller.OperatorController.Axes.Y));
-	    operatorController2 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_2);
-	    operatorController3 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_3);
-	    operatorController3.whileHeld(new ConveyerJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER, Constants.OperatorControls.Controller.OperatorController.Axes.Y));
-	    operatorController4 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_4);
-	    operatorController4.whenPressed(new DropTote());
-	    operatorController5 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_5);
-	    operatorController5.whenPressed(new LiftTote());
+//    	operatorController = new Joystick(Constants.Ports.Joystick.OPERATOR_CONTROLLER);
+//   	operatorController1 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_1);
+//		operatorController1.whileHeld(new ConveyerJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER, Constants.OperatorControls.Controller.OperatorController.Axes.Y));
+//	    operatorController2 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_2);
+//	    operatorController3 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_3);
+//	    operatorController3.whileHeld(new ConveyerJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER, Constants.OperatorControls.Controller.OperatorController.Axes.Y));
+//	    operatorController4 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_4);
+//	    operatorController4.whenPressed(new DropTote());
+//	    operatorController5 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_5);
+//	    operatorController5.whenPressed(new LiftTote());
     }
     
     
