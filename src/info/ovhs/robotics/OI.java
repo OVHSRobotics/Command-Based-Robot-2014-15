@@ -58,7 +58,7 @@ public class OI {
     /**
      * Button on the joystick for operator control
      */
-    public JoystickButton operatorController1, operatorController2, operatorController3, operatorController4, operatorController5, operatorController6, operatorController7, operatorController8, operatorController9, operatorController10, operatorController11;
+    public DualCommandButton operatorController1, operatorController2, operatorController3, operatorController4, operatorController5, operatorController6, operatorController7, operatorController8, operatorController9, operatorController10, operatorController11;
    
     /**
      * Trigger on xbox Controller
@@ -81,7 +81,6 @@ public class OI {
     private OI() {
     	this.xboxControllerMappings();
     	this.operatorControllerMappings();
-    	this.operatorControllerOrigMappings();
     }
     
     public void xboxControllerMappings() {
@@ -102,20 +101,22 @@ public class OI {
     
     public void operatorControllerMappings() {
     	operatorController = new Joystick(Constants.Ports.Joystick.OPERATOR_CONTROLLER);
-    	operatorController1 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_1);
-	    operatorController2 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_2);
-	    operatorController3 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_3);
-	    operatorController4 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_4);
-	    operatorController5 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_5);
+//    	operatorController1 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_1);
+//	    operatorController2 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_2);
+//	    operatorController3 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_3);
+//	    operatorController4 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_4);
+//	    operatorController5 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_5);
+    	operatorController1 = new DualCommandButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_1, 
+    			false, new ConveyerJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER, Constants.OperatorControls.Controller.OperatorController.Axes.Y), 
+    			new RearJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER, Constants.OperatorControls.Controller.OperatorController.Axes.Y));
+    	operatorController3 = new DualCommandButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_1, 
+    			false, new ConveyerJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER, Constants.OperatorControls.Controller.OperatorController.Axes.Y), 
+    			new RearJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER, Constants.OperatorControls.Controller.OperatorController.Axes.Y));
+    	operatorController4 = new DualCommandButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_3, 
+    			false, new DropTote(), new RearDropTrashCan());
+    	operatorController5 = new DualCommandButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_4, 
+    			false, new LiftTote(), new RearLiftTrashCan());
     }
-    
-    public void operatorControllerOrigMappings() {
-    	operatorController1.whileHeld(new RearJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER, Constants.OperatorControls.Controller.OperatorController.Axes.Y));
-	    operatorController3.whileHeld(new RearJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER, Constants.OperatorControls.Controller.OperatorController.Axes.Y));
-	    operatorController4.whenPressed(new RearDropTrashCan());
-	    operatorController5.whenPressed(new RearLiftTrashCan());
-    }
-    
     
     
     /**
