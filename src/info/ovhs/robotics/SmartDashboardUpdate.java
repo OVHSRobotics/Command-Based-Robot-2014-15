@@ -80,7 +80,7 @@ public class SmartDashboardUpdate{
 	public static void Switches() {
 		SmartDashboard.putNumber("Auto Switch 1 Setting", RobotMap.autoSwitchReadout(1));
         SmartDashboard.putNumber("Auto Switch 2 Setting", RobotMap.autoSwitchReadout(2));
-        SmartDashboard.putString("Limit Switch", RobotMap.limitSwitchReadout());
+        SmartDashboard.putString("Limit Switch", RobotMap.limitSwitchReadout()); 
 	}
 	
 //	/**
