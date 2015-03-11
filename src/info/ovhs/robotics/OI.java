@@ -5,8 +5,9 @@ import info.ovhs.robotics.commands.activeinput.SuckInTote;
 import info.ovhs.robotics.commands.conveyer.ConveyerJoystickControl;
 import info.ovhs.robotics.commands.conveyer.DropTote;
 import info.ovhs.robotics.commands.conveyer.LiftTote;
+import info.ovhs.robotics.commands.rearmotorspool.RearDropTrashCan;
 import info.ovhs.robotics.commands.rearmotorspool.RearJoystickControl;
-//import info.ovhs.robotics.commands.rearmotorspool.ResetRear;
+import info.ovhs.robotics.commands.rearmotorspool.RearLiftTrashCan;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -121,6 +122,12 @@ public class OI {
     	operatorControllerTwo = new Joystick(Constants.Ports.Joystick.OPERATOR_CONTROLLER_2);
     	operatorControllerTwo1 = new JoystickButton(operatorControllerTwo, Constants.OperatorControls.Controller.OperatorController2.Buttons.OPERATOR_CONTROL_1);
     	operatorControllerTwo1.whileHeld(new RearJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER_2, Constants.OperatorControls.Controller.OperatorController2.Axes.Y));
+    	operatorControllerTwo3 = new JoystickButton(operatorControllerTwo, Constants.OperatorControls.Controller.OperatorController2.Buttons.OPERATOR_CONTROL_3);
+    	operatorControllerTwo3.whileHeld(new RearJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER_2, Constants.OperatorControls.Controller.OperatorController2.Axes.Y));
+	    operatorControllerTwo4 = new JoystickButton(operatorControllerOne, Constants.OperatorControls.Controller.OperatorController1.Buttons.OPERATOR_CONTROL_4);
+	    operatorControllerTwo4.whenPressed(new RearDropTrashCan());
+	    operatorControllerTwo5 = new JoystickButton(operatorControllerOne, Constants.OperatorControls.Controller.OperatorController1.Buttons.OPERATOR_CONTROL_5);
+	    operatorControllerTwo5.whenPressed(new RearLiftTrashCan());
     }
     
     /**
