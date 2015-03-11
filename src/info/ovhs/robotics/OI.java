@@ -126,7 +126,7 @@ public class OI {
     	operatorController5 = new DualCommandButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_4, 
     			false, new LiftTote(), new RearLiftTrashCan());
     	operatorController7 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_7);
-    	operatorController7.whenPressed(new SwapOperatorJoystickMode());
+    	operatorController7.whenPressed(new SwapOperatorJoystickMode()); 
     }
     
     
