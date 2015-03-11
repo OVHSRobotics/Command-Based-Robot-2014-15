@@ -88,11 +88,11 @@ public class RobotMap {
 	/**
 	 * Switch to switch between different autonomous modes
 	 */
-	public static DigitalInput autonomousSwitch1;
+	public static AutonomousSwitch autonomousSwitch1;
 	/**
 	 * Switch to switch between different autonomous modes
 	 */
-	public static DigitalInput autonomousSwitch2;
+	public static AutonomousSwitch autonomousSwitch2;
 	/**
 	 * Power Distribution Panel for determining current draw from the PDP
 	 */
@@ -289,10 +289,10 @@ public class RobotMap {
 			Robot.print("Begin createAutonomousSwitches");
 		}
 		
-		autonomousSwitch1 = new DigitalInput(Constants.Ports.DIO.AUTONOMOUS_SWITCH_A);
+		autonomousSwitch1 = new AutonomousSwitch(Constants.Ports.DIO.AUTONOMOUS_SWITCH_A);
 		LiveWindow.addSensor("Autonomous", "Autonomous Switch 1", autonomousSwitch1);
 		
-		autonomousSwitch2 = new DigitalInput(Constants.Ports.DIO.AUTONOMOUS_SWITCH_B);
+		autonomousSwitch2 = new AutonomousSwitch(Constants.Ports.DIO.AUTONOMOUS_SWITCH_B);
 		LiveWindow.addSensor("Autonomous", "Autonomous Switch 2", autonomousSwitch2);
 		
 		if (Constants.VERBOSE_OUTPUT) {
@@ -368,28 +368,28 @@ public class RobotMap {
     	}
     }
     
-    public static int autoSwitchReadout(int switchNumber) {
-    	int returnedValue;
-    	switch (switchNumber) {
-    	case 1: 
-    		if (RobotMap.autonomousSwitch1.get()) {
-    			returnedValue = 1;
-    		} else {
-    			returnedValue = 0;
-    		}
-    		break;
-		case 2:
-    		if (RobotMap.autonomousSwitch2.get()) {
-    			returnedValue = 1;
-    		} else {
-    			returnedValue = 0;
-    		}
-    		break;
-    	default:
-    		returnedValue = 2;
-    		break;
-    	}
-		return returnedValue;
-    }
+//    public static int autoSwitchReadout(int switchNumber) {
+//    	int returnedValue;
+//    	switch (switchNumber) {
+//    	case 1: 
+//    		if (RobotMap.autonomousSwitch1.get()) {
+//    			returnedValue = 1;
+//    		} else {
+//    			returnedValue = 0;
+//    		}
+//    		break;
+//		case 2:
+//    		if (RobotMap.autonomousSwitch2.get()) {
+//    			returnedValue = 1;
+//    		} else {
+//    			returnedValue = 0;
+//    		}
+//    		break;
+//    	default:
+//    		returnedValue = 2;
+//    		break;
+//    	}
+//		return returnedValue;
+//    }
     
 }
