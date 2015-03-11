@@ -114,7 +114,7 @@ public class OI {
 	    operatorController4 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_4);
 	    operatorController4.whenPressed(new RearDropTrashCan());
 	    operatorController5 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_5);
-	    operatorController5.whenPressed(new RearLiftTrashCan());
+	    operatorController5.whenPressed(new RearLiftTrashCan()); 
     }
     
     
