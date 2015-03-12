@@ -41,13 +41,13 @@ public class Robot extends IterativeRobot {
     	RobotMap.init();
         CommandBase.init();
         
-        if (Constants.VERBOSE_OUTPUT) {
-        	print("Initializing Gyro");        
-        }
-        RobotMap.robotGyro.initGyro();
-        if (Constants.VERBOSE_OUTPUT){
-        	print("End Initializing Gyro");
-        }
+//        if (Constants.VERBOSE_OUTPUT) {
+//        	print("Initializing Gyro");        
+//        }
+//        RobotMap.robotGyro.initGyro();
+//        if (Constants.VERBOSE_OUTPUT){
+//        	print("End Initializing Gyro");
+//        }
         
         if (Constants.VERBOSE_OUTPUT) {
         	print("Setting initial Encoder Distances");

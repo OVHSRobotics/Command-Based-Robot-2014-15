@@ -185,7 +185,8 @@ public class DriveTrain extends Subsystem {
     public void mecanumDriveController(double gyroAngle) {
     	double rotationRate = 0;
     	if (Math.abs(OI.getXboxRightStickXAxis()) <= Constants.OperatorControls.Controller.Xbox.Deadzone.RIGHT_X) {
-    		rotationRate = -RobotMap.robotGyro.getRate();
+//    		rotationRate = -RobotMap.robotGyro.getRate();
+    		rotationRate = OI.getXboxRightStickXAxis();
     	}
     	else {
     		rotationRate = OI.getXboxRightStickXAxis();

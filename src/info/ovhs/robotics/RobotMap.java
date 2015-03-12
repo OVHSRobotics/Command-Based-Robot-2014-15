@@ -72,7 +72,7 @@ public class RobotMap {
 	 * Not currently being used, power output lowered when gyro is plugged in
 	 * </p>
 	 */
-	public static Gyro robotGyro;
+	//public static Gyro robotGyro;
 	/**
 	 * Temperature sensor integrated into the robot gyroscope
 	 * 
@@ -80,7 +80,7 @@ public class RobotMap {
 	 * Not currently being used, power output lowered when gyro is plugged in
 	 * </p>
 	 */
-	public static AnalogInput robotGyroTempSensor;
+	//public static AnalogInput robotGyroTempSensor;
 	/**
 	 * Limit switch on the robot in order to tell when the arms are all the way down
 	 */
@@ -111,9 +111,9 @@ public class RobotMap {
 		
 		RobotMap.setupSubsystemSpeedControllers();
 		
-		RobotMap.createGyro();
-		
-		RobotMap.createGyroTempSensor();
+//		RobotMap.createGyro();
+//		
+//		RobotMap.createGyroTempSensor();
 		
 		RobotMap.createEncoders();
 		
@@ -196,39 +196,39 @@ public class RobotMap {
 		}
 	}
 	
-	/**
-	 * Creates the Gyro object on the robot
-	 */
-	public static void createGyro() {
-		
-		if (Constants.VERBOSE_OUTPUT) {
-			Robot.print("Begin createGyro");
-		}
-		
-		robotGyro = new Gyro(Constants.Ports.Analog.DRIVE_BASE_GYRO);
-		robotGyro.setSensitivity(.007);
-		LiveWindow.addSensor("Drive Train", "Gyro 1", robotGyro);
-		
-		if (Constants.VERBOSE_OUTPUT) {
-			Robot.print("End createGyro");
-		}
-	}
-	
-	/**
-	 * Creates the Gyro Temp Sensor object on the robot
-	 */
-	public static void createGyroTempSensor() {
-		if (Constants.VERBOSE_OUTPUT) {
-			Robot.print("Begin createGyroTempSensor");
-		}
-		
-		robotGyroTempSensor = new AnalogInput(Constants.Ports.Analog.GYRO_TEMP_SENSOR);
-		LiveWindow.addSensor("DriveTrain", "Temperature Sensor", robotGyroTempSensor);
-		
-		if (Constants.VERBOSE_OUTPUT) {
-			Robot.print("End createGyroTempSensor");
-		}
-	}
+//	/**
+//	 * Creates the Gyro object on the robot
+//	 */
+//	public static void createGyro() {
+//		
+//		if (Constants.VERBOSE_OUTPUT) {
+//			Robot.print("Begin createGyro");
+//		}
+//		
+//		robotGyro = new Gyro(Constants.Ports.Analog.DRIVE_BASE_GYRO);
+//		robotGyro.setSensitivity(.007);
+//		LiveWindow.addSensor("Drive Train", "Gyro 1", robotGyro);
+//		
+//		if (Constants.VERBOSE_OUTPUT) {
+//			Robot.print("End createGyro");
+//		}
+//	}
+//	
+//	/**
+//	 * Creates the Gyro Temp Sensor object on the robot
+//	 */
+//	public static void createGyroTempSensor() {
+//		if (Constants.VERBOSE_OUTPUT) {
+//			Robot.print("Begin createGyroTempSensor");
+//		}
+//		
+//		robotGyroTempSensor = new AnalogInput(Constants.Ports.Analog.GYRO_TEMP_SENSOR);
+//		LiveWindow.addSensor("DriveTrain", "Temperature Sensor", robotGyroTempSensor);
+//		
+//		if (Constants.VERBOSE_OUTPUT) {
+//			Robot.print("End createGyroTempSensor");
+//		}
+//	}
 	
 	/**
 	 * Creates the objects for all encoders on the robot
