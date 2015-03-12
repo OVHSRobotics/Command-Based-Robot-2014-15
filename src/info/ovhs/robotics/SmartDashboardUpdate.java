@@ -101,4 +101,10 @@ public class SmartDashboardUpdate{
 //        SmartDashboard.putNumber("PDP Total Energy", RobotMap.PDP.getTotalEnergy());
 //        SmartDashboard.putNumber("PDP Total Power", RobotMap.PDP.getTotalPower());
 //	}
+	
+	public static void ActiveInput() {
+		SmartDashboard.putData(CommandBase.activeInput);
+		SmartDashboard.putNumber("Left Active Input Speed Controller", RobotMap.activeInputSpeedControllerLeft.get());
+		SmartDashboard.putNumber("Right Active Input Speed Controller", RobotMap.activeInputSpeedControllerRight.get());
+	}
 }
