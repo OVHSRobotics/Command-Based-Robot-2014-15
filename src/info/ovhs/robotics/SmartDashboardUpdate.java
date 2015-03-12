@@ -119,4 +119,10 @@ public class SmartDashboardUpdate{
 		}
 		SmartDashboard.putString("Operator Command Mode: ", returned );
 	}
+	
+	public static void ActiveInput() {
+		SmartDashboard.putData(CommandBase.activeInput);
+		SmartDashboard.putNumber("Left Active Input Speed Controller", RobotMap.activeInputSpeedControllerLeft.get());
+		SmartDashboard.putNumber("Right Active Input Speed Controller", RobotMap.activeInputSpeedControllerRight.get());
+	}
 }
