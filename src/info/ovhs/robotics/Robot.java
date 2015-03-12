@@ -107,23 +107,24 @@ public class Robot extends IterativeRobot {
         this.autoSwitch2 = RobotMap.autonomousSwitch2.get();
         
         if (autoSwitch1 && autoSwitch2) {
-        	// Drives forward at full power for 3 seconds
+        	// Drives forward at 3/4 power for 1 second
         	driveForward = new Drive(.75, 1.0, true);
         	if (driveForward != null){
         		driveForward.start();
         	}
-        } else if (autoSwitch1 && !autoSwitch2) {
-        	pickUpOneTote = new PickUpOneTote();
-        	if (pickUpOneTote != null) {
-        		pickUpOneTote.start();
-        	}
-        } else if (!autoSwitch1 && autoSwitch2) {
-        	strafeRight = new Strafe(.5, 1, true);
+//        }
+//        else if (autoSwitch1 && !autoSwitch2) {
+//        	pickUpOneTote = new PickUpOneTote();
+//        	if (pickUpOneTote != null) {
+//        		pickUpOneTote.start();
+//        	}
+        } else if ((!autoSwitch1 && autoSwitch2) || (autoSwitch1 && !autoSwitch2)) {
+        	strafeRight = new Strafe(0, 3, true);
         	if (strafeRight != null) {
         		strafeRight.start();
         	}
         } else if (!autoSwitch1 && !autoSwitch2) {
-        	strafeLeft = new Strafe(.5, 1, false);
+        	strafeLeft = new Strafe(.15, 3, true);
         	if (strafeLeft != null) {
         		strafeLeft.start();
         	}

@@ -389,7 +389,7 @@ public class RobotMap {
     		returnedValue = 2;
     		break;
     	}
-		return returnedValue;
+		return (int) returnedValue;
     }
     
 }
