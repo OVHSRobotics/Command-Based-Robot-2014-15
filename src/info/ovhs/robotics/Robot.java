@@ -112,19 +112,18 @@ public class Robot extends IterativeRobot {
         	if (driveForward != null){
         		driveForward.start();
         	}
-//        }
-//        else if (autoSwitch1 && !autoSwitch2) {
-//        	pickUpOneTote = new PickUpOneTote();
-//        	if (pickUpOneTote != null) {
-//        		pickUpOneTote.start();
-//        	}
-        } else if ((!autoSwitch1 && autoSwitch2) || (autoSwitch1 && !autoSwitch2)) {
-        	strafeRight = new Strafe(0, 3, true);
+        } else if (autoSwitch1 && !autoSwitch2) {
+        	pickUpOneTote = new PickUpOneTote();
+        	if (pickUpOneTote != null) {
+        		pickUpOneTote.start();
+        	}
+        } else if ((!autoSwitch1 && autoSwitch2)) {
+        	strafeRight = new Strafe(.3, 3, false);
         	if (strafeRight != null) {
         		strafeRight.start();
         	}
         } else if (!autoSwitch1 && !autoSwitch2) {
-        	strafeLeft = new Strafe(.15, 3, true);
+        	strafeLeft = new Strafe(.3, 3, true);
         	if (strafeLeft != null) {
         		strafeLeft.start();
         	}
