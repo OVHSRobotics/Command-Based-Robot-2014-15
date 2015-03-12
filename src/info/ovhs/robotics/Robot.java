@@ -177,6 +177,7 @@ public class Robot extends IterativeRobot {
         SmartDashboardUpdate.RearMotorSpool();
         SmartDashboardUpdate.Switches();
         SmartDashboardUpdate.JoystickOutput();
+        SmartDashboardUpdate.ActiveInput();
 //        SmartDashboardUpdate.PDP();
     }
 
@@ -193,6 +194,7 @@ public class Robot extends IterativeRobot {
         SmartDashboardUpdate.Switches();
         SmartDashboardUpdate.JoystickOutput();
 //        SmartDashboardUpdate.PDP();    
+        SmartDashboardUpdate.ActiveInput();
         }
     
     /**
