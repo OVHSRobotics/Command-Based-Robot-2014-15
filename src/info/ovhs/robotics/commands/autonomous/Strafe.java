@@ -43,7 +43,7 @@ public class Strafe extends Command {
 	 * @param time How long to strafe the robot (in seconds)
 	 * @param right Whether or not the robot is strafing right
 	 */
-    public Strafe(double power, double time, boolean right) {
+    public Strafe(double power, double time, boolean left) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(CommandBase.driveTrain);

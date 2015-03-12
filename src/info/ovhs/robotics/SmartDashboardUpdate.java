@@ -68,6 +68,7 @@ public class SmartDashboardUpdate{
         SmartDashboard.putNumber("Operator X Axis", OI.getOperatorControllerXAxis());
         SmartDashboard.putNumber("Operator Y Axis", OI.getOperatorControllerYAxis());
         SmartDashboard.putNumber("Operator Z Axis", OI.getOperatorControllerZAxis());
+        SmartDashboard.putString("Dual Command State", CommandBase.dualCommand.stateString());
 	}
 	
 	/**

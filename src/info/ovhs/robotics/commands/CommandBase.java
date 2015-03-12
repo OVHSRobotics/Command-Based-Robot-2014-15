@@ -6,6 +6,7 @@ import info.ovhs.robotics.Robot;
 import info.ovhs.robotics.subsystems.ActiveInput;
 import info.ovhs.robotics.subsystems.ConveyerBelt;
 import info.ovhs.robotics.subsystems.DriveTrain;
+import info.ovhs.robotics.subsystems.DualCommand;
 import info.ovhs.robotics.subsystems.RearMotorSpool;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -40,6 +41,8 @@ public abstract class CommandBase extends Command {
 	 */
 	public static ActiveInput activeInput;
 	
+	public static DualCommand dualCommand;
+	
 	/**
 	 * Initializes the subsystems on the robot
 	 */
@@ -67,6 +70,11 @@ public abstract class CommandBase extends Command {
 			Robot.print("Begin ActiveInput Instance Creation");
 		}
 		CommandBase.activeInput = ActiveInput.getInstance();
+		
+		if (Constants.VERBOSE_OUTPUT) {
+			Robot.print("Begin DualCommand Instance Creation");
+		}
+		CommandBase.dualCommand = DualCommand.getInstance();
 		
 		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("Begin OI Instance Creation");
