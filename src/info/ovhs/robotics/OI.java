@@ -128,6 +128,11 @@ public class OI {
 	    operatorController5.whenPressed(new DualCommandButtonLift());
 	    operatorController7 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_7);
 	    operatorController7.whenPressed(new SwapDualCommandState());
+	    operatorController8 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_8);
+	    operatorController8.whileHeld(new SuckInTote());
+	    operatorController9 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_9);
+	    operatorController9.whileHeld(new ReleaseTote());
+	    
     }
     
     
