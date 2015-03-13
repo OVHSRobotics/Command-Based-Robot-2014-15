@@ -30,7 +30,7 @@ public class SmartDashboardUpdate{
      */
 	public static void ConveyerBelt() {
 		SmartDashboard.putNumber("Conveyer Encoder Distance", RobotMap.conveyerBeltEncoder.getDistance());
-        SmartDashboard.putNumber("Conveyer Encoder Raw", RobotMap.conveyerBeltEncoder.getRaw());
+//        SmartDashboard.putNumber("Conveyer Encoder Raw", RobotMap.conveyerBeltEncoder.getRaw());
         SmartDashboard.putNumber("Conveyer Motor", RobotMap.conveyerBeltSpeedController.get());
         SmartDashboard.putData(CommandBase.conveyerBelt);
 	}
@@ -44,7 +44,7 @@ public class SmartDashboardUpdate{
      */
 	public static void RearMotorSpool() {
         SmartDashboard.putNumber("Rear Encoder Distance", RobotMap.rearEncoder.getDistance());
-        SmartDashboard.putNumber("Rear Encoder Raw", RobotMap.rearEncoder.getRaw());
+//        SmartDashboard.putNumber("Rear Encoder Raw", RobotMap.rearEncoder.getRaw());
 		SmartDashboard.putNumber("Rear Motor Spool Motor", RobotMap.rearMotorSpoolSpeedController.get());
         SmartDashboard.putData(CommandBase.rearMotorSpool);
 	}
@@ -69,6 +69,7 @@ public class SmartDashboardUpdate{
         SmartDashboard.putNumber("Operator Y Axis", OI.getOperatorControllerYAxis());
         SmartDashboard.putNumber("Operator Z Axis", OI.getOperatorControllerZAxis());
         SmartDashboard.putString("Dual Command State", CommandBase.dualCommand.stateString());
+        SmartDashboard.putBoolean("Dual Command Boolean", CommandBase.dualCommand.stateBoolean());
 	}
 	
 	/**

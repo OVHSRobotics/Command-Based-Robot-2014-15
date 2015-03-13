@@ -44,13 +44,13 @@ public class ActiveInput extends Subsystem {
     }
     
     public void suckInTote(double moveSpeed) {
-    	activeInputSpeedControllerLeft.set(moveSpeed);
-    	activeInputSpeedControllerRight.set(moveSpeed);
+    	activeInputSpeedControllerLeft.set(-moveSpeed);
+    	activeInputSpeedControllerRight.set(-moveSpeed);
     }
     
     public void releaseTote(double moveSpeed) {
-    	activeInputSpeedControllerLeft.set(-moveSpeed);
-    	activeInputSpeedControllerRight.set(-moveSpeed);
+    	activeInputSpeedControllerLeft.set(moveSpeed);
+    	activeInputSpeedControllerRight.set(moveSpeed);
     }
     
     public void stop() {

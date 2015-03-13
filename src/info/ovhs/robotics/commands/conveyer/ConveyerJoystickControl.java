@@ -46,7 +46,7 @@ public class ConveyerJoystickControl extends Command {
     	case 0:
     		CommandBase.conveyerBelt.setSpeed(OI.xboxController.getRawAxis(this.joystickAxisToUse));
     	case 1: 
-    		CommandBase.conveyerBelt.setSpeed(OI.operatorController.getRawAxis(this.joystickAxisToUse));
+    		CommandBase.conveyerBelt.setSpeed(OI.operatorController.getRawAxis(-this.joystickAxisToUse));
     		break;
     	default:
     		Robot.print("Invalid Number as parameter for axis");

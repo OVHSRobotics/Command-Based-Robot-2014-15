@@ -204,7 +204,7 @@ public final class Constants {
 		
 		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 19/16;
 		
-		public static final double MANUAL_MOVE_SPEED = .85;
+		public static final double MANUAL_MOVE_SPEED = 1.00;
 		
 		public static final class Encoder {
 		
@@ -319,6 +319,7 @@ public final class Constants {
 		}	
 	}
 	public static final class ActiveInput {
+		
 		public static final double AUTO_MOVE_SPEED = .75;
 	}
 }

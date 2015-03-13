@@ -108,7 +108,7 @@ public class Robot extends IterativeRobot {
         
         if (autoSwitch1 && autoSwitch2) {
         	// Drives forward at 3/4 power for 1 second
-        	driveForward = new Drive(.75, 1.0, true);
+        	driveForward = new Drive(.8, 1.2, true);
         	if (driveForward != null){
         		driveForward.start();
         	}
@@ -118,7 +118,7 @@ public class Robot extends IterativeRobot {
         		pickUpOneTote.start();
         	}
         } else if ((!autoSwitch1 && autoSwitch2)) {
-        	strafeRight = new Strafe(.3, 3, false);
+        	strafeRight = new Strafe(.9, 3, false);
         	if (strafeRight != null) {
         		strafeRight.start();
         	}

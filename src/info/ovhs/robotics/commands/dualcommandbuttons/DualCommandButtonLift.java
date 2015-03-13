@@ -1,22 +1,23 @@
-package info.ovhs.robotics.commands;
+package info.ovhs.robotics.commands.dualcommandbuttons;
 
 import info.ovhs.robotics.Constants;
+import info.ovhs.robotics.commands.CommandBase;
 import info.ovhs.robotics.commands.conveyer.ConveyerJoystickControl;
 import info.ovhs.robotics.commands.conveyer.DropTote;
 import info.ovhs.robotics.commands.conveyer.LiftTote;
-import info.ovhs.robotics.commands.rearmotorspool.RearDropTrashCan;
 import info.ovhs.robotics.commands.rearmotorspool.RearJoystickControl;
+import info.ovhs.robotics.commands.rearmotorspool.RearLiftTrashCan;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class DualCommandButtonDrop extends Command {
+public class DualCommandButtonLift extends Command {
 	
-	Command command1 = new DropTote();
-	Command command2 = new RearDropTrashCan();
+	Command command1 = new LiftTote();
+	Command command2 = new RearLiftTrashCan();
 
-    public DualCommandButtonDrop() {
+    public DualCommandButtonLift() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(CommandBase.dualCommand);

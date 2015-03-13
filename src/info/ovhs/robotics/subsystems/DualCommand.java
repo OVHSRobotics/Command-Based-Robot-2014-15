@@ -30,10 +30,14 @@ public class DualCommand extends Subsystem {
     
     public String stateString() {
     	if (this.state) {
-    		return "Command 1";
+    		return "Conveyer Mode";
     	} else {
-    		return "Command 2";
+    		return "Rear Motor Spool Mode";
     	}
+    }
+    
+    public boolean stateBoolean() {
+    	return this.state;
     }
     
     

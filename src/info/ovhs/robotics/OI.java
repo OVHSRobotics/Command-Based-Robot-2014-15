@@ -1,16 +1,16 @@
 package info.ovhs.robotics;
 
-import info.ovhs.robotics.commands.DualCommandButtonBackward;
-import info.ovhs.robotics.commands.DualCommandButtonForward;
-import info.ovhs.robotics.commands.DualCommandButtonJoystickControl;
-import info.ovhs.robotics.commands.DualCommandButtonLift;
-import info.ovhs.robotics.commands.DualCommandButtonDrop;
 import info.ovhs.robotics.commands.SwapDualCommandState;
 import info.ovhs.robotics.commands.activeinput.ReleaseTote;
 import info.ovhs.robotics.commands.activeinput.SuckInTote;
 import info.ovhs.robotics.commands.conveyer.ConveyerMove;
 import info.ovhs.robotics.commands.conveyer.DropTote;
 import info.ovhs.robotics.commands.conveyer.LiftTote;
+import info.ovhs.robotics.commands.dualcommandbuttons.DualCommandButtonBackward;
+import info.ovhs.robotics.commands.dualcommandbuttons.DualCommandButtonDrop;
+import info.ovhs.robotics.commands.dualcommandbuttons.DualCommandButtonForward;
+import info.ovhs.robotics.commands.dualcommandbuttons.DualCommandButtonJoystickControl;
+import info.ovhs.robotics.commands.dualcommandbuttons.DualCommandButtonLift;
 import info.ovhs.robotics.commands.rearmotorspool.RearDropTrashCan;
 import info.ovhs.robotics.commands.rearmotorspool.RearJoystickControl;
 import info.ovhs.robotics.commands.rearmotorspool.RearLiftTrashCan;
@@ -123,9 +123,9 @@ public class OI {
 	    operatorController3 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_3);
 	    operatorController3.whileHeld(new DualCommandButtonForward());
 	    operatorController4 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_4);
-	    operatorController4.whenPressed(new DualCommandButtonDrop());
+	    operatorController4.whileHeld(new DualCommandButtonDrop());
 	    operatorController5 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_5);
-	    operatorController5.whenPressed(new DualCommandButtonLift());
+	    operatorController5.whileHeld(new DualCommandButtonLift());
 	    operatorController7 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_7);
 	    operatorController7.whenPressed(new SwapDualCommandState());
 	    operatorController8 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_8);
