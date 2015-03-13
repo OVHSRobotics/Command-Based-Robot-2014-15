@@ -73,6 +73,22 @@ public class DriveTrain extends Subsystem {
     	drive.mecanumDrive_Cartesian(0, -speedFactor, 0, 0);
     }
     
+    public void setFrontRightMotor(double speed) {
+    	this.frontRightDriveMotorSpeedController.set(speed);
+    }
+    
+    public void setFrontLeftMotor(double speed) {
+    	this.frontLeftDriveMotorSpeedController.set(speed);
+    }
+    
+    public void setRearRightMotor(double speed) {
+    	this.rearRightDriveMotorSpeedController.set(speed);
+    }
+    
+    public void setRearLeftMotor(double speed) {
+    	this.rearLeftDriveMotorSpeedController.set(speed);
+    }
+    
     /**
      * Strafes the robot to the left
      * @param speedFactor How fast to strafe
@@ -141,7 +157,10 @@ public class DriveTrain extends Subsystem {
      * </p>
      */
     public void stopAllMotors() {
-        drive.stopMotor();
+        RobotMap.frontLeftDriveSpeedController.set(0);
+        RobotMap.frontRightDriveSpeedController.set(0);
+        RobotMap.rearRightDriveSpeedController.set(0);
+        RobotMap.rearLeftDriveSpeedController.set(0);
     }
     
     /**

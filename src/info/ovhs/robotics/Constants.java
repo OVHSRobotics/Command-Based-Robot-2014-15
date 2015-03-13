@@ -2,7 +2,7 @@ package info.ovhs.robotics;
 
 public final class Constants {
 	
-
+	public static final boolean AUTO_ON = true;
 
 	public static final int DRIVE_TRAIN_GEAR_RATIO = 1;	
 	
@@ -196,13 +196,15 @@ public final class Constants {
 
 	public static final class ConveyerBelt {
 		
-		public static final double SPROCKET_DIAMETER_INCHES = 2.5;
+		public static final double SPROCKET_DIAMETER_INCHES = 2.504;
 
 		public static final double SPROCKET_RADIUS_INCHES = Constants.ConveyerBelt.SPROCKET_DIAMETER_INCHES/2;
 	
 		public static final double SPROCKET_CIRCUMFRENCE_INCHES = Constants.ConveyerBelt.SPROCKET_DIAMETER_INCHES * Math.PI;	
 		
-		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 19/16;
+		public static final double SPROCKET_TO_MIDDLEGEAR_RATIO = 2.504/1.751;
+		
+		public static final double MIDDLEGEAR_TO_GEARBOX_GEAR_RATIO = 22/16;
 		
 		public static final double MANUAL_MOVE_SPEED = 1.00;
 		
@@ -212,7 +214,7 @@ public final class Constants {
 			
 			public static final double GEARBOX_REVOLUTIONS_PER_PULSE = 1/Constants.ConveyerBelt.Encoder.GEARBOX_PULSES_PER_REVOLUTION;
 		
-			public static final double DISTANCE_PER_PULSE = Constants.ConveyerBelt.SPROCKET_CIRCUMFRENCE_INCHES * Constants.ConveyerBelt.SPROCKET_TO_GEARBOX_GEAR_RATIO * Constants.ConveyerBelt.Encoder.GEARBOX_REVOLUTIONS_PER_PULSE;
+			public static final double DISTANCE_PER_PULSE = Constants.ConveyerBelt.SPROCKET_CIRCUMFRENCE_INCHES * Constants.ConveyerBelt.SPROCKET_TO_MIDDLEGEAR_RATIO * Constants.ConveyerBelt.MIDDLEGEAR_TO_GEARBOX_GEAR_RATIO * Constants.ConveyerBelt.Encoder.GEARBOX_REVOLUTIONS_PER_PULSE;
 			
 			public static final boolean REVERSED = false;
 			

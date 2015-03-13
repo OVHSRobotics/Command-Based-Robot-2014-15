@@ -2,6 +2,8 @@
 package info.ovhs.robotics;
 
 import info.ovhs.robotics.commands.CommandBase;
+import info.ovhs.robotics.commands.autonomous.AutoLiftTrashCan;
+import info.ovhs.robotics.commands.autonomous.AutoTest1;
 import info.ovhs.robotics.commands.autonomous.Drive;
 import info.ovhs.robotics.commands.autonomous.PickUpOneTote;
 import info.ovhs.robotics.commands.autonomous.Strafe;
@@ -22,7 +24,7 @@ public class Robot extends IterativeRobot {
 	/**
 	 * Command for autonomous mode
 	 */
-    Command driveForward, strafeRight, strafeLeft, pickUpOneTote;
+    Command driveForward, testAutoFull, strafeLeft, pickUpOneTote;
 
     /**
      * Switch to switch between different autonomous modes
@@ -106,27 +108,33 @@ public class Robot extends IterativeRobot {
         this.autoSwitch1 = RobotMap.autonomousSwitch1.get();
         this.autoSwitch2 = RobotMap.autonomousSwitch2.get();
         
-        if (autoSwitch1 && autoSwitch2) {
-        	// Drives forward at 3/4 power for 1 second
-        	driveForward = new Drive(.8, 1.2, true);
-        	if (driveForward != null){
-        		driveForward.start();
-        	}
-        } else if (autoSwitch1 && !autoSwitch2) {
-        	pickUpOneTote = new PickUpOneTote();
-        	if (pickUpOneTote != null) {
-        		pickUpOneTote.start();
-        	}
-        } else if ((!autoSwitch1 && autoSwitch2)) {
-        	strafeRight = new Strafe(.9, 3, false);
-        	if (strafeRight != null) {
-        		strafeRight.start();
-        	}
-        } else if (!autoSwitch1 && !autoSwitch2) {
-        	strafeLeft = new Strafe(.3, 3, true);
-        	if (strafeLeft != null) {
-        		strafeLeft.start();
-        	}
+        if (Constants.AUTO_ON) {
+        	if (autoSwitch1 && autoSwitch2) {
+        		// Drives forward at 3/4 power for 1 second
+        		driveForward = new Drive(.8, 1.2, true);
+        		if (driveForward != null){
+        			driveForward.start();
+        		}
+        	} else if (autoSwitch1 && !autoSwitch2) {
+        		pickUpOneTote = new PickUpOneTote();
+        		if (pickUpOneTote != null) {
+        			pickUpOneTote.start();
+        		}
+        	} else if (!autoSwitch1 && autoSwitch2) {
+        		testAutoFull = new AutoTest1();
+        		if (testAutoFull != null) {
+        			testAutoFull.start();
+        		}	
+        		
+        		
+        	} 
+        		else if (!autoSwitch1 && !autoSwitch2) {
+        		strafeLeft = new Strafe(.3, 3, true);
+        		if (strafeLeft != null) {
+        			strafeLeft.start();
+        		}
+        	} 
+        		//
         }
     }
    
@@ -158,8 +166,8 @@ public class Robot extends IterativeRobot {
         		pickUpOneTote.cancel();
         	}
         } else if (!this.autoSwitch1 && this.autoSwitch2) {
-        	if (strafeRight != null) {
-        		strafeRight.cancel();
+        	if (testAutoFull != null) {
+        		testAutoFull.cancel();
         	}
         } else if (!this.autoSwitch1 && !this.autoSwitch2) {
         	if (strafeLeft != null) {

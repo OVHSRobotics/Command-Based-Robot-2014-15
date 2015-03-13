@@ -1,6 +1,7 @@
 package info.ovhs.robotics.commands.autonomous;
 
 import info.ovhs.robotics.Robot;
+import info.ovhs.robotics.RobotMap;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -10,9 +11,12 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Strafe extends Command {
 	private double initialTime;
 	private double time;
-	private double power;
-	private boolean right;
-	
+	private double powerFrontLeft;
+	private double powerFrontRight;
+	private double powerRearRight;
+	private double powerRearLeft;
+	private boolean left;
+
 	/**
 	 * Strafes the robot right at full speed for 1.5 seconds
 	 */
@@ -34,7 +38,11 @@ public class Strafe extends Command {
 	 * @param time How long to strafe the robot (in seconds)
 	 */
 	public Strafe(double power, double time) {
-		this(power, time, true);
+		this(power, power, power, power, time, true);
+	}
+	
+	public Strafe(double power, double time, boolean left) {
+		this(power, power, power, power, time, left);
 	}
 	
 	/**
@@ -43,13 +51,16 @@ public class Strafe extends Command {
 	 * @param time How long to strafe the robot (in seconds)
 	 * @param right Whether or not the robot is strafing right
 	 */
-    public Strafe(double power, double time, boolean left) {
+    public Strafe(double powerFrontLeft, double powerFrontRight, double powerRearLeft, double powerRearRight, double time, boolean left) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(CommandBase.driveTrain);
     	this.time = time;
-    	this.power = power;
-    	this.right = right;
+    	this.powerFrontLeft = powerFrontLeft;
+    	this.powerFrontRight = powerFrontRight;
+    	this.powerRearLeft = powerRearLeft;
+    	this.powerRearRight = powerRearRight;
+    	this.left = left;
     }
 
     /**
@@ -58,10 +69,24 @@ public class Strafe extends Command {
     protected void initialize() {
     	Robot.print(this.toString());
     	this.initialTime = System.nanoTime();
-    	if (!this.right) {
-    		CommandBase.driveTrain.strafeLeft(this.power);
+    	if (!this.left) {
+//    		RobotMap.frontLeftDriveSpeedController.set(this.powerFrontLeft);
+//    		RobotMap.frontRightDriveSpeedController.set(-this.powerFrontRight);
+//    		RobotMap.rearRightDriveSpeedController.set(this.powerRearRight);
+//    		RobotMap.rearLeftDriveSpeedController.set(-this.powerRearLeft);
+    		CommandBase.driveTrain.setFrontLeftMotor(this.powerFrontLeft);
+    		CommandBase.driveTrain.setFrontRightMotor(-this.powerFrontRight);
+    		CommandBase.driveTrain.setRearRightMotor(this.powerRearRight);
+    		CommandBase.driveTrain.setRearLeftMotor(-this.powerRearLeft);
     	} else {
-    		CommandBase.driveTrain.strafeRight(this.power);
+//    		RobotMap.frontLeftDriveSpeedController.set(-this.powerFrontLeft);
+//    		RobotMap.frontRightDriveSpeedController.set(this.powerFrontRight);
+//    		RobotMap.rearRightDriveSpeedController.set(-this.powerRearRight);
+//    		RobotMap.rearLeftDriveSpeedController.set(this.powerRearLeft);    	
+    		CommandBase.driveTrain.setFrontLeftMotor(-this.powerFrontLeft);
+    		CommandBase.driveTrain.setFrontRightMotor(this.powerFrontRight);
+    		CommandBase.driveTrain.setRearRightMotor(-this.powerRearRight);
+    		CommandBase.driveTrain.setRearLeftMotor(this.powerRearLeft);
     	}
     }
 
@@ -96,10 +121,10 @@ public class Strafe extends Command {
      * String representation of command
      */
     public String toString() {
-    	if (this.right) {
-    		return "Strafing right for " + this.time + "seconds at " + (this.power * 100) + "percent power";
+    	if (!this.left) {
+    		return "Strafing right for " + this.time + "seconds";
     	} else {
-    		return "Strafing left for " + this.time + "seconds at " + (this.power * 100) + "percent power";
+    		return "Strafing left for " + this.time + "seconds";
     	}    
 	}
 }

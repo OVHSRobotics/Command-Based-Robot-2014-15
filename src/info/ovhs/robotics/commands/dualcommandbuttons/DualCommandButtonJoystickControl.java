@@ -1,6 +1,7 @@
 package info.ovhs.robotics.commands.dualcommandbuttons;
 
 import info.ovhs.robotics.Constants;
+import info.ovhs.robotics.OI;
 import info.ovhs.robotics.commands.CommandBase;
 import info.ovhs.robotics.commands.conveyer.ConveyerJoystickControl;
 import info.ovhs.robotics.commands.rearmotorspool.RearJoystickControl;
@@ -11,8 +12,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DualCommandButtonJoystickControl extends Command {
 	
-	Command command2 = new RearJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER, Constants.OperatorControls.Controller.OperatorController.Axes.Y);
-	Command command1 = new ConveyerJoystickControl(Constants.Ports.Joystick.OPERATOR_CONTROLLER, Constants.OperatorControls.Controller.OperatorController.Axes.Y);
+	Command command1 = new ConveyerJoystickControl(OI.operatorController, Constants.OperatorControls.Controller.OperatorController.Axes.Y);
+	Command command2 = new RearJoystickControl(OI.operatorController, Constants.OperatorControls.Controller.OperatorController.Axes.Y);
 
     public DualCommandButtonJoystickControl() {
         // Use requires() here to declare subsystem dependencies

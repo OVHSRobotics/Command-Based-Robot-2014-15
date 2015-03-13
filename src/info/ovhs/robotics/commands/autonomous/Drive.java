@@ -11,14 +11,14 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Drive extends Command {
 	private double initialTime;
 	private double time;
-	private double power;
+	private double powerFrontRight, powerFrontLeft, powerRearRight, powerRearLeft;
 	private boolean forward;
 	
 	/**
 	 * Drives the robot forward at full speed for 3 seconds
 	 */
 	public Drive() {
-		this(1, 1.5, true);
+		this(1, 1, 1, 1, 1.5, true);
 	}
 	
 	/**
@@ -26,7 +26,7 @@ public class Drive extends Command {
 	 * @param time How long to drive the robot (in seconds)
 	 */
 	public Drive(double time) {
-		this(1, time, true);
+		this(1, 1, 1, 1, time, true);
 	}
 	
 	/**
@@ -35,7 +35,11 @@ public class Drive extends Command {
 	 * @param time How long to drive the robot (in seconds)
 	 */
 	public Drive(double power, double time) {
-		this(power, time, true);
+		this(power, power, power, power, time, true);
+	}
+	
+	public Drive(double power, double time, boolean forward) {
+		this(power, power, power, power, time, forward);
 	}
 	
 	/**
@@ -44,12 +48,15 @@ public class Drive extends Command {
 	 * @param time How long to drive the robot (in seconds)
 	 * @param forward Whether or not the robot is driving forward
 	 */
-    public Drive(double power, double time, boolean forward) {
+    public Drive(double powerFrontLeft, double powerRearLeft, double powerFrontRight, double powerRearRight, double time, boolean forward) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(CommandBase.driveTrain);
     	this.time = time;
-    	this.power = power;
+    	this.powerFrontLeft = powerFrontLeft;
+    	this.powerRearLeft = powerRearLeft;
+    	this.powerFrontRight = powerFrontRight;
+    	this.powerRearRight = powerRearRight;
     	this.forward = forward;
     }
 
@@ -60,9 +67,23 @@ public class Drive extends Command {
     	Robot.print(this.toString());
     	this.initialTime = System.nanoTime();
     	if (!forward) {
-    		CommandBase.driveTrain.driveStraight(-this.power);
+//    		RobotMap.frontLeftDriveSpeedController.set(-this.powerFrontLeft);
+//    		RobotMap.frontRightDriveSpeedController.set(-this.powerFrontRight);
+//    		RobotMap.rearRightDriveSpeedController.set(-this.powerRearRight);
+//    		RobotMap.rearLeftDriveSpeedController.set(-this.powerRearLeft);
+    		CommandBase.driveTrain.setFrontLeftMotor(-this.powerFrontLeft);
+    		CommandBase.driveTrain.setFrontRightMotor(-this.powerFrontRight);
+    		CommandBase.driveTrain.setRearRightMotor(-this.powerRearRight);
+    		CommandBase.driveTrain.setRearLeftMotor(-this.powerRearLeft);
     	} else {
-    		CommandBase.driveTrain.driveStraight(this.power);
+//    		RobotMap.frontLeftDriveSpeedController.set(this.powerFrontLeft);
+//    		RobotMap.frontRightDriveSpeedController.set(this.powerFrontRight);
+//    		RobotMap.rearRightDriveSpeedController.set(this.powerRearRight);
+//    		RobotMap.rearLeftDriveSpeedController.set(this.powerRearLeft);
+    		CommandBase.driveTrain.setFrontLeftMotor(this.powerFrontLeft);
+    		CommandBase.driveTrain.setFrontRightMotor(this.powerFrontRight);
+    		CommandBase.driveTrain.setRearRightMotor(this.powerRearRight);
+    		CommandBase.driveTrain.setRearLeftMotor(this.powerRearLeft);
     	}
     }
 
@@ -70,6 +91,7 @@ public class Drive extends Command {
      *  Called repeatedly when this Command is scheduled to run
      */
     protected void execute() {
+    	Robot.print(this.toString());
     }
 
     /**
@@ -98,9 +120,9 @@ public class Drive extends Command {
      */
     public String toString() {
     	if (this.forward) {
-    		return "Driving forward for " + this.time + "seconds at " + (this.power * 100) + "percent power";
+    		return "Driving forward for " + this.time + "seconds";
     	} else {
-    		return "Driving backward for " + this.time + "seconds at " + (this.power * 100) + "percent power";
+    		return "Driving backward for " + this.time + "seconds";
     	}
     }
 }

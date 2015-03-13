@@ -4,6 +4,7 @@ import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.OI;
 import info.ovhs.robotics.Robot;
 import info.ovhs.robotics.commands.CommandBase;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -11,13 +12,13 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ConveyerJoystickControl extends Command {
 
-	private int joystickToUse;
+	private Joystick joystickToUse;
 	private int joystickAxisToUse;
 	
 	/**
 	 * Allows control of conveyer belt with joystick control using an axis set in as a parameter
 	 */
-    public ConveyerJoystickControl(int joystickToUse, int joystickAxisToUse) {
+    public ConveyerJoystickControl(Joystick joystickToUse, int joystickAxisToUse) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(CommandBase.conveyerBelt);
@@ -29,7 +30,7 @@ public class ConveyerJoystickControl extends Command {
      * Conveyer Joystick Control with y axis on operator controller
      */
     public ConveyerJoystickControl() {
-    	this(Constants.Ports.Joystick.OPERATOR_CONTROLLER, Constants.OperatorControls.Controller.OperatorController.Axes.Y);
+    	this(OI.operatorController, Constants.OperatorControls.Controller.OperatorController.Axes.Y);
     }
 
 	/**
@@ -42,16 +43,8 @@ public class ConveyerJoystickControl extends Command {
      *  Called repeatedly when this Command is scheduled to run
      */
     protected void execute() {
-    	switch (this.joystickToUse){
-    	case 0:
-    		CommandBase.conveyerBelt.setSpeed(OI.xboxController.getRawAxis(this.joystickAxisToUse));
-    	case 1: 
-    		CommandBase.conveyerBelt.setSpeed(OI.operatorController.getRawAxis(-this.joystickAxisToUse));
-    		break;
-    	default:
-    		Robot.print("Invalid Number as parameter for axis");
-    	}
-//    	CommandBase.conveyerBelt.setSpeed(OI.operatorControllerOne.getRawAxis(Constants.OperatorControls.Controller.OperatorController1.Axes.Y));
+    	CommandBase.conveyerBelt.setSpeed(joystickToUse.getRawAxis(joystickAxisToUse));
+    	
     }
 
     /**
