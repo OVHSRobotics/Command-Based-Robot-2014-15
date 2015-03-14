@@ -74,19 +74,19 @@ public class DriveTrain extends Subsystem {
     }
     
     public void setFrontRightMotor(double speed) {
-    	this.frontRightDriveMotorSpeedController.set(speed);
+    	this.frontRightDriveMotorSpeedController.set((Constants.Motors.RIGHT_FRONT_DRIVE_REVERSED ? -1 : 1) * speed);
     }
     
     public void setFrontLeftMotor(double speed) {
-    	this.frontLeftDriveMotorSpeedController.set(speed);
+    	this.frontLeftDriveMotorSpeedController.set((Constants.Motors.LEFT_FRONT_DRIVE_REVERSED ? -1 : 1) * speed);
     }
     
     public void setRearRightMotor(double speed) {
-    	this.rearRightDriveMotorSpeedController.set(speed);
+    	this.rearRightDriveMotorSpeedController.set((Constants.Motors.RIGHT_REAR_DRIVE_REVERSED ? -1 : 1) * speed);
     }
     
     public void setRearLeftMotor(double speed) {
-    	this.rearLeftDriveMotorSpeedController.set(speed);
+    	this.rearLeftDriveMotorSpeedController.set((Constants.Motors.LEFT_REAR_DRIVE_REVERSED ? -1 : 1 ) * speed);
     }
     
     /**

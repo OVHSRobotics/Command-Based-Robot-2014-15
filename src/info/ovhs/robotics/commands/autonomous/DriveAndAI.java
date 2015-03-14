@@ -1,5 +1,6 @@
 package info.ovhs.robotics.commands.autonomous;
 
+import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.Robot;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.Command;
@@ -79,43 +80,13 @@ public class DriveAndAI extends Command {
     protected void initialize() {
     	Robot.print(this.toString());
     	this.initialTime = System.nanoTime();
-    	if (!forward) {
-    		if (this.AiIn) {
-    			//    		RobotMap.frontLeftDriveSpeedController.set(-this.powerFrontLeft);
-    			//    		RobotMap.frontRightDriveSpeedController.set(-this.powerFrontRight);
-    			//    		RobotMap.rearRightDriveSpeedController.set(-this.powerRearRight);
-    			//    		RobotMap.rearLeftDriveSpeedController.set(-this.powerRearLeft);
-    			CommandBase.driveTrain.setFrontLeftMotor(-this.powerFrontLeft);
-    			CommandBase.driveTrain.setFrontRightMotor(-this.powerFrontRight);
-    			CommandBase.driveTrain.setRearRightMotor(-this.powerRearRight);
-    			CommandBase.driveTrain.setRearLeftMotor(-this.powerRearLeft);
-    			CommandBase.activeInput.suckInTote(this.AiSpeed);
-    		} else {
-    			CommandBase.driveTrain.setFrontLeftMotor(-this.powerFrontLeft);
-        		CommandBase.driveTrain.setFrontRightMotor(-this.powerFrontRight);
-        		CommandBase.driveTrain.setRearRightMotor(-this.powerRearRight);
-        		CommandBase.driveTrain.setRearLeftMotor(-this.powerRearLeft);
-        		CommandBase.activeInput.releaseTote(this.AiSpeed);
-    		}
-    	} else {
-    		if (this.AiIn) {
-    			//    		RobotMap.frontLeftDriveSpeedController.set(-this.powerFrontLeft);
-    			//    		RobotMap.frontRightDriveSpeedController.set(-this.powerFrontRight);
-    			//    		RobotMap.rearRightDriveSpeedController.set(-this.powerRearRight);
-    			//    		RobotMap.rearLeftDriveSpeedController.set(-this.powerRearLeft);
-    			CommandBase.driveTrain.setFrontLeftMotor(-this.powerFrontLeft);
-    			CommandBase.driveTrain.setFrontRightMotor(-this.powerFrontRight);
-    			CommandBase.driveTrain.setRearRightMotor(-this.powerRearRight);
-    			CommandBase.driveTrain.setRearLeftMotor(-this.powerRearLeft);
-    			CommandBase.activeInput.suckInTote(this.AiSpeed);
-    		} else {
-    			CommandBase.driveTrain.setFrontLeftMotor(-this.powerFrontLeft);
-        		CommandBase.driveTrain.setFrontRightMotor(-this.powerFrontRight);
-        		CommandBase.driveTrain.setRearRightMotor(-this.powerRearRight);
-        		CommandBase.driveTrain.setRearLeftMotor(-this.powerRearLeft);
-        		CommandBase.activeInput.releaseTote(this.AiSpeed);
-    		}
-    	}
+    	
+    	CommandBase.driveTrain.setFrontLeftMotor((this.forward ? 1 : -1) * this.powerFrontLeft);
+		CommandBase.driveTrain.setFrontRightMotor((this.forward ? 1 : -1) * this.powerFrontRight);
+		CommandBase.driveTrain.setRearRightMotor((this.forward ? 1 : -1) * this.powerRearRight);
+		CommandBase.driveTrain.setRearLeftMotor((this.forward ? 1 : -1) * this.powerRearLeft);
+		
+		CommandBase.activeInput.suckInTote((this.AiIn ? 1 : -1) * this.AiSpeed);
     }
 
     /**
@@ -137,6 +108,7 @@ public class DriveAndAI extends Command {
      */
     protected void end() {
     	CommandBase.driveTrain.stopAllMotors();
+    	CommandBase.activeInput.stop();
     }
 
     /**

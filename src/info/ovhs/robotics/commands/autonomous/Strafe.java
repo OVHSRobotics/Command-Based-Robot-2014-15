@@ -69,7 +69,7 @@ public class Strafe extends Command {
     protected void initialize() {
     	Robot.print(this.toString());
     	this.initialTime = System.nanoTime();
-    	if (!this.left) {
+    	if (this.left) {
 //    		RobotMap.frontLeftDriveSpeedController.set(this.powerFrontLeft);
 //    		RobotMap.frontRightDriveSpeedController.set(-this.powerFrontRight);
 //    		RobotMap.rearRightDriveSpeedController.set(this.powerRearRight);

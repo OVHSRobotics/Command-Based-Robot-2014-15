@@ -134,7 +134,12 @@ public class Robot extends IterativeRobot {
         			strafeLeft.start();
         		}
         	} 
-        		//
+        	 SmartDashboardUpdate.DriveTrain();
+             SmartDashboardUpdate.ConveyerBelt();
+             SmartDashboardUpdate.RearMotorSpool();
+             SmartDashboardUpdate.Switches();
+             SmartDashboardUpdate.JoystickOutput();
+             SmartDashboardUpdate.ActiveInput();
         }
     }
    
@@ -144,6 +149,13 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        
+        SmartDashboardUpdate.DriveTrain();
+        SmartDashboardUpdate.ConveyerBelt();
+        SmartDashboardUpdate.RearMotorSpool();
+        SmartDashboardUpdate.Switches();
+        SmartDashboardUpdate.JoystickOutput();
+        SmartDashboardUpdate.ActiveInput();
     }
 
     /**

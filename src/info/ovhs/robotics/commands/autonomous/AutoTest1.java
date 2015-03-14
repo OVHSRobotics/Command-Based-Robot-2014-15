@@ -25,9 +25,10 @@ public class AutoTest1 extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new AutoLiftTrashCan(1, 2));
-    	addSequential(new DriveAndAI(1, .7, true, 1, true));
-    	addSequential(new Strafe(1, 3.5, true));
-    	addSequential(new DriveAndAI(1, .7, false, 1, false));
+    	addSequential(new AutoLiftTrashCan(1, 4.5));
+    	addSequential(new DriveAndAI(.4, 1.1, true, 1, true));
+    	addSequential(new Strafe(1, 1, .8, .8, 1.75, false));
+    	addSequential(new DriveAndAI(.4, 1.1, false, 1, false));
+
     }
 }
