@@ -15,7 +15,7 @@ public class Strafe extends Command {
 	private double powerFrontRight;
 	private double powerRearRight;
 	private double powerRearLeft;
-	private boolean left;
+	private boolean right;
 
 	/**
 	 * Strafes the robot right at full speed for 1.5 seconds
@@ -41,8 +41,8 @@ public class Strafe extends Command {
 		this(power, power, power, power, time, true);
 	}
 	
-	public Strafe(double power, double time, boolean left) {
-		this(power, power, power, power, time, left);
+	public Strafe(double power, double time, boolean right) {
+		this(power, power, power, power, time, right);
 	}
 	
 	/**
@@ -51,7 +51,7 @@ public class Strafe extends Command {
 	 * @param time How long to strafe the robot (in seconds)
 	 * @param right Whether or not the robot is strafing right
 	 */
-    public Strafe(double powerFrontLeft, double powerFrontRight, double powerRearLeft, double powerRearRight, double time, boolean left) {
+    public Strafe(double powerFrontLeft, double powerFrontRight, double powerRearLeft, double powerRearRight, double time, boolean right) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(CommandBase.driveTrain);
@@ -60,7 +60,7 @@ public class Strafe extends Command {
     	this.powerFrontRight = powerFrontRight;
     	this.powerRearLeft = powerRearLeft;
     	this.powerRearRight = powerRearRight;
-    	this.left = left;
+    	this.right = right;
     }
 
     /**
@@ -69,7 +69,7 @@ public class Strafe extends Command {
     protected void initialize() {
     	Robot.print(this.toString());
     	this.initialTime = System.nanoTime();
-    	if (this.left) {
+    	if (this.right) {
 //    		RobotMap.frontLeftDriveSpeedController.set(this.powerFrontLeft);
 //    		RobotMap.frontRightDriveSpeedController.set(-this.powerFrontRight);
 //    		RobotMap.rearRightDriveSpeedController.set(this.powerRearRight);
@@ -121,7 +121,7 @@ public class Strafe extends Command {
      * String representation of command
      */
     public String toString() {
-    	if (!this.left) {
+    	if (this.right) {
     		return "Strafing right for " + this.time + "seconds";
     	} else {
     		return "Strafing left for " + this.time + "seconds";

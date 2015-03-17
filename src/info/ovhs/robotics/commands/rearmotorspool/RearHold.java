@@ -1,5 +1,7 @@
 package info.ovhs.robotics.commands.rearmotorspool;
 
+import info.ovhs.robotics.OI;
+import info.ovhs.robotics.RobotMap;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -35,6 +37,12 @@ public class RearHold extends Command {
      *  </p>
      */
     protected void execute() {
+//    	if (RobotMap.robotLimitSwitch.get() && !CommandBase.rearMotorSpool.switchHasBeenHit) {
+//    		OI.startControllerRumble(OI.xboxController);
+//    		CommandBase.rearMotorSpool.switchHasBeenHit = true;
+//    	} else {
+//    		OI.stopControllerRumble(OI.xboxController);
+//    	}
     }
 
     /**

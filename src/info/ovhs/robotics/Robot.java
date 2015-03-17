@@ -110,29 +110,27 @@ public class Robot extends IterativeRobot {
         
         if (Constants.AUTO_ON) {
         	if (autoSwitch1 && autoSwitch2) {
-        		// Drives forward at 3/4 power for 1 second
-        		driveForward = new Drive(.8, 1.2, true);
-        		if (driveForward != null){
-        			driveForward.start();
-        		}
+//        		// Drives forward at 3/4 power for 1 second
+//        		driveForward = new Drive(.8, 1.2, true);
+//        		if (driveForward != null){
+//        			driveForward.start();
+//        		}
         	} else if (autoSwitch1 && !autoSwitch2) {
-        		pickUpOneTote = new PickUpOneTote();
-        		if (pickUpOneTote != null) {
-        			pickUpOneTote.start();
-        		}
+//        		pickUpOneTote = new PickUpOneTote();
+//        		if (pickUpOneTote != null) {
+//        			pickUpOneTote.start();
+//        		}
         	} else if (!autoSwitch1 && autoSwitch2) {
         		testAutoFull = new AutoTest1();
         		if (testAutoFull != null) {
         			testAutoFull.start();
         		}	
-        		
-        		
         	} 
         		else if (!autoSwitch1 && !autoSwitch2) {
-        		strafeLeft = new Strafe(.3, 3, true);
-        		if (strafeLeft != null) {
-        			strafeLeft.start();
-        		}
+//        		strafeLeft = new Strafe(.3, 3, true);
+//        		if (strafeLeft != null) {
+//        			strafeLeft.start();
+//        		}
         	} 
         	 SmartDashboardUpdate.DriveTrain();
              SmartDashboardUpdate.ConveyerBelt();

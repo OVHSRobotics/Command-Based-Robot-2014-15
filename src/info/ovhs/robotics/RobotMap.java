@@ -186,10 +186,10 @@ public class RobotMap {
 		LiveWindow.addActuator("Rear Motor Spool", "Rear Motor Spool Motor", (Talon) rearMotorSpoolSpeedController);
 		
 		activeInputSpeedControllerLeft = new Talon(Constants.Ports.PWM.ACTIVE_INPUT_MOTOR_LEFT);
-		LiveWindow.addActuator("Test", "Test Motor Left", (Talon) activeInputSpeedControllerLeft);
+		LiveWindow.addActuator("Active Input", "Test Motor Left", (Talon) activeInputSpeedControllerLeft);
 		
 		activeInputSpeedControllerRight = new Victor(Constants.Ports.PWM.ACTIVE_INPUT_MOTOR_RIGHT);
-		LiveWindow.addActuator("Test", "Test Motor Right", (Victor) activeInputSpeedControllerRight);		
+		LiveWindow.addActuator("Active Input", "Test Motor Right", (Victor) activeInputSpeedControllerRight);		
 		
 		if (Constants.VERBOSE_OUTPUT) {
 			Robot.print("End setupSubsystemSpeedControllers");

@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DualCommand extends Subsystem {
     
-	public boolean state = true;
+	public boolean state = false;
 	
 	protected static DualCommand instance;
 	

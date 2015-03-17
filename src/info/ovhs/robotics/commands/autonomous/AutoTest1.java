@@ -27,8 +27,8 @@ public class AutoTest1 extends CommandGroup {
     	
     	addSequential(new AutoLiftTrashCan(1, 4.5));
     	addSequential(new DriveAndAI(.4, 1.1, true, 1, true));
-    	addSequential(new Strafe(1, 1, .8, .8, 1.75, false));
-    	addSequential(new DriveAndAI(.4, 1.1, false, 1, false));
+    	addSequential(new Strafe(1, 1, .8, .8, 3, false));
+    	addSequential(new DriveAndAI(.4, .75, false, 1, false));
 
     }
 }

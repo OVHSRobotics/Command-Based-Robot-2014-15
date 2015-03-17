@@ -6,6 +6,7 @@ import info.ovhs.robotics.RobotMap;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Manual move of the rear motor spool a specified direction
@@ -16,8 +17,7 @@ public class RearMove extends Command {
 	 * Whether or not the rear motor spool is moving forward
 	 */
 	boolean forward = true;
-	boolean switchHasBeenHit = false;
-
+	
 	/**
 	 * Manual move of the rear motor spool a set direction
 	 * @param forward whether or not to move forward
@@ -46,7 +46,7 @@ public class RearMove extends Command {
     protected void execute() {
     	if (this.forward) {
     		CommandBase.rearMotorSpool.forward(Constants.RearMotorSpool.MANUAL_MOVE_SPEED);
-    		this.switchHasBeenHit = false;
+    		CommandBase.rearMotorSpool.switchHasBeenHit = false;
     	} else if (!this.forward && RobotMap.robotLimitSwitch.get()) {
     		CommandBase.rearMotorSpool.backward(0);
     	} else if (!this.forward) {
@@ -54,11 +54,13 @@ public class RearMove extends Command {
     	} else {
     		//Impossible case
     	}
-    	if (RobotMap.robotLimitSwitch.get() && !this.switchHasBeenHit) {
-    		OI.xboxController.setRumble(RumbleType.kLeftRumble, 1);
-    		OI.xboxController.setRumble(RumbleType.kRightRumble, 1);
-    		this.switchHasBeenHit = true;
-    	}
+    	
+//    	if (RobotMap.robotLimitSwitch.get() && !CommandBase.rearMotorSpool.switchHasBeenHit) {
+//    		OI.startControllerRumble(OI.xboxController);
+//    		CommandBase.rearMotorSpool.switchHasBeenHit = true;
+//    	} else {
+//    		OI.stopControllerRumble(OI.xboxController);
+//    	}
     }
 
     /**
