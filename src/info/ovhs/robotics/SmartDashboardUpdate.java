@@ -7,6 +7,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class SmartDashboardUpdate{
 	
 	/**
+	 * Updates the SmartDashboard data output for Misc. output 
+	 */
+	public static void Misc() {
+		SmartDashboard.putBoolean("Auto On", Constants.AUTO_ON);
+	}
+	
+	/**
      * Updates the SmartDashboard data output for the Drive Train
      * 
      * <p>
@@ -84,6 +91,7 @@ public class SmartDashboardUpdate{
         SmartDashboard.putNumber("Auto Switch 2 Setting", RobotMap.autoSwitchReadout(2));
         SmartDashboard.putString("Limit Switch", RobotMap.limitSwitchReadout());
 	}
+	
 	
 //	/**
 //     * Updates the SmartDashboard data output for the PDP CAN Outputs
