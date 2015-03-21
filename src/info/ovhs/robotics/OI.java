@@ -132,7 +132,6 @@ public class OI {
 	    operatorController8.whileHeld(new SuckInTote());
 	    operatorController9 = new JoystickButton(operatorController, Constants.OperatorControls.Controller.OperatorController.Buttons.OPERATOR_CONTROL_9);
 	    operatorController9.whileHeld(new ReleaseTote());
-	    
     }
     
     

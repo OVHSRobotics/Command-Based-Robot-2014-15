@@ -2,11 +2,7 @@
 package info.ovhs.robotics;
 
 import info.ovhs.robotics.commands.CommandBase;
-import info.ovhs.robotics.commands.autonomous.AutoLiftTrashCan;
 import info.ovhs.robotics.commands.autonomous.AutoTest1;
-import info.ovhs.robotics.commands.autonomous.Drive;
-import info.ovhs.robotics.commands.autonomous.PickUpOneTote;
-import info.ovhs.robotics.commands.autonomous.Strafe;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -197,6 +193,7 @@ public class Robot extends IterativeRobot {
         SmartDashboardUpdate.JoystickOutput();
         SmartDashboardUpdate.ActiveInput();
 //        SmartDashboardUpdate.PDP();
+        SmartDashboardUpdate.ActiveInput();
     }
 
     /**
