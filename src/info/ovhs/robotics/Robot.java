@@ -2,7 +2,7 @@
 package info.ovhs.robotics;
 
 import info.ovhs.robotics.commands.CommandBase;
-import info.ovhs.robotics.commands.autonomous.AutoTest1;
+import info.ovhs.robotics.commands.autonomous.DefaultAuto;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -117,7 +117,7 @@ public class Robot extends IterativeRobot {
 //        			pickUpOneTote.start();
 //        		}
         	} else if (!autoSwitch1 && autoSwitch2) {
-        		testAutoFull = new AutoTest1();
+        		testAutoFull = new DefaultAuto();
         		if (testAutoFull != null) {
         			testAutoFull.start();
         		}	

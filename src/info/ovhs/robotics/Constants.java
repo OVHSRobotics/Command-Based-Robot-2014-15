@@ -10,6 +10,72 @@ public final class Constants {
 	
 	public static final boolean VERBOSE_OUTPUT = true;
 	
+	public static final class Autonomous {
+		
+		public static final class DefaultAuto {
+			
+			public static final class Step1LiftCan {
+				
+				public static final double POWER = 1;
+			
+				public static final double TIME_SECONDS = 4.5;
+			}
+			
+			public static final class Step2DriveForwardWithAI {
+				
+				public static final class Drive {
+								
+					public static final double POWER = .4;
+				
+					public static final double TIME_SECONDS = 1.1;
+					
+					public static final boolean FORWARD = true;
+				}
+				
+				public static final class AI {
+					
+					public static final double POWER = 1;
+					
+					public static final boolean IN = true;
+				}
+			}
+		
+			public static final class Step3Strafe {
+				
+				public static final double FRONT_RIGHT_POWER = 1;
+				
+				public static final double FRONT_LEFT_POWER = 1;
+				
+				public static final double REAR_RIGHT_POWER = .8;
+				
+				public static final double REAR_LEFT_POWER = .8;
+				
+				public static final double TIME_SECONDS = 3.0;
+				
+				public static final boolean RIGHT = false;
+			}
+		
+			public static final class Step4DriveBackwardWithAI {
+				
+				public static final class Drive {
+								
+					public static final double POWER = .4;
+				
+					public static final double TIME_SECONDS = .75;
+					
+					public static final boolean FORWARD = false;
+				}
+				
+				public static final class AI {
+					
+					public static final double POWER = 1;
+					
+					public static final boolean IN = false;
+				}
+			}
+		}
+	}
+	
 	public static final class OperatorControls {
 		
 		public static final int MAX_JOYSTICK_AXIS = 1;
@@ -320,6 +386,7 @@ public final class Constants {
 			public static final double RESET_THRESHOLD = 3;
 		}	
 	}
+	
 	public static final class ActiveInput {
 		
 		public static final double AUTO_MOVE_SPEED = .75;

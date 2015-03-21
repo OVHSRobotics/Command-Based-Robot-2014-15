@@ -29,25 +29,34 @@ public class Strafe extends Command {
 	 * @param time How long to strafe the robot (in seconds)
 	 */
 	public Strafe(double time) {
-		this(1, time, true);
+		this(1, 1, 1, 1, time, true);
 	}
 	
 	/**
-	 * Strafes the robot right
-	 * @param power What power to strafe the robot at
+	 * Strafes the robot right with a specified power, one for all of the wheels, for a specified time
+	 * @param power What power to strafe the robot at (All the wheels will be moving at this power)
 	 * @param time How long to strafe the robot (in seconds)
 	 */
 	public Strafe(double power, double time) {
 		this(power, power, power, power, time, true);
 	}
 	
+	/**
+	 * Strafes the robot with a specified power, one for all of the wheels, for a specified time and direction
+	 * @param power What power to strafe the robot at (All the wheels will be moving at this power)
+	 * @param time How long to strafe the robot (in seconds)
+	 * @param right Whether or not the robot is strafing right
+	 */
 	public Strafe(double power, double time, boolean right) {
 		this(power, power, power, power, time, right);
 	}
 	
 	/**
-	 * Strafes the robot
-	 * @param power What power to strafe the robot at
+	 * Strafes the robot with a specific power for each of the 4 wheels for a specified time and direction
+	 * @param powerFrontLeft Power the Front Left Wheel is moving at
+	 * @param powerFrontRight Power the Front Right Wheel is moving at
+	 * @param powerRearLeft Power the Rear Left Wheel is moving at
+	 * @param powerRearRight Power the Rear Right Wheel is moving at
 	 * @param time How long to strafe the robot (in seconds)
 	 * @param right Whether or not the robot is strafing right
 	 */
