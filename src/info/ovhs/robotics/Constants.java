@@ -74,6 +74,79 @@ public final class Constants {
 				}
 			}
 		}
+		
+		public static final class AltAuto1 {
+			
+			public static final class Step1LiftCanWithAI {
+				
+				public static final class LiftCan {
+				
+					public static final double POWER = 1;
+
+					public static final double TIME_SECONDS = 4.5;
+				}
+				
+				public static final class AI {
+					
+					public static final double POWER = .25;
+					
+					public static final boolean IN = false;
+				}
+			}
+			
+			public static final class Step2DriveForwardWithAI {
+				
+				public static final class Drive {
+								
+					public static final double POWER = .4;
+				
+					public static final double TIME_SECONDS = 1.1;
+					
+					public static final boolean FORWARD = true;
+				}
+				
+				public static final class AI {
+					
+					public static final double POWER = 1;
+					
+					public static final boolean IN = true;
+				}
+			}
+		
+			public static final class Step3Strafe {
+				
+				public static final double FRONT_RIGHT_POWER = 1;
+				
+				public static final double FRONT_LEFT_POWER = 1;
+				
+				public static final double REAR_RIGHT_POWER = .8;
+				
+				public static final double REAR_LEFT_POWER = .8;
+				
+				public static final double TIME_SECONDS = 3.0;
+				
+				public static final boolean RIGHT = false;
+			}
+		
+			public static final class Step4DriveBackwardWithAI {
+				
+				public static final class Drive {
+								
+					public static final double POWER = .4;
+				
+					public static final double TIME_SECONDS = .75;
+					
+					public static final boolean FORWARD = false;
+				}
+				
+				public static final class AI {
+					
+					public static final double POWER = 1;
+					
+					public static final boolean IN = false;
+				}
+			}
+		}
 	}
 	
 	public static final class OperatorControls {
@@ -389,7 +462,7 @@ public final class Constants {
 	
 	public static final class ActiveIntake {
 		
-		public static final double AUTO_MOVE_SPEED = .50;
+		public static final double AUTO_MOVE_SPEED = .70;
 		
 		public static final double SPIN_MOVE_SPEED = .35;
 	}

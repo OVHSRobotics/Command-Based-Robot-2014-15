@@ -2,6 +2,7 @@
 package info.ovhs.robotics;
 
 import info.ovhs.robotics.commands.CommandBase;
+import info.ovhs.robotics.commands.autonomous.AltAuto1;
 import info.ovhs.robotics.commands.autonomous.DefaultAuto;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -20,7 +21,7 @@ public class Robot extends IterativeRobot {
 	/**
 	 * Command for autonomous mode
 	 */
-    Command driveForward, testAutoFull, strafeLeft, pickUpOneTote;
+    Command pickUpOneTote, altAuto1, defaultAuto, strafeLeft;
 
     /**
      * Switch to switch between different autonomous modes
@@ -107,22 +108,21 @@ public class Robot extends IterativeRobot {
         if (Constants.AUTO_ON) {
         	if (autoSwitch1 && autoSwitch2) {
 //        		// Drives forward at 3/4 power for 1 second
-//        		driveForward = new Drive(.8, 1.2, true);
-//        		if (driveForward != null){
-//        			driveForward.start();
-//        		}
-        	} else if (autoSwitch1 && !autoSwitch2) {
-//        		pickUpOneTote = new PickUpOneTote();
-//        		if (pickUpOneTote != null) {
+//        		pickUpOneTote = new Drive(.8, 1.2, true);
+//        		if (pickUpOneTote != null){
 //        			pickUpOneTote.start();
 //        		}
+        	} else if (autoSwitch1 && !autoSwitch2) {
+        		altAuto1 = new AltAuto1();
+        		if (altAuto1 != null) {
+        			altAuto1.start();
+        		}
         	} else if (!autoSwitch1 && autoSwitch2) {
-        		testAutoFull = new DefaultAuto();
-        		if (testAutoFull != null) {
-        			testAutoFull.start();
+        		defaultAuto = new DefaultAuto();
+        		if (defaultAuto != null) {
+        			defaultAuto.start();
         		}	
-        	} 
-        		else if (!autoSwitch1 && !autoSwitch2) {
+        	} else if (!autoSwitch1 && !autoSwitch2) {
 //        		strafeLeft = new Strafe(.3, 3, true);
 //        		if (strafeLeft != null) {
 //        			strafeLeft.start();
@@ -159,21 +159,21 @@ public class Robot extends IterativeRobot {
         // This makes sure that the autonomous stops running when
         // teleop starts running.
 
-    	if (driveForward != null) {
-    		driveForward.cancel();
+    	if (altAuto1 != null) {
+    		altAuto1.cancel();
     	}
         
         if (this.autoSwitch1 && this.autoSwitch2) {
-        	if (driveForward != null){
-        		driveForward.cancel();
-        	}
-        } else if (this.autoSwitch1 && !this.autoSwitch2) {
-        	if (pickUpOneTote != null) {
+        	if (pickUpOneTote != null){
         		pickUpOneTote.cancel();
         	}
+        } else if (this.autoSwitch1 && !this.autoSwitch2) {
+        	if (altAuto1 != null) {
+        		altAuto1.cancel();
+        	}
         } else if (!this.autoSwitch1 && this.autoSwitch2) {
-        	if (testAutoFull != null) {
-        		testAutoFull.cancel();
+        	if (defaultAuto != null) {
+        		defaultAuto.cancel();
         	}
         } else if (!this.autoSwitch1 && !this.autoSwitch2) {
         	if (strafeLeft != null) {
@@ -192,7 +192,6 @@ public class Robot extends IterativeRobot {
         SmartDashboardUpdate.Switches();
         SmartDashboardUpdate.JoystickOutput();
         SmartDashboardUpdate.ActiveInput();
-//        SmartDashboardUpdate.PDP();
         SmartDashboardUpdate.ActiveInput();
     }
 
@@ -208,7 +207,6 @@ public class Robot extends IterativeRobot {
         SmartDashboardUpdate.RearMotorSpool();
         SmartDashboardUpdate.Switches();
         SmartDashboardUpdate.JoystickOutput();
-//        SmartDashboardUpdate.PDP();    
         SmartDashboardUpdate.ActiveInput();
         }
     
