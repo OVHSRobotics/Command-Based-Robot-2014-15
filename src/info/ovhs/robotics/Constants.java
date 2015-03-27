@@ -391,6 +391,6 @@ public final class Constants {
 		
 		public static final double AUTO_MOVE_SPEED = .50;
 		
-		public static final double SPIN_MOVE_SPEED = .15;
+		public static final double SPIN_MOVE_SPEED = .35;
 	}
 }
