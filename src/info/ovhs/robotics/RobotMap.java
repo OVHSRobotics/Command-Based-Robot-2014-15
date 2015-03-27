@@ -1,11 +1,9 @@
 package info.ovhs.robotics;
 
 import info.ovhs.robotics.commands.CommandBase;
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -65,6 +63,7 @@ public class RobotMap {
 	 * Encoder on the Rear Motor Spool
 	 */
 	public static Encoder rearEncoder;
+
 	/**
 	 * Gyroscope on the robot
 	 * 

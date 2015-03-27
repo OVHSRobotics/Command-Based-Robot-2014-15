@@ -1,10 +1,7 @@
 package info.ovhs.robotics.commands.dualcommandbuttons;
 
-import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.commands.CommandBase;
-import info.ovhs.robotics.commands.conveyer.ConveyerJoystickControl;
 import info.ovhs.robotics.commands.conveyer.ConveyerMove;
-import info.ovhs.robotics.commands.rearmotorspool.RearJoystickControl;
 import info.ovhs.robotics.commands.rearmotorspool.RearMove;
 import edu.wpi.first.wpilibj.command.Command;
 

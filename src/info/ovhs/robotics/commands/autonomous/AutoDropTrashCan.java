@@ -28,7 +28,7 @@ public class AutoDropTrashCan extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	this.initialTime = System.nanoTime();
-    	CommandBase.rearMotorSpool.backward();
+    	CommandBase.rearMotorSpool.backward(this.power);
     	
     }
 

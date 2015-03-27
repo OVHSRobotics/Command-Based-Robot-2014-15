@@ -1,7 +1,6 @@
 package info.ovhs.robotics.commands.autonomous;
 
 import info.ovhs.robotics.Robot;
-import info.ovhs.robotics.RobotMap;
 import info.ovhs.robotics.commands.CommandBase;
 import edu.wpi.first.wpilibj.command.Command;
 

@@ -1,7 +1,6 @@
 package info.ovhs.robotics.commands.drive;
 
 import info.ovhs.robotics.Robot;
-import info.ovhs.robotics.RobotMap;
 import info.ovhs.robotics.commands.CommandBase;
 
 /**
