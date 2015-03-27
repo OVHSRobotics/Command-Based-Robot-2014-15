@@ -12,7 +12,7 @@ public class SuckInTote extends Command {
 	private double moveSpeed;
 	
     public SuckInTote() {
-    	this(Constants.ActiveInput.AUTO_MOVE_SPEED);
+    	this(Constants.ActiveIntake.AUTO_MOVE_SPEED);
     }
     
     public SuckInTote(double moveSpeed) { 
@@ -38,11 +38,12 @@ public class SuckInTote extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	CommandBase.activeInput.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	CommandBase.activeInput.stop();
+    	this.end();
     }
 }

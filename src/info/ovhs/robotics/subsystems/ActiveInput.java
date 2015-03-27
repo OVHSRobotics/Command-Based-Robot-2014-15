@@ -1,5 +1,6 @@
 package info.ovhs.robotics.subsystems;
 
+import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.OI;
 import info.ovhs.robotics.RobotMap;
 import info.ovhs.robotics.commands.activeinput.StopActiveInput;
@@ -50,6 +51,16 @@ public class ActiveInput extends Subsystem {
     
     public void releaseTote(double moveSpeed) {
     	activeInputSpeedControllerLeft.set(moveSpeed);
+    	activeInputSpeedControllerRight.set(moveSpeed);
+    }
+    
+    public void spinCan() {
+    	activeInputSpeedControllerLeft.set(Constants.ActiveIntake.SPIN_MOVE_SPEED);
+    	activeInputSpeedControllerRight.set(Constants.ActiveIntake.SPIN_MOVE_SPEED);
+    }
+    
+    public void spinCan(double moveSpeed) {
+    	activeInputSpeedControllerLeft.set(-moveSpeed);
     	activeInputSpeedControllerRight.set(moveSpeed);
     }
     

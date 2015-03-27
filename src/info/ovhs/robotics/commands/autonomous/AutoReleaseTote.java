@@ -14,7 +14,7 @@ public class AutoReleaseTote extends Command {
 	private double initialTime;
 	
     public AutoReleaseTote() {
-    	this(Constants.ActiveInput.AUTO_MOVE_SPEED, 3);
+    	this(Constants.ActiveIntake.AUTO_MOVE_SPEED, 3);
     }
     
     public AutoReleaseTote(double moveSpeed, double time) { 

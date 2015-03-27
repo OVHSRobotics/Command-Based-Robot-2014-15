@@ -1,4 +1,4 @@
-package info.ovhs.robotics.commands.autonomous;
+package info.ovhs.robotics.commands.activeinput;
 
 import info.ovhs.robotics.Constants;
 import info.ovhs.robotics.commands.CommandBase;
@@ -7,48 +7,45 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutoSuckInTote extends Command {
-
-	private double moveSpeed;
-	private double time;
-	private double initialTime;
+public class SpinCan extends Command {
 	
-    public AutoSuckInTote() {
-    	this(Constants.ActiveIntake.AUTO_MOVE_SPEED, 3);
-    }
-    
-    public AutoSuckInTote(double moveSpeed, double time) { 
-    	// Use requires() here to declare subsystem dependencies
+	private double moveSpeed;
+
+	public SpinCan() {
+		this(Constants.ActiveIntake.SPIN_MOVE_SPEED);
+	}
+	
+    public SpinCan(double moveSpeed) {
+        // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(CommandBase.activeInput);
     	this.moveSpeed = moveSpeed;
-    	this.time = time;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	this.initialTime = System.nanoTime();
-    	CommandBase.activeInput.suckInTote(this.moveSpeed);
+    	CommandBase.activeInput.spinCan(moveSpeed);
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return System.nanoTime() >= this.initialTime + this.time * Math.pow(10, 9);
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	CommandBase.activeInput.stop();
-    	
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	CommandBase.activeInput.stop();
+    	this.end();
     }
 }

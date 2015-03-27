@@ -26,6 +26,7 @@ public class SmartDashboardUpdate{
         SmartDashboard.putNumber("Rear Left Drive Motor", RobotMap.rearLeftDriveSpeedController.get());
         SmartDashboard.putNumber("Rear Right Drive Motor", RobotMap.rearRightDriveSpeedController.get());
         SmartDashboard.putData(CommandBase.driveTrain);
+        SmartDashboard.putData(info.ovhs.robotics.subsystems.DriveTrain.getInstance());
 	}
 	
 	/**
@@ -90,6 +91,7 @@ public class SmartDashboardUpdate{
 		SmartDashboard.putNumber("Auto Switch 1 Setting", RobotMap.autoSwitchReadout(1));
         SmartDashboard.putNumber("Auto Switch 2 Setting", RobotMap.autoSwitchReadout(2));
         SmartDashboard.putString("Limit Switch", RobotMap.limitSwitchReadout());
+        SmartDashboard.putBoolean("Switch has been hit", CommandBase.rearMotorSpool.switchHasBeenHit);
 	}
 	
 	

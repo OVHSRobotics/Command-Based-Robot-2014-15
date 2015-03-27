@@ -8,26 +8,17 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  * Manual move of the rear motor spool a specified direction
  */
-public class RearMove extends Command {
+public class RearMoveBack extends Command {
 	
-	/**
-	 * Whether or not the rear motor spool is moving forward
-	 */
-	boolean forward = true;
 	
 	/**
 	 * Manual move of the rear motor spool a set direction
 	 * @param forward whether or not to move forward
 	 */
-    public RearMove(boolean forward) {
+    public RearMoveBack() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(CommandBase.rearMotorSpool);
-    	if (forward) {
-    		this.forward = true;
-    	} else {
-    		this.forward = false;
-    	}
     }
 
     /**
@@ -42,28 +33,11 @@ public class RearMove extends Command {
      */
     protected void execute() {
     	
-//    	if (CommandBase.rearMotorSpool.switchHasBeenHit) {
-//    		CommandBase.rearMotorSpool.stop();
-//    	} else {
-    	if (this.forward) {
-    		CommandBase.rearMotorSpool.forward(Constants.RearMotorSpool.MANUAL_MOVE_SPEED);
-//    		CommandBase.rearMotorSpool.switchHasBeenHit = false;
-    	} else if (!this.forward && !RobotMap.robotLimitSwitch.get()) {
-    		CommandBase.rearMotorSpool.backward(Constants.RearMotorSpool.MANUAL_MOVE_SPEED);
-    	} else if (!this.forward && RobotMap.robotLimitSwitch.get()) {
+    	if (RobotMap.robotLimitSwitch.get()) {
     		CommandBase.rearMotorSpool.stop();
-//    		CommandBase.rearMotorSpool.switchHasBeenHit = true;
     	} else {
-    		//Impossible case
+    		CommandBase.rearMotorSpool.backward(Constants.RearMotorSpool.MANUAL_MOVE_SPEED);
     	}
-//    	}
-    	
-//    	if (RobotMap.robotLimitSwitch.get() && !CommandBase.rearMotorSpool.switchHasBeenHit) {
-//    		OI.startControllerRumble(OI.xboxController);
-//    		CommandBase.rearMotorSpool.switchHasBeenHit = true;
-//    	} else {
-//    		OI.stopControllerRumble(OI.xboxController);
-//    	}
     }
 
     /**

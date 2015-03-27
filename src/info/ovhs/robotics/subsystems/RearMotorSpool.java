@@ -88,7 +88,7 @@ public class RearMotorSpool extends Subsystem {
      * </p>
      */    
     public void backward() {
-    	rearSpoolMotor.set(Constants.Motors.MOTOR_MAX_OUTPUT);
+    	this.backward(Constants.Motors.MOTOR_MAX_OUTPUT);
     }
     
     /**

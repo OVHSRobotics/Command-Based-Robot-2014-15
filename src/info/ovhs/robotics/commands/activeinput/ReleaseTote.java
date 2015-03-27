@@ -14,7 +14,7 @@ public class ReleaseTote extends Command {
     public ReleaseTote() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	this(Constants.ActiveInput.AUTO_MOVE_SPEED);
+    	this(Constants.ActiveIntake.AUTO_MOVE_SPEED);
     }
     
     public ReleaseTote(double moveSpeed) {

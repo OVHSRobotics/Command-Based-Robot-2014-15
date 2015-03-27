@@ -2,6 +2,7 @@ package info.ovhs.robotics;
 
 import info.ovhs.robotics.commands.SwapDualCommandState;
 import info.ovhs.robotics.commands.activeinput.ReleaseTote;
+import info.ovhs.robotics.commands.activeinput.SpinCan;
 import info.ovhs.robotics.commands.activeinput.SuckInTote;
 import info.ovhs.robotics.commands.conveyer.ConveyerMove;
 import info.ovhs.robotics.commands.dualcommandbuttons.DualCommandButtonBackward;
@@ -10,6 +11,7 @@ import info.ovhs.robotics.commands.dualcommandbuttons.DualCommandButtonForward;
 import info.ovhs.robotics.commands.dualcommandbuttons.DualCommandButtonJoystickControl;
 import info.ovhs.robotics.commands.dualcommandbuttons.DualCommandButtonLift;
 import info.ovhs.robotics.commands.rearmotorspool.RearMove;
+import info.ovhs.robotics.commands.rearmotorspool.RearMoveBack;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -88,19 +90,19 @@ public class OI {
     public void xboxControllerMappings() {
     	xboxController = new Joystick(Constants.Ports.Joystick.XBOX_CONTROLLER);
     	aButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.A);
-    	aButton.whenPressed(new ReleaseTote());
+    	aButton.whileHeld(new ReleaseTote());
 	    bButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.B);
 //	    bButton.whenPressed(new DropTote());
 	    xButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.X); 
 	    xButton.whileHeld(new SuckInTote());
 	    yButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.Y);
-//	    yButton.whileHeld(new RearMove(true));
+	    yButton.whileHeld(new SpinCan());
 	    backButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.BACK); 
 //	    backButton.whenPressed(new RearDropTrashCan());
 	    startButton = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.START); 
 //	    startButton.whenPressed(new RearLiftTrashCan());
 	    leftBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.LEFT_BUMPER); 
-	    leftBumper.whileHeld(new RearMove(false));
+	    leftBumper.whileHeld(new RearMoveBack());
 	    rightBumper = new JoystickButton(xboxController, Constants.OperatorControls.Controller.Xbox.Buttons.RIGHT_BUMPER);
 	    rightBumper.whileHeld(new RearMove(true));
 	    leftTrigger = new JoystickTriggerAsButton(xboxController, Constants.OperatorControls.Controller.Xbox.Axes.LEFT_TRIGGER, .04); 
