@@ -77,13 +77,20 @@ public final class Constants {
 		
 		public static final class AltAuto1 {
 			
-			public static final class Step1LiftCanWithAI {
+			public static final class Step1LiftCan {
+				
+				public static final double POWER = 1;
+				
+				public static final double TIME_SECONDS = .75;
+			}
+			
+			public static final class Step2LiftCanWithAI {
 				
 				public static final class LiftCan {
 				
 					public static final double POWER = 1;
 
-					public static final double TIME_SECONDS = 4.5;
+					public static final double TIME_SECONDS = 3.75;
 				}
 				
 				public static final class AI {
@@ -94,7 +101,7 @@ public final class Constants {
 				}
 			}
 			
-			public static final class Step2DriveForwardWithAI {
+			public static final class Step3DriveForwardWithAI {
 				
 				public static final class Drive {
 								
@@ -113,7 +120,7 @@ public final class Constants {
 				}
 			}
 		
-			public static final class Step3Strafe {
+			public static final class Step4Strafe {
 				
 				public static final double FRONT_RIGHT_POWER = 1;
 				
@@ -128,7 +135,7 @@ public final class Constants {
 				public static final boolean RIGHT = false;
 			}
 		
-			public static final class Step4DriveBackwardWithAI {
+			public static final class Step5DriveBackwardWithAI {
 				
 				public static final class Drive {
 								
@@ -462,8 +469,10 @@ public final class Constants {
 	
 	public static final class ActiveIntake {
 		
-		public static final double AUTO_MOVE_SPEED = .70;
+		public static final double AUTO_MOVE_SPEED = .85;
 		
-		public static final double SPIN_MOVE_SPEED = .35;
+		public static final double SPIN_MOVE_SPEED_LEFT = .5;
+		
+		public static final double SPIN_MOVE_SPEED_RIGHT = .25;
 	}
 }

@@ -3,6 +3,7 @@ package info.ovhs.robotics.commands.dualcommandbuttons;
 import info.ovhs.robotics.commands.CommandBase;
 import info.ovhs.robotics.commands.conveyer.ConveyerMove;
 import info.ovhs.robotics.commands.rearmotorspool.RearMove;
+import info.ovhs.robotics.commands.rearmotorspool.RearMoveBack;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -11,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DualCommandButtonBackward extends Command {
 	
 	Command command1 = new ConveyerMove(false);
-	Command command2 = new RearMove(false);
+	Command command2 = new RearMoveBack();
 
     public DualCommandButtonBackward() {
         // Use requires() here to declare subsystem dependencies

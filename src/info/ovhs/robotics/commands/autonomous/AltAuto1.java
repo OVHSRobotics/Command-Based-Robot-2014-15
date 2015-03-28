@@ -26,13 +26,14 @@ public class AltAuto1 extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new AutoLiftTrashCanAndAI(Constants.Autonomous.AltAuto1.Step1LiftCanWithAI.LiftCan.POWER, Constants.Autonomous.AltAuto1.Step1LiftCanWithAI.LiftCan.TIME_SECONDS, Constants.Autonomous.AltAuto1.Step1LiftCanWithAI.AI.POWER, Constants.Autonomous.AltAuto1.Step1LiftCanWithAI.AI.IN));
-    	addSequential(new DriveAndAI(Constants.Autonomous.AltAuto1.Step2DriveForwardWithAI.Drive.POWER, Constants.Autonomous.AltAuto1.Step2DriveForwardWithAI.Drive.TIME_SECONDS,
-    			Constants.Autonomous.AltAuto1.Step2DriveForwardWithAI.Drive.FORWARD, Constants.Autonomous.AltAuto1.Step2DriveForwardWithAI.AI.POWER,
-    			Constants.Autonomous.AltAuto1.Step2DriveForwardWithAI.AI.IN));
-    	addSequential(new Strafe(Constants.Autonomous.AltAuto1.Step3Strafe.FRONT_LEFT_POWER, Constants.Autonomous.AltAuto1.Step3Strafe.FRONT_RIGHT_POWER, Constants.Autonomous.AltAuto1.Step3Strafe.REAR_LEFT_POWER, Constants.Autonomous.AltAuto1.Step3Strafe.REAR_RIGHT_POWER, 
-    			Constants.Autonomous.AltAuto1.Step3Strafe.TIME_SECONDS, Constants.Autonomous.AltAuto1.Step3Strafe.RIGHT));
-    	addSequential(new DriveAndAI(Constants.Autonomous.AltAuto1.Step4DriveBackwardWithAI.Drive.POWER, Constants.Autonomous.AltAuto1.Step4DriveBackwardWithAI.Drive.TIME_SECONDS, Constants.Autonomous.AltAuto1.Step4DriveBackwardWithAI.Drive.FORWARD, Constants.Autonomous.AltAuto1.Step4DriveBackwardWithAI.AI.POWER, 
-    			Constants.Autonomous.AltAuto1.Step4DriveBackwardWithAI.AI.IN));
+    	addSequential(new AutoLiftTrashCan(Constants.Autonomous.AltAuto1.Step1LiftCan.POWER, Constants.Autonomous.AltAuto1.Step1LiftCan.TIME_SECONDS));
+    	addSequential(new AutoLiftTrashCanAndAI(Constants.Autonomous.AltAuto1.Step2LiftCanWithAI.LiftCan.POWER, Constants.Autonomous.AltAuto1.Step2LiftCanWithAI.LiftCan.TIME_SECONDS, Constants.Autonomous.AltAuto1.Step2LiftCanWithAI.AI.POWER, Constants.Autonomous.AltAuto1.Step2LiftCanWithAI.AI.IN));
+    	addSequential(new DriveAndAI(Constants.Autonomous.AltAuto1.Step3DriveForwardWithAI.Drive.POWER, Constants.Autonomous.AltAuto1.Step3DriveForwardWithAI.Drive.TIME_SECONDS,
+    			Constants.Autonomous.AltAuto1.Step3DriveForwardWithAI.Drive.FORWARD, Constants.Autonomous.AltAuto1.Step3DriveForwardWithAI.AI.POWER,
+    			Constants.Autonomous.AltAuto1.Step3DriveForwardWithAI.AI.IN));
+    	addSequential(new Strafe(Constants.Autonomous.AltAuto1.Step4Strafe.FRONT_LEFT_POWER, Constants.Autonomous.AltAuto1.Step4Strafe.FRONT_RIGHT_POWER, Constants.Autonomous.AltAuto1.Step4Strafe.REAR_LEFT_POWER, Constants.Autonomous.AltAuto1.Step4Strafe.REAR_RIGHT_POWER, 
+    			Constants.Autonomous.AltAuto1.Step4Strafe.TIME_SECONDS, Constants.Autonomous.AltAuto1.Step4Strafe.RIGHT));
+    	addSequential(new DriveAndAI(Constants.Autonomous.AltAuto1.Step5DriveBackwardWithAI.Drive.POWER, Constants.Autonomous.AltAuto1.Step5DriveBackwardWithAI.Drive.TIME_SECONDS, Constants.Autonomous.AltAuto1.Step5DriveBackwardWithAI.Drive.FORWARD, Constants.Autonomous.AltAuto1.Step5DriveBackwardWithAI.AI.POWER, 
+    			Constants.Autonomous.AltAuto1.Step5DriveBackwardWithAI.AI.IN));
     }
 }

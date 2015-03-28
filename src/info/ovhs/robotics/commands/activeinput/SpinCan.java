@@ -9,23 +9,24 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class SpinCan extends Command {
 	
-	private double moveSpeed;
+	private double moveSpeedLeft;
+	private double moveSpeedRight;
 
 	public SpinCan() {
-		this(Constants.ActiveIntake.SPIN_MOVE_SPEED);
+		this(Constants.ActiveIntake.SPIN_MOVE_SPEED_LEFT, Constants.ActiveIntake.SPIN_MOVE_SPEED_RIGHT);
 	}
 	
-    public SpinCan(double moveSpeed) {
+    public SpinCan(double moveSpeedLeft, double moveSpeedRight) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(CommandBase.activeInput);
-    	this.moveSpeed = moveSpeed;
+    	this.moveSpeedLeft = moveSpeedLeft;
+    	this.moveSpeedRight = moveSpeedRight;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	CommandBase.activeInput.spinCan(moveSpeed);
-    	
+    	CommandBase.activeInput.spinCan(moveSpeedLeft, moveSpeedRight);
     }
 
     // Called repeatedly when this Command is scheduled to run

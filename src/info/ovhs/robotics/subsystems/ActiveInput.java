@@ -55,13 +55,13 @@ public class ActiveInput extends Subsystem {
     }
     
     public void spinCan() {
-    	activeInputSpeedControllerLeft.set(Constants.ActiveIntake.SPIN_MOVE_SPEED);
-    	activeInputSpeedControllerRight.set(Constants.ActiveIntake.SPIN_MOVE_SPEED);
+    	activeInputSpeedControllerLeft.set(-Constants.ActiveIntake.SPIN_MOVE_SPEED_LEFT);
+    	activeInputSpeedControllerRight.set(Constants.ActiveIntake.SPIN_MOVE_SPEED_RIGHT);
     }
     
-    public void spinCan(double moveSpeed) {
-    	activeInputSpeedControllerLeft.set(-moveSpeed);
-    	activeInputSpeedControllerRight.set(moveSpeed);
+    public void spinCan(double moveSpeedLeft, double moveSpeedRight) {
+    	activeInputSpeedControllerLeft.set(-moveSpeedLeft);
+    	activeInputSpeedControllerRight.set(moveSpeedRight);
     }
     
     public void stop() {

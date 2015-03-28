@@ -37,7 +37,7 @@ public class RearJoystickControl extends Command {
     	if (!RobotMap.robotLimitSwitch.get()){
     		CommandBase.rearMotorSpool.setSpeed(this.joystickToUse.getRawAxis(this.joystickAxisToUse));
     	} else {
-    		if (this.joystickToUse.getRawAxis(this.joystickAxisToUse) < 0) {
+    		if (this.joystickToUse.getRawAxis(this.joystickAxisToUse) > 0) {
     			CommandBase.rearMotorSpool.setSpeed(this.joystickToUse.getRawAxis(this.joystickAxisToUse));
     		} else {
     			CommandBase.rearMotorSpool.setSpeed(0);
