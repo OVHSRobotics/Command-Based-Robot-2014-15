@@ -36,7 +36,7 @@ public class RearMoveBack extends Command {
     	if (RobotMap.robotLimitSwitch.get()) {
     		CommandBase.rearMotorSpool.stop();
     	} else {
-    		CommandBase.rearMotorSpool.backward(Constants.RearMotorSpool.MANUAL_MOVE_SPEED);
+    		CommandBase.rearMotorSpool.backward(Constants.RearMotorSpool.MANUAL_MOVE_SPEED_DOWN);
     	}
     }
 

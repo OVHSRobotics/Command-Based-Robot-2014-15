@@ -50,4 +50,8 @@ public class AutoLiftTrashCan extends Command {
     protected void interrupted() {
     	this.end();
     }
+    
+    public String toString() {
+    	return "Driving for " + this.time + " seconds at " + this.power + " power";
+    }
 }

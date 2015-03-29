@@ -48,15 +48,16 @@ public class RearMove extends Command {
 //    	} else {
     	if (this.forward) {
 //    		if (!OI.operatorController.getRawButton(1)){
-    			CommandBase.rearMotorSpool.forward(Constants.RearMotorSpool.MANUAL_MOVE_SPEED);
-//    		}
+    			CommandBase.rearMotorSpool.forward(Constants.RearMotorSpool.MANUAL_MOVE_SPEED_UP);
+    		}
 //    		CommandBase.rearMotorSpool.switchHasBeenHit = false;
-    	} else if (!this.forward && !RobotMap.robotLimitSwitch.get()) {
-    		CommandBase.rearMotorSpool.backward(Constants.RearMotorSpool.MANUAL_MOVE_SPEED);
-    	} else if (!this.forward && RobotMap.robotLimitSwitch.get()) {
-    		CommandBase.rearMotorSpool.stop();
-//    		CommandBase.rearMotorSpool.switchHasBeenHit = true;
-    	} else {
+//    	} else if (!this.forward && !RobotMap.robotLimitSwitch.get()) {
+//    		CommandBase.rearMotorSpool.backward(Constants.RearMotorSpool.MANUAL_MOVE_SPEED);
+//    	} else if (!this.forward && RobotMap.robotLimitSwitch.get()) {
+//    		CommandBase.rearMotorSpool.stop();
+////    		CommandBase.rearMotorSpool.switchHasBeenHit = true;
+//    	} 
+    	else {
     		//Impossible case
     	}
 //    	}

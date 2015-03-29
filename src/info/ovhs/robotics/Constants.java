@@ -79,29 +79,29 @@ public final class Constants {
 			
 			public static final class Step1LiftCan {
 				
-				public static final double POWER = 1;
+				public static final double POWER = 1.00;
 				
-				public static final double TIME_SECONDS = .75;
+				public static final double TIME_SECONDS = 6;
 			}
 			
-			public static final class Step2LiftCanWithAI {
-				
-				public static final class LiftCan {
-				
-					public static final double POWER = 1;
-
-					public static final double TIME_SECONDS = 3.75;
-				}
-				
-				public static final class AI {
-					
-					public static final double POWER = .25;
-					
-					public static final boolean IN = false;
-				}
-			}
+//			public static final class Step2LiftCanWithAI {
+//				
+//				public static final class LiftCan {
+//				
+//					public static final double POWER = 1;
+//
+//					public static final double TIME_SECONDS = 3.75;
+//				}
+//				
+//				public static final class AI {
+//					
+//					public static final double POWER = .25;
+//					
+//					public static final boolean IN = false;
+//				}
+//			}
 			
-			public static final class Step3DriveForwardWithAI {
+			public static final class Step2DriveForwardWithAI {
 				
 				public static final class Drive {
 								
@@ -120,7 +120,7 @@ public final class Constants {
 				}
 			}
 		
-			public static final class Step4Strafe {
+			public static final class Step3Strafe {
 				
 				public static final double FRONT_RIGHT_POWER = 1;
 				
@@ -130,12 +130,12 @@ public final class Constants {
 				
 				public static final double REAR_LEFT_POWER = .8;
 				
-				public static final double TIME_SECONDS = 3.0;
+				public static final double TIME_SECONDS = 2.0;
 				
 				public static final boolean RIGHT = false;
 			}
 		
-			public static final class Step5DriveBackwardWithAI {
+			public static final class Step4DriveBackwardWithAI {
 				
 				public static final class Drive {
 								
@@ -451,7 +451,9 @@ public final class Constants {
 		
 		public static final double SPROCKET_TO_GEARBOX_GEAR_RATIO = 36/16;
 		
-		public static final double MANUAL_MOVE_SPEED = .75;
+		public static final double MANUAL_MOVE_SPEED_UP = 1.00;
+		
+		public static final double MANUAL_MOVE_SPEED_DOWN = 0.75;
 		
 		public static final class Encoder {
 			
@@ -473,6 +475,6 @@ public final class Constants {
 		
 		public static final double SPIN_MOVE_SPEED_LEFT = .5;
 		
-		public static final double SPIN_MOVE_SPEED_RIGHT = .25;
+		public static final double SPIN_MOVE_SPEED_RIGHT = .15;
 	}
 }
